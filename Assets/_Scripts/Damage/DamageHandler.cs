@@ -18,7 +18,7 @@ namespace SGGames.Scripts.Damages
         
         protected virtual float GetDamage()
         {
-            return Random.Range(m_minDamage, m_maxDamage);
+            return Mathf.Round(Random.Range(m_minDamage, m_maxDamage));
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D other)

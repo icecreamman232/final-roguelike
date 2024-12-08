@@ -118,7 +118,7 @@ MonoBehaviour:
   m_damageableInvulnerableTime: 0.3
   m_damageableLayerMask:
     serializedVersion: 2
-    m_Bits: 2176
+    m_Bits: 3200
 --- !u!1 &3112058791089520310
 GameObject:
   m_ObjectHideFlags: 0
