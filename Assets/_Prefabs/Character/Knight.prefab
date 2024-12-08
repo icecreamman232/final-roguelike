@@ -14,7 +14,8 @@ GameObject:
   - component: {fileID: 5311189830458795856}
   - component: {fileID: 9095760099221184924}
   - component: {fileID: 904574974438328195}
-  m_Layer: 0
+  - component: {fileID: 6210066009922297151}
+  m_Layer: 6
   m_Name: Knight
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -36,6 +37,7 @@ Transform:
   m_Children:
   - {fileID: 3448551190871362478}
   - {fileID: 7132944079345427687}
+  - {fileID: 81437972260655627}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &9207394351103251092
@@ -126,10 +128,10 @@ MonoBehaviour:
   m_obstacleLayerMask:
     serializedVersion: 2
     m_Bits: 1024
+  m_playerSize: {x: 0.5, y: 0.8}
   m_direction: {x: 0, y: 0}
   m_initialSpeed: 5
   m_currentSpeed: 0
-  m_playerSize: {x: 0.5, y: 0.8}
 --- !u!114 &9095760099221184924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -165,6 +167,23 @@ MonoBehaviour:
   m_isImmortal: 0
   m_isDead: 0
   m_PlayerHealthUpdateEvent: {fileID: 11400000, guid: 522553b978f7d444282f81b913f8d024, type: 2}
+--- !u!114 &6210066009922297151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633775464036924199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b6d1c5c32ad27c48a651106e9929084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isAllow: 1
+  m_initialWeapon: {fileID: 3328675937733969171, guid: d8bc353287910484baac8fcba5024d98, type: 3}
+  m_currentWeapon: {fileID: 0}
+  m_weaponAttachment: {fileID: 81437972260655627}
+  m_playerAim: {fileID: 9095760099221184924}
 --- !u!1 &2082253337759199587
 GameObject:
   m_ObjectHideFlags: 0
@@ -249,6 +268,37 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2355720016831437226
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 81437972260655627}
+  m_Layer: 0
+  m_Name: WeaponAttachment
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &81437972260655627
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2355720016831437226}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6263496985321535266}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &2560209867363465314
 GameObject:
   m_ObjectHideFlags: 0
