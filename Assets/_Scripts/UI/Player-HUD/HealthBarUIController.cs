@@ -7,14 +7,14 @@ namespace SGGames.Scripts.UI
 {
     public class HealthBarUIController : MonoBehaviour
     {
-        [SerializeField] private GameObject m_heartPrefab;
+        [SerializeField] private HeartUIController m_heartPrefab;
         [SerializeField] private PlayerHealthUpdateEvent m_playerHealthUpdateEvent;
-        [SerializeField] private List<GameObject> m_heartList;
+        [SerializeField] private List<HeartUIController> m_heartList;
         
         private void Awake()
         {
             m_playerHealthUpdateEvent.AddListener(OnPlayerHealthUpdate);
-            m_heartList = new List<GameObject>();
+            m_heartList = new List<HeartUIController>();
         }
 
         private void OnDestroy()
@@ -48,7 +48,14 @@ namespace SGGames.Scripts.UI
             var heartCount = current / PlayerHealth.c_HealthPerHeart;
             for (int i = 0; i < m_heartList.Count; i++)
             {
-                m_heartList[i].SetActive(i < heartCount);
+                if (i < heartCount)
+                {
+                    m_heartList[i].SetFull();
+                }
+                else
+                {
+                    m_heartList[i].SetEmpty();
+                }
             }
         }
     }

@@ -171,7 +171,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ee452129ef5ee524b996b778a6b6b0a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_heartPrefab: {fileID: 3148848785056556768, guid: 4538d3c3b13f1db4d83ef2011db8193d, type: 3}
+  m_heartPrefab: {fileID: 5089830170135452608, guid: 4538d3c3b13f1db4d83ef2011db8193d, type: 3}
   m_playerHealthUpdateEvent: {fileID: 11400000, guid: 522553b978f7d444282f81b913f8d024, type: 2}
   m_heartList: []
 --- !u!114 &304478013
