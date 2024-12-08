@@ -1,9 +1,11 @@
+using SGGames.Scripts.Enemies;
 using UnityEngine;
 
 namespace SGGames.Scripts.Healths
 {
     public class EnemyHealth : Health
     {
+        [SerializeField] protected EnemyController m_controller;
         public override void TakeDamage(float damage, GameObject source, float invincibilityDuration)
         {
             base.TakeDamage(damage, source, invincibilityDuration);
@@ -28,6 +30,8 @@ namespace SGGames.Scripts.Healths
         protected override void Kill()
         {
             base.Kill();
+            m_controller.CurrentBrain.ResetBrain();
+            m_controller.CurrentBrain.BrainActive = false;
             this.gameObject.SetActive(false);
         }
     }
