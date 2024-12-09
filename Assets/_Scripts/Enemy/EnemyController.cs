@@ -7,6 +7,11 @@ namespace SGGames.Scripts.Enemies
         [SerializeField] protected EnemyBrain m_currentBrain;
         
         public EnemyBrain CurrentBrain => m_currentBrain;
+
+        public void SetActiveBrain(EnemyBrain newBrain)
+        {
+            m_currentBrain = newBrain;
+        }
     }
 }
 

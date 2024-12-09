@@ -5,7 +5,7 @@ namespace SGGames.Scripts.Enemies
 {
     public class EnemyBrain : MonoBehaviour
     {
-        //public EnemyController Owner;
+        public EnemyController Owner;
         public List<BrainState> States;
         public Transform Target;
         public bool BrainActive;
