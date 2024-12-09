@@ -1,4 +1,5 @@
 
+using System;
 using UnityEngine;
 
 namespace SGGames.Scripts.Enemies
@@ -13,6 +14,8 @@ namespace SGGames.Scripts.Enemies
 
         private readonly float m_raycastDistance = 0.2f;
         protected BoxCollider2D m_boxCollider;
+
+        public Action OnHitObstacle;
         
         protected override void Start()
         {
@@ -75,6 +78,7 @@ namespace SGGames.Scripts.Enemies
             if (CheckObstacle())
             {
                 m_direction = Vector2.zero;
+                OnHitObstacle?.Invoke();
             }
             transform.Translate(m_direction * (m_currentSpeed * Time.deltaTime));
         }

@@ -96,6 +96,8 @@ GameObject:
   - component: {fileID: 5312012922525152784}
   - component: {fileID: 3898790121587061883}
   - component: {fileID: 8300882229992981992}
+  - component: {fileID: 2575296009539577132}
+  - component: {fileID: 459664164550069377}
   m_Layer: 0
   m_Name: Decisions
   m_TagString: Untagged
@@ -163,6 +165,37 @@ MonoBehaviour:
   m_minDuration: 3
   m_maxDuration: 5
   m_duration: 0
+--- !u!114 &2575296009539577132
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5071277546187072785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047a799e0451a1e429c69595c5ba39ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: Wait before change direction
+  m_minDuration: 1
+  m_maxDuration: 1
+  m_duration: 0
+--- !u!114 &459664164550069377
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5071277546187072785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b86c1572de8eee142a1b11f53ec35fd7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: Check hit obstacle
+  m_movement: {fileID: 8446419928612837318}
+  m_isHitObstacle: 0
 --- !u!1 &5976752077958122652
 GameObject:
   m_ObjectHideFlags: 0
@@ -229,8 +262,18 @@ MonoBehaviour:
     Actions:
     - {fileID: 7440000207487579646}
     Transitions:
+    - BrainDecision: {fileID: 459664164550069377}
+      TrueStateName: Choose direction
+      FalseStateName: 
     - BrainDecision: {fileID: 8300882229992981992}
       TrueStateName: Rest
+      FalseStateName: 
+  - StateName: Wait before changing direction
+    Actions:
+    - {fileID: 7440000207487579646}
+    Transitions:
+    - BrainDecision: {fileID: 2575296009539577132}
+      TrueStateName: Choose direction
       FalseStateName: 
   Target: {fileID: 0}
   BrainActive: 1
