@@ -130,7 +130,7 @@ MonoBehaviour:
     m_Bits: 1024
   m_playerSize: {x: 0.5, y: 0.8}
   m_direction: {x: 0, y: 0}
-  m_initialSpeed: 5
+  m_initialSpeed: 6
   m_currentSpeed: 0
 --- !u!114 &9095760099221184924
 MonoBehaviour:

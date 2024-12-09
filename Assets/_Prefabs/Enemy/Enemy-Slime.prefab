@@ -242,6 +242,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3f0fd321a54e08245b30c16ee07e61b0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Owner: {fileID: 1523028514524487298}
   States:
   - StateName: Rest
     Actions:
@@ -529,6 +530,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_isAllow: 1
+  m_movementMode: 0
   m_canMove: 0
   m_initialSpeed: 3
   m_currentSpeed: 0
@@ -536,6 +538,7 @@ MonoBehaviour:
   m_obstacleLayerMask:
     serializedVersion: 2
     m_Bits: 1024
+  m_followingTarget: {fileID: 0}
 --- !u!114 &2469486775673761338
 MonoBehaviour:
   m_ObjectHideFlags: 0

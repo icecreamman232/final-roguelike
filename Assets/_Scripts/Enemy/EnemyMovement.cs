@@ -43,6 +43,23 @@ namespace SGGames.Scripts.Enemies
         {
             m_movementMode = MOVEMENT_MODE.TOWARD_DIRECTION;
             m_direction = dir;
+            if (CheckObstacle())
+            {
+                var hitTop = Physics2D.Raycast(transform.position,Vector2.up,m_raycastDistance,m_obstacleLayerMask);
+                var hitBot = Physics2D.Raycast(transform.position,Vector2.down,m_raycastDistance,m_obstacleLayerMask);
+                var hitLeft = Physics2D.Raycast(transform.position,Vector2.left,m_raycastDistance,m_obstacleLayerMask);
+                var hitRight = Physics2D.Raycast(transform.position,Vector2.right,m_raycastDistance,m_obstacleLayerMask);
+
+
+                if (hitTop || hitBot)
+                {
+                    m_direction.y = 0;
+                }
+                else if (hitLeft || hitRight)
+                {
+                    m_direction.x = 0;
+                }
+            }
         }
 
         public virtual void StartMoving()
