@@ -30,18 +30,20 @@ namespace SGGames.Scripts.Player
         /// The value could be negative, which return to reduce speed
         /// </summary>
         /// <param name="addedSpeed"></param>
-        public void AddSpeed(float addedSpeed)
+        public void ModifySpeed(float addedSpeed)
         {
             m_currentSpeed += addedSpeed;
+            Debug.Log($"<color=yellow>ModifySpeed: {addedSpeed}</color>");
         }
 
         /// <summary>
         /// Assign new value to current speed
         /// </summary>
         /// <param name="modifiedSpeed"></param>
-        public void ModifiedSpeed(float modifiedSpeed)
+        public void OverrideSpeed(float modifiedSpeed)
         {
             m_currentSpeed = modifiedSpeed;
+            Debug.Log($"<color=yellow>OverrideSpeed: {modifiedSpeed}</color>");
         }
 
         public void ResetSpeed()
