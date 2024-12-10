@@ -14,5 +14,5 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ModifierType: 1
   Duration: 3
-  HealthModifierType: 0
-  ModifierValue: 50
+  HealthModifierType: 6
+  ModifierValue: 0

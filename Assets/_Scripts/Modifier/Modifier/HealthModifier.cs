@@ -12,6 +12,8 @@ namespace SGGames.Scripts.Modifier
         IncreaseMaxHP,
         DecreaseMaxHP,
         OverrideMaxHP,
+        
+        SetImmortal_ForDuration,
     }
     
     
