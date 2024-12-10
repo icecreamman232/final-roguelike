@@ -9,8 +9,8 @@ namespace SGGames.Scripts.Modifier
         OverrideSpeed,
     }
     
-    [CreateAssetMenu(fileName = "MovementModifierInfo", menuName = "SGGames/Modifiers/Movement Modifier")]
-    public class MovementModifierInfo : ModifierInfo
+    [CreateAssetMenu(fileName = "MovementModifier", menuName = "SGGames/Modifiers/Movement Modifier")]
+    public class MovementModifier : Modifier
     {
         public MovementModifierType MovementModifierType;
         public float ModifierValue;

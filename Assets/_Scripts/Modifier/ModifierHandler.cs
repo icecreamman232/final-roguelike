@@ -10,13 +10,13 @@ namespace SGGames.Scripts.Modifier
         [SerializeField] private PlayerMovement m_playerMovement;
         [SerializeField] private List<MovementModifierProcessor> m_movementModifierProcessors;
         
-        public void RegisterModifier(ModifierInfo info)
+        public void RegisterModifier(Modifier info)
         {
             switch (info.ModifierType)
             {
                 case ModifierType.MOVEMENT:
                     var processor = this.gameObject.AddComponent<MovementModifierProcessor>();
-                    processor.Initialize(this, m_playerMovement,(MovementModifierInfo)info);
+                    processor.Initialize(this, m_playerMovement,(MovementModifier)info);
                     processor.StartModifier();
                     m_movementModifierProcessors.Add(processor);
                     Debug.Log($"<color=orange>Registered Modifier: {info.ModifierType}</color>");
@@ -37,7 +37,7 @@ namespace SGGames.Scripts.Modifier
             DestroyImmediate(processor);
         }
 
-        public void UnregisterModifier(ModifierInfo info)
+        public void UnregisterModifier(Modifier info)
         {
             
         }

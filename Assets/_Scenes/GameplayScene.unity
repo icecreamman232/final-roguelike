@@ -549,6 +549,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_target: {fileID: 1066281141186857568}
   m_movementModifier: {fileID: 11400000, guid: 2018b069c3eb81441b634117c0a2d983, type: 2}
+  m_movementModifier_2: {fileID: 11400000, guid: a6e90e169c396f744bfbbf44aefec2a2, type: 2}
 --- !u!4 &1005844222
 Transform:
   m_ObjectHideFlags: 0

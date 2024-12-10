@@ -5,12 +5,12 @@ namespace SGGames.Scripts.Modifier
 {
     public class MovementModifierProcessor : ModifierProcessor, IOverTimeModifierProcessor
     {
-        [SerializeField] private MovementModifierInfo m_info;
+        [SerializeField] private MovementModifier m_info;
         [SerializeField] private PlayerMovement m_playerMovement;
         private float m_timer;
         private ModifierHandler m_handler;
         
-        public void Initialize(ModifierHandler handler, PlayerMovement playerMovement, MovementModifierInfo info)
+        public void Initialize(ModifierHandler handler, PlayerMovement playerMovement, MovementModifier info)
         {
             m_handler = handler;
             m_playerMovement = playerMovement;
