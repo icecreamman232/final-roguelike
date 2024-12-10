@@ -4,6 +4,12 @@ namespace SGGames.Scripts.Modifier
 {
     public enum MovementModifierType
     {
+        //Temporary type
+        ReduceMSForDuration,
+        IncreaseMSForDuration,
+        OverrideSpeedForDuration,
+        
+        //Permanent type
         ReduceMS,
         IncreaseMS,
         OverrideSpeed,

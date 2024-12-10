@@ -32,14 +32,34 @@ namespace SGGames.Scripts.Healths
             m_currentHealth = m_maxHealth;
         }
 
-        public void AddHealth(float amount)
+        public void ModifyCurrentHealth(float amount)
         {
             m_currentHealth += amount;
+            m_currentHealth = Mathf.Clamp(m_currentHealth, 0, m_maxHealth);
+            UpdateHealthBar();
         }
 
-        public void OverrideHealth(float amount)
+        public void OverrideCurrentHealth(float amount)
         {
             m_currentHealth = amount;
+            m_currentHealth = Mathf.Clamp(m_currentHealth, 0, m_maxHealth);
+            UpdateHealthBar();
+        }
+
+        public void ModifyMaxHealth(float amount)
+        {
+            var currentPercent = m_currentHealth / m_maxHealth;
+            m_maxHealth += amount;
+            m_currentHealth = m_maxHealth * currentPercent;
+            UpdateHealthBar();
+        }
+
+        public void OverrideMaxHealth(float amount)
+        {
+            var currentPercent = m_currentHealth / m_maxHealth;
+            m_maxHealth = amount;
+            m_currentHealth = m_maxHealth * currentPercent;
+            UpdateHealthBar();
         }
 
         public void SetImmortal(bool immortal)

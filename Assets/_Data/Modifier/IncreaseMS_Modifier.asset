@@ -10,9 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b916d90ddfa328f4eb65581c92974326, type: 3}
-  m_Name: MovementModifierInfo_2
+  m_Name: IncreaseMS_Modifier
   m_EditorClassIdentifier: 
   ModifierType: 0
   Duration: 6
-  MovementModifierType: 1
-  ModifierValue: 2
+  CanStack: 0
+  MaxStackNumber: 0
+  MovementModifierType: 4
+  ModifierValue: 5

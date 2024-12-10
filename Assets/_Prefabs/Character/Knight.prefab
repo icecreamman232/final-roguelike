@@ -230,7 +230,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_playerMovement: {fileID: 5311189830458795856}
+  m_playerHealth: {fileID: 904574974438328195}
   m_movementModifierProcessors: []
+  m_healthModifierProcessors: []
 --- !u!1 &2082253337759199587
 GameObject:
   m_ObjectHideFlags: 0
