@@ -20,13 +20,14 @@ namespace SGGames.Scripts.Healths
         /// </summary>
         [SerializeField] protected bool m_isImmortal;
         [SerializeField] protected bool m_isDead;
+        [SerializeField] protected SpriteRenderer m_spriteRenderer;
         
         public float CurrentHealth => m_currentHealth;
         public float MaxHealth => m_maxHealth;
         public bool IsDead => m_isDead;
 
         public bool CanTakeDamageThisFrame => CanTakeDamage();
-
+        
         public void ResetHealth()
         {
             m_currentHealth = m_maxHealth;
