@@ -553,6 +553,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_minDamage: 15
   m_maxDamage: 25
+  m_additionalDamage: 0
+  m_multiplyDamage: 1
   m_damageableInvulnerableTime: 0.3
   m_damageableLayerMask:
     serializedVersion: 2

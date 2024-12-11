@@ -15,9 +15,10 @@ GameObject:
   - component: {fileID: 9095760099221184924}
   - component: {fileID: 904574974438328195}
   - component: {fileID: 6210066009922297151}
+  - component: {fileID: 6211949587856999711}
   m_Layer: 6
   m_Name: Knight
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -165,7 +166,7 @@ MonoBehaviour:
   m_maxHealth: 150
   m_currentHealth: 0
   m_isInvulnerable: 0
-  m_isImmortal: 0
+  m_isImmortal: 1
   m_isDead: 0
   m_PlayerHealthUpdateEvent: {fileID: 11400000, guid: 522553b978f7d444282f81b913f8d024, type: 2}
 --- !u!114 &6210066009922297151
@@ -185,6 +186,21 @@ MonoBehaviour:
   m_currentWeapon: {fileID: 0}
   m_weaponAttachment: {fileID: 81437972260655627}
   m_playerAim: {fileID: 9095760099221184924}
+  m_playerDamageComputer: {fileID: 6211949587856999711}
+--- !u!114 &6211949587856999711
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633775464036924199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 56dbbc2791ca0d14c8c9789338df5e70, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_additionDamage: 0
+  m_mutiplyDamage: 1
 --- !u!1 &1510195004236968706
 GameObject:
   m_ObjectHideFlags: 0
@@ -231,8 +247,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerMovement: {fileID: 5311189830458795856}
   m_playerHealth: {fileID: 904574974438328195}
+  m_damageComputer: {fileID: 6211949587856999711}
   m_movementModifierProcessors: []
   m_healthModifierProcessors: []
+  m_damageModifierProcessors: []
 --- !u!1 &2082253337759199587
 GameObject:
   m_ObjectHideFlags: 0

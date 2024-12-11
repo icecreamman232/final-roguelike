@@ -1,5 +1,6 @@
 using SGGames.Scripts.Damages;
 using UnityEngine;
+using UnityEngine.Events;
 
 namespace SGGames.Scripts.Weapons
 {
@@ -19,6 +20,7 @@ namespace SGGames.Scripts.Weapons
         [SerializeField] protected Vector2 m_direction;
         [SerializeField] protected Transform m_model;
         [SerializeField] protected DamageHandler m_damageHandler;
+        [SerializeField] protected UnityEvent m_onDestroy;
         
         /// <summary>
         /// Offset angle of projectile visual.Ex: if projectile visual is up, the angle should be 90
@@ -32,13 +34,15 @@ namespace SGGames.Scripts.Weapons
             m_damageHandler.OnHitDamageable += OnHitDamageable;
         }
 
-        public virtual void Spawn(Vector2 position, Quaternion rotation, Vector2 direction)
+        public virtual void Spawn(Vector2 position, Quaternion rotation, Vector2 direction, float addDamage, float multiplyDamage)
         {
             ResetSpeed();
             m_wakeupPosition = position;
             transform.position = position;
             m_model.rotation = rotation * Quaternion.AngleAxis(m_offsetRotationAngle, Vector3.forward);
             m_direction = direction;
+            m_damageHandler.UpdateAdditionalDamage(addDamage);
+            m_damageHandler.UpdateMultiplyDamage(multiplyDamage);
             m_isAlive = true;
         }
 
@@ -75,6 +79,7 @@ namespace SGGames.Scripts.Weapons
 
         protected virtual void DestroyProjectile()
         {
+            m_onDestroy?.Invoke();
             this.gameObject.SetActive(false);
             m_isAlive = false;
         }

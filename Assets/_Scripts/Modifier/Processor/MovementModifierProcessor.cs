@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Modifier
 {
-    public class MovementModifierProcessor : ModifierProcessor, IOverTimeModifierProcessor
+    public class MovementModifierProcessor : ModifierProcessor
     {
         [SerializeField] private MovementModifier m_modifier;
         [SerializeField] private PlayerMovement m_playerMovement;
@@ -18,8 +18,9 @@ namespace SGGames.Scripts.Modifier
             m_modifier = modifier;
         }
         
-        public void StartModifier()
+        public override void StartModifier()
         {
+            base.StartModifier();
             switch (m_modifier.MovementModifierType)
             {
                 case MovementModifierType.ReduceMSForDuration:
@@ -45,13 +46,22 @@ namespace SGGames.Scripts.Modifier
                     break;
             }
 
+            m_modifier.IsRunning = true;
             
-            Debug.Log("<color=orange>Start Movement Modifier </color>");
+            Debug.Log($"<color=green>Start Modifier Category:{m_modifier.ModifierType} " +
+                      $"- Type:{m_modifier.MovementModifierType} " +
+                      $"- Value:{m_modifier.ModifierValue}" +
+                      $"- Duration:{m_modifier.Duration}</color> ");
         }
     
-        public void StopModifier()
+        public override void StopModifier()
         {
-            Debug.Log("<color=orange>Stop Movement Modifier </color>");
+            Debug.Log($"<color=red>Stop Modifier Category:{m_modifier.ModifierType} " +
+                      $"- Type:{m_modifier.MovementModifierType} " +
+                      $"- Value:{m_modifier.ModifierValue}" +
+                      $"- Duration:{m_modifier.Duration}</color> ");
+            
+            base.StopModifier();
             switch (m_modifier.MovementModifierType)
             {
                 case MovementModifierType.ReduceMSForDuration:
@@ -65,6 +75,7 @@ namespace SGGames.Scripts.Modifier
                     break;
             }
 
+            m_modifier.IsRunning = false;
             m_isProcessing = false;
             m_handler.RemoveMovementModifierProcessor(this);
         }

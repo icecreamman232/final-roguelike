@@ -7,6 +7,7 @@ public class ModifierTester : MonoBehaviour
     [SerializeField] private MovementModifier m_movementModifier;
     [SerializeField] private MovementModifier m_movementModifier_2;
     [SerializeField] private HealthModifier m_healthModifier;
+    [SerializeField] private DamageModifier m_damageModifier;
     
     [ContextMenu("Register Movement Modifier")]
     private void TriggerMovementModifier()
@@ -21,5 +22,12 @@ public class ModifierTester : MonoBehaviour
     {
         var handler = m_target.GetComponentInChildren<ModifierHandler>();
         handler.RegisterModifier(m_healthModifier);
+    }
+    
+    [ContextMenu("Register Damage Modifier")]
+    private void TriggerDamageModifier()
+    {
+        var handler = m_target.GetComponentInChildren<ModifierHandler>();
+        handler.RegisterModifier(m_damageModifier);
     }
 }

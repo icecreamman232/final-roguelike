@@ -14,7 +14,7 @@ namespace SGGames.Scripts.Healths
         {
             base.TakeDamage(damage, source, invincibilityDuration);
 
-            //Player cant take damage this frame
+            //Enemy cant take damage this frame
             if (!CanTakeDamage()) return;
 
             m_currentHealth -= damage;

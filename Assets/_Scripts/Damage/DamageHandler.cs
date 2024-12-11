@@ -10,15 +10,34 @@ namespace SGGames.Scripts.Damages
     {
         [SerializeField] protected float m_minDamage;
         [SerializeField] protected float m_maxDamage;
+        [SerializeField] protected float m_additionalDamage;
+        [SerializeField] protected float m_multiplyDamage;
         [Header("Damageable")]
         [SerializeField] protected float m_damageableInvulnerableTime;
         [SerializeField] protected LayerMask m_damageableLayerMask;
 
         public Action<GameObject> OnHitDamageable;
+
+        protected virtual void Start()
+        {
+            m_multiplyDamage = 1;
+        }
+
+        public void UpdateAdditionalDamage(float additionalDamage)
+        {
+            m_additionalDamage = additionalDamage;
+        }
+
+        public void UpdateMultiplyDamage(float multiplyDamage)
+        {
+            m_multiplyDamage = multiplyDamage;
+        }
         
         protected virtual float GetDamage()
         {
-            return Mathf.Round(Random.Range(m_minDamage, m_maxDamage));
+            var rawDamage = Mathf.Round(Random.Range(m_minDamage, m_maxDamage));
+            var finalDamage = (rawDamage + m_additionalDamage) * m_multiplyDamage;
+            return finalDamage;
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D other)

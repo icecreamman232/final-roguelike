@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: -404106553
   m_SortingLayer: 2
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: c16fc570c9d6aed48ac3050749ed4ae8, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 51eb2d14f5607c64a99e24f690437910, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -95,8 +95,9 @@ GameObject:
   - component: {fileID: 3577472589736293620}
   - component: {fileID: 3116545462243946479}
   - component: {fileID: 8051559319287869853}
+  - component: {fileID: 6886308719153750740}
   m_Layer: 0
-  m_Name: Bat_Projectile
+  m_Name: Spider_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -138,7 +139,22 @@ MonoBehaviour:
   m_direction: {x: 0, y: 0}
   m_model: {fileID: 6102798676553991005}
   m_damageHandler: {fileID: 8051559319287869853}
-  m_offsetRotationAngle: 0
+  m_onDestroy:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 6886308719153750740}
+        m_TargetAssemblyTypeName: SGGames.Scripts.Common.Spawner, Assembly-CSharp
+        m_MethodName: Spawn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+  m_offsetRotationAngle: -90
 --- !u!114 &8051559319287869853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -159,3 +175,19 @@ MonoBehaviour:
   m_damageableLayerMask:
     serializedVersion: 2
     m_Bits: 1088
+--- !u!114 &6886308719153750740
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8564910053303944358}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dc39e5b00e316a0418238f2c3c243e60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_prefabToSpawn: {fileID: 5294951097828330026, guid: edbfc88a2557a1249bdcdf8eacf657fa, type: 3}
+  m_spawnRotation: {x: 0, y: 0, z: 0, w: 0}
+  m_spawnParent: {fileID: 0}
+  m_chanceToSpawn: 20

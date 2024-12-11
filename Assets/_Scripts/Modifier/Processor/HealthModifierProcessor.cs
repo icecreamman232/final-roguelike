@@ -1,4 +1,3 @@
-
 using SGGames.Scripts.Healths;
 using UnityEngine;
 
@@ -19,8 +18,9 @@ namespace SGGames.Scripts.Modifier
             m_modifier = modifier;
         }
         
-        public void StartModifier()
+        public override void StartModifier()
         {
+            base.StartModifier();
             switch (m_modifier.HealthModifierType)
             {
                 case HealthModifierType.DecreaseCurrentHP_ForDuration:
@@ -49,13 +49,23 @@ namespace SGGames.Scripts.Modifier
                     m_playerHealth.OverrideMaxHealth(m_modifier.ModifierValue);
                     break;
             }
+
+            m_modifier.IsRunning = true;
             
-            Debug.Log("<color=orange>Start Health Modifier </color>");
+            Debug.Log($"<color=green>Start Modifier Category:{m_modifier.ModifierType} " +
+                      $"- Type:{m_modifier.HealthModifierType} " +
+                      $"- Value:{m_modifier.ModifierValue}" +
+                      $"- Duration:{m_modifier.Duration}</color> ");
         }
     
-        public void StopModifier()
+        public override void StopModifier()
         {
-            Debug.Log("<color=orange>Stop Health Modifier </color>");
+            base.StopModifier();
+            Debug.Log($"<color=red>Stop Modifier Category:{m_modifier.ModifierType} " +
+                      $"- Type:{m_modifier.HealthModifierType} " +
+                      $"- Value:{m_modifier.ModifierValue}" +
+                      $"- Duration:{m_modifier.Duration}</color> ");
+            
             switch (m_modifier.HealthModifierType)
             {
                 case HealthModifierType.DecreaseCurrentHP_ForDuration:
@@ -72,6 +82,7 @@ namespace SGGames.Scripts.Modifier
                     break;
             }
 
+            m_modifier.IsRunning = false;
             m_isProcessing = false;
             m_handler.RemoveHealthModifierProcessor(this);
         }

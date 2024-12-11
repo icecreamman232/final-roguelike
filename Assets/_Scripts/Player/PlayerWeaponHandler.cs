@@ -12,6 +12,7 @@ namespace SGGames.Scripts.Player
         [SerializeField] protected Weapon m_currentWeapon;
         [SerializeField] protected Transform m_weaponAttachment;
         [SerializeField] protected PlayerAim m_playerAim;
+        [SerializeField] protected PlayerDamageComputer m_playerDamageComputer;
 
         protected override void Start()
         {
@@ -58,7 +59,7 @@ namespace SGGames.Scripts.Player
 
         protected virtual void UseWeapon()
         {
-            m_currentWeapon.Shoot(m_playerAim.AimDirection);
+            m_currentWeapon.Shoot(m_playerAim.AimDirection, m_playerDamageComputer.AdditionDamage,m_playerDamageComputer.MultiplyDamage);
         }
     }
 }
