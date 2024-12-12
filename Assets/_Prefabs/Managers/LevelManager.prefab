@@ -46,6 +46,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_playerPrefab: {fileID: 633775464036924199, guid: e9a292ff01524a24ba4bf43160f74bd1, type: 3}
   m_playerRef: {fileID: 0}
+  m_currentAreaIndex: 0
+  m_areaDataList:
+  - {fileID: 11400000, guid: f6cb17ed342274649a02b63637f100b6, type: 2}
+  - {fileID: 11400000, guid: bc20b3ddbe01b834d97712c36fc2f268, type: 2}
   m_currentRoomData: {fileID: 11400000, guid: 4aa85c418a038d64796ee215a576a764, type: 2}
   m_currentRoom: {fileID: 0}
+  m_roomIndex: 0
   m_enemyList: []
+  m_enterDoorEvent: {fileID: 11400000, guid: e1372761e91d0ef489199057825b1ae8, type: 2}
+  m_freezePlayerEvent: {fileID: 11400000, guid: 1338a4fa70285e7488b5acc1fb4c30fe, type: 2}

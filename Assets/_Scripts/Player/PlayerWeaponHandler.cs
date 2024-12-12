@@ -1,3 +1,4 @@
+using SGGames.Scripts.Events;
 using SGGames.Scripts.Weapons;
 using UnityEngine;
 
@@ -13,11 +14,18 @@ namespace SGGames.Scripts.Player
         [SerializeField] protected Transform m_weaponAttachment;
         [SerializeField] protected PlayerAim m_playerAim;
         [SerializeField] protected PlayerDamageComputer m_playerDamageComputer;
+        [SerializeField] private BoolEvent m_freezePlayerEvent;
 
         protected override void Start()
         {
             base.Start();
+            m_freezePlayerEvent.AddListener(OnPlayerFreeze);
             Initialize();
+        }
+
+        private void OnDestroy()
+        {
+            m_freezePlayerEvent.RemoveListener(OnPlayerFreeze);
         }
 
         protected virtual void Initialize()
@@ -60,6 +68,19 @@ namespace SGGames.Scripts.Player
         protected virtual void UseWeapon()
         {
             m_currentWeapon.Shoot(m_playerAim.AimDirection, m_playerDamageComputer.AdditionDamage,m_playerDamageComputer.MultiplyDamage);
+        }
+
+        private void OnPlayerFreeze(bool isFreeze)
+        {
+            if (isFreeze)
+            {
+                m_currentWeapon.StopShooting();
+                ToggleAllow(false);
+            }
+            else
+            {
+                ToggleAllow(true);
+            }
         }
     }
 }

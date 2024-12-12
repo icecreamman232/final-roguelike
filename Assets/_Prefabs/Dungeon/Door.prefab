@@ -169,10 +169,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 87a6db03e5760844bb44b9b2500148bf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_doorIndex: 0
   m_doorSpriteRenderer: {fileID: 6583548995905706914}
   m_openSprite: {fileID: -360301189, guid: edbdd131484df2b48a69acd2ceeb6696, type: 3}
   m_blockDoor: {fileID: 591727302571767168}
   m_triggerCollider: {fileID: 2204096824582879618}
+  m_playerEnterDoorEvent: {fileID: 11400000, guid: e1372761e91d0ef489199057825b1ae8, type: 2}
 --- !u!1 &3788509404591665391
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d122c269f5732824fb77ce4968e44a54, type: 3}
+  m_Name: Area-1
+  m_EditorClassIdentifier: 
+  m_areaName: 0
+  m_easyRooms:
+  - {fileID: 11400000, guid: 4aa85c418a038d64796ee215a576a764, type: 2}
+  - {fileID: 11400000, guid: a146c888fd6d26449badc95fae421715, type: 2}
+  m_hardRooms:
+  - {fileID: 11400000, guid: 6a748e1b6f74c0b4e94b4fa60a243b34, type: 2}
+  - {fileID: 11400000, guid: fa2d9c4433ae8f44ba24f1213e73cc03, type: 2}
+  - {fileID: 11400000, guid: c0300d47fcb0c224cb1d151c46c10794, type: 2}
+  m_challengeRooms:
+  - {fileID: 11400000, guid: ac8fade8987dbfa4fafa79cc8754ae0b, type: 2}
