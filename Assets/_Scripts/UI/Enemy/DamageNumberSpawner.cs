@@ -31,7 +31,7 @@ namespace SGGames.Scripts.UI
             dmgNumberObj.transform.localScale = isCritical ? Vector3.one * m_criticalHitTextScale : Vector3.one;
             var damageText = dmgNumberObj.GetComponentInChildren<TextMeshPro>();
             damageText.color = isCritical ? m_criticalColor : m_normalColor;
-            damageText.text = damage.ToString();
+            damageText.text = isCritical ? $"{damage.ToString()} !" :damage.ToString();
         }
     }
 }
