@@ -32,10 +32,11 @@ namespace SGGames.Scripts.Damages
         }
 
         
-        protected virtual float ComputeDamage()
+        protected virtual float ComputeDamage(out bool isCritical)
         {
             var rawDamage = Mathf.Round(Random.Range(m_minDamage, m_maxDamage));
-            var finalDamage = ((rawDamage + m_additionalDamage) * m_multiplyDamage) * m_critDamage;
+            var finalDamage = Mathf.Round(((rawDamage + m_additionalDamage) * m_multiplyDamage) * m_critDamage);
+            isCritical = m_critDamage > 1;
             return finalDamage;
         }
 
@@ -53,7 +54,7 @@ namespace SGGames.Scripts.Damages
             if (health != null)
             {
                 OnHitDamageable?.Invoke(target);
-                health.TakeDamage(ComputeDamage(),this.gameObject,m_damageableInvulnerableTime);
+                health.TakeDamage(ComputeDamage(out var isCritical),this.gameObject,m_damageableInvulnerableTime,isCritical);
             }
         }
     }

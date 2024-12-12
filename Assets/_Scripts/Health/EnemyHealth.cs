@@ -14,17 +14,26 @@ namespace SGGames.Scripts.Healths
         [SerializeField] protected EnemyHealthBar m_healthBar;
         [SerializeField] protected float m_delayBeforeDeath;
         [SerializeField] protected MMF_Player m_deathFeedback;
-        
+
+        protected EnemyMovement m_enemyMovement;
+        public Action<float, bool> OnHit;
         public Action<EnemyHealth> OnEnemyDeath;
-        
-        public override void TakeDamage(float damage, GameObject source, float invincibilityDuration)
+
+        protected override void Start()
         {
-            base.TakeDamage(damage, source, invincibilityDuration);
+            base.Start();
+            m_enemyMovement = GetComponent<EnemyMovement>();
+        }
+
+        public override void TakeDamage(float damage, GameObject source, float invincibilityDuration, bool isCritical = false)
+        {
+            base.TakeDamage(damage, source, invincibilityDuration, isCritical);
 
             //Enemy cant take damage this frame
             if (!CanTakeDamage()) return;
 
             m_currentHealth -= damage;
+            OnHit?.Invoke(damage,isCritical);
 
             UpdateHealthBar();
 
@@ -54,6 +63,7 @@ namespace SGGames.Scripts.Healths
         {
             base.Kill();
             OnEnemyDeath?.Invoke(this);
+            m_enemyMovement.StopMoving();
             m_controller.CurrentBrain.ResetBrain();
             m_controller.CurrentBrain.BrainActive = false;
             m_spriteRenderer.enabled = false;

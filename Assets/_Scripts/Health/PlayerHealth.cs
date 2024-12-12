@@ -18,9 +18,9 @@ namespace SGGames.Scripts.Healths
             UpdateHealthBar();
         }
 
-        public override void TakeDamage(float damage, GameObject source, float invincibilityDuration)
+        public override void TakeDamage(float damage, GameObject source, float invincibilityDuration, bool isCritical)
         {
-            base.TakeDamage(damage, source, invincibilityDuration);
+            base.TakeDamage(damage, source, invincibilityDuration,isCritical);
 
             //Player cant take damage this frame
             if (!CanTakeDamage()) return;

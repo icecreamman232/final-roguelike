@@ -87,7 +87,7 @@ namespace SGGames.Scripts.Healths
             return true;
         }
 
-        public virtual void TakeDamage(float damage, GameObject source, float invincibilityDuration)
+        public virtual void TakeDamage(float damage, GameObject source, float invincibilityDuration, bool isCritical = false)
         {
             
         }
