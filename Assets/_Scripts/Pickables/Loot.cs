@@ -53,7 +53,7 @@ namespace SGGames.Scripts.Pickables
             for (int i = 0; i < amount; i++)
             {
                 randomSpawnPos = GetRandomDropPosition(m_dropRadius);
-                Instantiate(prefab, (Vector3)randomSpawnPos + transform.position, Quaternion.identity);
+                Instantiate(prefab, (Vector3)randomSpawnPos + transform.position, Quaternion.identity,m_enemyHealth.transform.parent);
             }
         }
         
