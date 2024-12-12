@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 904574974438328195}
   - component: {fileID: 6210066009922297151}
   - component: {fileID: 6211949587856999711}
+  - component: {fileID: 8170920390037149282}
   m_Layer: 6
   m_Name: Knight
   m_TagString: Player
@@ -168,6 +169,7 @@ MonoBehaviour:
   m_isInvulnerable: 0
   m_isImmortal: 1
   m_isDead: 0
+  m_spriteRenderer: {fileID: 0}
   m_PlayerHealthUpdateEvent: {fileID: 11400000, guid: 522553b978f7d444282f81b913f8d024, type: 2}
 --- !u!114 &6210066009922297151
 MonoBehaviour:
@@ -201,6 +203,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_additionDamage: 0
   m_mutiplyDamage: 1
+--- !u!114 &8170920390037149282
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633775464036924199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: af73be8976f15ea49998b663b87432a7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isAllow: 1
+  m_pickableLayerMask:
+    serializedVersion: 2
+    m_Bits: 8192
+  m_pickRadius: 3
 --- !u!1 &1510195004236968706
 GameObject:
   m_ObjectHideFlags: 0
