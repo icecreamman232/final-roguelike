@@ -10,8 +10,10 @@ namespace SGGames.Scripts.Managers
 {
     public class LevelManager : MonoBehaviour
     {
+        [Header("Player")]
         [SerializeField] private GameObject m_playerPrefab;
         [SerializeField][ReadOnly] private GameObject m_playerRef;
+        [Header("Room")]
         [SerializeField] private RoomData m_currentRoomData;
         [SerializeField][ReadOnly] private Room m_currentRoom;
         [SerializeField]private List<EnemyHealth> m_enemyList;
