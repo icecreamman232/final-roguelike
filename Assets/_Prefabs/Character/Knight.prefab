@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6263496985321535266}
   - component: {fileID: 9207394351103251092}
   - component: {fileID: 4648966272443752208}
+  - component: {fileID: 1224419374634297090}
   - component: {fileID: 5311189830458795856}
   - component: {fileID: 9095760099221184924}
   - component: {fileID: 904574974438328195}
@@ -115,6 +116,24 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.8}
   m_EdgeRadius: 0
+--- !u!114 &1224419374634297090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633775464036924199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5151d0a1cc68cfb44b61c3576ee51e82, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isAllow: 1
+  m_heroData: {fileID: 11400000, guid: 50bdbb5ab25655341a0e4a7095a79f90, type: 2}
+  m_strengthPoints: 0
+  m_agilityPoints: 0
+  m_intelligencePoints: 0
+  m_playerDamageComputer: {fileID: 6211949587856999711}
 --- !u!114 &5311189830458795856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -205,6 +224,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_additionDamage: 0
   m_mutiplyDamage: 1
+  m_criticalChance: 0
+  m_criticalDamage: 0
 --- !u!114 &8170920390037149282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,7 +365,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -214085901
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 1
   m_Sprite: {fileID: 21300000, guid: 59ddc69ff832dda43bc69412f980aca2, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -459,7 +480,7 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: -214085901
-  m_SortingLayer: 4
+  m_SortingLayer: 5
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: e2ccbe851f834254693c7a38293ce639, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}

@@ -12,6 +12,7 @@ namespace SGGames.Scripts.Damages
         [SerializeField] protected float m_maxDamage;
         [SerializeField] protected float m_additionalDamage;
         [SerializeField] protected float m_multiplyDamage;
+        [SerializeField] protected float m_critDamage;
         [Header("Damageable")]
         [SerializeField] protected float m_damageableInvulnerableTime;
         [SerializeField] protected LayerMask m_damageableLayerMask;
@@ -23,20 +24,18 @@ namespace SGGames.Scripts.Damages
             m_multiplyDamage = 1;
         }
 
-        public void UpdateAdditionalDamage(float additionalDamage)
+        public void SetDamageInfo((float addition,float multiplier,float critical) damageInfo)
         {
-            m_additionalDamage = additionalDamage;
+            m_additionalDamage = damageInfo.addition;
+            m_multiplyDamage = damageInfo.multiplier;
+            m_critDamage = damageInfo.critical;
         }
 
-        public void UpdateMultiplyDamage(float multiplyDamage)
-        {
-            m_multiplyDamage = multiplyDamage;
-        }
         
-        protected virtual float GetDamage()
+        protected virtual float ComputeDamage()
         {
             var rawDamage = Mathf.Round(Random.Range(m_minDamage, m_maxDamage));
-            var finalDamage = (rawDamage + m_additionalDamage) * m_multiplyDamage;
+            var finalDamage = ((rawDamage + m_additionalDamage) * m_multiplyDamage) * m_critDamage;
             return finalDamage;
         }
 
@@ -54,7 +53,7 @@ namespace SGGames.Scripts.Damages
             if (health != null)
             {
                 OnHitDamageable?.Invoke(target);
-                health.TakeDamage(GetDamage(),this.gameObject,m_damageableInvulnerableTime);
+                health.TakeDamage(ComputeDamage(),this.gameObject,m_damageableInvulnerableTime);
             }
         }
     }

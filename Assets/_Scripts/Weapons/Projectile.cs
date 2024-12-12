@@ -34,15 +34,15 @@ namespace SGGames.Scripts.Weapons
             m_damageHandler.OnHitDamageable += OnHitDamageable;
         }
 
-        public virtual void Spawn(Vector2 position, Quaternion rotation, Vector2 direction, float addDamage, float multiplyDamage)
+        public virtual void Spawn(Vector2 position, Quaternion rotation, Vector2 direction, 
+            (float addDamage, float multiplyDamage,float criticalDamage) damageInfo)
         {
             ResetSpeed();
             m_wakeupPosition = position;
             transform.position = position;
             m_model.rotation = rotation * Quaternion.AngleAxis(m_offsetRotationAngle, Vector3.forward);
             m_direction = direction;
-            m_damageHandler.UpdateAdditionalDamage(addDamage);
-            m_damageHandler.UpdateMultiplyDamage(multiplyDamage);
+            m_damageHandler.SetDamageInfo(damageInfo);
             m_isAlive = true;
         }
 

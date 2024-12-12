@@ -20,12 +20,12 @@ namespace SGGames.Scripts.Weapons
         
         public WeaponState CurrentState => m_currentState;
         
-        public virtual void Shoot(Vector2 direction, float additionDamage = 0f, float multiplyDamage = 0f)
+        public virtual void Shoot(Vector2 direction, (float additionDamage, float multiplierDamage, float criticalDamage) damageInfo = default)
         {
             var projectileObj = m_projectilePooler.GetPooledGameObject();
             var projectile = projectileObj.GetComponent<Projectile>();
             var rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
-            projectile.Spawn(transform.position, rotation,direction,additionDamage,multiplyDamage);
+            projectile.Spawn(transform.position, rotation,direction,damageInfo);
             m_currentState = WeaponState.SHOT;
         }
 

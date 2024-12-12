@@ -67,7 +67,7 @@ namespace SGGames.Scripts.Player
 
         protected virtual void UseWeapon()
         {
-            m_currentWeapon.Shoot(m_playerAim.AimDirection, m_playerDamageComputer.AdditionDamage,m_playerDamageComputer.MultiplyDamage);
+            m_currentWeapon.Shoot(m_playerAim.AimDirection, m_playerDamageComputer.GetDamageInfo);
         }
 
         private void OnPlayerFreeze(bool isFreeze)
