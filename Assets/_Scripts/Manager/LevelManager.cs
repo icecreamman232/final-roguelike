@@ -7,7 +7,9 @@ using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Healths;
 using SGGames.Scripts.Rooms;
+using SGGames.Scripts.UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace SGGames.Scripts.Managers
@@ -28,6 +30,7 @@ namespace SGGames.Scripts.Managers
         [Header("Events")] 
         [SerializeField] private IntEvent m_enterDoorEvent;
         [SerializeField] private BoolEvent m_freezePlayerEvent;
+        [SerializeField] private BoolEvent m_fadeOutScreenEvent;
 
         private readonly int m_maxRoomNumber = 6;
         private readonly int m_maxAreaCount = 7;
@@ -107,7 +110,13 @@ namespace SGGames.Scripts.Managers
             
             CameraController.Instance.SetTarget(m_playerRef.transform);
             CameraController.Instance.SetRoomCollider(m_currentRoom.RoomCollider);
+            CameraController.Instance.SetCameraPosition(m_playerRef.transform.position);
             CameraController.Instance.SetPermission(true);
+            
+            m_fadeOutScreenEvent?.Raise(false);
+
+            yield return new WaitForSeconds(ScreenFader.FadeDuration);
+            
             m_freezePlayerEvent?.Raise(false);
         }
 
@@ -157,28 +166,29 @@ namespace SGGames.Scripts.Managers
         {
             //Freeze player
             m_freezePlayerEvent?.Raise(true);
-            CameraController.Instance.SetPermission(false);
             
-            //TODO:Fade out screen
+            m_fadeOutScreenEvent?.Raise(true);
+            yield return new WaitForSeconds(ScreenFader.FadeDuration);
+            
+            CameraController.Instance.SetPermission(false);
             
             Destroy(m_currentRoom.gameObject);
 
             IncreaseRoomAndAreaIndex();
             LoadRoom();
-            
-            //TODO:Load new room
-            
             LoadEnemy();
             
+            yield return new WaitForEndOfFrame();
+            
             m_playerRef.transform.position = m_currentRoom.PlayerSpawnSpot.position;
-            
-            
-            m_freezePlayerEvent?.Raise(false);
-            
             CameraController.Instance.SetRoomCollider(m_currentRoom.RoomCollider);
+            CameraController.Instance.SetCameraPosition(m_currentRoom.PlayerSpawnSpot.position);
             CameraController.Instance.SetPermission(true);
             
-            yield return null;
+            m_fadeOutScreenEvent?.Raise(false);
+            yield return new WaitForSeconds(ScreenFader.FadeDuration);
+            
+            m_freezePlayerEvent?.Raise(false);
         }
 
         public bool IsPositionInsideRoomBoundary(Vector2 point)

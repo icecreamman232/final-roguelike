@@ -61,6 +61,7 @@ namespace SGGames.Scripts.Managers
         public void SetCameraPosition(Vector3 newPosition)
         {
             m_cameraTransform.position = newPosition;
+            ComputeCameraLimits();
         }
         private void Update()
         {
