@@ -24,6 +24,8 @@ namespace SGGames.Scripts.Pickables
         
         private void SpawnLoot()
         {
+            //TODO:Check spawn to make sure drops not being spawn outside of the room
+            
             //Coin
             DropCurrency(m_dropsTableData.CoinPrefab,m_dropsTableData.CoinDropAmount);
             
