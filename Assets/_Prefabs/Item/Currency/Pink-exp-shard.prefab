@@ -175,6 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7196a89b1dcc0344da53dae8c0fb48da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_boxCollider2D: {fileID: 9075918906512875951}
   m_isMovingTowardPlayer: 0
   m_expPickedEvent: {fileID: 11400000, guid: c3ec2318164b2cc43808923927514ab6, type: 2}
   m_expValue: 5

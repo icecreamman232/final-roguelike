@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -25,6 +26,8 @@ namespace SGGames.Scripts.Healths
         public float CurrentHealth => m_currentHealth;
         public float MaxHealth => m_maxHealth;
         public bool IsDead => m_isDead;
+        
+        public Action OnDeath;
 
         public bool CanTakeDamageThisFrame => CanTakeDamage();
         
@@ -109,6 +112,7 @@ namespace SGGames.Scripts.Healths
         protected virtual void Kill()
         {
             m_isDead = true;
+            OnDeath?.Invoke();
         }
     }
 }

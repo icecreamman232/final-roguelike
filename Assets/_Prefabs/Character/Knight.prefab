@@ -219,7 +219,7 @@ MonoBehaviour:
   m_pickableLayerMask:
     serializedVersion: 2
     m_Bits: 8192
-  m_pickRadius: 3
+  m_pickRadius: 1.5
 --- !u!1 &1510195004236968706
 GameObject:
   m_ObjectHideFlags: 0

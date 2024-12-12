@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 804087139, guid: be7a9ad1b42d59b478cc430922f76212, type: 3}
+  m_Sprite: {fileID: -1618639167, guid: be7a9ad1b42d59b478cc430922f76212, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,9 +94,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3575569985965621029}
   - component: {fileID: 9075918906512875951}
-  - component: {fileID: 496725363030884539}
+  - component: {fileID: 3362080458256092174}
   m_Layer: 13
-  m_Name: Coin
+  m_Name: Blue-exp-shard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -163,7 +163,7 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.3}
   m_EdgeRadius: 0
---- !u!114 &496725363030884539
+--- !u!114 &3362080458256092174
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -172,9 +172,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 7996711730950076425}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2207dea37d7a26741ace30ba31bf38ce, type: 3}
+  m_Script: {fileID: 11500000, guid: 7196a89b1dcc0344da53dae8c0fb48da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_boxCollider2D: {fileID: 9075918906512875951}
   m_isMovingTowardPlayer: 0
-  m_coinPickedEvent: {fileID: 11400000, guid: d728f29ac9641a542a5dd5625d6ccd6a, type: 2}
-  m_coinValue: 1
+  m_expPickedEvent: {fileID: 11400000, guid: c3ec2318164b2cc43808923927514ab6, type: 2}
+  m_expValue: 1

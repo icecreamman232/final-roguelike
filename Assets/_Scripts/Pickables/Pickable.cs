@@ -6,9 +6,23 @@ namespace SGGames.Scripts.Pickables
 {
     public class Pickable : MonoBehaviour
     {
+        [SerializeField] private BoxCollider2D m_boxCollider2D;
         [SerializeField] protected bool m_isMovingTowardPlayer;
-        protected float m_flyingSpeed = 20;
-        
+        private readonly float m_flyingSpeed = 20;
+        private readonly float m_disableColliderDuration = 0.5f;
+
+        private void OnEnable()
+        {
+            StartCoroutine(DisableColliderForDuration());
+        }
+
+        private IEnumerator DisableColliderForDuration()
+        {
+            m_boxCollider2D.enabled = false;
+            yield return new WaitForSeconds(m_disableColliderDuration);
+            m_boxCollider2D.enabled = true;
+        }
+
         public virtual void Picking(Transform playerTransform)
         {
             if (m_isMovingTowardPlayer) return;
