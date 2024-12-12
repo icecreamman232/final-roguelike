@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using MoreMountains.Feedbacks;
 using SGGames.Scripts.Core;
@@ -13,6 +14,8 @@ namespace SGGames.Scripts.Healths
         [SerializeField] protected EnemyHealthBar m_healthBar;
         [SerializeField] protected float m_delayBeforeDeath;
         [SerializeField] protected MMF_Player m_deathFeedback;
+        
+        public Action<EnemyHealth> OnEnemyDeath;
         
         public override void TakeDamage(float damage, GameObject source, float invincibilityDuration)
         {
@@ -50,6 +53,7 @@ namespace SGGames.Scripts.Healths
         protected virtual IEnumerator BeforeDeath()
         {
             base.Kill();
+            OnEnemyDeath?.Invoke(this);
             m_controller.CurrentBrain.ResetBrain();
             m_controller.CurrentBrain.BrainActive = false;
             m_spriteRenderer.enabled = false;

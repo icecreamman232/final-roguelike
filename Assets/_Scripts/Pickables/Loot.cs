@@ -14,15 +14,15 @@ namespace SGGames.Scripts.Pickables
 
         private void Start()
         {
-            m_enemyHealth.OnDeath += SpawnLoot;
+            m_enemyHealth.OnEnemyDeath += SpawnLoot;
         }
         
         private void OnDestroy()
         {
-            m_enemyHealth.OnDeath -= SpawnLoot;
+            m_enemyHealth.OnEnemyDeath -= SpawnLoot;
         }
         
-        private void SpawnLoot()
+        private void SpawnLoot(EnemyHealth enemyHealth)
         {
             //TODO:Check spawn to make sure drops not being spawn outside of the room
             

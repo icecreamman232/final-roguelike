@@ -42,8 +42,6 @@ namespace SGGames.Scripts.Managers
             
             m_viewHeight = Camera.main.orthographicSize * 2;
             m_viewWidth = m_viewHeight * Camera.main.aspect;
-            
-            m_canFollow = true;
         }
 
         public void SetRoomCollider(BoxCollider2D roomCollider)
