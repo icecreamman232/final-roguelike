@@ -92,7 +92,7 @@ namespace SGGames.Scripts.Managers
         private IEnumerator OnLevelLoaded()
         {
             m_currentRoomData = GetCurrentRoom();
-            Debug.Log($"<color=yellow>Load Room {m_currentRoomData.name}</color>");
+            Debug.Log($"<color=yellow>Load Room: {m_currentRoomData.name}</color>");
             
             var roomObj = Instantiate(m_currentRoomData.RoomPrefab);
             m_currentRoom = roomObj.GetComponent<Room>();
@@ -142,7 +142,7 @@ namespace SGGames.Scripts.Managers
         private void LoadRoom()
         {
             m_currentRoomData = GetCurrentRoom();
-            Debug.Log($"<color=yellow>Load Room {m_currentRoomData.name}</color>");
+            Debug.Log($"<color=yellow>Load Room: {m_currentRoomData.name}</color>");
             var roomObj = Instantiate(m_currentRoomData.RoomPrefab);
             m_currentRoom = roomObj.GetComponent<Room>();
         }
