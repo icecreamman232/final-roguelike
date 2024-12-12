@@ -1,5 +1,6 @@
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Healths;
+using SGGames.Scripts.Managers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -11,6 +12,12 @@ namespace SGGames.Scripts.Pickables
         [SerializeField] private DropsTableData m_dropsTableData;
         
         private readonly float m_dropRadius = 3f;
+        
+        /// <summary>
+        /// Maximum times the system try to find the proper position to spawn the loot.
+        /// If exceed this count, we just use the last postion;
+        /// </summary>
+        private readonly int m_maxCheckPosCount = 8;
 
         private void Start()
         {
@@ -45,7 +52,7 @@ namespace SGGames.Scripts.Pickables
             var randomSpawnPos = Vector2.zero;
             for (int i = 0; i < amount; i++)
             {
-                randomSpawnPos = Random.insideUnitCircle * Random.Range(m_dropRadius/2,m_dropRadius);
+                randomSpawnPos = GetRandomDropPosition(m_dropRadius);
                 Instantiate(prefab, (Vector3)randomSpawnPos + transform.position, Quaternion.identity);
             }
         }
@@ -53,6 +60,23 @@ namespace SGGames.Scripts.Pickables
         private void DropItems()
         {
             //TODO:Implement drops item behavior    
+        }
+
+        private Vector2 GetRandomDropPosition(float radius)
+        {
+            var lvlManager = LevelManager.Instance;
+            var randomSpawnPos = Random.insideUnitCircle * Random.Range(radius/2,radius);
+            var count = 0;
+            while (!lvlManager.IsPositionInsideRoomBoundary(randomSpawnPos))
+            {
+                randomSpawnPos = Random.insideUnitCircle * Random.Range(radius/2,radius);
+                count++;
+                if (count >= m_maxCheckPosCount)
+                {
+                    break;
+                }
+            }
+            return randomSpawnPos;
         }
     }
 }

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGGames.Scripts.Attribute;
+using SGGames.Scripts.Core;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Healths;
@@ -11,7 +12,7 @@ using Random = UnityEngine.Random;
 
 namespace SGGames.Scripts.Managers
 {
-    public class LevelManager : MonoBehaviour
+    public class LevelManager : Singleton<LevelManager>
     {
         [Header("Player")]
         [SerializeField] private GameObject m_playerPrefab;
@@ -31,6 +32,9 @@ namespace SGGames.Scripts.Managers
         private readonly int m_maxRoomNumber = 6;
         private readonly int m_maxAreaCount = 7;
         private readonly int m_challengeRoomChance = 33;
+        private BoxCollider2D m_roomCollider;
+        
+        public BoxCollider2D RoomCollider => m_roomCollider;
         
         private void Start()
         {
@@ -91,11 +95,7 @@ namespace SGGames.Scripts.Managers
         
         private IEnumerator OnLevelLoaded()
         {
-            m_currentRoomData = GetCurrentRoom();
-            Debug.Log($"<color=yellow>Load Room: {m_currentRoomData.name}</color>");
-            
-            var roomObj = Instantiate(m_currentRoomData.RoomPrefab);
-            m_currentRoom = roomObj.GetComponent<Room>();
+            LoadRoom();
 
             yield return new WaitForEndOfFrame();
 
@@ -145,6 +145,7 @@ namespace SGGames.Scripts.Managers
             Debug.Log($"<color=yellow>Load Room: {m_currentRoomData.name}</color>");
             var roomObj = Instantiate(m_currentRoomData.RoomPrefab);
             m_currentRoom = roomObj.GetComponent<Room>();
+            m_roomCollider = m_currentRoom.RoomCollider;
         }
 
         private void OnPlayerEnterDoor(int doorIndex)
@@ -178,6 +179,11 @@ namespace SGGames.Scripts.Managers
             CameraController.Instance.SetPermission(true);
             
             yield return null;
+        }
+
+        public bool IsPositionInsideRoomBoundary(Vector2 point)
+        {
+            return m_roomCollider.OverlapPoint(point);
         }
     }
 }
