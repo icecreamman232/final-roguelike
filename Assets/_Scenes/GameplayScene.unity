@@ -579,7 +579,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_currentExp: 0
+  m_maxExp: 0
+  m_currentLevel: 0
   m_expPickedEvent: {fileID: 11400000, guid: c3ec2318164b2cc43808923927514ab6, type: 2}
+  m_updateExpBarEvent: {fileID: 11400000, guid: 81eb142399943bd408366e3f865a35a9, type: 2}
 --- !u!4 &759334418
 Transform:
   m_ObjectHideFlags: 0
