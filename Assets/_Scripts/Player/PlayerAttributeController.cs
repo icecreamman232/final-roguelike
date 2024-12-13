@@ -17,6 +17,7 @@ namespace SGGames.Scripts.Player
         [SerializeField] private PlayerDamageComputer m_playerDamageComputer;
         
         private readonly float m_strengthToRegenerationRate = 0.05f;
+        private readonly float m_strengthToHealth = 30;
 
         public int StrengthPoints => m_strengthPoints;
         public int AgilityPoints => m_agilityPoints;
@@ -36,9 +37,14 @@ namespace SGGames.Scripts.Player
             m_playerDamageComputer.UpdateCriticalChance(m_heroData.CriticalChance);
             m_playerDamageComputer.UpdateCriticalDamage(m_heroData.CriticalDamage);
             
+            m_playerHealth.Initialize(ComputeMaxHealth());
             m_playerHealth.AddRegenerationRate(ComputeRegenerationRate());
         }
 
+        private float ComputeMaxHealth()
+        {
+            return m_strengthPoints * m_strengthToHealth;
+        }
         private float ComputeRegenerationRate()
         {
             return m_strengthPoints * m_strengthToRegenerationRate;
@@ -48,6 +54,9 @@ namespace SGGames.Scripts.Player
         {
             m_strengthPoints += points;
             m_strengthPoints = Mathf.Clamp(m_strengthPoints, m_heroData.BaseStrength,int.MaxValue );
+            
+            m_playerHealth.OverrideMaxHealth(ComputeMaxHealth());
+            m_playerHealth.AddRegenerationRate(ComputeRegenerationRate());
         }
 
         public void AddAgility(int points)

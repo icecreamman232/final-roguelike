@@ -71,7 +71,7 @@ namespace SGGames.Scripts.Healths
         
         protected virtual void Start()
         {
-            ResetHealth();
+            
         }
 
         protected virtual bool CanTakeDamage()

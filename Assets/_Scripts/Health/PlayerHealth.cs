@@ -15,10 +15,11 @@ namespace SGGames.Scripts.Healths
         /// Use this with caution since it could be null at some point.
         /// </summary>
         private GameObject m_lastSourceCauseDamage;
-
-        protected override void Start()
+        
+        public void Initialize(float maxHealth)
         {
-            base.Start();
+            m_currentHealth = maxHealth;
+            m_maxHealth = maxHealth;
             UpdateHealthBar();
         }
 

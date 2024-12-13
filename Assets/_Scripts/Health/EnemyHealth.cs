@@ -22,6 +22,7 @@ namespace SGGames.Scripts.Healths
         protected override void Start()
         {
             base.Start();
+            ResetHealth();
             m_enemyMovement = GetComponent<EnemyMovement>();
         }
 
