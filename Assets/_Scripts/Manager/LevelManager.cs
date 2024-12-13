@@ -37,6 +37,7 @@ namespace SGGames.Scripts.Managers
         [SerializeField] private GameObject m_weaponChest;
         [SerializeField] private GameObject m_helmetChest;
         [SerializeField] private GameObject m_armorChest;
+        [SerializeField] private GameObject m_glovesChest;
         [SerializeField] private GameObject m_bootsChest;
         [SerializeField] private GameObject m_accessoriesChest;
         [SerializeField] private GameObject m_charmChest;
@@ -186,6 +187,9 @@ namespace SGGames.Scripts.Managers
                     break;
                 case RoomRewardType.Boots:
                     Instantiate(m_bootsChest, spawnPos, Quaternion.identity, roomTransform);
+                    break;
+                case RoomRewardType.Gloves:
+                    Instantiate(m_glovesChest, spawnPos, Quaternion.identity, roomTransform);
                     break;
                 case RoomRewardType.Accessories:
                     Instantiate(m_accessoriesChest, spawnPos, Quaternion.identity, roomTransform);

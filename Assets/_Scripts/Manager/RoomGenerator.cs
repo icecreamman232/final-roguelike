@@ -14,6 +14,7 @@ namespace SGGames.Scripts.Manager
         Helmet,
         Armor,
         Boots,
+        Gloves,
         Accessories,
         Charm,
         COMMON_ROOM_NUMBER, //Counter enum

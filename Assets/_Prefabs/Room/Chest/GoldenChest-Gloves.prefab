@@ -54,7 +54,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5453502969841521301, guid: 876ce4c52fb54534ea28fffa850df4c6, type: 3}
       propertyPath: m_Name
-      value: GoldenChest
+      value: GoldenChest-Gloves
       objectReference: {fileID: 0}
     - target: {fileID: 6172741623337133179, guid: 876ce4c52fb54534ea28fffa850df4c6, type: 3}
       propertyPath: m_chestType
@@ -63,7 +63,7 @@ PrefabInstance:
     - target: {fileID: 8069930759887012824, guid: 876ce4c52fb54534ea28fffa850df4c6, type: 3}
       propertyPath: m_dropsTableData
       value: 
-      objectReference: {fileID: 11400000, guid: 7fb8df72a543f2440bccbf2e13e5b132, type: 2}
+      objectReference: {fileID: 11400000, guid: c3fe1c195d460e24eac2f086104e0adf, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
