@@ -45,4 +45,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_coinPickedEvent: {fileID: 11400000, guid: d728f29ac9641a542a5dd5625d6ccd6a, type: 2}
+  m_updateCoinCounterEvent: {fileID: 11400000, guid: 7a0097b1fc7ae374b9e41740db2d8a40, type: 2}
   m_coinPicked: 0
