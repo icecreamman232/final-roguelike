@@ -1,3 +1,4 @@
+using SGGames.Scripts.Events;
 using SGGames.Scripts.Pickables;
 using SGGames.Scripts.Player;
 using TMPro;
@@ -10,10 +11,28 @@ namespace SGGames.Scripts.Rooms
         [SerializeField] private InteractType m_type;   
         [SerializeField] private bool m_hasInteract;
         [SerializeField] private TextMeshPro m_promptText;
+        [SerializeField] private GameObject m_model;
+        [SerializeField] private BoxCollider2D m_collider2D;
         [SerializeField] private InteractionLoot m_loot;
+        [SerializeField] private ActionEvent m_roomClearedEvent;
         
         private PlayerInteract m_playerInteract;
-        
+
+        private void Start()
+        {
+            m_model.SetActive(false);
+            m_collider2D.enabled = false;
+            m_roomClearedEvent.AddListener(OnRoomCleared);
+        }
+
+        private void OnRoomCleared()
+        {
+            //TODO: Play chest drop down animation here
+            m_model.SetActive(true);
+            m_collider2D.enabled = true;
+            m_roomClearedEvent.RemoveListener(OnRoomCleared);
+        }
+
         private void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Player"))

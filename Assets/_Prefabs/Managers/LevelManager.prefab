@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6946004448931413741}
   - component: {fileID: 9101111211934806997}
+  - component: {fileID: 1836569492117602669}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -47,13 +48,41 @@ MonoBehaviour:
   m_playerPrefab: {fileID: 633775464036924199, guid: e9a292ff01524a24ba4bf43160f74bd1, type: 3}
   m_playerRef: {fileID: 0}
   m_currentAreaIndex: 0
-  m_areaDataList:
-  - {fileID: 11400000, guid: f6cb17ed342274649a02b63637f100b6, type: 2}
-  - {fileID: 11400000, guid: bc20b3ddbe01b834d97712c36fc2f268, type: 2}
-  m_currentRoomData: {fileID: 11400000, guid: 4aa85c418a038d64796ee215a576a764, type: 2}
+  m_roomGenerator: {fileID: 1836569492117602669}
+  m_leftSideRoomList: []
+  m_rightSideRoomList: []
+  m_leftRoomRewardList: 
+  m_rightRoomRewardList: 
+  m_defaultRoom: {fileID: 11400000, guid: 4aa85c418a038d64796ee215a576a764, type: 2}
+  m_currentRoomData: {fileID: 0}
   m_currentRoom: {fileID: 0}
   m_roomIndex: 0
+  m_keyChest: {fileID: 5453502969841521301, guid: 876ce4c52fb54534ea28fffa850df4c6, type: 3}
+  m_coinChest: {fileID: 5453502969841521301, guid: 876ce4c52fb54534ea28fffa850df4c6, type: 3}
+  m_itemChest: {fileID: 3369234309532769636, guid: fc83ed85879baa148a580e42d98567ad, type: 3}
+  m_weaponChest: {fileID: 6361322777344538916, guid: 4d4c1e82a7237a9488d5fc4b2806776c, type: 3}
+  m_helmetChest: {fileID: 5453502969841521301, guid: 876ce4c52fb54534ea28fffa850df4c6, type: 3}
+  m_armorChest: {fileID: 3369234309532769636, guid: fc83ed85879baa148a580e42d98567ad, type: 3}
+  m_bootsChest: {fileID: 5453502969841521301, guid: 876ce4c52fb54534ea28fffa850df4c6, type: 3}
+  m_accessoriesChest: {fileID: 3369234309532769636, guid: fc83ed85879baa148a580e42d98567ad, type: 3}
+  m_charmChest: {fileID: 6361322777344538916, guid: 4d4c1e82a7237a9488d5fc4b2806776c, type: 3}
   m_enemyList: []
   m_enterDoorEvent: {fileID: 11400000, guid: e1372761e91d0ef489199057825b1ae8, type: 2}
   m_freezePlayerEvent: {fileID: 11400000, guid: 1338a4fa70285e7488b5acc1fb4c30fe, type: 2}
   m_fadeOutScreenEvent: {fileID: 11400000, guid: 4a94ee6c32caedd4f9429fc54dd6c908, type: 2}
+  m_roomClearedEvent: {fileID: 11400000, guid: f67bd1be3dfa43241ba819310d0c7060, type: 2}
+--- !u!114 &1836569492117602669
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1930303554149378520}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85b476fbdb580ee41a0077975b0f9769, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_areaDataList:
+  - {fileID: 11400000, guid: f6cb17ed342274649a02b63637f100b6, type: 2}
+  - {fileID: 11400000, guid: bc20b3ddbe01b834d97712c36fc2f268, type: 2}

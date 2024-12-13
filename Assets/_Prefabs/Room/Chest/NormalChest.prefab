@@ -180,7 +180,10 @@ MonoBehaviour:
   m_type: 1
   m_hasInteract: 0
   m_promptText: {fileID: 3194463337695483029}
+  m_model: {fileID: 864028831477214300}
+  m_collider2D: {fileID: 3878698853601124763}
   m_loot: {fileID: 8069930759887012824}
+  m_roomClearedEvent: {fileID: 11400000, guid: f67bd1be3dfa43241ba819310d0c7060, type: 2}
 --- !u!114 &8069930759887012824
 MonoBehaviour:
   m_ObjectHideFlags: 0

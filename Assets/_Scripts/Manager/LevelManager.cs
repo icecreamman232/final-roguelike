@@ -6,11 +6,10 @@ using SGGames.Scripts.Core;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Healths;
+using SGGames.Scripts.Manager;
 using SGGames.Scripts.Rooms;
 using SGGames.Scripts.UI;
 using UnityEngine;
-using UnityEngine.Serialization;
-using Random = UnityEngine.Random;
 
 namespace SGGames.Scripts.Managers
 {
@@ -21,20 +20,36 @@ namespace SGGames.Scripts.Managers
         [SerializeField][ReadOnly] private GameObject m_playerRef;
         [Header("Area")]
         [SerializeField] private int m_currentAreaIndex;
-        [SerializeField] private AreaData[] m_areaDataList;
         [Header("Room")]
-        [SerializeField] private RoomData m_currentRoomData;
+        [SerializeField] private RoomGenerator m_roomGenerator;
+        [SerializeField] private List<RoomData> m_leftSideRoomList;
+        [SerializeField] private List<RoomData> m_rightSideRoomList;
+        [SerializeField] private List<RoomRewardType> m_leftRoomRewardList;
+        [SerializeField] private List<RoomRewardType> m_rightRoomRewardList;
+        [SerializeField] private RoomData m_defaultRoom;
+        [SerializeField][ReadOnly] private RoomData m_currentRoomData;
         [SerializeField][ReadOnly] private Room m_currentRoom;
         [SerializeField] private int m_roomIndex;
+        [Header("Room Reward")]
+        [SerializeField] private GameObject m_keyChest;
+        [SerializeField] private GameObject m_coinChest;
+        [SerializeField] private GameObject m_itemChest;
+        [SerializeField] private GameObject m_weaponChest;
+        [SerializeField] private GameObject m_helmetChest;
+        [SerializeField] private GameObject m_armorChest;
+        [SerializeField] private GameObject m_bootsChest;
+        [SerializeField] private GameObject m_accessoriesChest;
+        [SerializeField] private GameObject m_charmChest;
+        
+        [Header("Enemies")]
         [SerializeField]private List<EnemyHealth> m_enemyList;
         [Header("Events")] 
         [SerializeField] private IntEvent m_enterDoorEvent;
         [SerializeField] private BoolEvent m_freezePlayerEvent;
         [SerializeField] private BoolEvent m_fadeOutScreenEvent;
-
-        private readonly int m_maxRoomNumber = 6;
+        [SerializeField] private ActionEvent m_roomClearedEvent;
+        
         private readonly int m_maxAreaCount = 7;
-        private readonly int m_challengeRoomChance = 33;
         private BoxCollider2D m_roomCollider;
         
         public BoxCollider2D RoomCollider => m_roomCollider;
@@ -44,6 +59,15 @@ namespace SGGames.Scripts.Managers
             m_roomIndex = 0;
             m_currentAreaIndex = 0;
             m_enterDoorEvent.AddListener(OnPlayerEnterDoor);
+
+            //Room Layout
+            m_leftSideRoomList = m_roomGenerator.GetRooms(m_currentAreaIndex);
+            m_rightSideRoomList = m_roomGenerator.GetRooms(m_currentAreaIndex);
+            
+            //Room rewards
+            m_leftRoomRewardList = m_roomGenerator.GetRoomRewards(m_currentAreaIndex);
+            m_rightRoomRewardList = m_roomGenerator.GetRoomRewards(m_currentAreaIndex);
+            
             StartCoroutine(OnLevelLoaded());
         }
 
@@ -64,41 +88,18 @@ namespace SGGames.Scripts.Managers
             if (m_enemyList.Count <= 0)
             {
                 m_currentRoom.OpenDoors();
-            }
-        }
-
-        private RoomData GetCurrentRoom()
-        {
-            switch (m_roomIndex)
-            {
-                case <= 1:
-                    return m_areaDataList[m_currentAreaIndex].GetEasyRoom();
-                case 3:
-                case 4:
-                case 5:
-                    return m_areaDataList[m_currentAreaIndex].GetHardRoom();
-                case >= 6:
-                {
-                    var challengeRoomChance = Random.Range(0, 100);
-                    if (challengeRoomChance <= m_challengeRoomChance)
-                    {
-                        return m_areaDataList[m_currentAreaIndex].GetChallengeRoom();
-                    }
-                    else
-                    {
-                        return m_areaDataList[m_currentAreaIndex].GetHardRoom();
-                    }
-                }
-                default:
-                {
-                    return m_areaDataList[m_currentAreaIndex].GetEasyRoom();
-                }
+                m_roomClearedEvent?.Raise();
             }
         }
         
+        
         private IEnumerator OnLevelLoaded()
         {
-            LoadRoom();
+            m_currentRoomData = m_defaultRoom;
+            Debug.Log($"<color=yellow>Load Room: {m_currentRoomData.name}</color>");
+            var roomObj = Instantiate(m_currentRoomData.RoomPrefab);
+            m_currentRoom = roomObj.GetComponent<Room>();
+            m_roomCollider = m_currentRoom.RoomCollider;
 
             yield return new WaitForEndOfFrame();
 
@@ -137,24 +138,70 @@ namespace SGGames.Scripts.Managers
         private void IncreaseRoomAndAreaIndex()
         {
             m_roomIndex++;
-            if (m_roomIndex >= m_maxRoomNumber)
+            if (m_roomIndex >=  RoomGenerator.C_MAX_ROOM_NUMBER)
             {
                 m_roomIndex = 0;
                 m_currentAreaIndex++;
-                if (m_currentAreaIndex >= m_areaDataList.Length)
+                if (m_currentAreaIndex >= RoomGenerator.C_MAX_AREA)
                 {
-                    m_currentAreaIndex = m_areaDataList.Length - 1;
+                    m_currentAreaIndex = RoomGenerator.C_MAX_AREA - 1;
                 }
             }
         }
 
-        private void LoadRoom()
+        private void LoadRoom(int doorIndex)
         {
-            m_currentRoomData = GetCurrentRoom();
+            m_currentRoomData = doorIndex == 0 ? m_leftSideRoomList[m_roomIndex] : m_rightSideRoomList[m_roomIndex];
             Debug.Log($"<color=yellow>Load Room: {m_currentRoomData.name}</color>");
             var roomObj = Instantiate(m_currentRoomData.RoomPrefab);
             m_currentRoom = roomObj.GetComponent<Room>();
             m_roomCollider = m_currentRoom.RoomCollider;
+            
+            AddRewardToRoom(doorIndex, m_currentRoom.ChestSpawnSpot.position,m_currentRoom.transform);
+        }
+
+        private void AddRewardToRoom(int doorIndex,Vector2 spawnPos, Transform roomTransform)
+        {
+            var rewardType = doorIndex == 0 ? m_leftRoomRewardList[m_roomIndex] : m_rightRoomRewardList[m_roomIndex];
+            Debug.Log($"<color=yellow>Room Reward: {rewardType}</color>");
+            switch (rewardType)
+            {
+                case RoomRewardType.Key:
+                    Instantiate(m_keyChest, spawnPos, Quaternion.identity, roomTransform);
+                    break;
+                case RoomRewardType.Coin:
+                    Instantiate(m_coinChest, spawnPos, Quaternion.identity, roomTransform);
+                    break;
+                case RoomRewardType.Item:
+                    Instantiate(m_itemChest, spawnPos, Quaternion.identity, roomTransform);
+                    break;
+                case RoomRewardType.Weapon:
+                    Instantiate(m_weaponChest, spawnPos, Quaternion.identity, roomTransform);
+                    break;
+                case RoomRewardType.Helmet:
+                    Instantiate(m_helmetChest, spawnPos, Quaternion.identity, roomTransform);
+                    break;
+                case RoomRewardType.Armor:
+                    Instantiate(m_armorChest, spawnPos, Quaternion.identity, roomTransform);
+                    break;
+                case RoomRewardType.Boots:
+                    Instantiate(m_bootsChest, spawnPos, Quaternion.identity, roomTransform);
+                    break;
+                case RoomRewardType.Accessories:
+                    Instantiate(m_accessoriesChest, spawnPos, Quaternion.identity, roomTransform);
+                    break;
+                case RoomRewardType.Charm:
+                    Instantiate(m_charmChest, spawnPos, Quaternion.identity, roomTransform);
+                    break;
+
+         
+                case RoomRewardType.Coin_Monster:
+                    break;
+                case RoomRewardType.Blood_Room:
+                    break;
+                case RoomRewardType.Trader:
+                    break;
+            }
         }
 
         private void OnPlayerEnterDoor(int doorIndex)
@@ -175,7 +222,7 @@ namespace SGGames.Scripts.Managers
             Destroy(m_currentRoom.gameObject);
 
             IncreaseRoomAndAreaIndex();
-            LoadRoom();
+            LoadRoom(m_roomIndex);
             LoadEnemy();
             
             yield return new WaitForEndOfFrame();
