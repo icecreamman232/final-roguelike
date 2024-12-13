@@ -27,7 +27,7 @@ namespace SGGames.Scripts.UI
         private void OnPlayerHealthUpdate(float current, float max, GameObject source)
         {
             m_healthBar.fillAmount = MathHelpers.Remap(current, 0f, max, 0f, 1f);
-            m_healthText.text = $"{current}/{max}";
+            m_healthText.text = $"{current:F0}/{max}";
         }
     }
 }

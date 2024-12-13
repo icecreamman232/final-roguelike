@@ -133,6 +133,7 @@ MonoBehaviour:
   m_strengthPoints: 0
   m_agilityPoints: 0
   m_intelligencePoints: 0
+  m_playerHealth: {fileID: 904574974438328195}
   m_playerDamageComputer: {fileID: 6211949587856999711}
 --- !u!114 &5311189830458795856
 MonoBehaviour:
@@ -187,10 +188,11 @@ MonoBehaviour:
   m_maxHealth: 150
   m_currentHealth: 0
   m_isInvulnerable: 0
-  m_isImmortal: 1
+  m_isImmortal: 0
   m_isDead: 0
   m_spriteRenderer: {fileID: 0}
   m_PlayerHealthUpdateEvent: {fileID: 11400000, guid: 522553b978f7d444282f81b913f8d024, type: 2}
+  m_regenerationRate: 0
 --- !u!114 &6210066009922297151
 MonoBehaviour:
   m_ObjectHideFlags: 0

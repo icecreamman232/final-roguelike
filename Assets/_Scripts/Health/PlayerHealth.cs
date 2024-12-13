@@ -6,6 +6,10 @@ namespace SGGames.Scripts.Healths
     public class PlayerHealth : Health
     {
         [SerializeField] private PlayerHealthUpdateEvent m_PlayerHealthUpdateEvent;
+        [SerializeField] private float m_regenerationRate;
+
+        private readonly float m_regenerationInterval = 0.1f;
+        private float m_regenerateTimer;
         
         /// <summary>
         /// Use this with caution since it could be null at some point.
@@ -16,6 +20,20 @@ namespace SGGames.Scripts.Healths
         {
             base.Start();
             UpdateHealthBar();
+        }
+
+        private void Update()
+        {
+            if (m_isDead) return;
+            m_regenerateTimer += Time.deltaTime;
+            if (m_regenerateTimer >= m_regenerationInterval)
+            {
+                m_currentHealth += m_regenerationRate;
+                m_currentHealth = Mathf.Clamp(m_currentHealth, 0, MaxHealth);
+                UpdateHealthBar();
+
+                m_regenerateTimer = 0;
+            }
         }
 
         public override void TakeDamage(float damage, GameObject source, float invincibilityDuration, bool isCritical)
@@ -49,6 +67,11 @@ namespace SGGames.Scripts.Healths
         {
             base.Kill();
             this.gameObject.SetActive(false);
+        }
+
+        public void AddRegenerationRate(float regenerationRate)
+        {
+            m_regenerationRate += regenerationRate;
         }
     }
 }

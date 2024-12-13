@@ -1,16 +1,27 @@
 using SGGames.Scripts.Data;
+using SGGames.Scripts.Healths;
 using UnityEngine;
 
 namespace SGGames.Scripts.Player
 {
     public class PlayerAttributeController : PlayerBehavior
     {
+        [Header("Base Attributes")]
         [SerializeField] private HeroData m_heroData;
         [SerializeField] private int m_strengthPoints;
         [SerializeField] private int m_agilityPoints;
         [SerializeField] private int m_intelligencePoints;
+        
+        [Header("Components")]
+        [SerializeField] private PlayerHealth m_playerHealth;
         [SerializeField] private PlayerDamageComputer m_playerDamageComputer;
+        
+        private readonly float m_strengthToRegenerationRate = 0.05f;
 
+        public int StrengthPoints => m_strengthPoints;
+        public int AgilityPoints => m_agilityPoints;
+        public int IntelligencePoints => m_intelligencePoints;
+        
         protected override void Start()
         {
             base.Start();
@@ -24,6 +35,13 @@ namespace SGGames.Scripts.Player
             m_intelligencePoints = m_heroData.BaseIntelligence;
             m_playerDamageComputer.UpdateCriticalChance(m_heroData.CriticalChance);
             m_playerDamageComputer.UpdateCriticalDamage(m_heroData.CriticalDamage);
+            
+            m_playerHealth.AddRegenerationRate(ComputeRegenerationRate());
+        }
+
+        private float ComputeRegenerationRate()
+        {
+            return m_strengthPoints * m_strengthToRegenerationRate;
         }
 
         public void AddStrength(int points)

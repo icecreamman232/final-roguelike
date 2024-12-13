@@ -22,6 +22,7 @@ namespace SGGames.Scripts.Damages
         protected virtual void Start()
         {
             m_multiplyDamage = 1;
+            m_critDamage = 1;
         }
 
         public void SetDamageInfo((float addition,float multiplier,float critical) damageInfo)
