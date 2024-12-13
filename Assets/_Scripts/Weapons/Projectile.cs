@@ -1,4 +1,5 @@
 using SGGames.Scripts.Damages;
+using SGGames.Scripts.Data;
 using UnityEngine;
 using UnityEngine.Events;
 
@@ -28,10 +29,17 @@ namespace SGGames.Scripts.Weapons
         [SerializeField] protected float m_offsetRotationAngle;
         
         protected Vector2 m_wakeupPosition;
-
+        
         protected virtual void Start()
         {
             m_damageHandler.OnHitDamageable += OnHitDamageable;
+        }
+
+        public virtual void ApplyData(WeaponData data)
+        {
+            m_initialSpeed = data.ProjectileSpeed;
+            m_range = data.AttackRange;
+            m_damageHandler.Initialize(data.MinDamage, data.MaxDamage);
         }
 
         public virtual void Spawn(Vector2 position, Quaternion rotation, Vector2 direction, 

@@ -25,6 +25,12 @@ namespace SGGames.Scripts.Damages
             m_critDamage = 1;
         }
 
+        public void Initialize(float minDmg, float maxDmg)
+        {
+            m_minDamage = minDmg;
+            m_maxDamage = maxDmg;
+        }
+
         public void SetDamageInfo((float addition,float multiplier,float critical) damageInfo)
         {
             m_additionalDamage = damageInfo.addition;

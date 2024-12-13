@@ -1,4 +1,5 @@
 using SGGames.Scripts.Core;
+using SGGames.Scripts.Data;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -23,6 +24,11 @@ namespace SGGames.Scripts.Weapons
         
         public WeaponState CurrentState => m_currentState;
 
+        public void ApplyData(WeaponData data)
+        {
+            m_baseDelayBetweenShots = data.BaseDelayBetweenShots;
+        }
+        
         public void ApplyDelayBetweenShots(float delayBetweenShots)
         {
             m_currentDelayBetweenShots = delayBetweenShots;
