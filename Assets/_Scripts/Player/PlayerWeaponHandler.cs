@@ -16,6 +16,9 @@ namespace SGGames.Scripts.Player
         [SerializeField] protected PlayerDamageComputer m_playerDamageComputer;
         [SerializeField] private BoolEvent m_freezePlayerEvent;
 
+        public bool IsWeaponInitialized => m_currentWeapon != null;
+        public float BaseAtkTime => m_currentWeapon.BaseDelayBetweenShots;
+        
         protected override void Start()
         {
             base.Start();
@@ -81,6 +84,11 @@ namespace SGGames.Scripts.Player
             {
                 ToggleAllow(true);
             }
+        }
+
+        public void ApplyAttackSpeedOnCurrentWeapon(float atkSpeed)
+        {
+            m_currentWeapon.ApplyDelayBetweenShots(atkSpeed);
         }
     }
 }

@@ -1,5 +1,6 @@
 using SGGames.Scripts.Core;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace SGGames.Scripts.Weapons
 {
@@ -13,12 +14,19 @@ namespace SGGames.Scripts.Weapons
     public class Weapon : MonoBehaviour
     {
         [SerializeField] protected WeaponState m_currentState;
-        [SerializeField] protected float m_delayBetweenShots;
+        [SerializeField] protected float m_baseDelayBetweenShots;
+        [SerializeField] protected float m_currentDelayBetweenShots;
         [SerializeField] protected ObjectPooler m_projectilePooler;
 
+        public float BaseDelayBetweenShots => m_baseDelayBetweenShots;
         protected float m_delayTimer;
         
         public WeaponState CurrentState => m_currentState;
+
+        public void ApplyDelayBetweenShots(float delayBetweenShots)
+        {
+            m_currentDelayBetweenShots = delayBetweenShots;
+        }
         
         public virtual void Shoot(Vector2 direction, (float additionDamage, float multiplierDamage, float criticalDamage) damageInfo = default)
         {
@@ -42,7 +50,7 @@ namespace SGGames.Scripts.Weapons
                 case WeaponState.READY:
                     break;
                 case WeaponState.SHOT:
-                    m_delayTimer = m_delayBetweenShots;
+                    m_delayTimer = m_currentDelayBetweenShots;
                     m_currentState = WeaponState.DELAY_BETWEEN_SHOTS;
                     break;
                 case WeaponState.DELAY_BETWEEN_SHOTS:

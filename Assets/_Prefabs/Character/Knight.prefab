@@ -135,6 +135,7 @@ MonoBehaviour:
   m_intelligencePoints: 0
   m_playerHealth: {fileID: 904574974438328195}
   m_playerDamageComputer: {fileID: 6211949587856999711}
+  m_playerWeaponHandler: {fileID: 6210066009922297151}
   m_playerLevelUpEvent: {fileID: 11400000, guid: 230552ac7674ab146959ff8bfefc1053, type: 2}
 --- !u!114 &5311189830458795856
 MonoBehaviour:

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Healths;
@@ -17,12 +18,16 @@ namespace SGGames.Scripts.Player
         [Header("Components")]
         [SerializeField] private PlayerHealth m_playerHealth;
         [SerializeField] private PlayerDamageComputer m_playerDamageComputer;
+        [SerializeField] private PlayerWeaponHandler m_playerWeaponHandler;
         
         [Header("Events")]
         [SerializeField] private IntEvent m_playerLevelUpEvent;
         
         private readonly float m_strengthToRegenerationRate = 0.05f;
         private readonly float m_strengthToHealth = 30;
+        private readonly float m_agilityToAtkSpeed = 2.5f;
+        
+        public static float ATK_SPD_TO_ATK_RATE_MULTIPLIER = 5f;
 
         public float StrengthPoints => m_strengthPoints;
         public float AgilityPoints => m_agilityPoints;
@@ -32,7 +37,7 @@ namespace SGGames.Scripts.Player
         {
             base.Start();
             m_playerLevelUpEvent.AddListener(OnPlayerLevelUp);
-            InitializeAttributes();
+            StartCoroutine(InitializeAttributes());
         }
 
         private void OnDestroy()
@@ -40,7 +45,7 @@ namespace SGGames.Scripts.Player
             m_playerLevelUpEvent.RemoveListener(OnPlayerLevelUp);
         }
 
-        private void InitializeAttributes()
+        private IEnumerator InitializeAttributes()
         {
             m_strengthPoints = m_heroData.BaseStrength;
             m_agilityPoints = m_heroData.BaseAgility;
@@ -50,6 +55,10 @@ namespace SGGames.Scripts.Player
             
             m_playerHealth.Initialize(ComputeMaxHealth());
             m_playerHealth.AddRegenerationRate(ComputeRegenerationRate());
+
+            yield return new WaitUntil(() =>
+                m_playerWeaponHandler != null && m_playerWeaponHandler.IsWeaponInitialized);
+            m_playerWeaponHandler.ApplyAttackSpeedOnCurrentWeapon(ComputeDelayBetweenAttacks(m_playerWeaponHandler.BaseAtkTime));
         }
 
         private float ComputeMaxHealth()
@@ -59,6 +68,21 @@ namespace SGGames.Scripts.Player
         private float ComputeRegenerationRate()
         {
             return m_strengthPoints * m_strengthToRegenerationRate;
+        }
+
+        private float ComputeAtkSpeed()
+        {
+            return m_agilityPoints * m_agilityToAtkSpeed;
+        }
+
+        private float ComputeAtkRate(float baseAtkTime)
+        {
+            return ComputeAtkSpeed()/(ATK_SPD_TO_ATK_RATE_MULTIPLIER * baseAtkTime);
+        }
+
+        private float ComputeDelayBetweenAttacks(float baseAtkTime)
+        {
+            return 1 / ComputeAtkRate(baseAtkTime);
         }
 
         public void AddStrength(float points)
@@ -74,6 +98,8 @@ namespace SGGames.Scripts.Player
         {
             m_agilityPoints += points;
             m_agilityPoints = Mathf.Clamp(m_agilityPoints, m_heroData.BaseAgility, int.MaxValue);
+            
+            m_playerWeaponHandler.ApplyAttackSpeedOnCurrentWeapon(ComputeDelayBetweenAttacks(m_playerWeaponHandler.BaseAtkTime));
         }
 
         public void AddIntelligence(float points)
