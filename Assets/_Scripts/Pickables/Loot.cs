@@ -36,6 +36,9 @@ namespace SGGames.Scripts.Pickables
             //Coin
             DropCurrency(m_dropsTableData.CoinPrefab,m_dropsTableData.CoinDropAmount);
             
+            //Key
+            DropCurrency(m_dropsTableData.KeyPrefab,m_dropsTableData.KeyDropAmount);
+            
             //Small Exp
             DropCurrency(m_dropsTableData.SmallExpPrefab,m_dropsTableData.SmallExpDropAmount);
             

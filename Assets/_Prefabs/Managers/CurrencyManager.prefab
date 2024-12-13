@@ -47,3 +47,6 @@ MonoBehaviour:
   m_coinPickedEvent: {fileID: 11400000, guid: d728f29ac9641a542a5dd5625d6ccd6a, type: 2}
   m_updateCoinCounterEvent: {fileID: 11400000, guid: 7a0097b1fc7ae374b9e41740db2d8a40, type: 2}
   m_coinPicked: 0
+  m_keyPickedEvent: {fileID: 11400000, guid: a1e53c2dee977fa4fbcfe1edb497142a, type: 2}
+  m_updateKeyCounterEvent: {fileID: 11400000, guid: 21038cdb6a3a1104daea603006d0c60d, type: 2}
+  m_keyPicked: 0

@@ -12,6 +12,11 @@ namespace SGGames.Scripts.Data
         [SerializeField] private int m_maxCoinDrop;
         [SerializeField] private GameObject m_coinPrefab;
         
+        [Header("Keys")]
+        [SerializeField] private int m_minKeyDrop;
+        [SerializeField] private int m_maxKeyDrop;
+        [SerializeField] private GameObject m_keyPrefab;
+        
         [Header("Small EXP")]
         [SerializeField] private int m_minSmallExpDrop;
         [SerializeField] private int m_maxSmallExpDrop;
@@ -32,6 +37,7 @@ namespace SGGames.Scripts.Data
         }
         
         public int CoinDropAmount => Random.Range(m_minCoinDrop, m_maxCoinDrop + 1);
+        public int KeyDropAmount => Random.Range(m_minKeyDrop, m_maxKeyDrop + 1);
         public int SmallExpDropAmount => Random.Range(m_minSmallExpDrop, m_maxSmallExpDrop + 1);
         public int BigExpDropAmount
         {
@@ -44,6 +50,7 @@ namespace SGGames.Scripts.Data
         }
 
         public GameObject CoinPrefab=> m_coinPrefab;
+        public GameObject KeyPrefab => m_keyPrefab;
         public GameObject SmallExpPrefab=> m_smallExpPrefab;
         public GameObject BigExpPrefab=> m_bigExpPrefab;
         

@@ -15,6 +15,9 @@ MonoBehaviour:
   m_minCoinDrop: 1
   m_maxCoinDrop: 2
   m_coinPrefab: {fileID: 7996711730950076425, guid: 9457189a38fd9354897514e979c782b7, type: 3}
+  m_minKeyDrop: 1
+  m_maxKeyDrop: 1
+  m_keyPrefab: {fileID: 7996711730950076425, guid: 422c92e3582332340ae906b6e9c62181, type: 3}
   m_minSmallExpDrop: 1
   m_maxSmallExpDrop: 2
   m_smallExpPrefab: {fileID: 7996711730950076425, guid: db5bdf36c83d1f04692be93b4fe907b5, type: 3}
