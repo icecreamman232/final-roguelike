@@ -1,9 +1,10 @@
+using SGGames.Scripts.Core;
 using SGGames.Scripts.Events;
 using UnityEngine;
 
 namespace SGGames.Scripts.Manager
 {
-    public class CurrencyManager : MonoBehaviour
+    public class CurrencyManager : Singleton<CurrencyManager>
     {
         [Header("Coin")]
         [SerializeField] private IntEvent m_coinPickedEvent;
@@ -13,6 +14,8 @@ namespace SGGames.Scripts.Manager
         [SerializeField] private IntEvent m_keyPickedEvent;
         [SerializeField] private IntEvent m_updateKeyCounterEvent;
         [SerializeField] private int m_keyPicked;
+        
+        public bool HasKey => m_keyPicked > 0;
 
         private void Start()
         {

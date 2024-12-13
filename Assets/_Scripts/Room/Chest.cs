@@ -6,9 +6,16 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Rooms
 {
+    public enum ChestType
+    {
+        Common,
+        Golden,
+        Legendary,
+    }
     public class Chest : MonoBehaviour, IInteractable
     {
-        [SerializeField] private InteractType m_type;   
+        [SerializeField] private InteractType m_type;
+        [SerializeField] private ChestType m_chestType;
         [SerializeField] private bool m_hasInteract;
         [SerializeField] private TextMeshPro m_promptText;
         [SerializeField] private GameObject m_model;
@@ -17,6 +24,7 @@ namespace SGGames.Scripts.Rooms
         [SerializeField] private ActionEvent m_roomClearedEvent;
         
         private PlayerInteract m_playerInteract;
+        public ChestType ChestType => m_chestType;
 
         private void Start()
         {

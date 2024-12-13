@@ -1,4 +1,6 @@
 using System;
+using SGGames.Scripts.Manager;
+using SGGames.Scripts.Rooms;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -33,6 +35,14 @@ namespace SGGames.Scripts.Player
         private void InteractOnPerformed(InputAction.CallbackContext context)
         {
             if (m_currentInteractType == InteractType.None) return;
+
+            //The Legendary chest requires key to open
+            if (m_currentInteractType == InteractType.Chest 
+                && ((Chest)m_interactObject).ChestType == ChestType.Legendary)
+            {
+                if (!CurrencyManager.Instance.HasKey) return;
+                return;
+            }
             
             m_interactObject.Interact();
         }
