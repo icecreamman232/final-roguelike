@@ -22,7 +22,8 @@ namespace SGGames.Scripts.Player
         
         [Header("Events")]
         [SerializeField] private IntEvent m_playerLevelUpEvent;
-        
+
+        private readonly float m_maxAtkSpd = 50f;
         private readonly float m_strengthToRegenerationRate = 0.05f;
         private readonly float m_strengthToHealth = 30;
         private readonly float m_agilityToAtkSpeed = 2.5f;
@@ -72,7 +73,10 @@ namespace SGGames.Scripts.Player
 
         private float ComputeAtkSpeed()
         {
-            return m_agilityPoints * m_agilityToAtkSpeed;
+            var atkSpd = m_agilityPoints * m_agilityToAtkSpeed;
+            atkSpd = Mathf.Clamp(atkSpd, 0, m_maxAtkSpd);
+            
+            return atkSpd;
         }
 
         private float ComputeAtkRate(float baseAtkTime)

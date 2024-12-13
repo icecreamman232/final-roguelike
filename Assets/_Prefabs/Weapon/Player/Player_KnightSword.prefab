@@ -46,7 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_currentState: 0
-  m_baseDelayBetweenShots: 1
+  m_baseDelayBetweenShots: 0.8
   m_currentDelayBetweenShots: 0
   m_projectilePooler: {fileID: 7171730421557167894}
 --- !u!114 &7171730421557167894
