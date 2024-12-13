@@ -16,5 +16,8 @@ MonoBehaviour:
   m_baseStrength: 5
   m_baseAgility: 2
   m_baseIntelligence: 1
+  m_growthStrength: 2
+  m_growthAgility: 1
+  m_growthIntelligence: 1
   m_criticalChance: 15
   m_criticalDamage: 1.15
