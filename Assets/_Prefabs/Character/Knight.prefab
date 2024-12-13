@@ -18,6 +18,7 @@ GameObject:
   - component: {fileID: 6210066009922297151}
   - component: {fileID: 6211949587856999711}
   - component: {fileID: 8170920390037149282}
+  - component: {fileID: -2195535169441576329}
   m_Layer: 6
   m_Name: Knight
   m_TagString: Player
@@ -248,6 +249,20 @@ MonoBehaviour:
     m_Bits: 8192
   m_pickRadius: 1.5
   m_freezePlayerEvent: {fileID: 11400000, guid: 1338a4fa70285e7488b5acc1fb4c30fe, type: 2}
+--- !u!114 &-2195535169441576329
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633775464036924199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4b771a7f54c49ec4ca0cd1ca3a138d89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isAllow: 1
+  m_currentInteractType: 0
 --- !u!1 &1510195004236968706
 GameObject:
   m_ObjectHideFlags: 0
