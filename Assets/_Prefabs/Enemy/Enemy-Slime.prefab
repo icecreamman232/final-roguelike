@@ -244,13 +244,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Owner: {fileID: 1523028514524487298}
   States:
-  - StateName: Rest
-    Actions:
-    - {fileID: 2809197224033312587}
-    Transitions:
-    - BrainDecision: {fileID: 3898790121587061883}
-      TrueStateName: Choose direction
-      FalseStateName: 
   - StateName: Choose direction
     Actions:
     - {fileID: 6418842121525779179}
@@ -258,6 +251,13 @@ MonoBehaviour:
     Transitions:
     - BrainDecision: {fileID: 5312012922525152784}
       TrueStateName: Moving
+      FalseStateName: 
+  - StateName: Rest
+    Actions:
+    - {fileID: 2809197224033312587}
+    Transitions:
+    - BrainDecision: {fileID: 3898790121587061883}
+      TrueStateName: Choose direction
       FalseStateName: 
   - StateName: Moving
     Actions:
@@ -501,8 +501,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_currentBrain: {fileID: 618791588690018121}
-  m_health: {fileID: 0}
-  m_movement: {fileID: 8446419928612837318}
 --- !u!114 &8902134053059527307
 MonoBehaviour:
   m_ObjectHideFlags: 0

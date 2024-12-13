@@ -368,8 +368,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_currentBrain: {fileID: 6078541572531969470}
-  m_health: {fileID: 5641471565434600134}
-  m_movement: {fileID: 6532866389331848629}
 --- !u!114 &5641471565434600134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -901,6 +899,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Owner: {fileID: 5009268503755041263}
   States:
+  - StateName: Choose direction
+    Actions:
+    - {fileID: 7264537372058692461}
+    - {fileID: 3347440283797591704}
+    Transitions:
+    - BrainDecision: {fileID: 574064499960505469}
+      TrueStateName: Moving
+      FalseStateName: 
   - StateName: Rest
     Actions:
     - {fileID: 4338688108032989680}
@@ -910,14 +916,6 @@ MonoBehaviour:
       FalseStateName: 
     - BrainDecision: {fileID: 4175357069677468525}
       TrueStateName: Switch to attack brain
-      FalseStateName: 
-  - StateName: Choose direction
-    Actions:
-    - {fileID: 7264537372058692461}
-    - {fileID: 3347440283797591704}
-    Transitions:
-    - BrainDecision: {fileID: 574064499960505469}
-      TrueStateName: Moving
       FalseStateName: 
   - StateName: Moving
     Actions:
