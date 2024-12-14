@@ -22,6 +22,7 @@ namespace SGGames.Scripts.EditorExtension
             GUILayout.Label(texture);
             base.OnInspectorGUI();
 
+            GUILayout.Space(30);
             if (GUILayout.Button("Apply Data"))
             {
                 m_data.ApplyData();
