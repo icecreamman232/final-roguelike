@@ -7,15 +7,15 @@ namespace SGGames.Scripts.Pickables
 {
     public class ItemPicker : MonoBehaviour, IInteractable
     {
-        [SerializeField] private InteractType m_type;
-        [SerializeField] private ItemCategory m_itemCategory;
-        [SerializeField] private ItemData m_itemData;
-        [SerializeField] private ItemPickedEvent m_itemPickedEvent;
-        
+        [SerializeField] protected InteractType m_type;
+        [SerializeField] protected ItemCategory m_itemCategory;
+        [SerializeField] protected ItemData m_itemData;
+        [SerializeField] protected ItemPickedEvent m_itemPickedEvent;
+
         private PlayerInteract m_playerInteract;
         private bool m_hasInteract;
         
-        private void OnTriggerEnter2D(Collider2D other)
+        protected virtual void OnTriggerEnter2D(Collider2D other)
         {
             if (other.CompareTag("Player"))
             {
@@ -29,22 +29,22 @@ namespace SGGames.Scripts.Pickables
             }
         }
 
-        private void OnTriggerExit2D(Collider2D other)
+        protected virtual void OnTriggerExit2D(Collider2D other)
         {
             if (m_hasInteract && other.CompareTag("Player"))
             {
                 m_hasInteract = false;
-                m_playerInteract.AssignInteraction(InteractType.None, null);
                 HidePrompt();
+                m_playerInteract.AssignInteraction(InteractType.None, null);
             }
         }
 
-        private void ShowPrompt()
+        protected virtual void ShowPrompt()
         {
             
         }
 
-        private void HidePrompt()
+        protected virtual void HidePrompt()
         {
             
         }

@@ -94,7 +94,6 @@ GameObject:
   m_Component:
   - component: {fileID: 3575569985965621029}
   - component: {fileID: 9075918906512875951}
-  - component: {fileID: -6726169786562021112}
   m_Layer: 13
   m_Name: ItemPickableTemplate
   m_TagString: Untagged
@@ -163,19 +162,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.3, y: 0.3}
   m_EdgeRadius: 0
---- !u!114 &-6726169786562021112
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7996711730950076425}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fa315c5b2787154ba89d9cae61e0a51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_type: 0
-  m_itemCategory: 0
-  m_itemData: {fileID: 0}
-  m_itemPickedEvent: {fileID: 11400000, guid: 9a7e64e4c361154488877a0458d5deaf, type: 2}
