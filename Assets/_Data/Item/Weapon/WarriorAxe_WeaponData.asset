@@ -20,3 +20,5 @@ MonoBehaviour:
   m_baseDelayBetweenShots: 0.8
   m_attackRange: 2
   m_projectileSpeed: 15
+  m_weaponPrefab: {fileID: 7653509115085970721, guid: 8b87f7c83daac244c8f8f4a4ee0564f9, type: 3}
+  m_projectilePrefab: {fileID: 1191944228990883478, guid: 8543356f9430ede49bd0a56b44038639, type: 3}
