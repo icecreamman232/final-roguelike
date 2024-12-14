@@ -1,7 +1,7 @@
+
 using SGGames.Scripts.Core;
 using SGGames.Scripts.Data;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace SGGames.Scripts.Weapons
 {
@@ -18,7 +18,7 @@ namespace SGGames.Scripts.Weapons
         [SerializeField] protected float m_baseDelayBetweenShots;
         [SerializeField] protected float m_currentDelayBetweenShots;
         [SerializeField] protected ObjectPooler m_projectilePooler;
-
+        
         public float BaseDelayBetweenShots => m_baseDelayBetweenShots;
         protected float m_delayTimer;
         
@@ -67,6 +67,11 @@ namespace SGGames.Scripts.Weapons
                     }
                     break;
             }
+        }
+
+        protected virtual void OnDestroy()
+        {
+            m_projectilePooler.CleanUp();    
         }
     }
 }

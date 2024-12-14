@@ -1,3 +1,4 @@
+using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Weapons;
 using UnityEngine;
@@ -14,7 +15,9 @@ namespace SGGames.Scripts.Player
         [SerializeField] protected Transform m_weaponAttachment;
         [SerializeField] protected PlayerAim m_playerAim;
         [SerializeField] protected PlayerDamageComputer m_playerDamageComputer;
+        [Header("Events")]
         [SerializeField] private BoolEvent m_freezePlayerEvent;
+        [SerializeField] private ItemPickedEvent m_weaponPickedEvent;
 
         public bool IsWeaponInitialized => m_currentWeapon != null;
         public float BaseAtkTime => m_currentWeapon.BaseDelayBetweenShots;
@@ -23,12 +26,14 @@ namespace SGGames.Scripts.Player
         {
             base.Start();
             m_freezePlayerEvent.AddListener(OnPlayerFreeze);
+            m_weaponPickedEvent.AddListener(OnWeaponPicked);
             Initialize();
         }
 
         private void OnDestroy()
         {
             m_freezePlayerEvent.RemoveListener(OnPlayerFreeze);
+            m_weaponPickedEvent.RemoveListener(OnWeaponPicked);
         }
 
         protected virtual void Initialize()
@@ -46,7 +51,9 @@ namespace SGGames.Scripts.Player
 
         protected virtual void SwitchWeapon(Weapon newWeapon)
         {
-            
+            m_currentWeapon.StopShooting();
+            Destroy(m_currentWeapon.gameObject);
+            EquipWeapon(newWeapon);
         }
 
         protected override void Update()
@@ -84,6 +91,13 @@ namespace SGGames.Scripts.Player
             {
                 ToggleAllow(true);
             }
+        }
+        
+        private void OnWeaponPicked(ItemCategory category, ItemData data)
+        {
+            if (category != ItemCategory.Weapon) return;
+            
+            SwitchWeapon(((WeaponData)data).WeaponPrefab.GetComponent<Weapon>());
         }
 
         public void ApplyAttackSpeedOnCurrentWeapon(float atkSpeed)

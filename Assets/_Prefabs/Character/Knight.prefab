@@ -215,6 +215,7 @@ MonoBehaviour:
   m_playerAim: {fileID: 9095760099221184924}
   m_playerDamageComputer: {fileID: 6211949587856999711}
   m_freezePlayerEvent: {fileID: 11400000, guid: 1338a4fa70285e7488b5acc1fb4c30fe, type: 2}
+  m_weaponPickedEvent: {fileID: 11400000, guid: 9a7e64e4c361154488877a0458d5deaf, type: 2}
 --- !u!114 &6211949587856999711
 MonoBehaviour:
   m_ObjectHideFlags: 0

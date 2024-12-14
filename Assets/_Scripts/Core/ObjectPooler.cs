@@ -5,6 +5,7 @@ namespace SGGames.Scripts.Core
 {
     public class ObjectPooler : MonoBehaviour
     {
+        public bool SelfInitialize = true;
         public Transform Parent;
         public Vector2 Offset;
         public bool IsSharePool;
@@ -19,7 +20,7 @@ namespace SGGames.Scripts.Core
         {
             CreatePool();
         }
-
+        
         private void CreatePool()
         {
             if (ObjectToPool == null) return;
@@ -35,7 +36,7 @@ namespace SGGames.Scripts.Core
                 var pools = FindObjectsOfType<ObjectPooler>();
                 for (int i = 0; i < pools.Length; i++)
                 {
-                    if(pools[i] == this) continue;
+                    if(pools[i].GetInstanceID() == this.GetInstanceID()) continue;
                     if (pools[i].ObjectToPool.name == ObjectToPool.name && pools[i].ObjectToPool!=null)
                     {
                         m_pool = pools[i].CurrentPool;
@@ -64,6 +65,14 @@ namespace SGGames.Scripts.Core
             }
             
             return null;
+        }
+
+        public void CleanUp()
+        {
+            for (int i = 0; i < m_pool.Count; i++)
+            {
+                Destroy(m_pool[i].gameObject);
+            }
         }
     }
 }
