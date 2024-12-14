@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: WarriorAxe_WeaponData
   m_EditorClassIdentifier: 
   m_itemID: warrior_axe
+  m_rarity: 1
   m_itemCategory: 0
   m_icon: {fileID: 361959756, guid: 2a57bc0de8ba8674ebe524d88c906410, type: 3}
   m_minDamage: 30

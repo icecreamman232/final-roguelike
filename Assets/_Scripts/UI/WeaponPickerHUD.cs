@@ -22,24 +22,24 @@ namespace SGGames.Scripts.UI
             Hide();
         }
 
-        public void Show(WeaponData data)
+        public void Show(WeaponData data, float baseAtkSpd)
         {
             m_canvasGroup.alpha = 1;
             if (!m_hasBeenDisplayed)
             {
-                FillInfo(data);
+                FillInfo(data, baseAtkSpd);
                 m_hasBeenDisplayed = true;
             }
         }
 
-        private void FillInfo(WeaponData data)
+        private void FillInfo(WeaponData data, float baseAtkSpd)
         {
             m_name.text = data.ItemID;
-            m_rarity.text = "Rarity";
+            m_rarity.text = $"Rarity:{data.Rarity.ToString()}";
             m_category.text = data.ItemCategory.ToString();
             m_range.text = $"Attack Range:{data.AttackRange}";
             m_damage.text = $"Attack Damage:{data.MinDamage} - {data.MaxDamage}";
-            m_atkSpd.text = $"Attack Speed:{(1/data.ProjectileSpeed):F1}";
+            m_atkSpd.text = $"Attack Speed:{baseAtkSpd:F1}";
         }
 
         public void Hide()

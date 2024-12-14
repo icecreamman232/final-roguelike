@@ -12,8 +12,9 @@ namespace SGGames.Scripts.Pickables
         [SerializeField] protected ItemData m_itemData;
         [SerializeField] protected ItemPickedEvent m_itemPickedEvent;
 
-        private PlayerInteract m_playerInteract;
-        private bool m_hasInteract;
+        protected PlayerAttributeController m_playerAttributeController;
+        protected PlayerInteract m_playerInteract;
+        protected bool m_hasInteract;
         
         protected virtual void OnTriggerEnter2D(Collider2D other)
         {
@@ -23,6 +24,11 @@ namespace SGGames.Scripts.Pickables
                 if (m_playerInteract == null)
                 {
                     m_playerInteract = other.GetComponent<PlayerInteract>();
+                }
+
+                if (m_playerAttributeController == null)
+                {
+                    m_playerAttributeController = other.GetComponent<PlayerAttributeController>();
                 }
                 m_playerInteract.AssignInteraction(m_type, this);
                 ShowPrompt();

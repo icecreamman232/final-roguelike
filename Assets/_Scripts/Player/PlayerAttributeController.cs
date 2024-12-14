@@ -79,7 +79,7 @@ namespace SGGames.Scripts.Player
             return atkSpd;
         }
 
-        private float ComputeAtkRate(float baseAtkTime)
+        public float ComputeAtkRate(float baseAtkTime)
         {
             return ComputeAtkSpeed()/(ATK_SPD_TO_ATK_RATE_MULTIPLIER * baseAtkTime);
         }
