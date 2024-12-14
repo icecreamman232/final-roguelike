@@ -95,7 +95,7 @@ GameObject:
   - component: {fileID: 3575569985965621029}
   - component: {fileID: 9075918906512875951}
   - component: {fileID: 1600975125837933270}
-  m_Layer: 13
+  m_Layer: 15
   m_Name: Pink-exp-shard
   m_TagString: Untagged
   m_Icon: {fileID: 0}

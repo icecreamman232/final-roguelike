@@ -10,6 +10,13 @@ namespace SGGames.Scripts.Player
     {
         None,
         Chest,
+        Weapon,
+        Helmet,
+        Armor,
+        Boots,
+        Gloves,
+        Accessories,
+        Charm,
     }
     
     public interface IInteractable

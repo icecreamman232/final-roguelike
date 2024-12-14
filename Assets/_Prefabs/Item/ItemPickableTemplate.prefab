@@ -175,8 +175,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7fa315c5b2787154ba89d9cae61e0a51, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_boxCollider2D: {fileID: 9075918906512875951}
-  m_isMovingTowardPlayer: 0
+  m_type: 0
   m_itemCategory: 0
   m_itemData: {fileID: 0}
   m_itemPickedEvent: {fileID: 11400000, guid: 9a7e64e4c361154488877a0458d5deaf, type: 2}
