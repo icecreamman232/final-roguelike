@@ -1,0 +1,99 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1001 &8436037298751637634
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3575569985965621029, guid: 39b4fc5c9a8aad242b845409e629eb90, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575569985965621029, guid: 39b4fc5c9a8aad242b845409e629eb90, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575569985965621029, guid: 39b4fc5c9a8aad242b845409e629eb90, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575569985965621029, guid: 39b4fc5c9a8aad242b845409e629eb90, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575569985965621029, guid: 39b4fc5c9a8aad242b845409e629eb90, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575569985965621029, guid: 39b4fc5c9a8aad242b845409e629eb90, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575569985965621029, guid: 39b4fc5c9a8aad242b845409e629eb90, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575569985965621029, guid: 39b4fc5c9a8aad242b845409e629eb90, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575569985965621029, guid: 39b4fc5c9a8aad242b845409e629eb90, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3575569985965621029, guid: 39b4fc5c9a8aad242b845409e629eb90, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5596691217324725562, guid: 39b4fc5c9a8aad242b845409e629eb90, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1884646485, guid: bb29aa4092093ac49bff5f56951f1263, type: 3}
+    - target: {fileID: 7996711730950076425, guid: 39b4fc5c9a8aad242b845409e629eb90, type: 3}
+      propertyPath: m_Name
+      value: HunterGloves_GlovesPicker
+      objectReference: {fileID: 0}
+    - target: {fileID: 9075918906512875951, guid: 39b4fc5c9a8aad242b845409e629eb90, type: 3}
+      propertyPath: m_Size.x
+      value: 0.74
+      objectReference: {fileID: 0}
+    - target: {fileID: 9075918906512875951, guid: 39b4fc5c9a8aad242b845409e629eb90, type: 3}
+      propertyPath: m_Size.y
+      value: 0.6578291
+      objectReference: {fileID: 0}
+    - target: {fileID: 9075918906512875951, guid: 39b4fc5c9a8aad242b845409e629eb90, type: 3}
+      propertyPath: m_Offset.y
+      value: -0.0042636096
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7996711730950076425, guid: 39b4fc5c9a8aad242b845409e629eb90, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 9157597937345245835}
+  m_SourcePrefab: {fileID: 100100000, guid: 39b4fc5c9a8aad242b845409e629eb90, type: 3}
+--- !u!1 &2011092294068072587 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7996711730950076425, guid: 39b4fc5c9a8aad242b845409e629eb90, type: 3}
+  m_PrefabInstance: {fileID: 8436037298751637634}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &9157597937345245835
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011092294068072587}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a2e42e74c2c9f8f479271f295818bf7c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_type: 6
+  m_itemCategory: 4
+  m_itemData: {fileID: 11400000, guid: e0fe23df48933f249be2540771453e40, type: 2}
+  m_itemPickedEvent: {fileID: 11400000, guid: 9a7e64e4c361154488877a0458d5deaf, type: 2}

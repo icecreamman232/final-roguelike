@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
@@ -16,6 +15,8 @@ namespace SGGames.Scripts.Player
         [Header("Equipment Slots")]
         [SerializeField] private WeaponData m_primaryWeaponSlot;
         [SerializeField] private HelmetData m_helmetSlot;
+        [SerializeField] private ArmorData m_armorSlot;
+        [SerializeField] private GlovesData m_glovesSlot;
         [Header("Events")]
         [SerializeField] private ItemPickedEvent m_itemPickedEvent;
         [Header("Inventory Slots")]
@@ -51,10 +52,12 @@ namespace SGGames.Scripts.Player
                     TryAddHelmet((HelmetData)data, picker);
                     break;
                 case ItemCategory.Armor:
+                    TryAddArmor((ArmorData)data, picker);
                     break;
                 case ItemCategory.Boots:
                     break;
                 case ItemCategory.Gloves:
+                    TryAddGloves((GlovesData)data, picker);
                     break;
                 case ItemCategory.Accessories:
                     break;
@@ -91,6 +94,46 @@ namespace SGGames.Scripts.Player
             if (m_helmetSlot == null)
             {
                 m_helmetSlot = data;
+                foreach (var modifier in data.ModifierList)
+                {
+                    m_playerModifierHandler.RegisterModifier(modifier);
+                }
+                Destroy(picker);
+            }
+            else
+            {
+                if (AddToEmptyInventorySlot(data))
+                {
+                    Destroy(picker);
+                }
+            }
+        }
+        
+        private void TryAddArmor(ArmorData data, GameObject picker)
+        {
+            if (m_armorSlot == null)
+            {
+                m_armorSlot = data;
+                foreach (var modifier in data.ModifierList)
+                {
+                    m_playerModifierHandler.RegisterModifier(modifier);
+                }
+                Destroy(picker);
+            }
+            else
+            {
+                if (AddToEmptyInventorySlot(data))
+                {
+                    Destroy(picker);
+                }
+            }
+        }
+        
+        private void TryAddGloves(GlovesData data, GameObject picker)
+        {
+            if (m_glovesSlot == null)
+            {
+                m_glovesSlot = data;
                 foreach (var modifier in data.ModifierList)
                 {
                     m_playerModifierHandler.RegisterModifier(modifier);
