@@ -153,63 +153,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &484815651
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3823471331543994014, guid: 77da9930bfc31614e95c6112d1fa45f0, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2.453
-      objectReference: {fileID: 0}
-    - target: {fileID: 3823471331543994014, guid: 77da9930bfc31614e95c6112d1fa45f0, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 2.39
-      objectReference: {fileID: 0}
-    - target: {fileID: 3823471331543994014, guid: 77da9930bfc31614e95c6112d1fa45f0, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3823471331543994014, guid: 77da9930bfc31614e95c6112d1fa45f0, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 3823471331543994014, guid: 77da9930bfc31614e95c6112d1fa45f0, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3823471331543994014, guid: 77da9930bfc31614e95c6112d1fa45f0, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3823471331543994014, guid: 77da9930bfc31614e95c6112d1fa45f0, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3823471331543994014, guid: 77da9930bfc31614e95c6112d1fa45f0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3823471331543994014, guid: 77da9930bfc31614e95c6112d1fa45f0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 3823471331543994014, guid: 77da9930bfc31614e95c6112d1fa45f0, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7668308471651813810, guid: 77da9930bfc31614e95c6112d1fa45f0, type: 3}
-      propertyPath: m_Name
-      value: KnightSword_WeaponPicker
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 77da9930bfc31614e95c6112d1fa45f0, type: 3}
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -544,7 +487,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &1633237438
+--- !u!1001 &1382962482
 PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
@@ -552,55 +495,55 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 3823471331543994014, guid: db081c4051d92454ca0174334d12a969, type: 3}
+    - target: {fileID: 2011092294068072587, guid: a9a421e4b2f4ff84a8662f1531b12625, type: 3}
+      propertyPath: m_Name
+      value: CommonHelmet_HelmetPicker
+      objectReference: {fileID: 0}
+    - target: {fileID: 4939369961661331367, guid: a9a421e4b2f4ff84a8662f1531b12625, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3823471331543994014, guid: db081c4051d92454ca0174334d12a969, type: 3}
+    - target: {fileID: 4939369961661331367, guid: a9a421e4b2f4ff84a8662f1531b12625, type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3823471331543994014, guid: db081c4051d92454ca0174334d12a969, type: 3}
+    - target: {fileID: 4939369961661331367, guid: a9a421e4b2f4ff84a8662f1531b12625, type: 3}
       propertyPath: m_LocalPosition.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3823471331543994014, guid: db081c4051d92454ca0174334d12a969, type: 3}
+    - target: {fileID: 4939369961661331367, guid: a9a421e4b2f4ff84a8662f1531b12625, type: 3}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 3823471331543994014, guid: db081c4051d92454ca0174334d12a969, type: 3}
+    - target: {fileID: 4939369961661331367, guid: a9a421e4b2f4ff84a8662f1531b12625, type: 3}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3823471331543994014, guid: db081c4051d92454ca0174334d12a969, type: 3}
+    - target: {fileID: 4939369961661331367, guid: a9a421e4b2f4ff84a8662f1531b12625, type: 3}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3823471331543994014, guid: db081c4051d92454ca0174334d12a969, type: 3}
+    - target: {fileID: 4939369961661331367, guid: a9a421e4b2f4ff84a8662f1531b12625, type: 3}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3823471331543994014, guid: db081c4051d92454ca0174334d12a969, type: 3}
+    - target: {fileID: 4939369961661331367, guid: a9a421e4b2f4ff84a8662f1531b12625, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3823471331543994014, guid: db081c4051d92454ca0174334d12a969, type: 3}
+    - target: {fileID: 4939369961661331367, guid: a9a421e4b2f4ff84a8662f1531b12625, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 3823471331543994014, guid: db081c4051d92454ca0174334d12a969, type: 3}
+    - target: {fileID: 4939369961661331367, guid: a9a421e4b2f4ff84a8662f1531b12625, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7668308471651813810, guid: db081c4051d92454ca0174334d12a969, type: 3}
-      propertyPath: m_Name
-      value: WarrirorAxe_WeaponPicker
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
     m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: db081c4051d92454ca0174334d12a969, type: 3}
+  m_SourcePrefab: {fileID: 100100000, guid: a9a421e4b2f4ff84a8662f1531b12625, type: 3}
 --- !u!1001 &249702823657707515
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -983,5 +926,4 @@ SceneRoots:
   - {fileID: 249702823657707515}
   - {fileID: 9015373313436963198}
   - {fileID: 1295860644115160420}
-  - {fileID: 1633237438}
-  - {fileID: 484815651}
+  - {fileID: 1382962482}

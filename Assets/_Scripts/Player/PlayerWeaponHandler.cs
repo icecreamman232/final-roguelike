@@ -10,14 +10,14 @@ namespace SGGames.Scripts.Player
     /// </summary>
     public class PlayerWeaponHandler : PlayerBehavior
     {
-        [SerializeField] protected Weapon m_initialWeapon;
+        [SerializeField] private PlayerInventory m_playerInventory; 
+        [SerializeField] protected WeaponData m_initialWeaponData;
         [SerializeField] protected Weapon m_currentWeapon;
         [SerializeField] protected Transform m_weaponAttachment;
         [SerializeField] protected PlayerAim m_playerAim;
         [SerializeField] protected PlayerDamageComputer m_playerDamageComputer;
         [Header("Events")]
         [SerializeField] private BoolEvent m_freezePlayerEvent;
-        [SerializeField] private ItemPickedEvent m_weaponPickedEvent;
 
         public bool IsWeaponInitialized => m_currentWeapon != null;
         public float BaseAtkTime => m_currentWeapon.BaseDelayBetweenShots;
@@ -26,30 +26,29 @@ namespace SGGames.Scripts.Player
         {
             base.Start();
             m_freezePlayerEvent.AddListener(OnPlayerFreeze);
-            m_weaponPickedEvent.AddListener(OnWeaponPicked);
             Initialize();
         }
 
         private void OnDestroy()
         {
             m_freezePlayerEvent.RemoveListener(OnPlayerFreeze);
-            m_weaponPickedEvent.RemoveListener(OnWeaponPicked);
         }
 
         protected virtual void Initialize()
         {
             if (m_currentWeapon == null)
             {
-                EquipWeapon(m_initialWeapon);
+                EquipWeapon(m_initialWeaponData.WeaponPrefab.GetComponent<Weapon>());
+                m_playerInventory.AddInitialWeapon(m_initialWeaponData);
             }
         }
         
-        protected virtual void EquipWeapon(Weapon newWeapon)
+        public virtual void EquipWeapon(Weapon newWeapon)
         {
             m_currentWeapon = Instantiate(newWeapon, m_weaponAttachment);
         }
 
-        protected virtual void SwitchWeapon(Weapon newWeapon)
+        public virtual void SwitchWeapon(Weapon newWeapon)
         {
             m_currentWeapon.StopShooting();
             Destroy(m_currentWeapon.gameObject);
@@ -91,13 +90,6 @@ namespace SGGames.Scripts.Player
             {
                 ToggleAllow(true);
             }
-        }
-        
-        private void OnWeaponPicked(ItemCategory category, ItemData data)
-        {
-            if (category != ItemCategory.Weapon) return;
-            
-            SwitchWeapon(((WeaponData)data).WeaponPrefab.GetComponent<Weapon>());
         }
 
         public void ApplyAttackSpeedOnCurrentWeapon(float atkSpeed)

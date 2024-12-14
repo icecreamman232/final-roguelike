@@ -1,7 +1,7 @@
 using SGGames.Scripts.Healths;
 using UnityEngine;
 
-namespace SGGames.Scripts.Modifier
+namespace SGGames.Scripts.Modifiers
 {
     public class HealthModifierProcessor : ModifierProcessor
     {

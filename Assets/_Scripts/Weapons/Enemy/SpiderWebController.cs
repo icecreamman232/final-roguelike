@@ -1,5 +1,5 @@
 using System.Collections;
-using SGGames.Scripts.Modifier;
+using SGGames.Scripts.Modifiers;
 using UnityEngine;
 
 namespace SGGames.Scripts.Enemies

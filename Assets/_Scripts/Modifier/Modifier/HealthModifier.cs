@@ -1,7 +1,7 @@
 
 using UnityEngine;
 
-namespace SGGames.Scripts.Modifier
+namespace SGGames.Scripts.Modifiers
 {
     public enum HealthModifierType
     {

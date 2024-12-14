@@ -1,7 +1,7 @@
 using SGGames.Scripts.Player;
 using UnityEngine;
 
-namespace SGGames.Scripts.Modifier
+namespace SGGames.Scripts.Modifiers
 {
     public class DamageModifierProcessor : ModifierProcessor
     {

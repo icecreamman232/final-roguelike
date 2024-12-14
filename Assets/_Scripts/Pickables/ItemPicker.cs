@@ -57,8 +57,7 @@ namespace SGGames.Scripts.Pickables
         
         public void Interact()
         {
-            m_itemPickedEvent?.Raise(m_itemCategory, m_itemData);
-            Destroy(this.gameObject);
+            m_itemPickedEvent?.Raise(m_itemCategory, m_itemData, this.gameObject);
         }
     }
 }

@@ -1,4 +1,4 @@
-using SGGames.Scripts.Modifier;
+using SGGames.Scripts.Modifiers;
 using UnityEngine;
 
 public class ModifierTester : MonoBehaviour
