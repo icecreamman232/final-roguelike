@@ -139,6 +139,7 @@ MonoBehaviour:
   m_playerDamageComputer: {fileID: 6211949587856999711}
   m_playerWeaponHandler: {fileID: 6210066009922297151}
   m_playerLevelUpEvent: {fileID: 11400000, guid: 230552ac7674ab146959ff8bfefc1053, type: 2}
+  m_constantData: {fileID: 11400000, guid: 26336a57fc5df324abcfbac163a7a98c, type: 2}
 --- !u!114 &5311189830458795856
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -282,6 +283,11 @@ MonoBehaviour:
   m_playerModifierHandler: {fileID: 8978468732513568599}
   m_primaryWeaponSlot: {fileID: 0}
   m_helmetSlot: {fileID: 0}
+  m_armorSlot: {fileID: 0}
+  m_glovesSlot: {fileID: 0}
+  m_bootsSlot: {fileID: 0}
+  m_accessoriesSlot: {fileID: 0}
+  m_charmSlot: {fileID: 0}
   m_itemPickedEvent: {fileID: 11400000, guid: 9a7e64e4c361154488877a0458d5deaf, type: 2}
   m_inventorySlots: []
 --- !u!1 &1510195004236968706

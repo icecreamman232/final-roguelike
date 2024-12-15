@@ -22,14 +22,9 @@ namespace SGGames.Scripts.Player
         
         [Header("Events")]
         [SerializeField] private IntEvent m_playerLevelUpEvent;
-
-        private readonly float m_maxAtkSpd = 50f;
-        private readonly float m_strengthToRegenerationRate = 0.05f;
-        private readonly float m_strengthToHealth = 30;
-        private readonly float m_agilityToAtkSpeed = 2.5f;
+        [Header("Data")]
+        [SerializeField] private ConstantData m_constantData;
         
-        public static float ATK_SPD_TO_ATK_RATE_MULTIPLIER = 5f;
-
         public float StrengthPoints => m_strengthPoints;
         public float AgilityPoints => m_agilityPoints;
         public float IntelligencePoints => m_intelligencePoints;
@@ -64,24 +59,24 @@ namespace SGGames.Scripts.Player
 
         private float ComputeMaxHealth()
         {
-            return m_strengthPoints * m_strengthToHealth;
+            return m_strengthPoints * m_constantData.C_STR_TO_HEALTH;
         }
         private float ComputeRegenerationRate()
         {
-            return m_strengthPoints * m_strengthToRegenerationRate;
+            return m_strengthPoints * m_constantData.C_STR_TO_REGENERATE;
         }
 
         private float ComputeAtkSpeed()
         {
-            var atkSpd = m_agilityPoints * m_agilityToAtkSpeed;
-            atkSpd = Mathf.Clamp(atkSpd, 0, m_maxAtkSpd);
+            var atkSpd = m_agilityPoints * m_constantData.C_AGI_TO_ATK_SPD;
+            atkSpd = Mathf.Clamp(atkSpd, 0, m_constantData.C_MAX_ATK_SPD);
             
             return atkSpd;
         }
 
         public float ComputeAtkRate(float baseAtkTime)
         {
-            return ComputeAtkSpeed()/(ATK_SPD_TO_ATK_RATE_MULTIPLIER * baseAtkTime);
+            return ComputeAtkSpeed()/(m_constantData.C_ATK_SPD_TO_ATK_RATE * baseAtkTime);
         }
 
         private float ComputeDelayBetweenAttacks(float baseAtkTime)
