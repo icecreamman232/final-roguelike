@@ -48,7 +48,10 @@ namespace SGGames.Scripts.Pickables
         
         private void DropItems()
         {
-            //TODO:Implement drops item behavior    
+            var chance = Random.Range(0f, 100f);
+            var prefab = m_dropsTableData.GetNextLoot(chance);
+            if (prefab == null) return;
+            Instantiate(prefab, (Vector3)GetRandomDropPosition(m_dropRadius) + transform.position, Quaternion.identity,m_spawnParent);
         }
 
         private Vector2 GetRandomDropPosition(float radius)

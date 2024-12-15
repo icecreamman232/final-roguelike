@@ -1,5 +1,6 @@
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Events;
+using SGGames.Scripts.Manager;
 using SGGames.Scripts.Pickables;
 using SGGames.Scripts.Player;
 using TMPro;
@@ -17,7 +18,8 @@ namespace SGGames.Scripts.Rooms
         [SerializeField] private BoxCollider2D m_collider2D;
         [SerializeField] private InteractionLoot m_loot;
         [SerializeField] private GameEvent m_gameEvent;
-        
+
+        private readonly int m_keyNumberToUnlockLegendary = 1;
         private PlayerInteract m_playerInteract;
         public ChestType ChestType => m_chestType;
 
@@ -75,6 +77,7 @@ namespace SGGames.Scripts.Rooms
         {
             HidePrompt();
             m_loot.SpawnLoot(transform.parent);
+            CurrencyManager.Instance.ConsumeKey(m_keyNumberToUnlockLegendary);
             this.gameObject.SetActive(false);
         }
     }

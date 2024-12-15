@@ -1,4 +1,5 @@
 using System;
+using SGGames.Scripts.Attribute;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -31,8 +32,40 @@ namespace SGGames.Scripts.Data
         [Header("Drops")]
         [SerializeField] private LootData[] m_dropsList;
 
+        private void OnEnable()
+        {
+            ComputeItemDropChance();
+        }
+
+        [ContextMenu("Compute Item Drop Chance")]
+        private void ComputeItemDropChance()
+        {
+            if (m_dropsList.Length == 0) return;
+            var currentChance = 0f;
+            var totalWeight = 0f;
+            
+            for (int i = 0; i < m_dropsList.Length; i++)
+            {
+                totalWeight += m_dropsList[i].Weight;
+            }
+
+            for (int i = 0; i < m_dropsList.Length; i++)
+            {
+                m_dropsList[i].SetLowerChance(currentChance);
+                currentChance += m_dropsList[i].Weight/totalWeight * 100f;
+                m_dropsList[i].SetUpperChance(currentChance);
+            }
+        }
+
         public GameObject GetNextLoot(float chance)
         {
+            for (int i = 0; i < m_dropsList.Length; i++)
+            {
+                if (m_dropsList[i].LowerChance <= chance && m_dropsList[i].UpperChance >= chance)
+                {
+                    return m_dropsList[i].LootPrefab;
+                }
+            }
             return null;
         }
         
@@ -60,5 +93,21 @@ namespace SGGames.Scripts.Data
     public class LootData
     {
         public GameObject LootPrefab;
+        public float Weight;
+        [SerializeField] [ReadOnly] private float m_lowerChance;
+        [SerializeField] [ReadOnly] private float m_upperChance;
+        
+        public float LowerChance => m_lowerChance;
+        public float UpperChance => m_upperChance;
+
+        public void SetLowerChance(float value)
+        {
+            m_lowerChance = value;
+        }
+
+        public void SetUpperChance(float value)
+        {
+            m_upperChance = value;
+        }
     }
 }

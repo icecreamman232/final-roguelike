@@ -43,6 +43,11 @@ namespace SGGames.Scripts.Manager
             m_keyPicked += amount;
             m_updateKeyCounterEvent?.Raise(m_keyPicked);
         }
+
+        public void ConsumeKey(int amount)
+        {
+            m_keyPicked -= amount;
+        }
     }
 }
 

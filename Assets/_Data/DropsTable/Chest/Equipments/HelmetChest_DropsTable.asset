@@ -27,3 +27,6 @@ MonoBehaviour:
   m_bigExpPrefab: {fileID: 7996711730950076425, guid: a286a2b78edada443802bd9c114aeb11, type: 3}
   m_dropsList:
   - LootPrefab: {fileID: 2011092294068072587, guid: a9a421e4b2f4ff84a8662f1531b12625, type: 3}
+    Weight: 1
+    m_lowerChance: 0
+    m_upperChance: 100

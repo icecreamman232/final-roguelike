@@ -38,7 +38,6 @@ namespace SGGames.Scripts.Player
                 && ((Chest)m_interactObject).ChestType == ChestType.Legendary)
             {
                 if (!CurrencyManager.Instance.HasKey) return;
-                return;
             }
             
             m_interactObject.Interact();
