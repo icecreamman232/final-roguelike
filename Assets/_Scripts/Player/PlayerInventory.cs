@@ -19,6 +19,7 @@ namespace SGGames.Scripts.Player
         [SerializeField] private GlovesData m_glovesSlot;
         [SerializeField] private BootsData m_bootsSlot;
         [SerializeField] private AccessoriesData m_accessoriesSlot;
+        [SerializeField] private CharmData m_charmSlot;
         [Header("Events")]
         [SerializeField] private ItemPickedEvent m_itemPickedEvent;
         [Header("Inventory Slots")]
@@ -66,6 +67,7 @@ namespace SGGames.Scripts.Player
                     TryAddAccessories((AccessoriesData)data, picker);
                     break;
                 case ItemCategory.Charm:
+                    TryAddCharm((CharmData)data, picker);
                     break;
             }
         }
@@ -179,6 +181,26 @@ namespace SGGames.Scripts.Player
             if (m_accessoriesSlot == null)
             {
                 m_accessoriesSlot = data;
+                foreach (var modifier in data.ModifierList)
+                {
+                    m_playerModifierHandler.RegisterModifier(modifier);
+                }
+                Destroy(picker);
+            }
+            else
+            {
+                if (AddToEmptyInventorySlot(data))
+                {
+                    Destroy(picker);
+                }
+            }
+        }
+        
+        private void TryAddCharm(CharmData data, GameObject picker)
+        {
+            if (m_charmSlot == null)
+            {
+                m_charmSlot = data;
                 foreach (var modifier in data.ModifierList)
                 {
                     m_playerModifierHandler.RegisterModifier(modifier);
