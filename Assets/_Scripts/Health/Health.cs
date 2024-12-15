@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -9,8 +8,8 @@ namespace SGGames.Scripts.Healths
     /// </summary>
     public class Health : MonoBehaviour
     {
-        [SerializeField] protected float m_maxHealth;
-        [SerializeField] protected float m_currentHealth;
+        [SerializeField][Min(0)] protected float m_maxHealth;
+        [SerializeField][Min(0)] protected float m_currentHealth;
         /// <summary>
         /// This boolean will be reset after duration
         /// </summary>

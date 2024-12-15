@@ -39,6 +39,16 @@ namespace SGGames.Scripts.Modifiers
                     m_playerHealth.SetImmortal(true);
                     m_isProcessing = true;
                     break;
+                
+                case HealthModifierType.IncreaseCurrentHP:
+                    m_playerHealth.ModifyCurrentHealth(m_modifier.ModifierValue);
+                    break;
+                case HealthModifierType.DecreaseCurrentHP:
+                    m_playerHealth.ModifyCurrentHealth(-m_modifier.ModifierValue);
+                    break;
+                case HealthModifierType.OverrideCurrentHP:
+                    m_playerHealth.OverrideCurrentHealth(m_modifier.ModifierValue);
+                    break;
                 case HealthModifierType.DecreaseMaxHP:
                     m_playerHealth.ModifyMaxHealth(-m_modifier.ModifierValue);
                     break;
