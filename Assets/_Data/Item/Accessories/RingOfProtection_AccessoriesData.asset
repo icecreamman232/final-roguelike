@@ -1,0 +1,20 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 393d2399653be984fbc65ce849636802, type: 3}
+  m_Name: RingOfProtection_AccessoriesData
+  m_EditorClassIdentifier: 
+  m_itemID: ring-of-protection
+  m_rarity: 0
+  m_itemCategory: 5
+  m_icon: {fileID: -111250204, guid: 15969c98aa74ee549a1195d491b1f3d0, type: 3}
+  m_modifierList: []
+  m_pickerPrefab: {fileID: 0}
