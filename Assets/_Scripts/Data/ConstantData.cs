@@ -3,6 +3,7 @@ using UnityEngine;
 namespace SGGames.Scripts.Data
 {
     [CreateAssetMenu(fileName = "ConstantData", menuName = "SGGames/Data/Constants")]
+    [PreferBinarySerialization]
     public class ConstantData : ScriptableObject
     {
         [SerializeField] private float m_maxAtkSpd;
