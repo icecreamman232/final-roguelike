@@ -68,6 +68,7 @@ MonoBehaviour:
   m_accessoriesChest: {fileID: 3369234309532769636, guid: fc83ed85879baa148a580e42d98567ad, type: 3}
   m_charmChest: {fileID: 6361322777344538916, guid: 4d4c1e82a7237a9488d5fc4b2806776c, type: 3}
   m_enemyList: []
+  m_gameEvent: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
   m_enterDoorEvent: {fileID: 11400000, guid: e1372761e91d0ef489199057825b1ae8, type: 2}
   m_freezePlayerEvent: {fileID: 11400000, guid: 1338a4fa70285e7488b5acc1fb4c30fe, type: 2}
   m_fadeOutScreenEvent: {fileID: 11400000, guid: 4a94ee6c32caedd4f9429fc54dd6c908, type: 2}

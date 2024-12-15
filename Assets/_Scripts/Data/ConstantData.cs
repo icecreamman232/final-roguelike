@@ -24,7 +24,7 @@ namespace SGGames.Scripts.Data
         
         public float C_MAX_ATK_SPD => m_maxAtkSpd;
         public float C_STR_TO_REGENERATE => m_strToRegenerate;
-        public float C_STR_TO_HEALTH => m_strToRegenerate;
+        public float C_STR_TO_HEALTH => m_strToHealth;
         public float C_AGI_TO_ATK_SPD => m_agiToAtkSpd;
         public float C_ATK_SPD_TO_ATK_RATE => m_atkSpdToAtkRate;
         

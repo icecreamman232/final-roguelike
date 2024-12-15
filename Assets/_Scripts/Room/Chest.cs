@@ -1,3 +1,4 @@
+using SGGames.Scripts.Common;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Pickables;
 using SGGames.Scripts.Player;
@@ -6,12 +7,6 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Rooms
 {
-    public enum ChestType
-    {
-        Common,
-        Golden,
-        Legendary,
-    }
     public class Chest : MonoBehaviour, IInteractable
     {
         [SerializeField] private InteractType m_type;
@@ -21,7 +16,7 @@ namespace SGGames.Scripts.Rooms
         [SerializeField] private GameObject m_model;
         [SerializeField] private BoxCollider2D m_collider2D;
         [SerializeField] private InteractionLoot m_loot;
-        [SerializeField] private ActionEvent m_roomClearedEvent;
+        [SerializeField] private GameEvent m_gameEvent;
         
         private PlayerInteract m_playerInteract;
         public ChestType ChestType => m_chestType;
@@ -30,15 +25,16 @@ namespace SGGames.Scripts.Rooms
         {
             m_model.SetActive(false);
             m_collider2D.enabled = false;
-            m_roomClearedEvent.AddListener(OnRoomCleared);
+            m_gameEvent.AddListener(OnReceiveGameEvent);
         }
 
-        private void OnRoomCleared()
+        private void OnReceiveGameEvent(GameEventType eventType)
         {
+            if (eventType != GameEventType.ROOM_CLEARED) return;
             //TODO: Play chest drop down animation here
             m_model.SetActive(true);
             m_collider2D.enabled = true;
-            m_roomClearedEvent.RemoveListener(OnRoomCleared);
+            m_gameEvent.RemoveListener(OnReceiveGameEvent);
         }
 
         private void OnTriggerEnter2D(Collider2D other)

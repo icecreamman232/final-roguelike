@@ -1,20 +1,39 @@
 using System;
 using System.Collections.Generic;
+using SGGames.Scripts.Common;
+using SGGames.Scripts.Events;
 using SGGames.Scripts.Healths;
 using SGGames.Scripts.Player;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace SGGames.Scripts.Modifiers
 {
     public class ModifierHandler : MonoBehaviour
     {
+        [Header("Player Components")]
         [SerializeField] private PlayerMovement m_playerMovement;
         [SerializeField] private PlayerHealth m_playerHealth;
         [SerializeField] private PlayerDamageComputer m_damageComputer;
+        [FormerlySerializedAs("m_gameEvent")]
+        [Header("Events")] 
+        [SerializeField] private GameEvent m_gameEvent;
+        [Header("Processors")]
         [SerializeField] private List<MovementModifierProcessor> m_movementModifierProcessors;
         [SerializeField] private List<HealthModifierProcessor> m_healthModifierProcessors;
         [SerializeField] private List<DamageModifierProcessor> m_damageModifierProcessors;
-        
+        [SerializeField] private List<TriggerAfterEventModifierProcessor> m_triggerAfterEventModifierProcessors;
+
+        private void Start()
+        {
+            m_gameEvent.AddListener(OnReceiveGameEvent);
+        }
+
+        private void OnDestroy()
+        {
+            m_gameEvent.RemoveListener(OnReceiveGameEvent);
+        }
+
         public void RegisterModifier(Modifier modifier)
         {
             switch (modifier.ModifierType)
@@ -36,6 +55,11 @@ namespace SGGames.Scripts.Modifiers
                     damageProcessor.Initialize(this, m_damageComputer,(DamageModifier)modifier);
                     damageProcessor.StartModifier();
                     m_damageModifierProcessors.Add(damageProcessor);
+                    break;
+                case ModifierType.TRIGGER_AFTER_GAME_EVENT:
+                    var triggerProcessor = this.gameObject.AddComponent<TriggerAfterEventModifierProcessor>();
+                    triggerProcessor.Initialize(this, (TriggerAfterEventModifier)modifier);
+                    m_triggerAfterEventModifierProcessors.Add(triggerProcessor);
                     break;
             }
         }
@@ -60,10 +84,32 @@ namespace SGGames.Scripts.Modifiers
             m_damageModifierProcessors.Remove(processor);
             DestroyImmediate(processor);
         }
+        
+        public void RemoveTriggerAfterEventModifierProcessor(TriggerAfterEventModifierProcessor processor)
+        {
+            if (!m_triggerAfterEventModifierProcessors.Contains(processor)) return;
+            m_triggerAfterEventModifierProcessors.Remove(processor);
+            DestroyImmediate(processor);
+        }
 
         public void UnregisterModifier(Modifier info)
         {
             
+        }
+        
+        private void OnReceiveGameEvent(GameEventType eventType)
+        {
+            for (int i = 0; i < m_triggerAfterEventModifierProcessors.Count; i++)
+            {
+                if (m_triggerAfterEventModifierProcessors[i].Modifier.EventTypeToTrigger == eventType)
+                {
+                    m_triggerAfterEventModifierProcessors[i].StartModifier();
+                    if (m_triggerAfterEventModifierProcessors[i].Modifier.TriggerOnce)
+                    {
+                        RemoveTriggerAfterEventModifierProcessor(m_triggerAfterEventModifierProcessors[i]);
+                    }
+                }
+            }
         }
     }
 }

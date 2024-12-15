@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using SGGames.Scripts.Attribute;
+using SGGames.Scripts.Common;
 using SGGames.Scripts.Core;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
@@ -44,10 +45,10 @@ namespace SGGames.Scripts.Managers
         [Header("Enemies")]
         [SerializeField]private List<EnemyHealth> m_enemyList;
         [Header("Events")] 
+        [SerializeField] private GameEvent m_gameEvent;
         [SerializeField] private IntEvent m_enterDoorEvent;
         [SerializeField] private BoolEvent m_freezePlayerEvent;
         [SerializeField] private BoolEvent m_fadeOutScreenEvent;
-        [SerializeField] private ActionEvent m_roomClearedEvent;
         
         private readonly int m_maxAreaCount = 7;
         private BoxCollider2D m_roomCollider;
@@ -88,7 +89,7 @@ namespace SGGames.Scripts.Managers
             if (m_enemyList.Count <= 0)
             {
                 m_currentRoom.OpenDoors();
-                m_roomClearedEvent?.Raise();
+                m_gameEvent?.Raise(GameEventType.ROOM_CLEARED);
             }
         }
         
@@ -118,6 +119,7 @@ namespace SGGames.Scripts.Managers
 
             yield return new WaitForSeconds(ScreenFader.FadeDuration);
             
+            m_gameEvent?.Raise(GameEventType.ENTER_THE_ROOM);
             m_freezePlayerEvent?.Raise(false);
         }
 
@@ -238,6 +240,7 @@ namespace SGGames.Scripts.Managers
             m_fadeOutScreenEvent?.Raise(false);
             yield return new WaitForSeconds(ScreenFader.FadeDuration);
             
+            m_gameEvent?.Raise(GameEventType.ENTER_THE_ROOM);
             m_freezePlayerEvent?.Raise(false);
         }
 

@@ -1,4 +1,5 @@
 using System;
+using SGGames.Scripts.Common;
 using SGGames.Scripts.Manager;
 using SGGames.Scripts.Rooms;
 using UnityEngine;
@@ -6,18 +7,7 @@ using UnityEngine.InputSystem;
 
 namespace SGGames.Scripts.Player
 {
-    public enum InteractType
-    {
-        None,
-        Chest,
-        Weapon,
-        Helmet,
-        Armor,
-        Boots,
-        Gloves,
-        Accessories,
-        Charm,
-    }
+    
     
     public interface IInteractable
     {

@@ -337,9 +337,11 @@ MonoBehaviour:
   m_playerMovement: {fileID: 5311189830458795856}
   m_playerHealth: {fileID: 904574974438328195}
   m_damageComputer: {fileID: 6211949587856999711}
+  m_gameEvent: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
   m_movementModifierProcessors: []
   m_healthModifierProcessors: []
   m_damageModifierProcessors: []
+  m_triggerAfterEventModifierProcessors: []
 --- !u!1 &2082253337759199587
 GameObject:
   m_ObjectHideFlags: 0
