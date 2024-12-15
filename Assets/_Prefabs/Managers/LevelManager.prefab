@@ -59,20 +59,19 @@ MonoBehaviour:
   m_roomIndex: 0
   m_keyChest: {fileID: 5453502969841521301, guid: 876ce4c52fb54534ea28fffa850df4c6, type: 3}
   m_coinChest: {fileID: 5453502969841521301, guid: 876ce4c52fb54534ea28fffa850df4c6, type: 3}
-  m_itemChest: {fileID: 3369234309532769636, guid: fc83ed85879baa148a580e42d98567ad, type: 3}
-  m_weaponChest: {fileID: 6361322777344538916, guid: 4d4c1e82a7237a9488d5fc4b2806776c, type: 3}
-  m_helmetChest: {fileID: 5453502969841521301, guid: 876ce4c52fb54534ea28fffa850df4c6, type: 3}
-  m_armorChest: {fileID: 3369234309532769636, guid: fc83ed85879baa148a580e42d98567ad, type: 3}
-  m_glovesChest: {fileID: 6361322777344538916, guid: 4d4c1e82a7237a9488d5fc4b2806776c, type: 3}
-  m_bootsChest: {fileID: 5453502969841521301, guid: 876ce4c52fb54534ea28fffa850df4c6, type: 3}
-  m_accessoriesChest: {fileID: 3369234309532769636, guid: fc83ed85879baa148a580e42d98567ad, type: 3}
-  m_charmChest: {fileID: 6361322777344538916, guid: 4d4c1e82a7237a9488d5fc4b2806776c, type: 3}
+  m_itemChest: {fileID: 6361322777344538916, guid: 4d4c1e82a7237a9488d5fc4b2806776c, type: 3}
+  m_weaponChest: {fileID: 3369234309532769636, guid: fc83ed85879baa148a580e42d98567ad, type: 3}
+  m_helmetChest: {fileID: 3369234309532769636, guid: 2899e720e1a6c84428e571637312a01d, type: 3}
+  m_armorChest: {fileID: 3369234309532769636, guid: 679beb6f171214448bc6c8325a559df9, type: 3}
+  m_glovesChest: {fileID: 3369234309532769636, guid: 037bc05bbf941494fa353b2af41df8b8, type: 3}
+  m_bootsChest: {fileID: 3369234309532769636, guid: 21f3684eaa9f60544bc2515cb73f194d, type: 3}
+  m_accessoriesChest: {fileID: 3369234309532769636, guid: 05e5342af755f344aa6f3d9ee6eb9582, type: 3}
+  m_charmChest: {fileID: 3369234309532769636, guid: b9c1ee7af2d220640bfc119c6633a3ce, type: 3}
   m_enemyList: []
   m_gameEvent: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
   m_enterDoorEvent: {fileID: 11400000, guid: e1372761e91d0ef489199057825b1ae8, type: 2}
   m_freezePlayerEvent: {fileID: 11400000, guid: 1338a4fa70285e7488b5acc1fb4c30fe, type: 2}
   m_fadeOutScreenEvent: {fileID: 11400000, guid: 4a94ee6c32caedd4f9429fc54dd6c908, type: 2}
-  m_roomClearedEvent: {fileID: 11400000, guid: f67bd1be3dfa43241ba819310d0c7060, type: 2}
 --- !u!114 &1836569492117602669
 MonoBehaviour:
   m_ObjectHideFlags: 0
