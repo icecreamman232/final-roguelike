@@ -3,6 +3,7 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Healths
 {
+    [SelectionBase]
     public class PlayerHealth : Health
     {
         [SerializeField] private PlayerHealthUpdateEvent m_PlayerHealthUpdateEvent;
