@@ -15,6 +15,6 @@ MonoBehaviour:
   m_itemID: hunter-gloves
   m_rarity: 0
   m_itemCategory: 4
-  m_icon: {fileID: 0}
+  m_icon: {fileID: 1884646485, guid: bb29aa4092093ac49bff5f56951f1263, type: 3}
   m_modifierList: []
   m_pickerPrefab: {fileID: 2011092294068072587, guid: 25acd068725f79848a1407a06d3af3db, type: 3}
