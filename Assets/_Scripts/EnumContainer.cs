@@ -6,6 +6,8 @@ namespace SGGames.Scripts.Common
     {
         ENTER_THE_ROOM,
         ROOM_CLEARED,
+        PAUSED,
+        UNPAUSED,
     }
     
     public enum InteractType

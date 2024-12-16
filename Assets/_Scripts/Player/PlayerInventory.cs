@@ -1,9 +1,12 @@
+using System;
 using System.Collections.Generic;
+using SGGames.Scripts.Common;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Modifiers;
 using SGGames.Scripts.Weapons;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace SGGames.Scripts.Player
 {
@@ -20,13 +23,19 @@ namespace SGGames.Scripts.Player
         [SerializeField] private BootsData m_bootsSlot;
         [SerializeField] private AccessoriesData m_accessoriesSlot;
         [SerializeField] private CharmData m_charmSlot;
-        [Header("Events")]
+        [Header("Events")] 
+        [SerializeField] private GameEvent m_gameEvent;
+        [SerializeField] private BoolEvent m_toggleFreezePlayerEvent;
+        [SerializeField] private OpenInventoryUIEvent m_openInventoryUI;
+        [SerializeField] private UpdateInventoryUIEvent m_updateInventoryUI;
         [SerializeField] private ItemPickedEvent m_itemPickedEvent;
         [Header("Inventory Slots")]
         [SerializeField] private List<ItemData> m_inventorySlots;
 
-        private readonly int C_MAX_INVENTORY_SLOT = 5;
+        private PlayerInputAction m_playerInputAction;
+        private readonly int C_MAX_INVENTORY_SLOT = 6;
         private int m_occupiedInventoryNumber = 0;
+        private bool m_isOpeningInventoryUI;
         
         protected override void Start()
         {
@@ -37,7 +46,20 @@ namespace SGGames.Scripts.Player
                 m_inventorySlots.Add(null);
             }
             m_itemPickedEvent.AddListener(OnItemPicked);
+            m_playerInputAction = new PlayerInputAction();
+            m_playerInputAction.Player.Enable();
+            m_playerInputAction.Player.Inventory.performed += OnInventoryButtonPressed;
         }
+
+        private void OnInventoryButtonPressed(InputAction.CallbackContext context)
+        {
+            m_isOpeningInventoryUI = !m_isOpeningInventoryUI;
+            m_toggleFreezePlayerEvent?.Raise(m_isOpeningInventoryUI);
+            m_gameEvent.Raise(m_isOpeningInventoryUI ? GameEventType.PAUSED : GameEventType.UNPAUSED);
+            m_openInventoryUI?.Raise(m_isOpeningInventoryUI,m_primaryWeaponSlot,m_helmetSlot,m_armorSlot,m_glovesSlot,
+                m_bootsSlot,m_accessoriesSlot,m_charmSlot,m_inventorySlots);
+        }
+
 
         private void OnDestroy()
         {
@@ -49,25 +71,46 @@ namespace SGGames.Scripts.Player
             switch (category)
             {
                 case ItemCategory.Weapon:
-                    TryAddWeapon((WeaponData)data, picker);
+                    if (TryAddWeapon((WeaponData)data))
+                    {
+                        Destroy(picker);
+                    }
                     break;
                 case ItemCategory.Helmet:
-                    TryAddHelmet((HelmetData)data, picker);
+                    if (TryAddHelmet((HelmetData)data))
+                    {
+                        Destroy(picker);
+                    }
                     break;
                 case ItemCategory.Armor:
-                    TryAddArmor((ArmorData)data, picker);
+                    if (TryAddArmor((ArmorData)data))
+                    {
+                        Destroy(picker);
+                    }
                     break;
                 case ItemCategory.Boots:
-                    TryAddBoots((BootsData)data, picker);
+                    if (TryAddBoots((BootsData)data))
+                    {
+                        Destroy(picker);
+                    }
                     break;
                 case ItemCategory.Gloves:
-                    TryAddGloves((GlovesData)data, picker);
+                    if (TryAddGloves((GlovesData)data))
+                    {
+                        Destroy(picker);
+                    }
                     break;
                 case ItemCategory.Accessories:
-                    TryAddAccessories((AccessoriesData)data, picker);
+                    if (TryAddAccessories((AccessoriesData)data))
+                    {
+                        Destroy(picker);
+                    }
                     break;
                 case ItemCategory.Charm:
-                    TryAddCharm((CharmData)data, picker);
+                    if (TryAddCharm((CharmData)data))
+                    {
+                        Destroy(picker);
+                    }
                     break;
             }
         }
@@ -77,25 +120,27 @@ namespace SGGames.Scripts.Player
             m_primaryWeaponSlot = data;
         }
 
-        private void TryAddWeapon(WeaponData data, GameObject picker)
+        private bool TryAddWeapon(WeaponData data)
         {
             //Primary slot is empty => add to slot and equip weapon
             if (m_primaryWeaponSlot == null)
             {
                 m_primaryWeaponSlot = data;
                 m_playerWeaponHandler.EquipWeapon(data.WeaponPrefab.GetComponent<Weapon>());
-                Destroy(picker);
+                return true;
             }
             else
             {
                 if (AddToEmptyInventorySlot(data))
                 {
-                    Destroy(picker);
+                    return true;
                 }
             }
+
+            return false;
         }
 
-        private void TryAddHelmet(HelmetData data, GameObject picker)
+        private bool TryAddHelmet(HelmetData data)
         {
             if (m_helmetSlot == null)
             {
@@ -104,18 +149,21 @@ namespace SGGames.Scripts.Player
                 {
                     m_playerModifierHandler.RegisterModifier(modifier);
                 }
-                Destroy(picker);
+
+                return true;
             }
             else
             {
                 if (AddToEmptyInventorySlot(data))
                 {
-                    Destroy(picker);
+                    return true;
                 }
             }
+
+            return false;
         }
         
-        private void TryAddArmor(ArmorData data, GameObject picker)
+        private bool TryAddArmor(ArmorData data)
         {
             if (m_armorSlot == null)
             {
@@ -124,18 +172,20 @@ namespace SGGames.Scripts.Player
                 {
                     m_playerModifierHandler.RegisterModifier(modifier);
                 }
-                Destroy(picker);
+
+                return true;
             }
             else
             {
                 if (AddToEmptyInventorySlot(data))
                 {
-                    Destroy(picker);
+                    return true; 
                 }
             }
+            return false;
         }
         
-        private void TryAddBoots(BootsData data, GameObject picker)
+        private bool TryAddBoots(BootsData data)
         {
             if (m_bootsSlot == null)
             {
@@ -144,19 +194,21 @@ namespace SGGames.Scripts.Player
                 {
                     m_playerModifierHandler.RegisterModifier(modifier);
                 }
-                Destroy(picker);
+
+                return true;
             }
             else
             {
                 if (AddToEmptyInventorySlot(data))
                 {
-                    Destroy(picker);
+                    return true;
                 }
             }
+            return false;
         }
 
         
-        private void TryAddGloves(GlovesData data, GameObject picker)
+        private bool TryAddGloves(GlovesData data)
         {
             if (m_glovesSlot == null)
             {
@@ -165,18 +217,19 @@ namespace SGGames.Scripts.Player
                 {
                     m_playerModifierHandler.RegisterModifier(modifier);
                 }
-                Destroy(picker);
+                return true;
             }
             else
             {
                 if (AddToEmptyInventorySlot(data))
                 {
-                    Destroy(picker);
+                    return true;
                 }
             }
+            return false;
         }
         
-        private void TryAddAccessories(AccessoriesData data, GameObject picker)
+        private bool TryAddAccessories(AccessoriesData data)
         {
             if (m_accessoriesSlot == null)
             {
@@ -185,18 +238,19 @@ namespace SGGames.Scripts.Player
                 {
                     m_playerModifierHandler.RegisterModifier(modifier);
                 }
-                Destroy(picker);
+                return true;
             }
             else
             {
                 if (AddToEmptyInventorySlot(data))
                 {
-                    Destroy(picker);
+                    return true;
                 }
             }
+            return false;
         }
         
-        private void TryAddCharm(CharmData data, GameObject picker)
+        private bool TryAddCharm(CharmData data)
         {
             if (m_charmSlot == null)
             {
@@ -205,15 +259,16 @@ namespace SGGames.Scripts.Player
                 {
                     m_playerModifierHandler.RegisterModifier(modifier);
                 }
-                Destroy(picker);
+                return true;
             }
             else
             {
                 if (AddToEmptyInventorySlot(data))
                 {
-                    Destroy(picker);
+                    return true;
                 }
             }
+            return false;
         }
 
         private bool AddToEmptyInventorySlot(ItemData data)
@@ -231,6 +286,137 @@ namespace SGGames.Scripts.Player
             }
 
             return false;   
+        }
+
+        public ItemData GetItemAtInventorySlot(int index)
+        {
+            return m_inventorySlots[index];
+        }
+        
+
+        public bool IsThisInventorySlotEmpty(int slotIndex)
+        {
+            return m_inventorySlots[slotIndex] == null;
+        }
+
+        public bool CanSwitchInventoryToEquipment(ItemCategory equipmentCategory, int slotIndex)
+        {
+            return m_inventorySlots[slotIndex].ItemCategory == equipmentCategory;
+        }
+
+        private ItemData GetItemAtEquipment(ItemCategory equipmentCategory)
+        {
+            switch (equipmentCategory)
+            {
+                case ItemCategory.Weapon:
+                    return m_primaryWeaponSlot;
+                case ItemCategory.Helmet:
+                    return m_helmetSlot;
+                case ItemCategory.Armor:
+                    return m_armorSlot;
+                case ItemCategory.Boots:
+                    return m_bootsSlot;
+                case ItemCategory.Gloves:
+                    return m_glovesSlot;
+                case ItemCategory.Accessories:
+                    return m_accessoriesSlot;
+                case ItemCategory.Charm:
+                    return m_charmSlot;
+                default:
+                    return null;
+            }
+        }
+
+        private void AddToEquipmentSlot(ItemData item)
+        {
+            switch (item.ItemCategory)
+            {
+                case ItemCategory.Weapon:
+                    TryAddWeapon((WeaponData)item);
+                    break;
+                case ItemCategory.Helmet:
+                    TryAddHelmet((HelmetData)item);
+                    break;
+                case ItemCategory.Armor:
+                    TryAddArmor((ArmorData)item);
+                    break;
+                case ItemCategory.Boots:
+                    TryAddBoots((BootsData)item);
+                    break;
+                case ItemCategory.Gloves:
+                    TryAddGloves((GlovesData)item) ;
+                    break;
+                case ItemCategory.Accessories:
+                    TryAddAccessories((AccessoriesData)item);
+                    break;
+                case ItemCategory.Charm:
+                    TryAddCharm((CharmData)item);
+                    break;
+            }
+        }
+
+        public void MoveEquipmentToInventorySlot(ItemCategory equipmentCategory, int inventorySlotIndex)
+        {
+            if (m_inventorySlots[inventorySlotIndex] == null)
+            {
+                m_inventorySlots[inventorySlotIndex] = GetItemAtEquipment(equipmentCategory);
+                switch (equipmentCategory)
+                {
+                    case ItemCategory.Weapon:
+                        m_primaryWeaponSlot = null;
+                        m_playerWeaponHandler.UnEquipWeapon();
+                        break;
+                    case ItemCategory.Helmet:
+                        m_helmetSlot = null;
+                        break;
+                    case ItemCategory.Armor:
+                        m_armorSlot = null;
+                        break;
+                    case ItemCategory.Boots:
+                        m_bootsSlot = null;
+                        break;
+                    case ItemCategory.Gloves:
+                        m_glovesSlot = null;
+                        break;
+                    case ItemCategory.Accessories:
+                        m_accessoriesSlot = null;
+                        break;
+                    case ItemCategory.Charm:
+                        m_charmSlot = null;
+                        break;
+                }
+            }
+            else
+            {
+                var itemDataAtInventorySlot = m_inventorySlots[inventorySlotIndex];
+                var itemAtEquipmentSlot = GetItemAtEquipment(equipmentCategory);
+                
+                AddToEquipmentSlot(itemDataAtInventorySlot);
+                m_inventorySlots[inventorySlotIndex] = itemAtEquipmentSlot;
+            }
+            m_updateInventoryUI.Raise(m_primaryWeaponSlot,m_helmetSlot,m_armorSlot,m_glovesSlot,m_bootsSlot,m_accessoriesSlot,m_charmSlot,m_inventorySlots);
+        }
+
+        public void MoveInventoryToEquipmentSlot(ItemCategory equipmentCategory, int inventorySlotIndex)
+        {
+            if (m_inventorySlots[inventorySlotIndex].ItemCategory != equipmentCategory) return;
+
+            var itemAtInventorySlot = m_inventorySlots[inventorySlotIndex];
+            var itemAtEquipmentSlot = GetItemAtEquipment(equipmentCategory);
+            m_inventorySlots[inventorySlotIndex] = itemAtEquipmentSlot;
+            AddToEquipmentSlot(itemAtInventorySlot);
+            
+            m_updateInventoryUI.Raise(m_primaryWeaponSlot,m_helmetSlot,m_armorSlot,m_glovesSlot,m_bootsSlot,m_accessoriesSlot,m_charmSlot,m_inventorySlots);
+        }
+
+        public void MoveInventoryToInventorySlot(int from, int to)
+        {
+            var itemAtInventoryFrom = m_inventorySlots[from];
+            var itemAtInventoryTo = m_inventorySlots[to];
+            m_inventorySlots[from] = itemAtInventoryTo;
+            m_inventorySlots[to] = itemAtInventoryFrom;
+            
+            m_updateInventoryUI.Raise(m_primaryWeaponSlot,m_helmetSlot,m_armorSlot,m_glovesSlot,m_bootsSlot,m_accessoriesSlot,m_charmSlot,m_inventorySlots);
         }
     }
 }

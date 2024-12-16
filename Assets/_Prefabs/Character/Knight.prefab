@@ -288,6 +288,10 @@ MonoBehaviour:
   m_bootsSlot: {fileID: 0}
   m_accessoriesSlot: {fileID: 0}
   m_charmSlot: {fileID: 0}
+  m_gameEvent: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
+  m_toggleFreezePlayerEvent: {fileID: 11400000, guid: 1338a4fa70285e7488b5acc1fb4c30fe, type: 2}
+  m_openInventoryUI: {fileID: 11400000, guid: a368cab554cb21840890473e363380e4, type: 2}
+  m_updateInventoryUI: {fileID: 11400000, guid: d47cfc6a2bf7c2a4dbd73baee44f9449, type: 2}
   m_itemPickedEvent: {fileID: 11400000, guid: 9a7e64e4c361154488877a0458d5deaf, type: 2}
   m_inventorySlots: []
 --- !u!1 &1510195004236968706

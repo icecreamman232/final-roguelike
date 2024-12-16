@@ -55,6 +55,8 @@ namespace SGGames.Scripts.Managers
         
         public BoxCollider2D RoomCollider => m_roomCollider;
         
+        public GameObject PlayerRef => m_playerRef;
+        
         private void Start()
         {
             m_roomIndex = 0;

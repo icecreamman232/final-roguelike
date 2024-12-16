@@ -48,6 +48,12 @@ namespace SGGames.Scripts.Player
             m_currentWeapon = Instantiate(newWeapon, m_weaponAttachment);
         }
 
+        public virtual void UnEquipWeapon()
+        {
+            m_currentWeapon.StopShooting();
+            Destroy(m_currentWeapon.gameObject);
+        }
+
         public virtual void SwitchWeapon(Weapon newWeapon)
         {
             m_currentWeapon.StopShooting();
