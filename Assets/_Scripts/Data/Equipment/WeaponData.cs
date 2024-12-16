@@ -26,7 +26,8 @@ namespace SGGames.Scripts.Data
         public float ProjectileSpeed => m_projectileSpeed;
         public GameObject WeaponPrefab => m_weaponPrefab;
         public GameObject ProjectilePrefab => m_projectilePrefab;
-        
+
+#if UNITY_EDITOR
         public void ApplyData()
         {
             var weapon = m_weaponPrefab.GetComponent<Weapon>();
@@ -39,5 +40,6 @@ namespace SGGames.Scripts.Data
             PrefabUtility.SavePrefabAsset(m_projectilePrefab);
             AssetDatabase.SaveAssets();
         }
+#endif
     }
 }
