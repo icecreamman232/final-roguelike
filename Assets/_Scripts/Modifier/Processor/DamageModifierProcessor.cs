@@ -11,6 +11,8 @@ namespace SGGames.Scripts.Modifiers
        private float m_timer;
        private ModifierHandler m_handler;
        
+       public DamageModifier Modifier => m_modifier;
+       
        public void Initialize(ModifierHandler handler, PlayerDamageComputer damageComputer, DamageModifier modifier)
        {
            m_handler = handler;

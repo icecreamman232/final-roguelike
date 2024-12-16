@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30860f209a6f01d48a481755d0fc6675, type: 3}
-  m_Name: IncreaseHPOnEnterRoom_TriggerModifier
+  m_Name: ImmortalForDurationOnEnterRoom_TriggerModifier
   m_EditorClassIdentifier: 
   ModifierType: 3
   Duration: 0

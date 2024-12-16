@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: HealthModifier
   m_EditorClassIdentifier: 
   ModifierType: 1
-  Duration: 3
-  HealthModifierType: 6
-  ModifierValue: 0
+  Duration: 0
+  IsRunning: 0
+  HealthModifierType: 3
+  ModifierValue: 30

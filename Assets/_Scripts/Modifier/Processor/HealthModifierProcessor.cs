@@ -1,3 +1,4 @@
+using System;
 using SGGames.Scripts.Healths;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ namespace SGGames.Scripts.Modifiers
         
         private float m_timer;
         private ModifierHandler m_handler;
+        
+        public HealthModifier Modifier => m_modifier;
         
         public void Initialize(ModifierHandler handler, PlayerHealth playerHealth, HealthModifier modifier)
         {
@@ -89,6 +92,24 @@ namespace SGGames.Scripts.Modifiers
                     break;
                 case HealthModifierType.SetImmortal_ForDuration:
                     m_playerHealth.SetImmortal(false);
+                    break;
+                case HealthModifierType.DecreaseMaxHP:
+                    m_playerHealth.ModifyMaxHealth(m_modifier.ModifierValue);
+                    break;
+                case HealthModifierType.IncreaseMaxHP:
+                    m_playerHealth.ModifyMaxHealth(-m_modifier.ModifierValue);
+                    break;
+                case HealthModifierType.OverrideMaxHP:
+                    //TODO:Implement a way to save previous value before got override
+                    break;
+                case HealthModifierType.IncreaseCurrentHP:
+                    m_playerHealth.ModifyCurrentHealth(-m_modifier.ModifierValue);
+                    break;
+                case HealthModifierType.DecreaseCurrentHP:
+                    m_playerHealth.ModifyCurrentHealth(m_modifier.ModifierValue);
+                    break;
+                case HealthModifierType.OverrideCurrentHP:
+                    //TODO:Implement a way to save previous value before got override
                     break;
             }
 

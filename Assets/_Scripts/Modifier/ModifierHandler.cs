@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Healths;
@@ -94,7 +95,25 @@ namespace SGGames.Scripts.Modifiers
 
         public void UnregisterModifier(Modifier info)
         {
-            
+            switch (info.ModifierType)
+            {
+                case ModifierType.MOVEMENT:
+                    var movementProcessor = m_movementModifierProcessors.FirstOrDefault(x => x.Modifier == info);
+                    movementProcessor?.StopModifier();
+                    break;
+                case ModifierType.HEALTH:
+                    var healthProcessor = m_healthModifierProcessors.FirstOrDefault(x => x.Modifier == info);
+                    healthProcessor?.StopModifier();
+                    break;
+                case ModifierType.DAMAGE:
+                    var damageProcessor = m_damageModifierProcessors.FirstOrDefault(x => x.Modifier == info);
+                    damageProcessor?.StopModifier();
+                    break;
+                case ModifierType.TRIGGER_AFTER_GAME_EVENT:
+                    var triggerAfterEventModifierProcessor = m_triggerAfterEventModifierProcessors.FirstOrDefault(x => x.Modifier == info);
+                    triggerAfterEventModifierProcessor?.StopModifier();
+                    break;
+            }
         }
         
         private void OnReceiveGameEvent(GameEventType eventType)

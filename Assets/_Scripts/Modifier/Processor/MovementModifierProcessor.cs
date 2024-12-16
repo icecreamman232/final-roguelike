@@ -1,3 +1,4 @@
+using System;
 using SGGames.Scripts.Player;
 using UnityEngine;
 
@@ -10,6 +11,8 @@ namespace SGGames.Scripts.Modifiers
         [SerializeField] private PlayerMovement m_playerMovement;
         private float m_timer;
         private ModifierHandler m_handler;
+        
+        public MovementModifier Modifier => m_modifier;
         
         public void Initialize(ModifierHandler handler, PlayerMovement playerMovement, MovementModifier modifier)
         {
@@ -72,6 +75,14 @@ namespace SGGames.Scripts.Modifiers
                     break;
                 case MovementModifierType.OverrideSpeedForDuration:
                     m_playerMovement.ResetSpeed();
+                    break;
+                case MovementModifierType.ReduceMS:
+                    m_playerMovement.ModifySpeed(m_modifier.ModifierValue);
+                    break;
+                case MovementModifierType.IncreaseMS:
+                    m_playerMovement.ModifySpeed(-m_modifier.ModifierValue);
+                    break;
+                case MovementModifierType.OverrideSpeed:
                     break;
             }
 

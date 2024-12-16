@@ -292,17 +292,6 @@ namespace SGGames.Scripts.Player
         {
             return m_inventorySlots[index];
         }
-        
-
-        public bool IsThisInventorySlotEmpty(int slotIndex)
-        {
-            return m_inventorySlots[slotIndex] == null;
-        }
-
-        public bool CanSwitchInventoryToEquipment(ItemCategory equipmentCategory, int slotIndex)
-        {
-            return m_inventorySlots[slotIndex].ItemCategory == equipmentCategory;
-        }
 
         private ItemData GetItemAtEquipment(ItemCategory equipmentCategory)
         {
@@ -367,21 +356,45 @@ namespace SGGames.Scripts.Player
                         m_playerWeaponHandler.UnEquipWeapon();
                         break;
                     case ItemCategory.Helmet:
+                        foreach (var modifier in m_helmetSlot.ModifierList)
+                        {
+                            m_playerModifierHandler.UnregisterModifier(modifier);
+                        }
                         m_helmetSlot = null;
                         break;
                     case ItemCategory.Armor:
+                        foreach (var modifier in m_armorSlot.ModifierList)
+                        {
+                            m_playerModifierHandler.UnregisterModifier(modifier);
+                        }
                         m_armorSlot = null;
                         break;
                     case ItemCategory.Boots:
+                        foreach (var modifier in m_bootsSlot.ModifierList)
+                        {
+                            m_playerModifierHandler.UnregisterModifier(modifier);
+                        }
                         m_bootsSlot = null;
                         break;
                     case ItemCategory.Gloves:
+                        foreach (var modifier in m_glovesSlot.ModifierList)
+                        {
+                            m_playerModifierHandler.UnregisterModifier(modifier);
+                        }
                         m_glovesSlot = null;
                         break;
                     case ItemCategory.Accessories:
+                        foreach (var modifier in m_accessoriesSlot.ModifierList)
+                        {
+                            m_playerModifierHandler.UnregisterModifier(modifier);
+                        }
                         m_accessoriesSlot = null;
                         break;
                     case ItemCategory.Charm:
+                        foreach (var modifier in m_charmSlot.ModifierList)
+                        {
+                            m_playerModifierHandler.UnregisterModifier(modifier);
+                        }
                         m_charmSlot = null;
                         break;
                 }
