@@ -8,9 +8,7 @@ namespace SGGames.Scripts.Data
     {
         [Header("Modifier")] 
         [SerializeField] private Modifier[] m_modifierList;
-        [Header("Prefab")]
-        [SerializeField] private GameObject m_pickerPrefab;
-        
+
         public Modifier[] ModifierList => m_modifierList;
     }
 }

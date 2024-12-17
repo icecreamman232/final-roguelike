@@ -30,6 +30,7 @@ namespace SGGames.Scripts.Data
         [SerializeField] private Rarity m_rarity;
         [SerializeField] private ItemCategory m_itemCategory;
         [SerializeField] private Sprite m_icon;
+        [SerializeField] private GameObject m_pickerPrefab;
         
         public string ItemID => m_itemID;
         public Rarity Rarity => m_rarity;
@@ -45,6 +46,8 @@ namespace SGGames.Scripts.Data
                 m_icon = value;
             }
         }
+        
+        public GameObject PickerPrefab => m_pickerPrefab;
     }
 }
 

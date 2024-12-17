@@ -13,8 +13,10 @@ MonoBehaviour:
   m_Name: KnightSword_WeaponData
   m_EditorClassIdentifier: 
   m_itemID: knight_sword
+  m_rarity: 0
   m_itemCategory: 0
   m_icon: {fileID: -19065266, guid: 2a57bc0de8ba8674ebe524d88c906410, type: 3}
+  m_pickerPrefab: {fileID: 7668308471651813810, guid: 77da9930bfc31614e95c6112d1fa45f0, type: 3}
   m_minDamage: 20
   m_maxDamage: 35
   m_baseDelayBetweenShots: 0.7

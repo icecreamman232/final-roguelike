@@ -163,6 +163,12 @@ namespace SGGames.Scripts.UI
         
         private void OnPointerUpEquipmentSlot(EquipmentSlotUI equipment)
         {
+            if (m_hoveredEquipmentSlot == null && m_hoveredInventorySlot == null)
+            {
+                DropItemOnTheGround();
+                return;
+            }
+            
             if (m_hoveredEquipmentSlot != null)
             {
                 //Do nothing since we dont allow switch between equipments
@@ -178,6 +184,12 @@ namespace SGGames.Scripts.UI
         
         private void OnPointerUpInventorySlot(InventorySlotUI inventory, int index)
         {
+            if (m_hoveredEquipmentSlot == null && m_hoveredInventorySlot == null)
+            {
+                DropItemOnTheGround();
+                return;
+            }
+            
             if (m_hoveredEquipmentSlot != null)
             {
                 m_playerInventory.MoveInventoryToEquipmentSlot(m_hoveredEquipmentSlot.ItemCategory, index);
@@ -196,6 +208,20 @@ namespace SGGames.Scripts.UI
             BootsData boots, AccessoriesData accessories, CharmData charm, List<ItemData> inventory)
         {
             UpdateInventoryUI(weapon, helmet, armor, gloves, boots, accessories,charm, inventory);
+        }
+
+        private void DropItemOnTheGround()
+        {
+            if (m_selectedEquipmentSlot != null)
+            {
+                m_playerInventory.DropEquipmentOnTheGround(m_selectedEquipmentSlot.ItemCategory);
+                m_inventoryCursor.SetIcon(null);
+            }
+            else if(m_selectedInventorySlot != null)
+            {
+                m_playerInventory.DropInventoryItemOnTheGround(m_selectedInventorySlot.SlotIndex);
+                m_inventoryCursor.SetIcon(null);
+            }
         }
     }
 }

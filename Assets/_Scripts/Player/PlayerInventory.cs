@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
+using SGGames.Scripts.Managers;
 using SGGames.Scripts.Modifiers;
 using SGGames.Scripts.Weapons;
 using UnityEngine;
@@ -23,15 +24,15 @@ namespace SGGames.Scripts.Player
         [SerializeField] private BootsData m_bootsSlot;
         [SerializeField] private AccessoriesData m_accessoriesSlot;
         [SerializeField] private CharmData m_charmSlot;
+        [Header("Inventory Slots")]
+        [SerializeField] private List<ItemData> m_inventorySlots;
         [Header("Events")] 
         [SerializeField] private GameEvent m_gameEvent;
         [SerializeField] private BoolEvent m_toggleFreezePlayerEvent;
         [SerializeField] private OpenInventoryUIEvent m_openInventoryUI;
         [SerializeField] private UpdateInventoryUIEvent m_updateInventoryUI;
         [SerializeField] private ItemPickedEvent m_itemPickedEvent;
-        [Header("Inventory Slots")]
-        [SerializeField] private List<ItemData> m_inventorySlots;
-
+        
         private PlayerInputAction m_playerInputAction;
         private readonly int C_MAX_INVENTORY_SLOT = 6;
         private int m_occupiedInventoryNumber = 0;
@@ -531,6 +532,43 @@ namespace SGGames.Scripts.Player
             m_inventorySlots[from] = itemAtInventoryTo;
             m_inventorySlots[to] = itemAtInventoryFrom;
             
+            m_updateInventoryUI.Raise(m_primaryWeaponSlot,m_helmetSlot,m_armorSlot,m_glovesSlot,m_bootsSlot,m_accessoriesSlot,m_charmSlot,m_inventorySlots);
+        }
+
+        public void DropInventoryItemOnTheGround(int slotIndex)
+        {
+            Instantiate(m_inventorySlots[slotIndex].PickerPrefab,transform.position,Quaternion.identity,LevelManager.Instance.RoomCollider.transform);
+            m_inventorySlots[slotIndex] = null;
+            m_updateInventoryUI.Raise(m_primaryWeaponSlot,m_helmetSlot,m_armorSlot,m_glovesSlot,m_bootsSlot,m_accessoriesSlot,m_charmSlot,m_inventorySlots);
+        }
+
+        public void DropEquipmentOnTheGround(ItemCategory equipmentCategory)
+        {
+            Instantiate(GetItemAtEquipment(equipmentCategory).PickerPrefab,transform.position,Quaternion.identity, LevelManager.Instance.RoomCollider.transform);
+            switch (equipmentCategory)
+            {
+                case ItemCategory.Weapon:
+                    m_primaryWeaponSlot = null;
+                    break;
+                case ItemCategory.Helmet:
+                    m_helmetSlot = null;
+                    break;
+                case ItemCategory.Armor:
+                    m_armorSlot = null;
+                    break;
+                case ItemCategory.Boots:
+                    m_bootsSlot = null;
+                    break;
+                case ItemCategory.Gloves:
+                    m_glovesSlot = null;
+                    break;
+                case ItemCategory.Accessories:
+                    m_accessoriesSlot = null;
+                    break;
+                case ItemCategory.Charm:
+                    m_charmSlot = null;
+                    break;
+            }
             m_updateInventoryUI.Raise(m_primaryWeaponSlot,m_helmetSlot,m_armorSlot,m_glovesSlot,m_bootsSlot,m_accessoriesSlot,m_charmSlot,m_inventorySlots);
         }
     }
