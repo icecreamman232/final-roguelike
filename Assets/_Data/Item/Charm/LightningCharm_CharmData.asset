@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 59228ca66cc6d304a8b002524443a56e, type: 3}
   m_Name: LightningCharm_CharmData
   m_EditorClassIdentifier: 
-  m_itemID: lightning=charm
+  m_itemID: lightning-charm
+  m_translatedName: Lightning Charm
   m_rarity: 0
   m_itemCategory: 6
   m_icon: {fileID: 428219905, guid: 1abc933a8303db346abbc2e37c521bb9, type: 3}
-  m_modifierList: []
   m_pickerPrefab: {fileID: 2011092294068072587, guid: 9e43cfd50516c144f97241e3f58e5354, type: 3}
+  m_modifierList: []

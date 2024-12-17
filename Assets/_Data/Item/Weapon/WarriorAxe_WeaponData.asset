@@ -13,10 +13,12 @@ MonoBehaviour:
   m_Name: WarriorAxe_WeaponData
   m_EditorClassIdentifier: 
   m_itemID: warrior_axe
+  m_translatedName: Warrior Axe
   m_rarity: 1
   m_itemCategory: 0
   m_icon: {fileID: 361959756, guid: 2a57bc0de8ba8674ebe524d88c906410, type: 3}
   m_pickerPrefab: {fileID: 7668308471651813810, guid: db081c4051d92454ca0174334d12a969, type: 3}
+  m_weaponCategory: 0
   m_minDamage: 30
   m_maxDamage: 60
   m_baseDelayBetweenShots: 0.8

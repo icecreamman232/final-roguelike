@@ -13,10 +13,11 @@ MonoBehaviour:
   m_Name: RingOfProtection_AccessoriesData
   m_EditorClassIdentifier: 
   m_itemID: ring-of-protection
+  m_translatedName: Ring of Protection
   m_rarity: 0
   m_itemCategory: 5
   m_icon: {fileID: -111250204, guid: 15969c98aa74ee549a1195d491b1f3d0, type: 3}
+  m_pickerPrefab: {fileID: 2011092294068072587, guid: 7af7503a0f87d01458a08287fc666527, type: 3}
   m_modifierList:
   - {fileID: 11400000, guid: c2ad8024f0f609d439ff3f0f57974dcb, type: 2}
   - {fileID: 11400000, guid: 2f568e481b8aa5849bff9559ab3056ba, type: 2}
-  m_pickerPrefab: {fileID: 2011092294068072587, guid: 7af7503a0f87d01458a08287fc666527, type: 3}

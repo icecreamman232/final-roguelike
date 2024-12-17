@@ -29,4 +29,10 @@ namespace SGGames.Scripts.Common
         Golden,
         Legendary,
     }
+
+    public enum WeaponCategory
+    {
+        Melee,
+        Ranged,
+    }
 }

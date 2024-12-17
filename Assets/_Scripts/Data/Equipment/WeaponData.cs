@@ -1,4 +1,5 @@
 
+using SGGames.Scripts.Common;
 using SGGames.Scripts.Weapons;
 using UnityEditor;
 using UnityEngine;
@@ -8,7 +9,8 @@ namespace SGGames.Scripts.Data
     [CreateAssetMenu(menuName = "SGGames/Data/Weapon",fileName = "WeaponData")]
     public class WeaponData : ItemData
     {
-        [Header("Weapon")]
+        [Header("Weapon")] 
+        [SerializeField] private WeaponCategory m_weaponCategory;
         [SerializeField] private float m_minDamage;
         [SerializeField] private float m_maxDamage;
         [SerializeField] private float m_baseDelayBetweenShots;
@@ -18,7 +20,7 @@ namespace SGGames.Scripts.Data
         [SerializeField] private GameObject m_weaponPrefab;
         [SerializeField] private GameObject m_projectilePrefab;
 
-        
+        public WeaponCategory WeaponCategory => m_weaponCategory;
         public float MinDamage => m_minDamage;
         public float MaxDamage => m_maxDamage;
         public float BaseDelayBetweenShots => m_baseDelayBetweenShots;

@@ -1,4 +1,3 @@
-using System;
 using SGGames.Scripts.Data;
 using TMPro;
 using UnityEngine;
@@ -7,13 +6,14 @@ namespace SGGames.Scripts.UI
 {
     public class WeaponPickerHUD : MonoBehaviour
     {
+        [SerializeField] private ConstantData m_constantData;
         [SerializeField] private CanvasGroup m_canvasGroup;
         [SerializeField] private TextMeshProUGUI m_name;
-        [SerializeField] private TextMeshProUGUI m_rarity;
-        [SerializeField] private TextMeshProUGUI m_category;
-        [SerializeField] private TextMeshProUGUI m_range;
-        [SerializeField] private TextMeshProUGUI m_damage;
-        [SerializeField] private TextMeshProUGUI m_atkSpd;
+        [SerializeField] private TextMeshProUGUI m_rarityType;
+        [SerializeField] private TextMeshProUGUI m_categoryType;
+        [SerializeField] private TextMeshProUGUI m_rangeValue;
+        [SerializeField] private TextMeshProUGUI m_damageValue;
+        [SerializeField] private TextMeshProUGUI m_atkSpdValue;
 
         private bool m_hasBeenDisplayed;
 
@@ -34,12 +34,16 @@ namespace SGGames.Scripts.UI
 
         private void FillInfo(WeaponData data, float baseAtkSpd)
         {
-            m_name.text = data.ItemID;
-            m_rarity.text = $"Rarity:{data.Rarity.ToString()}";
-            m_category.text = data.ItemCategory.ToString();
-            m_range.text = $"Attack Range:{data.AttackRange}";
-            m_damage.text = $"Attack Damage:{data.MinDamage} - {data.MaxDamage}";
-            m_atkSpd.text = $"Attack Speed:{baseAtkSpd:F1}";
+            m_name.color = m_constantData.GetRarityColor(data.Rarity);
+            m_name.text = data.TranslatedName;
+            
+            m_rarityType.color = m_constantData.GetRarityColor(data.Rarity);
+            m_rarityType.text = data.Rarity.ToString();
+            
+            m_categoryType.text = data.WeaponCategory.ToString();
+            m_rangeValue.text = data.AttackRange.ToString("F1");
+            m_damageValue.text = $"{data.MinDamage} - {data.MaxDamage}";
+            m_atkSpdValue.text = baseAtkSpd.ToString("F1");
         }
 
         public void Hide()

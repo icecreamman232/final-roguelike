@@ -13,8 +13,9 @@ MonoBehaviour:
   m_Name: LeaderBoots_BootsData
   m_EditorClassIdentifier: 
   m_itemID: leader-boots
+  m_translatedName: Leader Boots
   m_rarity: 0
   m_itemCategory: 3
   m_icon: {fileID: 288774033, guid: b55c701fb2fcf444199a83b5c327a92d, type: 3}
-  m_modifierList: []
   m_pickerPrefab: {fileID: 2011092294068072587, guid: 12c7bf8b9333d91429b1658ec07bed52, type: 3}
+  m_modifierList: []
