@@ -120,6 +120,7 @@ namespace SGGames.Scripts.Player
             m_primaryWeaponSlot = data;
         }
 
+        #region Add Equipment
         private bool TryAddWeapon(WeaponData data)
         {
             //Primary slot is empty => add to slot and equip weapon
@@ -270,6 +271,70 @@ namespace SGGames.Scripts.Player
             }
             return false;
         }
+        #endregion
+        
+        #region Remove Equipment
+
+        private void RemoveWeaponEquipment()
+        {
+            m_playerWeaponHandler.UnEquipWeapon();
+            m_primaryWeaponSlot = null;
+        }
+
+        private void RemoveHelmetEquipment()
+        {
+            foreach (var modifier in m_helmetSlot.ModifierList)
+            {
+                m_playerModifierHandler.UnregisterModifier(modifier);
+            }
+            m_helmetSlot = null;
+        }
+
+        private void RemoveArmorEquipment()
+        {
+            foreach (var modifier in m_armorSlot.ModifierList)
+            {
+                m_playerModifierHandler.UnregisterModifier(modifier);
+            }
+            m_armorSlot = null;
+        }
+
+        private void RemoveAccessoriesEquipment()
+        {
+            foreach (var modifier in m_accessoriesSlot.ModifierList)
+            {
+                m_playerModifierHandler.UnregisterModifier(modifier);
+            }
+            m_accessoriesSlot = null;
+        }
+
+        private void RemoveGlovesEquipment()
+        {
+            foreach (var modifier in m_glovesSlot.ModifierList)
+            {
+                m_playerModifierHandler.UnregisterModifier(modifier);
+            }
+            m_glovesSlot = null;
+        }
+
+        private void RemoveBootsEquipment()
+        {
+            foreach (var modifier in m_bootsSlot.ModifierList)
+            {
+                m_playerModifierHandler.UnregisterModifier(modifier);
+            }
+            m_bootsSlot = null;
+        }
+
+        private void RemoveCharmEquipment()
+        {
+            foreach (var modifier in m_charmSlot.ModifierList)
+            {
+                m_playerModifierHandler.UnregisterModifier(modifier);
+            }
+            m_charmSlot = null;
+        }
+        #endregion
 
         private bool AddToEmptyInventorySlot(ItemData data)
         {
@@ -344,6 +409,34 @@ namespace SGGames.Scripts.Player
             }
         }
 
+        private void RemoveEquipmentSlot(ItemData item)
+        {
+            switch (item.ItemCategory)
+            {
+                case ItemCategory.Weapon:
+                    RemoveWeaponEquipment();
+                    break;
+                case ItemCategory.Helmet:
+                    RemoveHelmetEquipment();
+                    break;
+                case ItemCategory.Armor:
+                    RemoveArmorEquipment();
+                    break;
+                case ItemCategory.Boots:
+                    RemoveBootsEquipment();
+                    break;
+                case ItemCategory.Gloves:
+                    RemoveGlovesEquipment();
+                    break;
+                case ItemCategory.Accessories:
+                    RemoveAccessoriesEquipment();
+                    break;
+                case ItemCategory.Charm:
+                    RemoveCharmEquipment();
+                    break;
+            }
+        }
+
         public void MoveEquipmentToInventorySlot(ItemCategory equipmentCategory, int inventorySlotIndex)
         {
             if (m_inventorySlots[inventorySlotIndex] == null)
@@ -404,6 +497,10 @@ namespace SGGames.Scripts.Player
                 var itemDataAtInventorySlot = m_inventorySlots[inventorySlotIndex];
                 var itemAtEquipmentSlot = GetItemAtEquipment(equipmentCategory);
                 
+                if (itemAtEquipmentSlot != null)
+                {
+                    RemoveEquipmentSlot(itemAtEquipmentSlot);
+                }
                 AddToEquipmentSlot(itemDataAtInventorySlot);
                 m_inventorySlots[inventorySlotIndex] = itemAtEquipmentSlot;
             }
@@ -416,6 +513,11 @@ namespace SGGames.Scripts.Player
 
             var itemAtInventorySlot = m_inventorySlots[inventorySlotIndex];
             var itemAtEquipmentSlot = GetItemAtEquipment(equipmentCategory);
+            
+            if (itemAtEquipmentSlot != null)
+            {
+                RemoveEquipmentSlot(itemAtEquipmentSlot);
+            }
             m_inventorySlots[inventorySlotIndex] = itemAtEquipmentSlot;
             AddToEquipmentSlot(itemAtInventorySlot);
             
