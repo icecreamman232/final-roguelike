@@ -16,6 +16,7 @@ namespace SGGames.Scripts.Player
         [SerializeField] protected Transform m_weaponAttachment;
         [SerializeField] protected PlayerAim m_playerAim;
         [SerializeField] protected PlayerDamageComputer m_playerDamageComputer;
+        [SerializeField] protected PlayerAttributeController m_playerAttributeController;
         [Header("Events")]
         [SerializeField] private BoolEvent m_freezePlayerEvent;
 
@@ -47,6 +48,7 @@ namespace SGGames.Scripts.Player
         {
             m_currentWeapon = Instantiate(newWeapon, m_weaponAttachment);
             m_currentWeapon.Initialize(m_playerAim);
+            ApplyAttackSpeedOnCurrentWeapon(m_playerAttributeController.ComputeDelayBetweenAttacks(BaseAtkTime));
         }
 
         public virtual void UnEquipWeapon()
@@ -66,6 +68,8 @@ namespace SGGames.Scripts.Player
         {
             base.Update();
 
+            if (!m_isAllow) return;
+            
             if (Input.GetMouseButtonDown(0) && CanUseWeapon())
             {
                 UseWeapon();

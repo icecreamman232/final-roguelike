@@ -79,7 +79,7 @@ namespace SGGames.Scripts.Player
             return ComputeAtkSpeed()/(m_constantData.C_ATK_SPD_TO_ATK_RATE * baseAtkTime);
         }
 
-        private float ComputeDelayBetweenAttacks(float baseAtkTime)
+        public float ComputeDelayBetweenAttacks(float baseAtkTime)
         {
             return 1 / ComputeAtkRate(baseAtkTime);
         }
