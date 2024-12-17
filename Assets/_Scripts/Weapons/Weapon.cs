@@ -1,6 +1,7 @@
 
 using SGGames.Scripts.Core;
 using SGGames.Scripts.Data;
+using SGGames.Scripts.Player;
 using UnityEngine;
 
 namespace SGGames.Scripts.Weapons
@@ -18,9 +19,19 @@ namespace SGGames.Scripts.Weapons
         [SerializeField] protected float m_baseDelayBetweenShots;
         [SerializeField] protected float m_currentDelayBetweenShots;
         [SerializeField] protected ObjectPooler m_projectilePooler;
+        [SerializeField] protected float m_offsetFromCenter;
+        [SerializeField] protected Transform m_model;
+        [SerializeField] protected float m_offsetAngle;
+        [SerializeField] protected Animator m_animator;
+        [SerializeField] protected SpriteRenderer m_spriteRenderer;
+        [SerializeField] protected Vector2 m_offsetSpawnPos;
+        
+        protected float m_delayTimer;
+        protected PlayerAim m_playerAim;
+        private bool m_isOnLeft;
         
         public float BaseDelayBetweenShots => m_baseDelayBetweenShots;
-        protected float m_delayTimer;
+       
         
         public WeaponState CurrentState => m_currentState;
 
@@ -32,6 +43,11 @@ namespace SGGames.Scripts.Weapons
         public void ApplyDelayBetweenShots(float delayBetweenShots)
         {
             m_currentDelayBetweenShots = delayBetweenShots;
+        }
+
+        public void Initialize(PlayerAim playerAim)
+        {
+            m_playerAim = playerAim;
         }
         
         public virtual void Shoot(Vector2 direction, (float additionDamage, float multiplierDamage, float criticalDamage) damageInfo = default)
@@ -48,7 +64,7 @@ namespace SGGames.Scripts.Weapons
             m_currentState = WeaponState.READY;
             m_delayTimer = 0;
         }
-
+        
         protected virtual void Update()
         {
             switch (m_currentState)
@@ -56,6 +72,7 @@ namespace SGGames.Scripts.Weapons
                 case WeaponState.READY:
                     break;
                 case WeaponState.SHOT:
+                    m_animator.SetTrigger(m_isOnLeft ? "SwingLeft" : "SwingRight");
                     m_delayTimer = m_currentDelayBetweenShots;
                     m_currentState = WeaponState.DELAY_BETWEEN_SHOTS;
                     break;
@@ -67,6 +84,28 @@ namespace SGGames.Scripts.Weapons
                     }
                     break;
             }
+
+            if (m_playerAim != null)
+            {
+                RotationWeaponModel();
+            }
+        }
+
+        protected virtual void RotationWeaponModel()
+        {
+            m_model.position = transform.position + (Vector3)m_playerAim.AimDirection * m_offsetFromCenter;
+            var angle = Mathf.Atan2(m_playerAim.AimDirection.y, m_playerAim.AimDirection.x) * Mathf.Rad2Deg;
+            var flipAngle = 0f;
+            m_isOnLeft = false;
+            m_spriteRenderer.flipX = false;
+            if (angle > 90 || angle < -90)
+            {
+                flipAngle = 180 + Mathf.Abs(m_offsetAngle) * 2;
+                m_spriteRenderer.flipX = true;
+                m_isOnLeft = true;
+            }
+            m_model.rotation = Quaternion.AngleAxis(
+                Mathf.Atan2(m_playerAim.AimDirection.y, m_playerAim.AimDirection.x) * Mathf.Rad2Deg + m_offsetAngle + flipAngle, Vector3.forward);
         }
 
         protected virtual void OnDestroy()

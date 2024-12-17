@@ -46,6 +46,7 @@ namespace SGGames.Scripts.Player
         public virtual void EquipWeapon(Weapon newWeapon)
         {
             m_currentWeapon = Instantiate(newWeapon, m_weaponAttachment);
+            m_currentWeapon.Initialize(m_playerAim);
         }
 
         public virtual void UnEquipWeapon()
