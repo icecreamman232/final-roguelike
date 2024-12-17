@@ -1,3 +1,4 @@
+using SGGames.Scripts.Common;
 using SGGames.Scripts.Events;
 using UnityEngine;
 
@@ -6,9 +7,12 @@ namespace SGGames.Scripts.Healths
     [SelectionBase]
     public class PlayerHealth : Health
     {
+        [SerializeField] private SpriteFlicker m_spriteFlicker;
+        [SerializeField] private float m_flickerFrequency;
         [SerializeField] private PlayerHealthUpdateEvent m_PlayerHealthUpdateEvent;
         [SerializeField] private float m_regenerationRate;
 
+        
         private readonly float m_regenerationInterval = 0.1f;
         private float m_regenerateTimer;
         
@@ -47,6 +51,8 @@ namespace SGGames.Scripts.Healths
             
             m_currentHealth -= damage;
             m_lastSourceCauseDamage = source;
+            
+            m_spriteFlicker.FlickerSprite(m_spriteRenderer,invincibilityDuration,m_flickerFrequency);
             UpdateHealthBar();
 
             if (m_currentHealth <= 0)

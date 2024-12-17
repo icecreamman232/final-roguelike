@@ -44,6 +44,7 @@ Transform:
   - {fileID: 7132944079345427687}
   - {fileID: 81437972260655627}
   - {fileID: 5396419653894794328}
+  - {fileID: 976171658848419605}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &9207394351103251092
@@ -195,7 +196,9 @@ MonoBehaviour:
   m_isInvulnerable: 0
   m_isImmortal: 0
   m_isDead: 0
-  m_spriteRenderer: {fileID: 0}
+  m_spriteRenderer: {fileID: 8048074491649769888}
+  m_spriteFlicker: {fileID: 5366455935266437862}
+  m_flickerFrequency: 0.1
   m_PlayerHealthUpdateEvent: {fileID: 11400000, guid: 522553b978f7d444282f81b913f8d024, type: 2}
   m_regenerationRate: 0
 --- !u!114 &6210066009922297151
@@ -546,6 +549,51 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &2723368672992837884
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 976171658848419605}
+  - component: {fileID: 5366455935266437862}
+  m_Layer: 0
+  m_Name: SpriteFlicker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &976171658848419605
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2723368672992837884}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6263496985321535266}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5366455935266437862
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2723368672992837884}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: df81caab51835fc43ac8b15a0ebeecc0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_flickerColor: {r: 1, g: 0.21226418, b: 0.21226418, a: 1}
 --- !u!1 &7078355983020230289
 GameObject:
   m_ObjectHideFlags: 0
