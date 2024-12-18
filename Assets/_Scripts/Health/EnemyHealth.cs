@@ -15,6 +15,8 @@ namespace SGGames.Scripts.Healths
         [SerializeField] protected float m_delayBeforeDeath;
         [SerializeField] protected MMF_Player m_deathFeedback;
 
+        protected BoxCollider2D m_bodyCollider;
+        
         protected EnemyMovement m_enemyMovement;
         public Action<float, bool> OnHit;
         public Action<EnemyHealth> OnEnemyDeath;
@@ -23,6 +25,7 @@ namespace SGGames.Scripts.Healths
         {
             base.Start();
             ResetHealth();
+            m_bodyCollider = GetComponent<BoxCollider2D>();
             m_enemyMovement = GetComponent<EnemyMovement>();
         }
 
@@ -64,6 +67,7 @@ namespace SGGames.Scripts.Healths
         {
             base.Kill();
             OnEnemyDeath?.Invoke(this);
+            m_bodyCollider.enabled = false;
             m_enemyMovement.StopMoving();
             m_controller.CurrentBrain.ResetBrain();
             m_controller.CurrentBrain.BrainActive = false;
