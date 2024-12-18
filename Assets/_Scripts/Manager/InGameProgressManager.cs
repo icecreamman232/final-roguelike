@@ -41,5 +41,16 @@ namespace SGGames.Scripts.Manager
             }
             m_updateExpBarEvent?.Raise(m_currentExp,m_maxExp,m_currentLevel);
         }
+
+        #if UNITY_EDITOR
+        [ContextMenu("Lvl Up")]
+        private void LevelUpTest()
+        {
+            m_currentExp = 0;
+            m_currentLevel++;
+            m_maxExp = m_expData.GetMaxExpForLevel(m_currentLevel);
+            m_playerLevelUpEvent?.Raise(m_currentLevel);
+        }
+        #endif
     }
 }

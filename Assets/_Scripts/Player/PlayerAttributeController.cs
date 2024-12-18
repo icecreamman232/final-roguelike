@@ -24,7 +24,6 @@ namespace SGGames.Scripts.Player
         
         [Header("Events")]
         [SerializeField] private AddAttributeEvent m_addAttributeEvent;
-        [SerializeField] private IntEvent m_playerLevelUpEvent;
         [Header("Data")]
         [SerializeField] private ConstantData m_constantData;
         

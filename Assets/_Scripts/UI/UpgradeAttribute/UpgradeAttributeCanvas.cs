@@ -1,3 +1,4 @@
+using System.Collections;
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Managers;
@@ -13,6 +14,8 @@ namespace SGGames.Scripts.UI
         [SerializeField] private GameEvent m_gameEvent;
         [SerializeField] private AddAttributeEvent m_addAttributeEvent;
         [SerializeField] private UpgradeAttributeCardUI[] m_upgradeCardList;
+        
+        private readonly float C_CLOSE_FEEDBACK_TIME = 0.3f;
         
         private void Start()
         {
@@ -44,9 +47,15 @@ namespace SGGames.Scripts.UI
 
         private void Hide()
         {
-            m_canvasGroup.alpha = 0;
+            StartCoroutine(OnHide());
+        }
+
+        private IEnumerator OnHide()
+        {
+            yield return new WaitForSecondsRealtime(C_CLOSE_FEEDBACK_TIME);
             m_canvasGroup.interactable = false;
             m_canvasGroup.blocksRaycasts = false;
+            m_canvasGroup.alpha = 0;
             m_freezePlayerEvent.Raise(false);
             m_gameEvent.Raise(GameEventType.UNPAUSED);
         }
@@ -59,6 +68,21 @@ namespace SGGames.Scripts.UI
         private void OnSelectCard(int index)
         {
             m_addAttributeEvent.Raise(m_upgradeCardList[index].Reward);
+            if (index == 0)
+            {
+                m_upgradeCardList[1].PlayNotSelectFeedback();
+                m_upgradeCardList[2].PlayNotSelectFeedback();
+            }
+            else if (index == 1)
+            {
+                m_upgradeCardList[0].PlayNotSelectFeedback();
+                m_upgradeCardList[2].PlayNotSelectFeedback();
+            }
+            else if (index == 2)
+            {
+                m_upgradeCardList[0].PlayNotSelectFeedback();
+                m_upgradeCardList[1].PlayNotSelectFeedback();
+            }
             Hide();
         }
         

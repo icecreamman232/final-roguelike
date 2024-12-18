@@ -1,4 +1,5 @@
 using System;
+using MoreMountains.Feedbacks;
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Managers;
 using TMPro;
@@ -18,6 +19,8 @@ namespace SGGames.Scripts.UI
         [SerializeField] private Sprite m_legendaryBG;
         [SerializeField] private TextMeshProUGUI m_titleText;
         [SerializeField] private TextMeshProUGUI m_descText;
+        [SerializeField] private MMF_Player m_showFeedback;
+        [SerializeField] private MMF_Player m_notSelectFeedback;
 
         private (UpgradeAttributeRate rate, AttributeType type) m_reward;
         
@@ -27,6 +30,7 @@ namespace SGGames.Scripts.UI
         
         public void Show((UpgradeAttributeRate rate, AttributeType type) attributeReward)
         {
+            m_showFeedback.PlayFeedbacks();
             m_reward = attributeReward;
             switch (attributeReward.rate)
             {
@@ -46,6 +50,11 @@ namespace SGGames.Scripts.UI
 
             m_titleText.text = GetTitleText(attributeReward.type) + " Upgrade";
             m_descText.text = GetDescText(attributeReward.type, attributeReward.rate);
+        }
+
+        public void PlayNotSelectFeedback()
+        {
+            m_notSelectFeedback.PlayFeedbacks();
         }
 
         private string GetTitleText(AttributeType type)

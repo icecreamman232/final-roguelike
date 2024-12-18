@@ -992,6 +992,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 7164713291503737772, guid: c2850c79b5406a847945b5f49009db57, type: 3}
+      propertyPath: FeedbacksList.Array.data[0]
+      value: 1929239811975544842
+      objectReference: {fileID: 0}
+    - target: {fileID: 7164713291503737772, guid: c2850c79b5406a847945b5f49009db57, type: 3}
+      propertyPath: FeedbacksList.Array.data[1]
+      value: 1929239811975544841
+      objectReference: {fileID: 0}
     - target: {fileID: 8873693538110478645, guid: c2850c79b5406a847945b5f49009db57, type: 3}
       propertyPath: m_Alpha
       value: 0
