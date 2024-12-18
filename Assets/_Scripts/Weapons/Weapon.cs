@@ -72,7 +72,10 @@ namespace SGGames.Scripts.Weapons
                 case WeaponState.READY:
                     break;
                 case WeaponState.SHOT:
-                    m_animator.SetTrigger(m_isOnLeft ? "SwingLeft" : "SwingRight");
+                    if (m_animator != null)
+                    {
+                        m_animator.SetTrigger(m_isOnLeft ? "SwingLeft" : "SwingRight");
+                    }
                     m_delayTimer = m_currentDelayBetweenShots;
                     m_currentState = WeaponState.DELAY_BETWEEN_SHOTS;
                     break;

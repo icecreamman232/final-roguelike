@@ -35,4 +35,19 @@ namespace SGGames.Scripts.Common
         Melee,
         Ranged,
     }
+
+    public enum AttributeType
+    {
+        Strength,
+        Agility,
+        Intelligence,
+    }
+
+    public enum UpgradeAttributeRate
+    {
+        Common,
+        Uncommon,
+        Rare,
+        Legendary,
+    }
 }

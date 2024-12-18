@@ -1,8 +1,10 @@
 using System;
 using System.Collections;
+using SGGames.Scripts.Common;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Healths;
+using SGGames.Scripts.Managers;
 using UnityEngine;
 
 namespace SGGames.Scripts.Player
@@ -21,6 +23,7 @@ namespace SGGames.Scripts.Player
         [SerializeField] private PlayerWeaponHandler m_playerWeaponHandler;
         
         [Header("Events")]
+        [SerializeField] private AddAttributeEvent m_addAttributeEvent;
         [SerializeField] private IntEvent m_playerLevelUpEvent;
         [Header("Data")]
         [SerializeField] private ConstantData m_constantData;
@@ -32,15 +35,15 @@ namespace SGGames.Scripts.Player
         protected override void Start()
         {
             base.Start();
-            m_playerLevelUpEvent.AddListener(OnPlayerLevelUp);
+            m_addAttributeEvent.AddListener(OnChooseAttributeReward);
             StartCoroutine(InitializeAttributes());
         }
 
         private void OnDestroy()
         {
-            m_playerLevelUpEvent.RemoveListener(OnPlayerLevelUp);
+            m_addAttributeEvent.RemoveListener(OnChooseAttributeReward);
         }
-
+        
         private IEnumerator InitializeAttributes()
         {
             m_strengthPoints = m_heroData.BaseStrength;
@@ -106,12 +109,38 @@ namespace SGGames.Scripts.Player
             m_intelligencePoints += points;
             m_intelligencePoints = Mathf.Clamp(m_intelligencePoints, m_heroData.BaseIntelligence, int.MaxValue);
         }
-        
-        private void OnPlayerLevelUp(int level)
+
+        private int GetRewardAmount(UpgradeAttributeRate rate)
         {
-            AddStrength(m_heroData.GrowthStrength);
-            AddAgility(m_heroData.GrowthAgility);
-            AddIntelligence(m_heroData.GrowthIntelligence);
+            switch (rate)
+            {
+                case UpgradeAttributeRate.Common:
+                    return AttributeRewardController.CommonRewardPoint;
+                case UpgradeAttributeRate.Uncommon:
+                    return AttributeRewardController.UncommonRewardPoint;
+                case UpgradeAttributeRate.Rare:
+                    return AttributeRewardController.RareRewardPoint;
+                case UpgradeAttributeRate.Legendary:
+                    return AttributeRewardController.LegendaryRewardPoint;
+            }
+            return AttributeRewardController.CommonRewardPoint;
+        }
+        
+        private void OnChooseAttributeReward((UpgradeAttributeRate rate, AttributeType type) reward)
+        {
+            var amount= GetRewardAmount(reward.rate);
+            switch (reward.type)
+            {
+                case AttributeType.Strength:
+                    AddStrength(amount);
+                    break;
+                case AttributeType.Agility:
+                    AddAgility(amount);
+                    break;
+                case AttributeType.Intelligence:
+                    AddIntelligence(amount);
+                    break;
+            }
         }
     }
 }
