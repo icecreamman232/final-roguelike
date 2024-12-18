@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: feaec82dd1152d94085ba416f86ed592, type: 3}
-  m_Name: HealthModifier
+  m_Name: CommonArmor_IncreaseMaxHP_Modifier
   m_EditorClassIdentifier: 
   ModifierType: 1
   Duration: 0

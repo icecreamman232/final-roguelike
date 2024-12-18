@@ -1355,7 +1355,7 @@ MonoBehaviour:
   m_FallbackScreenDPI: 96
   m_DefaultSpriteDPI: 96
   m_DynamicPixelsPerUnit: 1
-  m_PresetInfoIsWorld: 1
+  m_PresetInfoIsWorld: 0
 --- !u!114 &4344492888149203065
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1387,6 +1387,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_constantData: {fileID: 11400000, guid: 26336a57fc5df324abcfbac163a7a98c, type: 2}
   m_canvasGroup: {fileID: 879469995073122295}
+  m_bg: {fileID: 8773355232314973859}
+  m_commonBG: {fileID: -22837487, guid: 9db2763dc0c7a8240a140332c75dece7, type: 3}
+  m_uncommonBG: {fileID: -958620609, guid: 9db2763dc0c7a8240a140332c75dece7, type: 3}
+  m_rareBG: {fileID: 147964466, guid: 9db2763dc0c7a8240a140332c75dece7, type: 3}
+  m_legendaryBG: {fileID: -892406175, guid: 9db2763dc0c7a8240a140332c75dece7, type: 3}
   m_name: {fileID: 7179482997607341767}
   m_rarityType: {fileID: 8312710446828476183}
   m_categoryType: {fileID: 8889186765595775668}

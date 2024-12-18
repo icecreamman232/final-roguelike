@@ -298,6 +298,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: inventory-info-panel-bg-uncommon
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 3, y: 3, z: 3, w: 3}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2483491f209d7444490f957a3c813899
+      internalID: -958620609
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventory-info-panel-bg-rare
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 3, y: 3, z: 3, w: 3}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: faac2ebd24d598946a6b76eadbeb9c09
+      internalID: 147964466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventory-info-panel-bg-legendary
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 3, y: 3, z: 3, w: 3}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bd77ca027439d4e458e307a98b0cbb66
+      internalID: -892406175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -310,6 +373,9 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       inventory-info-panel-bg: -22837487
+      inventory-info-panel-bg-legendary: -892406175
+      inventory-info-panel-bg-rare: 147964466
+      inventory-info-panel-bg-uncommon: -958620609
       inventory-slot-bg: 1059862894
       inventory-ui-accessories-icon: 1963689979
       inventory-ui-armor-icon: 1489618193
