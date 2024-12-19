@@ -754,6 +754,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UpgradeAttributeCanvas
       objectReference: {fileID: 0}
+    - target: {fileID: 2033322212562261529, guid: c2850c79b5406a847945b5f49009db57, type: 3}
+      propertyPath: Direction
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3776270669742360135, guid: c2850c79b5406a847945b5f49009db57, type: 3}
       propertyPath: m_AdditionalShaderChannelsFlag
       value: 25

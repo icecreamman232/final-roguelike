@@ -457,6 +457,7 @@ MonoBehaviour:
   m_legendaryBG: {fileID: 732891365, guid: 4b5d678a346955d4a856464e34495354, type: 3}
   m_titleText: {fileID: 312721370298735073}
   m_descText: {fileID: 4859501501029287792}
+  m_canvasGroup: {fileID: 6979009896613464665}
   m_showFeedback: {fileID: 7237749575670361041}
   m_notSelectFeedback: {fileID: 4679051532792580602}
 --- !u!225 &6979009896613464665

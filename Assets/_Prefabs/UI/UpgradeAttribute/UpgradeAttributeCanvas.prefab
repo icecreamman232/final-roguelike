@@ -563,6 +563,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UpgradeAttributeCard-2
       objectReference: {fileID: 0}
+    - target: {fileID: 4679051532792580602, guid: 8a36a1874de526b4982ab7fdf4935f2f, type: 3}
+      propertyPath: Direction
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7237749575670361041, guid: 8a36a1874de526b4982ab7fdf4935f2f, type: 3}
       propertyPath: InitialDelay
       value: 0.1
