@@ -1,3 +1,5 @@
+using System;
+using System.Collections;
 using SGGames.Scripts.Damages;
 using SGGames.Scripts.Data;
 using UnityEngine;
@@ -21,6 +23,8 @@ namespace SGGames.Scripts.Weapons
         [SerializeField] protected Vector2 m_direction;
         [SerializeField] protected Transform m_model;
         [SerializeField] protected DamageHandler m_damageHandler;
+        [SerializeField] protected float m_delayBeforeDestruction;
+        [SerializeField] protected UnityEvent m_onEnable;
         [SerializeField] protected UnityEvent m_onDestroy;
         
         /// <summary>
@@ -29,10 +33,17 @@ namespace SGGames.Scripts.Weapons
         [SerializeField] protected float m_offsetRotationAngle;
         
         protected Vector2 m_wakeupPosition;
+        protected YieldInstruction DelayBeforeDestructionCoroutine;
         
         protected virtual void Start()
         {
             m_damageHandler.OnHitDamageable += OnHitDamageable;
+            DelayBeforeDestructionCoroutine = new WaitForSeconds(m_delayBeforeDestruction);
+        }
+
+        private void OnEnable()
+        {
+            m_onEnable?.Invoke();
         }
 
         public virtual void ApplyData(WeaponData data)
@@ -87,9 +98,16 @@ namespace SGGames.Scripts.Weapons
 
         protected virtual void DestroyProjectile()
         {
+            if (!m_isAlive) return;
+            StartCoroutine(OnDestroyingProjectile());
+        }
+
+        protected virtual IEnumerator OnDestroyingProjectile()
+        {
             m_onDestroy?.Invoke();
-            this.gameObject.SetActive(false);
             m_isAlive = false;
+            yield return DelayBeforeDestructionCoroutine;
+            this.gameObject.SetActive(false);
         }
 
         protected virtual void Destroy()
