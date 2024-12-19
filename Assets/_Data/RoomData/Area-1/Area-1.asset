@@ -20,5 +20,9 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 6a748e1b6f74c0b4e94b4fa60a243b34, type: 2}
   - {fileID: 11400000, guid: fa2d9c4433ae8f44ba24f1213e73cc03, type: 2}
   - {fileID: 11400000, guid: c0300d47fcb0c224cb1d151c46c10794, type: 2}
+  - {fileID: 11400000, guid: c0300d47fcb0c224cb1d151c46c10794, type: 2}
+  - {fileID: 11400000, guid: 4fb62264eb37de0418b6f4dc79254114, type: 2}
+  - {fileID: 11400000, guid: b59992087d2357c44afdb0d4f884eeb4, type: 2}
   m_challengeRooms:
   - {fileID: 11400000, guid: ac8fade8987dbfa4fafa79cc8754ae0b, type: 2}
+  - {fileID: 11400000, guid: 2448cd63d997ec5438c0f365a7a6a495, type: 2}

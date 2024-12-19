@@ -51,7 +51,7 @@ namespace SGGames.Scripts.Manager
         {
             switch (roomIndex)
             {
-                case <= 1:
+                case <= 2:
                     return m_areaDataList[areaIndex].GetEasyRoom();
                 case 3:
                 case 4:
@@ -63,10 +63,6 @@ namespace SGGames.Scripts.Manager
                     return challengeRoomChance <= C_CHALLENGE_ROOM_CHANCE 
                         ? m_areaDataList[areaIndex].GetChallengeRoom() 
                         : m_areaDataList[areaIndex].GetHardRoom();
-                }
-                default:
-                {
-                    return m_areaDataList[areaIndex].GetEasyRoom();
                 }
             }
         }

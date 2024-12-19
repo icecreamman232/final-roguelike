@@ -20,3 +20,5 @@ MonoBehaviour:
     SpawnPosition: {x: 4.5, y: 3}
   - EnemyPrefab: {fileID: 8094128730875580441, guid: ce3c5c3bbb4dc9545b043080623375bc, type: 3}
     SpawnPosition: {x: 0, y: 3.5}
+  - EnemyPrefab: {fileID: 6558185500957225338, guid: 932f04c741539b947b2bf1111aa79eda, type: 3}
+    SpawnPosition: {x: 0, y: 3}

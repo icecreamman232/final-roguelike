@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 240515b1c68a9c2468bd6a12c8cd4f20, type: 3}
+  m_Name: Cyclop_DropsTable
+  m_EditorClassIdentifier: 
+  m_minCoinDrop: 5
+  m_maxCoinDrop: 10
+  m_coinPrefab: {fileID: 7996711730950076425, guid: 9457189a38fd9354897514e979c782b7, type: 3}
+  m_chanceToDropKey: 10
+  m_minKeyDrop: 1
+  m_maxKeyDrop: 1
+  m_keyPrefab: {fileID: 7996711730950076425, guid: 422c92e3582332340ae906b6e9c62181, type: 3}
+  m_minSmallExpDrop: 1
+  m_maxSmallExpDrop: 2
+  m_smallExpPrefab: {fileID: 7996711730950076425, guid: db5bdf36c83d1f04692be93b4fe907b5, type: 3}
+  m_chanceToDropBigExp: 10
+  m_minBigExpDrop: 1
+  m_maxBigExpDrop: 1
+  m_bigExpPrefab: {fileID: 7996711730950076425, guid: a286a2b78edada443802bd9c114aeb11, type: 3}
+  m_dropsList: []

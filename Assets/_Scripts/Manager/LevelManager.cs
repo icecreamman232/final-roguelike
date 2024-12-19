@@ -100,7 +100,7 @@ namespace SGGames.Scripts.Managers
         private IEnumerator OnLevelLoaded()
         {
             m_currentRoomData = m_defaultRoom;
-            Debug.Log($"<color=yellow>Load Room: {m_currentRoomData.name}</color>");
+            Debug.Log($"<color=yellow>Load Room 0: {m_currentRoomData.name}</color>");
             var roomObj = Instantiate(m_currentRoomData.RoomPrefab);
             m_currentRoom = roomObj.GetComponent<Room>();
             m_roomCollider = m_currentRoom.RoomCollider;
@@ -157,7 +157,7 @@ namespace SGGames.Scripts.Managers
         private void LoadRoom(int doorIndex)
         {
             m_currentRoomData = doorIndex == 0 ? m_leftSideRoomList[m_roomIndex] : m_rightSideRoomList[m_roomIndex];
-            Debug.Log($"<color=yellow>Load Room: {m_currentRoomData.name}</color>");
+            Debug.Log($"<color=yellow>Load Room {m_roomIndex}: {m_currentRoomData.name}</color>");
             var roomObj = Instantiate(m_currentRoomData.RoomPrefab);
             m_currentRoom = roomObj.GetComponent<Room>();
             m_roomCollider = m_currentRoom.RoomCollider;
