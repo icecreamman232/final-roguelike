@@ -7,6 +7,7 @@ namespace SGGames.Scripts.Healths
     [SelectionBase]
     public class PlayerHealth : Health
     {
+        [SerializeField] private float m_armor;
         [SerializeField] private SpriteFlicker m_spriteFlicker;
         [SerializeField] private float m_flickerFrequency;
         [SerializeField] private PlayerHealthUpdateEvent m_PlayerHealthUpdateEvent;
@@ -49,7 +50,7 @@ namespace SGGames.Scripts.Healths
             //Player cant take damage this frame
             if (!CanTakeDamage()) return;
             
-            m_currentHealth -= damage;
+            m_currentHealth -= damage * (1- m_armor/100);
             m_lastSourceCauseDamage = source;
             
             m_spriteFlicker.FlickerSprite(m_spriteRenderer,invincibilityDuration,m_flickerFrequency);
@@ -80,6 +81,16 @@ namespace SGGames.Scripts.Healths
         public void AddRegenerationRate(float regenerationRate)
         {
             m_regenerationRate += regenerationRate;
+        }
+
+        public void AddArmor(float add)
+        {
+            m_armor += add;
+        }
+        
+        public void SetArmor(float value)
+        {
+            m_armor = value;
         }
     }
 }

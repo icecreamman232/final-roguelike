@@ -53,6 +53,7 @@ namespace SGGames.Scripts.Player
             
             m_playerHealth.Initialize(ComputeMaxHealth());
             m_playerHealth.AddRegenerationRate(ComputeRegenerationRate());
+            m_playerHealth.SetArmor(ComputeArmorFromAgi(m_agilityPoints));
 
             yield return new WaitUntil(() =>
                 m_playerWeaponHandler != null && m_playerWeaponHandler.IsWeaponInitialized);
@@ -86,6 +87,20 @@ namespace SGGames.Scripts.Player
             return 1 / ComputeAtkRate(baseAtkTime);
         }
 
+        private float ComputeArmorFromAgi(float agility)
+        {
+            switch (agility)
+            {
+                case <= 10:
+                    return agility * 0.5f;
+                case <= 20:
+                    return agility * 0.25f;
+                case > 20:
+                    return agility * 0.1f;
+            }
+            return agility * 0.5f;
+        }
+
         public void AddStrength(float points)
         {
             m_strengthPoints += points;
@@ -101,6 +116,7 @@ namespace SGGames.Scripts.Player
             m_agilityPoints = Mathf.Clamp(m_agilityPoints, m_heroData.BaseAgility, int.MaxValue);
             
             m_playerWeaponHandler.ApplyAttackSpeedOnCurrentWeapon(ComputeDelayBetweenAttacks(m_playerWeaponHandler.BaseAtkTime));
+            m_playerHealth.SetArmor(ComputeArmorFromAgi(m_agilityPoints));
         }
 
         public void AddIntelligence(float points)
