@@ -70,7 +70,7 @@ namespace SGGames.Scripts.Player
 
             if (!m_isAllow) return;
             
-            if (Input.GetMouseButtonDown(0) && CanUseWeapon())
+            if (Input.GetMouseButton(0) && CanUseWeapon())
             {
                 UseWeapon();
             }
