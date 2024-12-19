@@ -82,7 +82,7 @@ namespace SGGames.Scripts.Manager
 
         private RoomRewardType GetRoomReward()
         {
-            return (RoomRewardType)Random.Range(0,(int)RoomRewardType.COMMON_ROOM_NUMBER);
+            return (RoomRewardType)Random.Range(1,(int)RoomRewardType.COMMON_ROOM_NUMBER);
         }
         
         #endregion
