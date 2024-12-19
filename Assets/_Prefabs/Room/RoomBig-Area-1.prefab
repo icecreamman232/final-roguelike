@@ -140,11 +140,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e957127054a2e41be2a438b592eeed, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_botLeftPivot: {x: -9.5, y: -4.5}
+  m_topRightPivot: {x: 9.5, y: 6.5}
   m_roomCollider: {fileID: 9023521705413565168}
   m_playerSpawnSpot: {fileID: 4262698928868120004}
   m_chestSpawnSpot: {fileID: 8467820371452711893}
   m_firstDoor: {fileID: 6529383297924432320}
   m_secondDoor: {fileID: 6340800701416040102}
+  ShowDebug: 1
 --- !u!1 &6169676138309580614
 GameObject:
   m_ObjectHideFlags: 0

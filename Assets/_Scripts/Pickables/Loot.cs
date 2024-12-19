@@ -11,7 +11,7 @@ namespace SGGames.Scripts.Pickables
         [SerializeField] private EnemyHealth m_enemyHealth;
         [SerializeField] private DropsTableData m_dropsTableData;
         
-        private readonly float m_dropRadius = 3f;
+        private readonly float m_dropRadius = 1.5f;
         
         /// <summary>
         /// Maximum times the system try to find the proper position to spawn the loot.
@@ -56,7 +56,7 @@ namespace SGGames.Scripts.Pickables
             for (int i = 0; i < amount; i++)
             {
                 randomSpawnPos = GetRandomDropPosition(m_dropRadius);
-                Instantiate(prefab, (Vector3)randomSpawnPos + transform.position, Quaternion.identity,m_enemyHealth.transform.parent);
+                Instantiate(prefab, randomSpawnPos, Quaternion.identity,m_enemyHealth.transform.parent);
             }
         }
         
@@ -68,18 +68,25 @@ namespace SGGames.Scripts.Pickables
         private Vector2 GetRandomDropPosition(float radius)
         {
             var lvlManager = LevelManager.Instance;
-            var randomSpawnPos = Random.insideUnitCircle * Random.Range(radius/2,radius);
+            var randomSpawnPos = Random.insideUnitCircle * Random.Range(radius/2,radius) + (Vector2)transform.position;
             var count = 0;
             while (!lvlManager.IsPositionInsideRoomBoundary(randomSpawnPos))
             {
-                randomSpawnPos = Random.insideUnitCircle * Random.Range(radius/2,radius);
+                randomSpawnPos = Random.insideUnitCircle * Random.Range(radius/2,radius) + (Vector2)transform.position;
                 count++;
                 if (count >= m_maxCheckPosCount)
                 {
                     break;
                 }
             }
-            return randomSpawnPos;
+            return ClampSpawnPos(lvlManager.CurrentRoom.SpawnPivots,randomSpawnPos);
+        }
+
+        private Vector2 ClampSpawnPos((Vector2 botLeft,Vector2 topRight) roomPivot, Vector2 spawnPos)
+        {
+            var clampX = Mathf.Clamp(spawnPos.x,roomPivot.botLeft.x,roomPivot.topRight.x);
+            var clampY = Mathf.Clamp(spawnPos.y,roomPivot.botLeft.y,roomPivot.topRight.y);
+            return new Vector2(clampX, clampY);
         }
     }
 }

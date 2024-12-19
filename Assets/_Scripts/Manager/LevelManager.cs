@@ -53,6 +53,7 @@ namespace SGGames.Scripts.Managers
         private readonly int m_maxAreaCount = 7;
         private BoxCollider2D m_roomCollider;
         
+        public Room CurrentRoom => m_currentRoom;
         public BoxCollider2D RoomCollider => m_roomCollider;
         
         public GameObject PlayerRef => m_playerRef;
