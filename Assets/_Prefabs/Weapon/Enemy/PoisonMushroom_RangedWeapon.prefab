@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &118477653130531295
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 7077729973833750232}
+  - component: {fileID: 5524408011619346354}
+  - component: {fileID: 998067294415161247}
+  m_Layer: 0
+  m_Name: PoisonMushroom_RangedWeapon
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &7077729973833750232
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118477653130531295}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5524408011619346354
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118477653130531295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9788b4e0dfd1bad4784a55bd11b5e1cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  SelfInitialize: 1
+  Parent: {fileID: 0}
+  Offset: {x: 0, y: 0}
+  IsSharePool: 0
+  ObjectToPool: {fileID: 7033417393917381709, guid: ab94df523067d4542b69abde86195dd0, type: 3}
+  PoolSize: 20
+--- !u!114 &998067294415161247
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 118477653130531295}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d2c231bef829b194e944320193adc22c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_currentState: 0
+  m_baseDelayBetweenShots: 1
+  m_currentDelayBetweenShots: 1
+  m_projectilePooler: {fileID: 5524408011619346354}
+  m_offsetFromCenter: 0
+  m_model: {fileID: 0}
+  m_offsetAngle: 0
+  m_animator: {fileID: 0}
+  m_spriteRenderer: {fileID: 0}
+  m_offsetSpawnPos: {x: 0, y: 0}
+  m_PatternData: {fileID: 11400000, guid: 06b5aa59e1284e5449a41850e5595365, type: 2}

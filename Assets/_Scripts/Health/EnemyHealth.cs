@@ -68,9 +68,15 @@ namespace SGGames.Scripts.Healths
             base.Kill();
             OnEnemyDeath?.Invoke(this);
             m_bodyCollider.enabled = false;
-            m_enemyMovement.StopMoving();
-            m_controller.CurrentBrain.ResetBrain();
-            m_controller.CurrentBrain.BrainActive = false;
+            if (m_enemyMovement != null)
+            {
+                m_enemyMovement.StopMoving();
+            }
+            if (m_controller.CurrentBrain != null)
+            {
+                m_controller.CurrentBrain.ResetBrain();
+                m_controller.CurrentBrain.BrainActive = false;
+            }
             m_spriteRenderer.enabled = false;
             m_deathFeedback.PlayFeedbacks();
             yield return new WaitForSeconds(m_delayBeforeDeath);
