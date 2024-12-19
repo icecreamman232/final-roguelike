@@ -15,15 +15,14 @@ namespace SGGames.Scripts.Common
         private IEnumerator OnFlicking(SpriteRenderer spriteRenderer, float duration, float frequency)
         {
             var timeStop = duration + Time.time;
-            var initialColor = spriteRenderer.color;
             while (Time.time < timeStop)
             {
                 spriteRenderer.color = m_flickerColor;
                 yield return new WaitForSeconds(frequency);
-                spriteRenderer.color = initialColor;
+                spriteRenderer.color = Color.white;
                 yield return new WaitForSeconds(frequency);
             }
-            spriteRenderer.color = initialColor;
+            spriteRenderer.color = Color.white;
         }
     }
 }
