@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_roomPrefab: {fileID: 1619650375611626117, guid: 96bc498b429a3b24ba39280205d319cb, type: 3}
   m_enemyList:
-  - EnemyPrefab: {fileID: 7357953295604114694, guid: 1a124d556a0c7fa41b735186c1234388, type: 3}
+  - EnemyPrefab: {fileID: 9186381283538653862, guid: ac8b55650a518bd4bb039e03ac5fbe0f, type: 3}
     SpawnPosition: {x: -4.5, y: 3}
-  - EnemyPrefab: {fileID: 7357953295604114694, guid: 1a124d556a0c7fa41b735186c1234388, type: 3}
+  - EnemyPrefab: {fileID: 9186381283538653862, guid: ac8b55650a518bd4bb039e03ac5fbe0f, type: 3}
     SpawnPosition: {x: 4.5, y: 3}
   - EnemyPrefab: {fileID: 7357953295604114694, guid: 1a124d556a0c7fa41b735186c1234388, type: 3}
     SpawnPosition: {x: -7, y: 0}
