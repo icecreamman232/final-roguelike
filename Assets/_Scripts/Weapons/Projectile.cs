@@ -38,6 +38,7 @@ namespace SGGames.Scripts.Weapons
         protected virtual void Start()
         {
             m_damageHandler.OnHitDamageable += OnHitDamageable;
+            m_damageHandler.OnHitNonDamageable += OnHitNonDamageable;
             DelayBeforeDestructionCoroutine = new WaitForSeconds(m_delayBeforeDestruction);
         }
 
@@ -82,6 +83,11 @@ namespace SGGames.Scripts.Weapons
             DestroyProjectile();
         }
 
+        protected virtual void OnHitNonDamageable(GameObject obj)
+        {
+            DestroyProjectile();
+        }
+
         protected virtual void CheckRange()
         {
             var dist = Vector2.Distance(transform.position, m_wakeupPosition);
@@ -113,6 +119,7 @@ namespace SGGames.Scripts.Weapons
         protected virtual void Destroy()
         {
             m_damageHandler.OnHitDamageable -= OnHitDamageable;
+            m_damageHandler.OnHitNonDamageable -= OnHitNonDamageable;
         }
     }
 }

@@ -16,8 +16,11 @@ namespace SGGames.Scripts.Damages
         [Header("Damageable")]
         [SerializeField] protected float m_damageableInvulnerableTime;
         [SerializeField] protected LayerMask m_damageableLayerMask;
+        [Header("NonDamageable")]
+        [SerializeField] protected LayerMask m_nonDamageableLayerMask;
 
         public Action<GameObject> OnHitDamageable;
+        public Action<GameObject> OnHitNonDamageable;
 
         protected virtual void Start()
         {
@@ -53,6 +56,15 @@ namespace SGGames.Scripts.Damages
             {
                 CauseDamageToDamageable(other.gameObject);
             }
+            else if (LayerManager.IsInLayerMask(other.gameObject.layer, m_nonDamageableLayerMask))
+            {
+                CauseDamageToNonDamageable(other.gameObject);
+            }
+        }
+
+        private void CauseDamageToNonDamageable(GameObject target)
+        {
+            OnHitNonDamageable?.Invoke(target);
         }
 
         protected virtual void CauseDamageToDamageable(GameObject target)
