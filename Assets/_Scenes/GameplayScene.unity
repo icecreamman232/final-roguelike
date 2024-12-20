@@ -495,6 +495,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 212539082279662307, guid: 64fbf7d065d41c7489a98a1ca69a99f8, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2011092294068072587, guid: 64fbf7d065d41c7489a98a1ca69a99f8, type: 3}
       propertyPath: m_Name
       value: BarbarianHelmet_HelmetPicker
@@ -537,6 +541,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4939369961661331367, guid: 64fbf7d065d41c7489a98a1ca69a99f8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6752308231549563028, guid: 64fbf7d065d41c7489a98a1ca69a99f8, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

@@ -8,6 +8,7 @@ namespace SGGames.Scripts.Healths
     public class PlayerHealth : Health
     {
         [SerializeField] private float m_armor;
+        [SerializeField] private float m_dodgeRate;
         [SerializeField] private SpriteFlicker m_spriteFlicker;
         [SerializeField] private float m_flickerFrequency;
         [SerializeField] private PlayerHealthUpdateEvent m_PlayerHealthUpdateEvent;
@@ -49,6 +50,11 @@ namespace SGGames.Scripts.Healths
 
             //Player cant take damage this frame
             if (!CanTakeDamage()) return;
+
+            if (CanDodgeThisAttack())
+            {
+                return;
+            }
             
             m_currentHealth -= damage * (1- m_armor/100);
             m_lastSourceCauseDamage = source;
@@ -78,6 +84,12 @@ namespace SGGames.Scripts.Healths
             this.gameObject.SetActive(false);
         }
 
+        private bool CanDodgeThisAttack()
+        {
+            var chance = Random.Range(0f, 100f);
+            return chance <= m_dodgeRate;
+        }
+
         public void AddRegenerationRate(float regenerationRate)
         {
             m_regenerationRate += regenerationRate;
@@ -91,6 +103,16 @@ namespace SGGames.Scripts.Healths
         public void SetArmor(float value)
         {
             m_armor = value;
+        }
+
+        public void AddDodgeRate(float dodgeRate)
+        {
+            m_dodgeRate += dodgeRate;
+        }
+
+        public void SetDodgeRate(float value)
+        {
+            m_dodgeRate = value;
         }
     }
 }
