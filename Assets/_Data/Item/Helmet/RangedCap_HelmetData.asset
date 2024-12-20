@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bcc7cb5c88e74f4fb6a49973df5bc81, type: 3}
+  m_Name: RangedCap_HelmetData
+  m_EditorClassIdentifier: 
+  m_itemID: ranged-cap
+  m_translatedName: Ranged Cap
+  m_rarity: 0
+  m_itemCategory: 1
+  m_icon: {fileID: -710671636, guid: 079f3decf87c80644bfc04d4052c0c78, type: 3}
+  m_pickerPrefab: {fileID: 2011092294068072587, guid: 8ad586e0bf8b6084bb07acd72deec1b0, type: 3}
+  m_modifierList:
+  - {fileID: 11400000, guid: 65d69c741ea74a540895a1607c618f48, type: 2}

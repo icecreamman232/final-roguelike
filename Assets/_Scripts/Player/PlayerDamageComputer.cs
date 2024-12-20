@@ -16,12 +16,12 @@ namespace SGGames.Scripts.Player
         public (float additionDamage, float multiplyDamage, float criticalDamage) 
             GetDamageInfo => (m_additionDamage, m_mutiplyDamage, GetCriticalDamage());
 
-        public void UpdateCriticalChance(float chance)
+        public void AddCriticalChance(float chance)
         {
             m_criticalChance += chance;
         }
 
-        public void UpdateCriticalDamage(float criticalDamage)
+        public void AddCriticalDamage(float criticalDamage)
         {
             m_criticalDamage += criticalDamage;
         }

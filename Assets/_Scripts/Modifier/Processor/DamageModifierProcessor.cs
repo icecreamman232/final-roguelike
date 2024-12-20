@@ -46,6 +46,18 @@ namespace SGGames.Scripts.Modifiers
                 case DamageModifierType.MultiplyDamage:
                     m_damageComputer.UpdateMultiplyDamage(m_modifier.ModifierValue);
                     break;
+                case DamageModifierType.IncreaseCriticalChance:
+                    m_damageComputer.AddCriticalChance(m_modifier.ModifierValue);
+                    break;
+                case DamageModifierType.IncreaseCriticalDamage:
+                    m_damageComputer.AddCriticalDamage(m_modifier.ModifierValue);
+                    break;
+                case DamageModifierType.ReduceCriticalChance:
+                    m_damageComputer.AddCriticalChance(-m_modifier.ModifierValue);
+                    break;
+                case DamageModifierType.ReduceCriticalDamage:
+                    m_damageComputer.AddCriticalDamage(-m_modifier.ModifierValue);
+                    break;
             }
             
             Debug.Log($"<color=green>Start Modifier Category:{m_modifier.ModifierType} " +
@@ -81,6 +93,18 @@ namespace SGGames.Scripts.Modifiers
                     break;
                 case DamageModifierType.MultiplyDamage:
                     m_damageComputer.UpdateMultiplyDamage(-m_modifier.ModifierValue);
+                    break;
+                case DamageModifierType.IncreaseCriticalChance:
+                    m_damageComputer.AddCriticalChance(-m_modifier.ModifierValue);
+                    break;
+                case DamageModifierType.IncreaseCriticalDamage:
+                    m_damageComputer.AddCriticalDamage(-m_modifier.ModifierValue);
+                    break;
+                case DamageModifierType.ReduceCriticalChance:
+                    m_damageComputer.AddCriticalChance(m_modifier.ModifierValue);
+                    break;
+                case DamageModifierType.ReduceCriticalDamage:
+                    m_damageComputer.AddCriticalDamage(m_modifier.ModifierValue);
                     break;
                 
             }

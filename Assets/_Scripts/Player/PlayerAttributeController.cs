@@ -48,8 +48,8 @@ namespace SGGames.Scripts.Player
             m_strengthPoints = m_heroData.BaseStrength;
             m_agilityPoints = m_heroData.BaseAgility;
             m_intelligencePoints = m_heroData.BaseIntelligence;
-            m_playerDamageComputer.UpdateCriticalChance(m_heroData.CriticalChance);
-            m_playerDamageComputer.UpdateCriticalDamage(m_heroData.CriticalDamage);
+            m_playerDamageComputer.AddCriticalChance(m_heroData.CriticalChance);
+            m_playerDamageComputer.AddCriticalDamage(m_heroData.CriticalDamage);
             
             m_playerHealth.Initialize(ComputeMaxHealth());
             m_playerHealth.AddRegenerationRate(ComputeRegenerationRate());
