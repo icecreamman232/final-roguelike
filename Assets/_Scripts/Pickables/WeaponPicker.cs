@@ -10,8 +10,7 @@ namespace SGGames.Scripts.Pickables
         
         protected override void ShowPrompt()
         {
-            m_pickerHUD.Show((WeaponData)m_itemData, 
-                m_playerAttributeController.ComputeAtkRate(((WeaponData)m_itemData).BaseDelayBetweenShots));
+            m_pickerHUD.Show((WeaponData)m_itemData);
             base.ShowPrompt();
         }
 

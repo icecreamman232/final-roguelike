@@ -1,4 +1,3 @@
-using System;
 using SGGames.Scripts.Data;
 using TMPro;
 using UnityEngine;
@@ -29,17 +28,17 @@ namespace SGGames.Scripts.UI
             Hide();
         }
 
-        public void Show(WeaponData data, float baseAtkSpd)
+        public void Show(WeaponData data)
         {
             m_canvasGroup.alpha = 1;
             if (!m_hasBeenDisplayed)
             {
-                FillInfo(data, baseAtkSpd);
+                FillInfo(data);
                 m_hasBeenDisplayed = true;
             }
         }
 
-        private void FillInfo(WeaponData data, float baseAtkSpd)
+        private void FillInfo(WeaponData data)
         {
             switch (data.Rarity)
             {
@@ -66,7 +65,7 @@ namespace SGGames.Scripts.UI
             m_categoryType.text = data.WeaponCategory.ToString();
             m_rangeValue.text = data.AttackRange.ToString("F1");
             m_damageValue.text = $"{data.MinDamage} - {data.MaxDamage}";
-            m_atkSpdValue.text = baseAtkSpd.ToString("F1");
+            m_atkSpdValue.text = (1f / data.BaseDelayBetweenShots).ToString("F1");
         }
 
         public void Hide()
