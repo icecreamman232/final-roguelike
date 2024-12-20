@@ -14,6 +14,7 @@ namespace SGGames.Scripts.Data
     {
         [Header("Base Attributes")]
         [SerializeField] private HeroID m_heroID;
+        [SerializeField] private string m_heroName;
         [SerializeField] private float m_baseStrength;
         [SerializeField] private float m_baseAgility;
         [SerializeField] private float m_baseIntelligence;
@@ -23,6 +24,7 @@ namespace SGGames.Scripts.Data
         [SerializeField] private float m_criticalDamage;
         
         //Base
+        public string HeroName => m_heroName;
         public float BaseStrength => m_baseStrength;
         public float BaseAgility => m_baseAgility;
         public float BaseIntelligence => m_baseIntelligence;

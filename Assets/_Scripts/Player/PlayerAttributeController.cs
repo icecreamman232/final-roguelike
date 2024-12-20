@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Data;
@@ -6,6 +5,7 @@ using SGGames.Scripts.Events;
 using SGGames.Scripts.Healths;
 using SGGames.Scripts.Managers;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace SGGames.Scripts.Player
 {
@@ -24,18 +24,37 @@ namespace SGGames.Scripts.Player
         
         [Header("Events")]
         [SerializeField] private AddAttributeEvent m_addAttributeEvent;
+        [SerializeField] private OpenCharacterInfoUIEvent m_openCharacterInfoUIEvent;
+        [SerializeField] private BoolEvent m_freezePlayerEvent;
+        [SerializeField] private GameEvent m_gameEvent;
         [Header("Data")]
         [SerializeField] private ConstantData m_constantData;
+        
+        private PlayerInputAction m_playerInput;
+        private bool m_isCharacterInfoOpening;
         
         public float StrengthPoints => m_strengthPoints;
         public float AgilityPoints => m_agilityPoints;
         public float IntelligencePoints => m_intelligencePoints;
+
+        public string HeroName => m_heroData.HeroName;
         
         protected override void Start()
         {
             base.Start();
+            m_playerInput = new PlayerInputAction();
+            m_playerInput.Player.Enable();
+            m_playerInput.Player.CharacterInfo.performed += OnCharacterInfoButtonPressed;
             m_addAttributeEvent.AddListener(OnChooseAttributeReward);
             StartCoroutine(InitializeAttributes());
+        }
+
+        private void OnCharacterInfoButtonPressed(InputAction.CallbackContext context)
+        {
+            m_isCharacterInfoOpening = !m_isCharacterInfoOpening;
+            m_freezePlayerEvent.Raise(m_isCharacterInfoOpening);
+            m_gameEvent.Raise(m_isCharacterInfoOpening ? GameEventType.PAUSED : GameEventType.UNPAUSED);
+            m_openCharacterInfoUIEvent.Raise(m_isCharacterInfoOpening,this);
         }
 
         private void OnDestroy()

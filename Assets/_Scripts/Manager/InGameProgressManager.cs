@@ -1,10 +1,11 @@
+using SGGames.Scripts.Core;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
 using UnityEngine;
 
 namespace SGGames.Scripts.Manager
 {
-    public class InGameProgressManager : MonoBehaviour
+    public class InGameProgressManager : Singleton<InGameProgressManager>
     {
         [SerializeField] private int m_currentExp;
         [SerializeField] private int m_maxExp;
@@ -14,6 +15,8 @@ namespace SGGames.Scripts.Manager
         [SerializeField] private IntEvent m_playerLevelUpEvent;
         [SerializeField] private UpdateExpBarEvent m_updateExpBarEvent;
 
+        public int CurrentLevel => m_currentLevel;
+        
         private void Start()
         {
             m_currentLevel = 1;

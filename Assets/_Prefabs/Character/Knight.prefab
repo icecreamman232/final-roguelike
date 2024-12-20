@@ -140,7 +140,9 @@ MonoBehaviour:
   m_playerDamageComputer: {fileID: 6211949587856999711}
   m_playerWeaponHandler: {fileID: 6210066009922297151}
   m_addAttributeEvent: {fileID: 11400000, guid: 0dbc4449929bc8d4aaac30d6cb0305f8, type: 2}
-  m_playerLevelUpEvent: {fileID: 11400000, guid: 230552ac7674ab146959ff8bfefc1053, type: 2}
+  m_openCharacterInfoUIEvent: {fileID: 11400000, guid: 9c8bcbc8359a26a4db6d550db47ae89d, type: 2}
+  m_freezePlayerEvent: {fileID: 11400000, guid: 1338a4fa70285e7488b5acc1fb4c30fe, type: 2}
+  m_gameEvent: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
   m_constantData: {fileID: 11400000, guid: 26336a57fc5df324abcfbac163a7a98c, type: 2}
 --- !u!114 &5311189830458795856
 MonoBehaviour:
@@ -198,6 +200,8 @@ MonoBehaviour:
   m_isImmortal: 0
   m_isDead: 0
   m_spriteRenderer: {fileID: 8048074491649769888}
+  m_armor: 0
+  m_dodgeRate: 0
   m_spriteFlicker: {fileID: 5366455935266437862}
   m_flickerFrequency: 0.1
   m_PlayerHealthUpdateEvent: {fileID: 11400000, guid: 522553b978f7d444282f81b913f8d024, type: 2}
@@ -351,6 +355,8 @@ MonoBehaviour:
   m_healthModifierProcessors: []
   m_damageModifierProcessors: []
   m_triggerAfterEventModifierProcessors: []
+  m_armorModifierProcessors: []
+  m_coinModifierProcessors: []
 --- !u!1 &2082253337759199587
 GameObject:
   m_ObjectHideFlags: 0

@@ -9,13 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 01a20d9ee19a31649a1f979dd8ff78b0, type: 3}
-  m_Name: Knight_HeroData
+  m_Script: {fileID: 11500000, guid: 1e8da3f8051af4d44a2caeb7596a7149, type: 3}
+  m_Name: OpenCharacterInfoUIEvent
   m_EditorClassIdentifier: 
-  m_heroID: 0
-  m_heroName: Knight
-  m_baseStrength: 5
-  m_baseAgility: 2
-  m_baseIntelligence: 1
-  m_criticalChance: 15
-  m_criticalDamage: 1.15

@@ -53,6 +53,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""CharacterInfo"",
+                    ""type"": ""Button"",
+                    ""id"": ""96c159b2-fb18-453b-b875-f8a49bbe43e0"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -132,6 +141,17 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""Inventory"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f946c717-69c7-4007-9f00-94a2dae5f0b8"",
+                    ""path"": ""<Keyboard>/c"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""CharacterInfo"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -143,6 +163,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Player_WASD = m_Player.FindAction("WASD", throwIfNotFound: true);
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
+        m_Player_CharacterInfo = m_Player.FindAction("CharacterInfo", throwIfNotFound: true);
     }
 
     ~@PlayerInputAction()
@@ -212,6 +233,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_WASD;
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Inventory;
+    private readonly InputAction m_Player_CharacterInfo;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -219,6 +241,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         public InputAction @WASD => m_Wrapper.m_Player_WASD;
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
+        public InputAction @CharacterInfo => m_Wrapper.m_Player_CharacterInfo;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -237,6 +260,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Inventory.started += instance.OnInventory;
             @Inventory.performed += instance.OnInventory;
             @Inventory.canceled += instance.OnInventory;
+            @CharacterInfo.started += instance.OnCharacterInfo;
+            @CharacterInfo.performed += instance.OnCharacterInfo;
+            @CharacterInfo.canceled += instance.OnCharacterInfo;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -250,6 +276,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @Inventory.started -= instance.OnInventory;
             @Inventory.performed -= instance.OnInventory;
             @Inventory.canceled -= instance.OnInventory;
+            @CharacterInfo.started -= instance.OnCharacterInfo;
+            @CharacterInfo.performed -= instance.OnCharacterInfo;
+            @CharacterInfo.canceled -= instance.OnCharacterInfo;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -272,5 +301,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         void OnWASD(InputAction.CallbackContext context);
         void OnInteract(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
+        void OnCharacterInfo(InputAction.CallbackContext context);
     }
 }
