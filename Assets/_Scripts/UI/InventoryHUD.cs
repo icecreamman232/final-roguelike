@@ -18,7 +18,10 @@ namespace SGGames.Scripts.UI
         [SerializeField] private InventoryCursor m_inventoryCursor;
         [SerializeField] private EquipmentSlotUI[] m_equipmentSlots;
         [SerializeField] private InventorySlotUI[] m_inventorySlots;
-
+        
+        [Header("Infor Panels")]
+        [SerializeField] private WeaponInfoPanel m_weaponInfoPanel;
+        
         [Header("Runtime")]
         [SerializeField] [ReadOnly] private EquipmentSlotUI m_hoveredEquipmentSlot;
         [SerializeField] [ReadOnly] private InventorySlotUI m_hoveredInventorySlot;
@@ -126,6 +129,24 @@ namespace SGGames.Scripts.UI
         private void OnPointerEnterEquipmentSlot(EquipmentSlotUI equipment)
         {
             m_hoveredEquipmentSlot = equipment;
+            if (m_selectedEquipmentSlot != null 
+                || m_selectedInventorySlot != null) return;
+
+            switch (equipment.ItemCategory)
+            {
+                case ItemCategory.Weapon:
+                    ShowWeaponInfoPanel((WeaponData)m_playerInventory.GetItemAtEquipment(equipment.ItemCategory));
+                    break;
+                case ItemCategory.Helmet:
+                case ItemCategory.Armor:
+                case ItemCategory.Boots:
+                case ItemCategory.Gloves:
+                case ItemCategory.Accessories:
+                case ItemCategory.Charm:
+                    ShowItemInfoPanel(m_playerInventory.GetItemAtEquipment(equipment.ItemCategory));
+                    break;
+            }
+            
         }
         
         private void OnPointerExitEquipmentSlot(EquipmentSlotUI equipment)
@@ -134,6 +155,8 @@ namespace SGGames.Scripts.UI
             {
                 m_hoveredEquipmentSlot = null;
             }
+
+            HideWeaponInfoPanel();
         }
         
         private void OnPointerDownEquipmentSlot(EquipmentSlotUI equipment)
@@ -180,6 +203,8 @@ namespace SGGames.Scripts.UI
             }
 
             m_inventoryCursor.SetIcon(null);
+            m_selectedEquipmentSlot = null;
+            m_selectedInventorySlot = null;
         }
         
         private void OnPointerUpInventorySlot(InventorySlotUI inventory, int index)
@@ -200,6 +225,8 @@ namespace SGGames.Scripts.UI
             }
             
             m_inventoryCursor.SetIcon(null);
+            m_selectedEquipmentSlot = null;
+            m_selectedInventorySlot = null;
         }
         
         
@@ -222,6 +249,21 @@ namespace SGGames.Scripts.UI
                 m_playerInventory.DropInventoryItemOnTheGround(m_selectedInventorySlot.SlotIndex);
                 m_inventoryCursor.SetIcon(null);
             }
+        }
+
+        private void ShowWeaponInfoPanel(WeaponData data)
+        {
+            m_weaponInfoPanel.Show(data);
+        }
+
+        private void HideWeaponInfoPanel()
+        {
+            m_weaponInfoPanel.Hide();
+        }
+
+        private void ShowItemInfoPanel(ItemData item)
+        {
+            
         }
     }
 }

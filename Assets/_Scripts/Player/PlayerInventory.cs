@@ -359,7 +359,7 @@ namespace SGGames.Scripts.Player
             return m_inventorySlots[index];
         }
 
-        private ItemData GetItemAtEquipment(ItemCategory equipmentCategory)
+        public ItemData GetItemAtEquipment(ItemCategory equipmentCategory)
         {
             switch (equipmentCategory)
             {
