@@ -5,14 +5,9 @@ namespace SGGames.Scripts.UI
 {
     public class ModifierUIDescription : MonoBehaviour
     {
-        private TextMeshProUGUI m_description;
+        [SerializeField ]private TextMeshProUGUI m_description;
         private readonly int C_CONTENT_ROW_HEIGHT = 50;
-
-        private void Start()
-        {
-            m_description = GetComponent<TextMeshProUGUI>();
-        }
-
+        
         public void FillDescription(string description)
         {
             m_description.text = description;

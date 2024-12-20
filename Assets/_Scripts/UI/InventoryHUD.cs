@@ -21,6 +21,16 @@ namespace SGGames.Scripts.UI
         
         [Header("Infor Panels")]
         [SerializeField] private WeaponInfoPanel m_weaponInfoPanel;
+        [SerializeField] private ItemInfoPanel m_itemInfoPanel;
+
+        [SerializeField] private RectTransform m_weaponPanelPivot;
+        [SerializeField] private RectTransform m_helmetPanelPivot;
+        [SerializeField] private RectTransform m_accessoriesPanelPivot;
+        [SerializeField] private RectTransform m_armorPanelPivot;
+        [SerializeField] private RectTransform m_glovesPanelPivot;
+        [SerializeField] private RectTransform m_bootsPanelPivot;
+        [SerializeField] private RectTransform m_charmPanelPivot;
+        [SerializeField] private RectTransform[] m_inventoryPanelPivots;
         
         [Header("Runtime")]
         [SerializeField] [ReadOnly] private EquipmentSlotUI m_hoveredEquipmentSlot;
@@ -129,24 +139,11 @@ namespace SGGames.Scripts.UI
         private void OnPointerEnterEquipmentSlot(EquipmentSlotUI equipment)
         {
             m_hoveredEquipmentSlot = equipment;
-            if (m_selectedEquipmentSlot != null 
-                || m_selectedInventorySlot != null) return;
-
-            switch (equipment.ItemCategory)
-            {
-                case ItemCategory.Weapon:
-                    ShowWeaponInfoPanel((WeaponData)m_playerInventory.GetItemAtEquipment(equipment.ItemCategory));
-                    break;
-                case ItemCategory.Helmet:
-                case ItemCategory.Armor:
-                case ItemCategory.Boots:
-                case ItemCategory.Gloves:
-                case ItemCategory.Accessories:
-                case ItemCategory.Charm:
-                    ShowItemInfoPanel(m_playerInventory.GetItemAtEquipment(equipment.ItemCategory));
-                    break;
-            }
             
+            if (m_selectedEquipmentSlot != null || m_selectedInventorySlot != null) return;
+            if (equipment == null) return;
+            
+            ShowEquipmentInfoPanel(m_playerInventory.GetItemAtEquipment(equipment.ItemCategory));
         }
         
         private void OnPointerExitEquipmentSlot(EquipmentSlotUI equipment)
@@ -156,7 +153,7 @@ namespace SGGames.Scripts.UI
                 m_hoveredEquipmentSlot = null;
             }
 
-            HideWeaponInfoPanel();
+            HideEquipmentInfoPanel();
         }
         
         private void OnPointerDownEquipmentSlot(EquipmentSlotUI equipment)
@@ -168,6 +165,11 @@ namespace SGGames.Scripts.UI
         private void OnPointerEnterInventorySlot(InventorySlotUI inventory, int index)
         {
             m_hoveredInventorySlot = inventory;
+
+            if(m_selectedInventorySlot != null || m_selectedEquipmentSlot != null) return;
+            if(inventory == null) return;
+
+            ShowInventoryInfoPanel(m_playerInventory.GetItemAtInventorySlot(index), index);
         }
         
         private void OnPointerExitInventorySlot(InventorySlotUI inventory,int index)
@@ -176,6 +178,8 @@ namespace SGGames.Scripts.UI
             {
                 m_hoveredInventorySlot = null;
             }
+
+            HideEquipmentInfoPanel();
         }
         
         private void OnPointerDownInventorySlot(InventorySlotUI inventory, int index)
@@ -251,19 +255,67 @@ namespace SGGames.Scripts.UI
             }
         }
 
-        private void ShowWeaponInfoPanel(WeaponData data)
-        {
-            m_weaponInfoPanel.Show(data);
-        }
-
-        private void HideWeaponInfoPanel()
+        private void HideEquipmentInfoPanel()
         {
             m_weaponInfoPanel.Hide();
+            m_itemInfoPanel.Hide();
         }
 
-        private void ShowItemInfoPanel(ItemData item)
+        private void ShowEquipmentInfoPanel(ItemData item)
         {
-            
+            if (item == null) return;
+            switch (item.ItemCategory)
+            {
+                case ItemCategory.Weapon:
+                    ((RectTransform)m_weaponInfoPanel.transform).anchoredPosition = m_weaponPanelPivot.anchoredPosition;
+                    m_weaponInfoPanel.Show((WeaponData)item);
+                    break;
+                case ItemCategory.Helmet:
+                    ((RectTransform)m_itemInfoPanel.transform).anchoredPosition = m_helmetPanelPivot.anchoredPosition;
+                    m_itemInfoPanel.Show(item);
+                    break;
+                case ItemCategory.Armor:
+                    ((RectTransform)m_itemInfoPanel.transform).anchoredPosition = m_armorPanelPivot.anchoredPosition;
+                    m_itemInfoPanel.Show(item);
+                    break;
+                case ItemCategory.Boots:
+                    ((RectTransform)m_itemInfoPanel.transform).anchoredPosition = m_bootsPanelPivot.anchoredPosition;
+                    m_itemInfoPanel.Show(item);
+                    break;
+                case ItemCategory.Gloves:
+                    ((RectTransform)m_itemInfoPanel.transform).anchoredPosition = m_glovesPanelPivot.anchoredPosition;
+                    m_itemInfoPanel.Show(item);
+                    break;
+                case ItemCategory.Accessories:
+                    ((RectTransform)m_itemInfoPanel.transform).anchoredPosition = m_accessoriesPanelPivot.anchoredPosition;
+                    m_itemInfoPanel.Show(item);
+                    break;
+                case ItemCategory.Charm:
+                    ((RectTransform)m_itemInfoPanel.transform).anchoredPosition = m_charmPanelPivot.anchoredPosition;
+                    m_itemInfoPanel.Show(item);
+                    break;
+            }
+        }
+
+        private void ShowInventoryInfoPanel(ItemData item, int slotIndex)
+        {
+            if (item == null) return;
+            switch (item.ItemCategory)
+            {
+                case ItemCategory.Weapon:
+                    ((RectTransform)m_weaponInfoPanel.transform).anchoredPosition = m_inventoryPanelPivots[slotIndex].anchoredPosition;
+                    m_weaponInfoPanel.Show((WeaponData)item);
+                    break;
+                case ItemCategory.Helmet:
+                case ItemCategory.Armor:
+                case ItemCategory.Boots:
+                case ItemCategory.Gloves:
+                case ItemCategory.Accessories:
+                case ItemCategory.Charm:
+                    ((RectTransform)m_itemInfoPanel.transform).anchoredPosition = m_inventoryPanelPivots[slotIndex].anchoredPosition;
+                    m_itemInfoPanel.Show(item);
+                    break;
+            }
         }
     }
 }

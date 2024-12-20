@@ -68,6 +68,8 @@ namespace SGGames.Scripts.UI
             m_rangeValue.text = data.AttackRange.ToString("F1");
             m_damageValue.text = $"{data.MinDamage} - {data.MaxDamage}";
             m_atkSpdValue.text = (1f / data.BaseDelayBetweenShots).ToString("F1");
+
+            m_modifierGroupPanel.Show(data);
         }
 
         public void Hide()
