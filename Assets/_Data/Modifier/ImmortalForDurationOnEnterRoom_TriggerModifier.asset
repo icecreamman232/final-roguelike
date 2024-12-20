@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30860f209a6f01d48a481755d0fc6675, type: 3}
   m_Name: ImmortalForDurationOnEnterRoom_TriggerModifier
   m_EditorClassIdentifier: 
+  Description: Grant <color=yellow>3</color> seconds immortal on entering a room.
   ModifierType: 3
   Duration: 0
   IsRunning: 0

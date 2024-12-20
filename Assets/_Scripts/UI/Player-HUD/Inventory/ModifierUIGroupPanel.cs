@@ -8,6 +8,14 @@ namespace SGGames.Scripts.UI
     { 
         [SerializeField] private ModifierUIDescription modifierDescTemplate;
 
+        public void ResetView()
+        {
+            for (int i = 0; i < transform.childCount; i++)
+            {
+                Destroy(transform.GetChild(i).gameObject);
+            }
+        }
+        
         public void Show(WeaponData data)
         {
             if (data.ModifierList.Length <= 0) return;

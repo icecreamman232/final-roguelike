@@ -12,8 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feaec82dd1152d94085ba416f86ed592, type: 3}
   m_Name: CommonArmor_IncreaseMaxHP_Modifier
   m_EditorClassIdentifier: 
+  Description: Increase <color=yellow>30</color> max health.
   ModifierType: 1
   Duration: 0
-  IsRunning: 0
+  IsRunning: 1
   HealthModifierType: 3
   ModifierValue: 30

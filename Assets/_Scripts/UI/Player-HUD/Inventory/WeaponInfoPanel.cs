@@ -23,7 +23,7 @@ namespace SGGames.Scripts.UI
         [SerializeField] private TextMeshProUGUI m_damageValue;
         [SerializeField] private TextMeshProUGUI m_atkSpdValue;
         [SerializeField] private ModifierUIGroupPanel m_modifierGroupPanel;
-
+        
         private void Start()
         {
             Hide();
@@ -32,12 +32,19 @@ namespace SGGames.Scripts.UI
         public void Show(WeaponData data)
         {
             m_canvasGroup.alpha = 1;
-            FillInfo(data);
+
+            if (data != m_data)
+            {
+                ResetView();
+                FillInfo(data);
+                m_data = data;
+            }
         }
 
-        public void ResetView()
+        private void ResetView()
         {
             m_data = null;
+            m_modifierGroupPanel.ResetView();
         }
 
         private void FillInfo(WeaponData data)

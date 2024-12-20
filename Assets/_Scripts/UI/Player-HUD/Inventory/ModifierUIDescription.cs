@@ -11,6 +11,7 @@ namespace SGGames.Scripts.UI
         public void FillDescription(string description)
         {
             m_description.text = description;
+            m_description.ForceMeshUpdate(true);
             ResizeHeight();
         }
 

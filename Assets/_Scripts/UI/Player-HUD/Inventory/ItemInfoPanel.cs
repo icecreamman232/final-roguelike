@@ -1,3 +1,4 @@
+using SGGames.Scripts.Attribute;
 using SGGames.Scripts.Data;
 using TMPro;
 using UnityEngine;
@@ -7,6 +8,7 @@ namespace SGGames.Scripts.UI
 {
     public class ItemInfoPanel : MonoBehaviour
     {
+        [SerializeField] [ReadOnly] private ItemData m_data;
         [SerializeField] private ConstantData m_constantData;
         [SerializeField] private CanvasGroup m_canvasGroup;
         [SerializeField] private Image m_bg;
@@ -23,11 +25,22 @@ namespace SGGames.Scripts.UI
         {
             Hide();
         }
+        
+        private void ResetView()
+        {
+            m_data = null;
+            m_modifierUIGroup.ResetView();
+        }
 
         public void Show(ItemData data)
         {
             m_canvasGroup.alpha = 1;
-            FillInfo(data);
+            if (data != m_data)
+            {
+                ResetView();
+                m_data = data;
+                FillInfo(data);
+            }
         }
 
         protected virtual void FillInfo(ItemData data)
