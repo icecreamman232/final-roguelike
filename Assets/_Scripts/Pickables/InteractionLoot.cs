@@ -1,4 +1,5 @@
 using SGGames.Scripts.Data;
+using SGGames.Scripts.Manager;
 using SGGames.Scripts.Managers;
 using UnityEngine;
 
@@ -20,7 +21,7 @@ namespace SGGames.Scripts.Pickables
             m_spawnParent = spawnParent;
             
             //Coin
-            DropCurrency(m_dropsTableData.CoinPrefab,m_dropsTableData.CoinDropAmount);
+            DropCurrency(m_dropsTableData.CoinPrefab,m_dropsTableData.CoinDropAmount + CurrencyManager.Instance.ExtraCoinForChest);
             
             //Key
             DropCurrency(m_dropsTableData.KeyPrefab,m_dropsTableData.KeyDropAmount);

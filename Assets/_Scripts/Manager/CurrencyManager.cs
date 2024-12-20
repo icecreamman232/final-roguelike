@@ -14,8 +14,14 @@ namespace SGGames.Scripts.Manager
         [SerializeField] private IntEvent m_keyPickedEvent;
         [SerializeField] private IntEvent m_updateKeyCounterEvent;
         [SerializeField] private int m_keyPicked;
+        [Header("Modifier")]
+        [SerializeField] private int m_extraCoinForEnemy;
+        [SerializeField] private int m_extraCoinForChest;
         
         public bool HasKey => m_keyPicked > 0;
+
+        public int ExtraCoinForEnemy => m_extraCoinForEnemy;
+        public int ExtraCoinForChest => m_extraCoinForChest;
 
         private void Start()
         {
@@ -47,6 +53,16 @@ namespace SGGames.Scripts.Manager
         public void ConsumeKey(int amount)
         {
             m_keyPicked -= amount;
+        }
+
+        public void AddExtraCoinForEnemy(int amount)
+        {
+            m_extraCoinForEnemy += amount;
+        }
+
+        public void AddExtraCoinForChest(int amount)
+        {
+            m_extraCoinForChest += amount;
         }
     }
 }

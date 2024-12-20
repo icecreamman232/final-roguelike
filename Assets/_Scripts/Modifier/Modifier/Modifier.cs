@@ -19,6 +19,7 @@ namespace SGGames.Scripts.Modifiers
         DAMAGE,
         TRIGGER_AFTER_GAME_EVENT,
         ARMOR,
+        COIN,
     }
 }
 

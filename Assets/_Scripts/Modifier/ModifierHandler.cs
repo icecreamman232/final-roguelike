@@ -24,6 +24,7 @@ namespace SGGames.Scripts.Modifiers
         [SerializeField] private List<DamageModifierProcessor> m_damageModifierProcessors;
         [SerializeField] private List<TriggerAfterEventModifierProcessor> m_triggerAfterEventModifierProcessors;
         [SerializeField] private List<ArmorModifierProcessor> m_armorModifierProcessors;
+        [SerializeField] private List<CoinModifierProcessor> m_coinModifierProcessors;
 
         private void Start()
         {
@@ -68,6 +69,12 @@ namespace SGGames.Scripts.Modifiers
                     armorProcessor.StartModifier();
                     m_armorModifierProcessors.Add(armorProcessor);
                     break;
+                case ModifierType.COIN:
+                    var coinProcessor = this.gameObject.AddComponent<CoinModifierProcessor>();
+                    coinProcessor.Initialize(this, (CoinModifier)modifier);
+                    coinProcessor.StartModifier();
+                    m_coinModifierProcessors.Add(coinProcessor);
+                    break;
             }
         }
 
@@ -103,6 +110,13 @@ namespace SGGames.Scripts.Modifiers
         {
             if (!m_armorModifierProcessors.Contains(processor)) return;
             m_armorModifierProcessors.Remove(processor);
+            DestroyImmediate(processor);
+        }
+        
+        public void RemoveCoinModifierProcessor(CoinModifierProcessor processor)
+        {
+            if (!m_coinModifierProcessors.Contains(processor)) return;
+            m_coinModifierProcessors.Remove(processor);
             DestroyImmediate(processor);
         }
 

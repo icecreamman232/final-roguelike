@@ -1,5 +1,6 @@
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Healths;
+using SGGames.Scripts.Manager;
 using SGGames.Scripts.Managers;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -34,7 +35,7 @@ namespace SGGames.Scripts.Pickables
             //TODO:Check spawn to make sure drops not being spawn outside of the room
             
             //Coin
-            DropCurrency(m_dropsTableData.CoinPrefab,m_dropsTableData.CoinDropAmount);
+            DropCurrency(m_dropsTableData.CoinPrefab,m_dropsTableData.CoinDropAmount + CurrencyManager.Instance.ExtraCoinForEnemy);
             
             //Key
             DropCurrency(m_dropsTableData.KeyPrefab,m_dropsTableData.KeyDropAmount);
