@@ -29,7 +29,6 @@ namespace SGGames.Scripts.UI
         }
 
         public void Show(ItemData data)
-        
         {
             if (m_coroutineRunning) return;
             StartCoroutine(OnShowing(data));
@@ -43,7 +42,7 @@ namespace SGGames.Scripts.UI
                 FillInfo(data);
                 m_hasBeenDisplayed = true;
             }
-            yield return new WaitForSecondsRealtime(0.3f);
+            yield return new WaitForEndOfFrame();
             m_canvasGroup.alpha = 1;
             m_coroutineRunning = false;
         }
