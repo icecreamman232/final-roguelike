@@ -172,6 +172,48 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: Wood-mask-helmet
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06c150780adc69744bc77cab5be8553d
+      internalID: -9935663
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Theif-band-helmet
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5763a477b07c90f45a706659efee38dc
+      internalID: 1002600149
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -186,6 +228,8 @@ TextureImporter:
       Captain-helmet: 1679268514
       Common-soldier-helmet: -1715481063
       Leather-hood: -934698402
+      Theif-band-helmet: 1002600149
+      Wood-mask-helmet: -9935663
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
