@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3bcc7cb5c88e74f4fb6a49973df5bc81, type: 3}
-  m_Name: CommonHelmet_HelmetData
+  m_Name: SoldierHelmet_HelmetData
   m_EditorClassIdentifier: 
-  m_itemID: common-helmet
-  m_translatedName: Common Helmet
+  m_itemID: soldier-helmet
+  m_translatedName: Soldier Helmet
   m_rarity: 0
   m_itemCategory: 1
   m_icon: {fileID: -1715481063, guid: 079f3decf87c80644bfc04d4052c0c78, type: 3}
   m_pickerPrefab: {fileID: 2011092294068072587, guid: a9a421e4b2f4ff84a8662f1531b12625, type: 3}
   m_modifierList:
   - {fileID: 11400000, guid: db92fd860afcf5a47b588f4cebb6642d, type: 2}
+  - {fileID: 11400000, guid: 466ca8513cfe5b34e8e5409e3153dc44, type: 2}

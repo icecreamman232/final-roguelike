@@ -85,7 +85,6 @@ namespace SGGames.Scripts.Healths
 
         public void AddArmor(float add)
         {
-            Debug.Log($"Add armor {add}");
             m_armor += add;
         }
         
