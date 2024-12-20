@@ -1,3 +1,4 @@
+using System.Collections;
 using SGGames.Scripts.Attribute;
 using SGGames.Scripts.Data;
 using TMPro;
@@ -23,6 +24,8 @@ namespace SGGames.Scripts.UI
         [SerializeField] private TextMeshProUGUI m_damageValue;
         [SerializeField] private TextMeshProUGUI m_atkSpdValue;
         [SerializeField] private ModifierUIGroupPanel m_modifierGroupPanel;
+
+        private bool m_isCoroutineRunning;
         
         private void Start()
         {
@@ -31,14 +34,22 @@ namespace SGGames.Scripts.UI
 
         public void Show(WeaponData data)
         {
-            m_canvasGroup.alpha = 1;
+            if (m_isCoroutineRunning) return;
+            StartCoroutine(OnShowing(data));
+        }
 
+        private IEnumerator OnShowing(WeaponData data)
+        {
+            m_isCoroutineRunning = true;
             if (data != m_data)
             {
                 ResetView();
                 FillInfo(data);
                 m_data = data;
             }
+            yield return new WaitForEndOfFrame();
+            m_canvasGroup.alpha = 1;
+            m_isCoroutineRunning = false;
         }
 
         private void ResetView()

@@ -1,4 +1,4 @@
-using System;
+using System.Collections;
 using SGGames.Scripts.Data;
 using TMPro;
 using UnityEngine;
@@ -18,8 +18,10 @@ namespace SGGames.Scripts.UI
         [SerializeField] private TextMeshProUGUI m_name;
         [SerializeField] private TextMeshProUGUI m_rarityType;
         [SerializeField] private TextMeshProUGUI m_categoryType;
+        [SerializeField] private ModifierUIGroupPanel m_modifierUIGroupPanel;
         
         private bool m_hasBeenDisplayed;
+        private bool m_coroutineRunning;
 
         private void Start()
         {
@@ -27,13 +29,23 @@ namespace SGGames.Scripts.UI
         }
 
         public void Show(ItemData data)
+        
         {
-            m_canvasGroup.alpha = 1;
+            if (m_coroutineRunning) return;
+            StartCoroutine(OnShowing(data));
+        }
+
+        private IEnumerator OnShowing(ItemData data)
+        {
+            m_coroutineRunning = true;
             if (!m_hasBeenDisplayed)
             {
                 FillInfo(data);
                 m_hasBeenDisplayed = true;
             }
+            yield return new WaitForSecondsRealtime(0.3f);
+            m_canvasGroup.alpha = 1;
+            m_coroutineRunning = false;
         }
 
         protected virtual void FillInfo(ItemData data)
@@ -59,6 +71,30 @@ namespace SGGames.Scripts.UI
             
             m_rarityType.color = m_constantData.GetRarityColor(data.Rarity);
             m_rarityType.text = data.Rarity.ToString();
+            switch(data.ItemCategory)
+            {
+                case ItemCategory.Weapon:
+                    m_modifierUIGroupPanel.Show((WeaponData)data);
+                    break;
+                case ItemCategory.Helmet:
+                    m_modifierUIGroupPanel.Show((HelmetData)data);
+                    break;
+                case ItemCategory.Armor:
+                    m_modifierUIGroupPanel.Show((ArmorData)data);
+                    break;
+                case ItemCategory.Boots:
+                    m_modifierUIGroupPanel.Show((BootsData)data);
+                    break;
+                case ItemCategory.Gloves:
+                    m_modifierUIGroupPanel.Show((GlovesData)data);
+                    break;
+                case ItemCategory.Accessories:
+                    m_modifierUIGroupPanel.Show((AccessoriesData)data);
+                    break;
+                case ItemCategory.Charm:
+                    m_modifierUIGroupPanel.Show((CharmData)data);
+                    break;
+            }
         }
 
         public void Hide()

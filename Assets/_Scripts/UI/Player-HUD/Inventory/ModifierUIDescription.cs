@@ -22,7 +22,7 @@ namespace SGGames.Scripts.UI
             ((RectTransform)transform).sizeDelta = currentSize;
         }
 
-        private float GetContentHeight()
+        public float GetContentHeight()
         {
             return m_description.textInfo.lineCount * C_CONTENT_ROW_HEIGHT;
         }

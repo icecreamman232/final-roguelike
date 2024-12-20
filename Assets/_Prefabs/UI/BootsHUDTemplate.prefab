@@ -24,6 +24,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: BootsHUDTemplate
       objectReference: {fileID: 0}
+    - target: {fileID: 2269640677556207206, guid: 070498941d7db064083c90eac81d4461, type: 3}
+      propertyPath: m_PresetInfoIsWorld
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 2386748837668645040, guid: 070498941d7db064083c90eac81d4461, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0
@@ -113,7 +117,8 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6875624554510564868, guid: 070498941d7db064083c90eac81d4461, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1271421039869287476, guid: 070498941d7db064083c90eac81d4461, type: 3}
@@ -164,6 +169,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fe87c0e1cc204ed48ad3b37840f39efc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &2681836377144825582 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 226754407684491823, guid: 070498941d7db064083c90eac81d4461, type: 3}
+  m_PrefabInstance: {fileID: 2743356378691787969}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e33065de8c6c44498fb778460da54f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &4014574945209417973 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1271421039869287476, guid: 070498941d7db064083c90eac81d4461, type: 3}
@@ -191,6 +207,7 @@ MonoBehaviour:
   m_name: {fileID: 9267078674382023}
   m_rarityType: {fileID: 1215664033396012311}
   m_categoryType: {fileID: 1792139772410130612}
+  m_modifierUIGroupPanel: {fileID: 2681836377144825582}
 --- !u!225 &8049842014526164471 stripped
 CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 5306529808503607606, guid: 070498941d7db064083c90eac81d4461, type: 3}

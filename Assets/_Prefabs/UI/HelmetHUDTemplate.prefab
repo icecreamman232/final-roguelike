@@ -26,6 +26,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2269640677556207206, guid: 070498941d7db064083c90eac81d4461, type: 3}
       propertyPath: m_PresetInfoIsWorld
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2386748837668645040, guid: 070498941d7db064083c90eac81d4461, type: 3}
+      propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6229631630532528623, guid: 070498941d7db064083c90eac81d4461, type: 3}
@@ -108,8 +112,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9104445324336786119, guid: 070498941d7db064083c90eac81d4461, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 6875624554510564868, guid: 070498941d7db064083c90eac81d4461, type: 3}
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 1271421039869287476, guid: 070498941d7db064083c90eac81d4461, type: 3}
@@ -121,6 +130,17 @@ CanvasGroup:
   m_CorrespondingSourceObject: {fileID: 5306529808503607606, guid: 070498941d7db064083c90eac81d4461, type: 3}
   m_PrefabInstance: {fileID: 5633578646043667607}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &5551788253715195576 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 226754407684491823, guid: 070498941d7db064083c90eac81d4461, type: 3}
+  m_PrefabInstance: {fileID: 5633578646043667607}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 06e33065de8c6c44498fb778460da54f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &6884459416565149859 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 1271421039869287476, guid: 070498941d7db064083c90eac81d4461, type: 3}
@@ -148,6 +168,7 @@ MonoBehaviour:
   m_name: {fileID: 7502097177979423889}
   m_rarityType: {fileID: 8710742358550431041}
   m_categoryType: {fileID: 8134297359691251938}
+  m_modifierUIGroupPanel: {fileID: 5551788253715195576}
 --- !u!114 &7502097177979423889 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2752456165026963462, guid: 070498941d7db064083c90eac81d4461, type: 3}

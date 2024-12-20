@@ -1,13 +1,13 @@
 using SGGames.Scripts.Data;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace SGGames.Scripts.UI
 {
     public class ModifierUIGroupPanel : MonoBehaviour
-    { 
+    {
+        [SerializeField] private RectTransform m_background;
         [SerializeField] private ModifierUIDescription modifierDescTemplate;
-
+        
         public void ResetView()
         {
             for (int i = 0; i < transform.childCount; i++)
@@ -15,6 +15,7 @@ namespace SGGames.Scripts.UI
                 Destroy(transform.GetChild(i).gameObject);
             }
         }
+        
         
         public void Show(WeaponData data)
         {
@@ -24,6 +25,9 @@ namespace SGGames.Scripts.UI
             {
                 var desc = Instantiate(modifierDescTemplate, transform);
                 desc.FillDescription(data.ModifierList[i].Description);
+                var curBGSize = m_background.sizeDelta;
+                curBGSize.y += desc.GetContentHeight();
+                m_background.sizeDelta = curBGSize;
             }
         }
         
@@ -35,6 +39,9 @@ namespace SGGames.Scripts.UI
             {
                 var desc = Instantiate(modifierDescTemplate, transform);
                 desc.FillDescription(data.ModifierList[i].Description);
+                var curBGSize = m_background.sizeDelta;
+                curBGSize.y += desc.GetContentHeight();
+                m_background.sizeDelta = curBGSize;
             }
         }
         
@@ -46,6 +53,9 @@ namespace SGGames.Scripts.UI
             {
                 var desc = Instantiate(modifierDescTemplate, transform);
                 desc.FillDescription(data.ModifierList[i].Description);
+                var curBGSize = m_background.sizeDelta;
+                curBGSize.y += desc.GetContentHeight();
+                m_background.sizeDelta = curBGSize;
             }
         }
         
@@ -57,6 +67,9 @@ namespace SGGames.Scripts.UI
             {
                 var desc = Instantiate(modifierDescTemplate, transform);
                 desc.FillDescription(data.ModifierList[i].Description);
+                var curBGSize = m_background.sizeDelta;
+                curBGSize.y += desc.GetContentHeight();
+                m_background.sizeDelta = curBGSize;
             }
         }
         
@@ -68,6 +81,9 @@ namespace SGGames.Scripts.UI
             {
                 var desc = Instantiate(modifierDescTemplate, transform);
                 desc.FillDescription(data.ModifierList[i].Description);
+                var curBGSize = m_background.sizeDelta;
+                curBGSize.y += desc.GetContentHeight();
+                m_background.sizeDelta = curBGSize;
             }
         }
         
@@ -79,6 +95,9 @@ namespace SGGames.Scripts.UI
             {
                 var desc = Instantiate(modifierDescTemplate, transform);
                 desc.FillDescription(data.ModifierList[i].Description);
+                var curBGSize = m_background.sizeDelta;
+                curBGSize.y += desc.GetContentHeight();
+                m_background.sizeDelta = curBGSize;
             }
         }
         
@@ -90,6 +109,9 @@ namespace SGGames.Scripts.UI
             {
                 var desc = Instantiate(modifierDescTemplate, transform);
                 desc.FillDescription(data.ModifierList[i].Description);
+                var curBGSize = m_background.sizeDelta;
+                curBGSize.y += desc.GetContentHeight();
+                m_background.sizeDelta = curBGSize;
             }
         }
     }

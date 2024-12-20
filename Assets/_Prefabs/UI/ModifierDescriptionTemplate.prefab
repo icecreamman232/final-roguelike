@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3682066202020721314}
   - component: {fileID: 4377784109140355815}
   m_Layer: 5
-  m_Name: WeaponModifierDescriptionTemplate
+  m_Name: ModifierDescriptionTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

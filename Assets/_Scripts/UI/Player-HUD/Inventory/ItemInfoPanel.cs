@@ -1,3 +1,4 @@
+using System.Collections;
 using SGGames.Scripts.Attribute;
 using SGGames.Scripts.Data;
 using TMPro;
@@ -21,6 +22,8 @@ namespace SGGames.Scripts.UI
         [SerializeField] private TextMeshProUGUI m_categoryType;
         [SerializeField] private ModifierUIGroupPanel m_modifierUIGroup;
         
+        private bool m_coroutineRunning;
+        
         private void Start()
         {
             Hide();
@@ -34,13 +37,22 @@ namespace SGGames.Scripts.UI
 
         public void Show(ItemData data)
         {
-            m_canvasGroup.alpha = 1;
+            if (m_coroutineRunning) return;
+            StartCoroutine(OnShowing(data));
+        }
+
+        private IEnumerator OnShowing(ItemData data)
+        {
+            m_coroutineRunning = true;
             if (data != m_data)
             {
                 ResetView();
                 m_data = data;
                 FillInfo(data);
             }
+            yield return new WaitForEndOfFrame();
+            m_canvasGroup.alpha = 1;
+            m_coroutineRunning = false;
         }
 
         protected virtual void FillInfo(ItemData data)
