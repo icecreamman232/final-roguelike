@@ -16,7 +16,6 @@ namespace SGGames.Scripts.Modifiers
         [SerializeField] private PlayerMovement m_playerMovement;
         [SerializeField] private PlayerHealth m_playerHealth;
         [SerializeField] private PlayerDamageComputer m_damageComputer;
-        [FormerlySerializedAs("m_gameEvent")]
         [Header("Events")] 
         [SerializeField] private GameEvent m_gameEvent;
         [Header("Processors")]
@@ -24,6 +23,7 @@ namespace SGGames.Scripts.Modifiers
         [SerializeField] private List<HealthModifierProcessor> m_healthModifierProcessors;
         [SerializeField] private List<DamageModifierProcessor> m_damageModifierProcessors;
         [SerializeField] private List<TriggerAfterEventModifierProcessor> m_triggerAfterEventModifierProcessors;
+        [SerializeField] private List<ArmorModifierProcessor> m_armorModifierProcessors;
 
         private void Start()
         {
@@ -62,6 +62,12 @@ namespace SGGames.Scripts.Modifiers
                     triggerProcessor.Initialize(this, (TriggerAfterEventModifier)modifier);
                     m_triggerAfterEventModifierProcessors.Add(triggerProcessor);
                     break;
+                case ModifierType.ARMOR:
+                    var armorProcessor = this.gameObject.AddComponent<ArmorModifierProcessor>();
+                    armorProcessor.Initialize(this, (ArmorModifier)modifier,m_playerHealth);
+                    armorProcessor.StartModifier();
+                    m_armorModifierProcessors.Add(armorProcessor);
+                    break;
             }
         }
 
@@ -92,6 +98,13 @@ namespace SGGames.Scripts.Modifiers
             m_triggerAfterEventModifierProcessors.Remove(processor);
             DestroyImmediate(processor);
         }
+        
+        public void RemoveArmorModifierProcessor(ArmorModifierProcessor processor)
+        {
+            if (!m_armorModifierProcessors.Contains(processor)) return;
+            m_armorModifierProcessors.Remove(processor);
+            DestroyImmediate(processor);
+        }
 
         public void UnregisterModifier(Modifier info)
         {
@@ -112,6 +125,10 @@ namespace SGGames.Scripts.Modifiers
                 case ModifierType.TRIGGER_AFTER_GAME_EVENT:
                     var triggerAfterEventModifierProcessor = m_triggerAfterEventModifierProcessors.FirstOrDefault(x => x.Modifier == info);
                     triggerAfterEventModifierProcessor?.StopModifier();
+                    break;
+                case ModifierType.ARMOR:
+                    var armorProcessor = m_triggerAfterEventModifierProcessors.FirstOrDefault(x => x.Modifier == info);
+                    armorProcessor?.StopModifier();
                     break;
             }
         }
