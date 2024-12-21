@@ -4,14 +4,9 @@ namespace SGGames.Scripts.Modifiers
 {
     public class TriggerAfterEventModifierProcessor : ModifierProcessor
     {
-       [SerializeField] private TriggerAfterEventModifier m_modifier;
-
-       private ModifierHandler m_handler;
-       
-       public TriggerAfterEventModifier Modifier => m_modifier;
-       
-       public void Initialize(ModifierHandler handler, TriggerAfterEventModifier modifier)
+       public void Initialize(string id, ModifierHandler handler, TriggerAfterEventModifier modifier)
        {
+           m_id = id;
            m_handler = handler;
            m_modifier = modifier;
        }
@@ -19,9 +14,9 @@ namespace SGGames.Scripts.Modifiers
        public override void StartModifier()
        {
            base.StartModifier();
-           m_handler.RegisterModifier(m_modifier.ModifierToBeTriggered);
+           m_handler.RegisterModifier(((TriggerAfterEventModifier)m_modifier).ModifierToBeTriggered);
            Debug.Log($"<color=green>Start Modifier Category:{m_modifier.ModifierType} " +
-                     $"- Type: Trigger {m_modifier.ModifierToBeTriggered} After Event {m_modifier.EventTypeToTrigger}</color> ");
+                     $"- Type: Trigger {((TriggerAfterEventModifier)m_modifier).ModifierToBeTriggered} After Event {((TriggerAfterEventModifier)m_modifier).EventTypeToTrigger}</color> ");
        }
     }
 }

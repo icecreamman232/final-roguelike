@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using SGGames.Scripts.Attribute;
@@ -10,6 +11,7 @@ using SGGames.Scripts.Manager;
 using SGGames.Scripts.Rooms;
 using SGGames.Scripts.UI;
 using UnityEngine;
+using Random = System.Random;
 
 namespace SGGames.Scripts.Managers
 {
@@ -73,6 +75,8 @@ namespace SGGames.Scripts.Managers
             m_rightRoomRewardList = m_roomGenerator.GetRoomRewards(m_currentAreaIndex);
             
             StartCoroutine(OnLevelLoaded());
+            
+            RandomController.SetSeed(UnityEngine.Random.Range(Int32.MinValue, Int32.MaxValue));
         }
 
         private void OnDestroy()

@@ -5,16 +5,11 @@ namespace SGGames.Scripts.Modifiers
 {
     public class DamageModifierProcessor : ModifierProcessor
     {
-       [SerializeField] private DamageModifier m_modifier;
        [SerializeField] private PlayerDamageComputer m_damageComputer;
 
-       private float m_timer;
-       private ModifierHandler m_handler;
-       
-       public DamageModifier Modifier => m_modifier;
-       
-       public void Initialize(ModifierHandler handler, PlayerDamageComputer damageComputer, DamageModifier modifier)
+       public void Initialize(string id, ModifierHandler handler, PlayerDamageComputer damageComputer, DamageModifier modifier)
        {
+           m_id = id;
            m_handler = handler;
            m_damageComputer = damageComputer;
            m_modifier = modifier;
@@ -23,94 +18,94 @@ namespace SGGames.Scripts.Modifiers
        public override void StartModifier()
         {
             base.StartModifier();
-            switch (m_modifier.DamageModifierType)
+            switch (((DamageModifier)m_modifier).DamageModifierType)
             {
                 case DamageModifierType.ReduceDamage_ForDuration:
-                    m_damageComputer.UpdateAdditionDamage(-m_modifier.ModifierValue);
+                    m_damageComputer.UpdateAdditionDamage(-((DamageModifier)m_modifier).ModifierValue);
                     m_isProcessing = true;
                     break;
                 case DamageModifierType.IncreaseDamage_ForDuration:
-                    m_damageComputer.UpdateAdditionDamage(m_modifier.ModifierValue);
+                    m_damageComputer.UpdateAdditionDamage(((DamageModifier)m_modifier).ModifierValue);
                     m_isProcessing = true;
                     break;
                 case DamageModifierType.MultiplyDamage_ForDuration:
-                    m_damageComputer.UpdateMultiplyDamage(m_modifier.ModifierValue);
+                    m_damageComputer.UpdateMultiplyDamage(((DamageModifier)m_modifier).ModifierValue);
                     m_isProcessing = true;
                     break;
                 case DamageModifierType.IncreaseDamage:
-                    m_damageComputer.UpdateAdditionDamage(m_modifier.ModifierValue);
+                    m_damageComputer.UpdateAdditionDamage(((DamageModifier)m_modifier).ModifierValue);
                     break;
                 case DamageModifierType.ReduceDamage:
-                    m_damageComputer.UpdateAdditionDamage(-m_modifier.ModifierValue);
+                    m_damageComputer.UpdateAdditionDamage(-((DamageModifier)m_modifier).ModifierValue);
                     break;
                 case DamageModifierType.MultiplyDamage:
-                    m_damageComputer.UpdateMultiplyDamage(m_modifier.ModifierValue);
+                    m_damageComputer.UpdateMultiplyDamage(((DamageModifier)m_modifier).ModifierValue);
                     break;
                 case DamageModifierType.IncreaseCriticalChance:
-                    m_damageComputer.AddCriticalChance(m_modifier.ModifierValue);
+                    m_damageComputer.AddCriticalChance(((DamageModifier)m_modifier).ModifierValue);
                     break;
                 case DamageModifierType.IncreaseCriticalDamage:
-                    m_damageComputer.AddCriticalDamage(m_modifier.ModifierValue);
+                    m_damageComputer.AddCriticalDamage(((DamageModifier)m_modifier).ModifierValue);
                     break;
                 case DamageModifierType.ReduceCriticalChance:
-                    m_damageComputer.AddCriticalChance(-m_modifier.ModifierValue);
+                    m_damageComputer.AddCriticalChance(-((DamageModifier)m_modifier).ModifierValue);
                     break;
                 case DamageModifierType.ReduceCriticalDamage:
-                    m_damageComputer.AddCriticalDamage(-m_modifier.ModifierValue);
+                    m_damageComputer.AddCriticalDamage(-((DamageModifier)m_modifier).ModifierValue);
                     break;
             }
             
             Debug.Log($"<color=green>Start Modifier Category:{m_modifier.ModifierType} " +
-                      $"- Type:{m_modifier.DamageModifierType} " +
-                      $"- Value:{m_modifier.ModifierValue}" +
+                      $"- Type:{((DamageModifier)m_modifier).DamageModifierType} " +
+                      $"- Value:{((DamageModifier)m_modifier).ModifierValue}" +
                       $"- Duration:{m_modifier.Duration}</color> ");
         }
     
         public override void StopModifier()
         {
             Debug.Log($"<color=red>Stop Modifier Category:{m_modifier.ModifierType} " +
-                      $"- Type:{m_modifier.DamageModifierType} " +
-                      $"- Value:{m_modifier.ModifierValue}" +
+                      $"- Type:{((DamageModifier)m_modifier).DamageModifierType} " +
+                      $"- Value:{((DamageModifier)m_modifier).ModifierValue}" +
                       $"- Duration:{m_modifier.Duration}</color> ");
             
             base.StopModifier();
-            switch (m_modifier.DamageModifierType)
+            switch (((DamageModifier)m_modifier).DamageModifierType)
             {
                 case DamageModifierType.ReduceDamage_ForDuration:
-                    m_damageComputer.UpdateAdditionDamage(m_modifier.ModifierValue);
+                    m_damageComputer.UpdateAdditionDamage(((DamageModifier)m_modifier).ModifierValue);
                     break;
                 case DamageModifierType.IncreaseDamage_ForDuration:
-                    m_damageComputer.UpdateAdditionDamage(-m_modifier.ModifierValue);
+                    m_damageComputer.UpdateAdditionDamage(-((DamageModifier)m_modifier).ModifierValue);
                     break;
                 case DamageModifierType.MultiplyDamage_ForDuration:
-                    m_damageComputer.UpdateMultiplyDamage(-m_modifier.ModifierValue);
+                    m_damageComputer.UpdateMultiplyDamage(-((DamageModifier)m_modifier).ModifierValue);
                     break;
                 case DamageModifierType.ReduceDamage:
-                    m_damageComputer.UpdateAdditionDamage(m_modifier.ModifierValue);
+                    m_damageComputer.UpdateAdditionDamage(((DamageModifier)m_modifier).ModifierValue);
                     break;
                 case DamageModifierType.IncreaseDamage:
-                    m_damageComputer.UpdateAdditionDamage(-m_modifier.ModifierValue);
+                    m_damageComputer.UpdateAdditionDamage(-((DamageModifier)m_modifier).ModifierValue);
                     break;
                 case DamageModifierType.MultiplyDamage:
-                    m_damageComputer.UpdateMultiplyDamage(-m_modifier.ModifierValue);
+                    m_damageComputer.UpdateMultiplyDamage(-((DamageModifier)m_modifier).ModifierValue);
                     break;
                 case DamageModifierType.IncreaseCriticalChance:
-                    m_damageComputer.AddCriticalChance(-m_modifier.ModifierValue);
+                    m_damageComputer.AddCriticalChance(-((DamageModifier)m_modifier).ModifierValue);
                     break;
                 case DamageModifierType.IncreaseCriticalDamage:
-                    m_damageComputer.AddCriticalDamage(-m_modifier.ModifierValue);
+                    m_damageComputer.AddCriticalDamage(-((DamageModifier)m_modifier).ModifierValue);
                     break;
                 case DamageModifierType.ReduceCriticalChance:
-                    m_damageComputer.AddCriticalChance(m_modifier.ModifierValue);
+                    m_damageComputer.AddCriticalChance(((DamageModifier)m_modifier).ModifierValue);
                     break;
                 case DamageModifierType.ReduceCriticalDamage:
-                    m_damageComputer.AddCriticalDamage(m_modifier.ModifierValue);
+                    m_damageComputer.AddCriticalDamage(((DamageModifier)m_modifier).ModifierValue);
                     break;
                 
             }
 
             m_isProcessing = false;
-            m_handler.RemoveDamageModifierProcessor(this);
+            m_handler.RemoveProcessor(this);
         }
 
         protected override void Update()
