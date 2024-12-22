@@ -17,22 +17,14 @@ namespace SGGames.Scripts.Player
         [SerializeField] protected PlayerAim m_playerAim;
         [SerializeField] protected PlayerDamageComputer m_playerDamageComputer;
         [SerializeField] protected PlayerAttributeController m_playerAttributeController;
-        [Header("Events")]
-        [SerializeField] private BoolEvent m_freezePlayerEvent;
-
+        
         public bool IsWeaponInitialized => m_currentWeapon != null;
         public float BaseAtkTime => m_currentWeapon.BaseDelayBetweenShots;
         
         protected override void Start()
         {
             base.Start();
-            m_freezePlayerEvent.AddListener(OnPlayerFreeze);
             Initialize();
-        }
-
-        private void OnDestroy()
-        {
-            m_freezePlayerEvent.RemoveListener(OnPlayerFreeze);
         }
 
         protected virtual void Initialize()
@@ -90,9 +82,9 @@ namespace SGGames.Scripts.Player
             m_currentWeapon.Shoot(m_playerAim.AimDirection, m_playerDamageComputer.GetDamageInfo);
         }
 
-        private void OnPlayerFreeze(bool isFreeze)
+        public override void OnPlayerFreeze(bool isFrozen)
         {
-            if (isFreeze)
+            if (isFrozen)
             {
                 m_currentWeapon.StopShooting();
                 ToggleAllow(false);

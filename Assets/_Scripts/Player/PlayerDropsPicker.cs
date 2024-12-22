@@ -1,6 +1,3 @@
-
-using System;
-using SGGames.Scripts.Events;
 using SGGames.Scripts.Pickables;
 using UnityEngine;
 
@@ -10,19 +7,12 @@ namespace SGGames.Scripts.Player
     {
         [SerializeField] private LayerMask m_pickableLayerMask;
         [SerializeField] private float m_pickRadius;
-        [SerializeField] private BoolEvent m_freezePlayerEvent;
         private Collider2D[] m_pickableColliders;
 
         protected override void Start()
         {
             base.Start();
-            m_freezePlayerEvent.AddListener(OnFreezePlayer);
             m_pickableColliders = new Collider2D[10];
-        }
-
-        private void OnDestroy()
-        {
-            m_freezePlayerEvent.RemoveListener(OnFreezePlayer);
         }
 
         protected override void Update()
@@ -42,16 +32,9 @@ namespace SGGames.Scripts.Player
             }
         }
 
-        private void OnFreezePlayer(bool isFreeze)
+        public override void OnPlayerFreeze(bool isFrozen)
         {
-            if (isFreeze)
-            {
-                ToggleAllow(false);
-            }
-            else
-            {
-                ToggleAllow(true);
-            }
+            ToggleAllow(!isFrozen);
         }
     }
 }

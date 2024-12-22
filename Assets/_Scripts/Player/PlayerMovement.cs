@@ -12,8 +12,6 @@ namespace SGGames.Scripts.Player
         [Header("Speed")]
         [SerializeField] private float m_initialSpeed;
         [SerializeField] private float m_currentSpeed;
-        [Header("Events")]
-        [SerializeField] private BoolEvent m_freezePlayerEvent;
 
         private readonly float m_raycastDistance = 0.2f;
         private bool m_canMove;
@@ -57,21 +55,13 @@ namespace SGGames.Scripts.Player
         protected override void Start()
         {
             base.Start();
-            
-            m_freezePlayerEvent.AddListener(OnFreezePlayer);
-            
             m_playerInput = new PlayerInputAction();
             m_playerInput.Enable();
 
             ResetSpeed();
             ToggleMovement(true);
         }
-
-        private void OnDestroy()
-        {
-            m_freezePlayerEvent.RemoveListener(OnFreezePlayer);
-        }
-
+        
         protected override void Update()
         {
             base.Update();
@@ -103,9 +93,9 @@ namespace SGGames.Scripts.Player
             transform.Translate(m_direction * (m_currentSpeed * Time.deltaTime));
         }
 
-        private void OnFreezePlayer(bool isFreeze)
+        public override void OnPlayerFreeze(bool isFrozen)
         {
-            if (isFreeze)
+            if (isFrozen)
             {
                 m_playerInput.Disable();
                 m_canMove = false;

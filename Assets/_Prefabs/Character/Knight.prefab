@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 6263496985321535266}
   - component: {fileID: 9207394351103251092}
   - component: {fileID: 4648966272443752208}
+  - component: {fileID: -7585341255886246384}
   - component: {fileID: 1224419374634297090}
   - component: {fileID: 5311189830458795856}
   - component: {fileID: 9095760099221184924}
@@ -119,6 +120,27 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.5, y: 0.8}
   m_EdgeRadius: 0
+--- !u!114 &-7585341255886246384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633775464036924199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0825ad1699e53294da03a6f81a5c032e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_playersBehaviors:
+  - {fileID: 1224419374634297090}
+  - {fileID: 5311189830458795856}
+  - {fileID: 9095760099221184924}
+  - {fileID: 6210066009922297151}
+  - {fileID: 8170920390037149282}
+  - {fileID: -2195535169441576329}
+  - {fileID: 8985148339537040874}
+  m_playerFreezeEvent: {fileID: 11400000, guid: 1338a4fa70285e7488b5acc1fb4c30fe, type: 2}
 --- !u!114 &1224419374634297090
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -351,12 +373,6 @@ MonoBehaviour:
   m_playerHealth: {fileID: 904574974438328195}
   m_damageComputer: {fileID: 6211949587856999711}
   m_gameEvent: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
-  m_movementModifierProcessors: []
-  m_healthModifierProcessors: []
-  m_damageModifierProcessors: []
-  m_triggerAfterEventModifierProcessors: []
-  m_armorModifierProcessors: []
-  m_coinModifierProcessors: []
 --- !u!1 &2082253337759199587
 GameObject:
   m_ObjectHideFlags: 0

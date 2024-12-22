@@ -24,7 +24,7 @@ namespace SGGames.Scripts.Player
 
         protected override void Update()
         {
-            base.Update();
+            if (!m_isAllow) return;
             HandleMouseInput();
             UpdateAimArrowVisual();
         }
@@ -41,6 +41,12 @@ namespace SGGames.Scripts.Player
             m_aimArrowTransform.position = transform.position + (Vector3)m_aimDirection * m_offsetFromCenter;
             m_aimArrowVisualTransform.rotation = Quaternion.AngleAxis(
                 Mathf.Atan2(m_aimDirection.y, m_aimDirection.x) * Mathf.Rad2Deg + m_offsetAngle, Vector3.forward);
+        }
+
+        public override void OnPlayerFreeze(bool isFrozen)
+        {
+            ToggleAllow(!isFrozen);
+            base.OnPlayerFreeze(isFrozen);
         }
     }
 }

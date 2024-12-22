@@ -52,9 +52,10 @@ namespace SGGames.Scripts.Player
         private void OnCharacterInfoButtonPressed(InputAction.CallbackContext context)
         {
             m_isCharacterInfoOpening = !m_isCharacterInfoOpening;
+            m_openCharacterInfoUIEvent.Raise(m_isCharacterInfoOpening,this);
+            
             m_freezePlayerEvent.Raise(m_isCharacterInfoOpening);
             m_gameEvent.Raise(m_isCharacterInfoOpening ? GameEventType.PAUSED : GameEventType.UNPAUSED);
-            m_openCharacterInfoUIEvent.Raise(m_isCharacterInfoOpening,this);
         }
 
         private void OnDestroy()

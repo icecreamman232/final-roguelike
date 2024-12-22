@@ -20,6 +20,14 @@ namespace SGGames.Scripts.Player
         {
             if (!m_isAllow) return;
         }
+
+        /// <summary>
+        /// Handle behavior when player got freeze
+        /// </summary>
+        public virtual void OnPlayerFreeze(bool isFrozen)
+        {
+            
+        }
     }
 }
 

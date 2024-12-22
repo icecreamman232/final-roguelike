@@ -1,4 +1,3 @@
-using System;
 using System.Collections.Generic;
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Data;
@@ -55,10 +54,11 @@ namespace SGGames.Scripts.Player
         private void OnInventoryButtonPressed(InputAction.CallbackContext context)
         {
             m_isOpeningInventoryUI = !m_isOpeningInventoryUI;
-            m_toggleFreezePlayerEvent?.Raise(m_isOpeningInventoryUI);
-            m_gameEvent.Raise(m_isOpeningInventoryUI ? GameEventType.PAUSED : GameEventType.UNPAUSED);
             m_openInventoryUI?.Raise(m_isOpeningInventoryUI,m_primaryWeaponSlot,m_helmetSlot,m_armorSlot,m_glovesSlot,
                 m_bootsSlot,m_accessoriesSlot,m_charmSlot,m_inventorySlots);
+            
+            m_toggleFreezePlayerEvent?.Raise(m_isOpeningInventoryUI);
+            m_gameEvent.Raise(m_isOpeningInventoryUI ? GameEventType.PAUSED : GameEventType.UNPAUSED);
         }
 
 

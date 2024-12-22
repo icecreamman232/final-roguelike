@@ -1,4 +1,3 @@
-using System;
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Manager;
 using SGGames.Scripts.Rooms;
@@ -7,8 +6,6 @@ using UnityEngine.InputSystem;
 
 namespace SGGames.Scripts.Player
 {
-    
-    
     public interface IInteractable
     {
         public void Interact();
