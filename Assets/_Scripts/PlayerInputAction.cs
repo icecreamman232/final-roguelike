@@ -62,6 +62,24 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""DefenseAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""b53b85ca-f8d8-469e-a48b-6fce35dca9e5"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""OffenseAbility"",
+                    ""type"": ""Button"",
+                    ""id"": ""7c67c627-792f-4f7d-b992-f3e061011b90"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -152,6 +170,28 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""CharacterInfo"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f2d9084c-5399-4fd0-a7cf-16d74cc4987c"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""DefenseAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""bea12404-4319-47bc-880a-ea4648111f55"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""OffenseAbility"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -164,6 +204,8 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Player_Interact = m_Player.FindAction("Interact", throwIfNotFound: true);
         m_Player_Inventory = m_Player.FindAction("Inventory", throwIfNotFound: true);
         m_Player_CharacterInfo = m_Player.FindAction("CharacterInfo", throwIfNotFound: true);
+        m_Player_DefenseAbility = m_Player.FindAction("DefenseAbility", throwIfNotFound: true);
+        m_Player_OffenseAbility = m_Player.FindAction("OffenseAbility", throwIfNotFound: true);
     }
 
     ~@PlayerInputAction()
@@ -234,6 +276,8 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_Interact;
     private readonly InputAction m_Player_Inventory;
     private readonly InputAction m_Player_CharacterInfo;
+    private readonly InputAction m_Player_DefenseAbility;
+    private readonly InputAction m_Player_OffenseAbility;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -242,6 +286,8 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         public InputAction @Interact => m_Wrapper.m_Player_Interact;
         public InputAction @Inventory => m_Wrapper.m_Player_Inventory;
         public InputAction @CharacterInfo => m_Wrapper.m_Player_CharacterInfo;
+        public InputAction @DefenseAbility => m_Wrapper.m_Player_DefenseAbility;
+        public InputAction @OffenseAbility => m_Wrapper.m_Player_OffenseAbility;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -263,6 +309,12 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @CharacterInfo.started += instance.OnCharacterInfo;
             @CharacterInfo.performed += instance.OnCharacterInfo;
             @CharacterInfo.canceled += instance.OnCharacterInfo;
+            @DefenseAbility.started += instance.OnDefenseAbility;
+            @DefenseAbility.performed += instance.OnDefenseAbility;
+            @DefenseAbility.canceled += instance.OnDefenseAbility;
+            @OffenseAbility.started += instance.OnOffenseAbility;
+            @OffenseAbility.performed += instance.OnOffenseAbility;
+            @OffenseAbility.canceled += instance.OnOffenseAbility;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -279,6 +331,12 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @CharacterInfo.started -= instance.OnCharacterInfo;
             @CharacterInfo.performed -= instance.OnCharacterInfo;
             @CharacterInfo.canceled -= instance.OnCharacterInfo;
+            @DefenseAbility.started -= instance.OnDefenseAbility;
+            @DefenseAbility.performed -= instance.OnDefenseAbility;
+            @DefenseAbility.canceled -= instance.OnDefenseAbility;
+            @OffenseAbility.started -= instance.OnOffenseAbility;
+            @OffenseAbility.performed -= instance.OnOffenseAbility;
+            @OffenseAbility.canceled -= instance.OnOffenseAbility;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -302,5 +360,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         void OnInteract(InputAction.CallbackContext context);
         void OnInventory(InputAction.CallbackContext context);
         void OnCharacterInfo(InputAction.CallbackContext context);
+        void OnDefenseAbility(InputAction.CallbackContext context);
+        void OnOffenseAbility(InputAction.CallbackContext context);
     }
 }

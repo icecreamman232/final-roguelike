@@ -228,7 +228,7 @@ MonoBehaviour:
     m_Bits: 64
   m_nonDamageableLayerMask:
     serializedVersion: 2
-    m_Bits: 1024
+    m_Bits: 66560
 --- !u!114 &6886308719153750740
 MonoBehaviour:
   m_ObjectHideFlags: 0
