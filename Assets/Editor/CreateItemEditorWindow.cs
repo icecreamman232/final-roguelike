@@ -175,9 +175,16 @@ public class CreateItemEditorWindow : EditorWindow
         
         AssetDatabase.SaveAssets();
         AssetDatabase.Refresh();
-        
-        
         DestroyImmediate(variant);
+        
+        //Focus to data asset in project window
+        PostCreating(asset);
+    }
+    
+    private void PostCreating(UnityEngine.Object data)
+    {
+        EditorUtility.FocusProjectWindow();
+        Selection.activeObject = data;
     }
     
     #region Create picker HUD 
