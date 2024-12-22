@@ -19,6 +19,20 @@ namespace SGGames.Scripts.Common
             return m_seed;
         }
 
+        public static void ApplySeed(string seed)
+        {
+            var rawValues = Encoding.ASCII.GetBytes(seed);
+            var sum = 0;
+            for (int i = 0; i < m_rawSeedArray.Length; i++)
+            {
+                m_rawSeedArray[i] = rawValues[i];
+                sum += m_rawSeedArray[i];
+            }
+            m_random = new Random(sum);
+            
+            Debug.Log($"APPLIED SEED {m_seed}");
+        }
+
         public static void SetSeed()
         {
             m_rawSeedArray[0] = (byte)UnityEngine.Random.Range(48, 58); // 0-9
@@ -28,7 +42,7 @@ namespace SGGames.Scripts.Common
             m_rawSeedArray[4] = (byte)UnityEngine.Random.Range(65, 91); //A-Z (Capitalized)
 
             //Convert raw seed to text-type seed
-            m_seed = ASCII_TO_STRING(new ReadOnlySpan<byte>(m_rawSeedArray));
+            m_seed = Encoding.ASCII.GetString((new ReadOnlySpan<byte>(m_rawSeedArray)));
             
             var sum = 0;
             foreach (var seedValue in m_rawSeedArray)
@@ -38,11 +52,6 @@ namespace SGGames.Scripts.Common
             
             m_random = new Random(sum);
             Debug.Log($"SEED {m_seed}");
-        }
-
-        public static string ASCII_TO_STRING(ReadOnlySpan<byte> input)
-        {
-            return Encoding.ASCII.GetString(input);
         }
         
         public static string GetUniqueID()
