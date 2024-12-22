@@ -16,8 +16,34 @@ public class CreateItemEditorWindow : EditorWindow
     private Rarity m_rarity;
     private Sprite m_itemSprite;
 
+    #region Paths
+    private readonly string C_WEAPON_DATA_PATH = "Assets/_Data/Item/Weapon/";
     private readonly string C_HELMET_DATA_PATH = "Assets/_Data/Item/Helmet/";
-    private readonly string C_ARMOR_DATA_PATH = "Assets/_Data/Item/ARMOR/";
+    private readonly string C_ARMOR_DATA_PATH = "Assets/_Data/Item/Armor/";
+    private readonly string C_GLOVES_DATA_PATH = "Assets/_Data/Item/Gloves/";
+    private readonly string C_ACCESSORIES_DATA_PATH = "Assets/_Data/Item/Accessories/";
+    private readonly string C_CHARM_DATA_PATH = "Assets/_Data/Item/Charm/";
+    private readonly string C_BOOTS_DATA_PATH = "Assets/_Data/Item/Boots/";
+    
+    private readonly string C_PICKER_PREFAB_PATH = "Assets/_Prefabs/Item/ItemPickableTemplate.prefab";
+    private readonly string C_ITEM_PICKED_EVENT_ASSET_PATH = "Assets/_Data/Events/ItemPickedEvent.asset";
+
+    private readonly string C_WEAPON_PREFAB_PATH = "Assets/_Prefabs/Item/Weapon/";
+    private readonly string C_HELMET_PREFAB_PATH = "Assets/_Prefabs/Item/Helmet/";
+    private readonly string C_ARMOR_PREFAB_PATH = "Assets/_Prefabs/Item/Armor/";
+    private readonly string C_GLOVES_PREFAB_PATH = "Assets/_Prefabs/Item/Gloves/";
+    private readonly string C_ACCESSORIES_PREFAB_PATH = "Assets/_Prefabs/Item/Accessories/";
+    private readonly string C_BOOTS_PREFAB_PATH = "Assets/_Prefabs/Item/Boots/";
+    private readonly string C_CHARM_PREFAB_PATH = "Assets/_Prefabs/Item/Charm/";
+
+    private readonly string C_WEAPON_PICKER_HUB_PREFAB_PATH = "Assets/_Prefabs/UI/WeaponHUDTemplate.prefab";
+    private readonly string C_HELMET_PICKER_HUB_PREFAB_PATH = "Assets/_Prefabs/UI/HelmetHUDTemplate.prefab";
+    private readonly string C_ARMOR_PICKER_HUB_PREFAB_PATH = "Assets/_Prefabs/UI/ArmorHUDTemplate.prefab";
+    private readonly string C_GLOVES_PICKER_HUB_PREFAB_PATH = "Assets/_Prefabs/UI/GlovesHUDTemplate.prefab";
+    private readonly string C_ACCESSORIES_PICKER_HUB_PREFAB_PATH = "Assets/_Prefabs/UI/AccessoriesHUDTemplate.prefab";
+    private readonly string C_BOOTS_PICKER_HUB_PREFAB_PATH = "Assets/_Prefabs/UI/BootsHUDTemplate.prefab";
+    private readonly string C_CHARM_PICKER_HUB_PREFAB_PATH = "Assets/_Prefabs/UI/CharmHUDTemplate.prefab";
+    #endregion
     
     [MenuItem("SGGames/Create Item Tool")]
     private static void OpenWindow()
@@ -45,11 +71,6 @@ public class CreateItemEditorWindow : EditorWindow
 
     private void CreateItem()
     {
-        CreateDataAsset();
-    }
-
-    private void CreateDataAsset()
-    {
         UnityEngine.Object asset = null;
         var path = "";
         var formatedName = string.Join("", m_itemName.Split(default(string[]), StringSplitOptions.RemoveEmptyEntries));
@@ -64,23 +85,23 @@ public class CreateItemEditorWindow : EditorWindow
                 break;
             case ItemCategory.Armor:
                 asset = ScriptableObject.CreateInstance<ArmorData>();
-                path = $"Assets/_Data/Item/Armor/{formatedName}_ArmorData.asset";
+                path = $"{C_ARMOR_DATA_PATH}{formatedName}_ArmorData.asset";
                 break;
             case ItemCategory.Boots:
                 asset = ScriptableObject.CreateInstance<BootsData>();
-                path = $"Assets/_Data/Item/Boots/{formatedName}_BootsData.asset";
+                path = $"{C_BOOTS_DATA_PATH}{formatedName}_BootsData.asset";
                 break;
             case ItemCategory.Gloves:
                 asset = ScriptableObject.CreateInstance<GlovesData>();
-                path = $"Assets/_Data/Item/Gloves/{formatedName}_GlovesData.asset";
+                path = $"{C_GLOVES_DATA_PATH}{formatedName}_GlovesData.asset";
                 break;
             case ItemCategory.Accessories:
                 asset = ScriptableObject.CreateInstance<AccessoriesData>();
-                path = $"Assets/_Data/Item/Accessories/{formatedName}_AccessoriesData.asset";
+                path = $"{C_ACCESSORIES_DATA_PATH}{formatedName}_AccessoriesData.asset";
                 break;
             case ItemCategory.Charm:
                 asset = ScriptableObject.CreateInstance<CharmData>();
-                path = $"Assets/_Data/Item/Charm/{formatedName}_CharmData.asset";
+                path = $"{C_CHARM_DATA_PATH}{formatedName}_CharmData.asset";
                 break;
         }
 
@@ -93,54 +114,54 @@ public class CreateItemEditorWindow : EditorWindow
         AssetDatabase.CreateAsset(asset,path);
         AssetDatabase.SaveAssets();
         
-        GameObject templatePrefab = AssetDatabase.LoadAssetAtPath<GameObject>("Assets/_Prefabs/Item/ItemPickableTemplate.prefab");
+        GameObject templatePrefab = AssetDatabase.LoadAssetAtPath<GameObject>(C_PICKER_PREFAB_PATH);
         var variant = PrefabUtility.InstantiatePrefab(templatePrefab) as GameObject;
         
         var savePath = "";
-        var eventData = AssetDatabase.LoadAssetAtPath<ItemPickedEvent>("Assets/_Data/Events/ItemPickedEvent.asset");
+        var eventData = AssetDatabase.LoadAssetAtPath<ItemPickedEvent>(C_ITEM_PICKED_EVENT_ASSET_PATH);
         switch (m_itemCategory)
         {
             case ItemCategory.Weapon:
                 var weaponPicker = variant.AddComponent<WeaponPicker>();
                 weaponPicker.SetDataForEditor(m_itemCategory,(ItemData)asset,eventData);
-                savePath = $"Assets/_Prefabs/Item/Weapon/{formatedName}_WeaponPicker.prefab";
-                CreatePickerHUD("Assets/_Prefabs/UI/WeaponHUDTemplate.prefab", variant,weaponPicker);
+                savePath = $"{C_WEAPON_PREFAB_PATH}{formatedName}_WeaponPicker.prefab";
+                CreatePickerHUD(C_WEAPON_PICKER_HUB_PREFAB_PATH, variant,weaponPicker);
                 break;
             case ItemCategory.Helmet:
                 var helmetPicker = variant.AddComponent<HelmetPicker>();
                 helmetPicker.SetDataForEditor(m_itemCategory,(ItemData)asset,eventData);
-                savePath = $"Assets/_Prefabs/Item/Helmet/{formatedName}_HelmetPicker.prefab";
-                CreatePickerHUD("Assets/_Prefabs/UI/HelmetHUDTemplate.prefab", variant,helmetPicker);
+                savePath = $"{C_HELMET_PREFAB_PATH}{formatedName}_HelmetPicker.prefab";
+                CreatePickerHUD(C_HELMET_PICKER_HUB_PREFAB_PATH, variant,helmetPicker);
                 break;
             case ItemCategory.Armor:
                 var armorPicker = variant.AddComponent<ArmorPicker>();
                 armorPicker.SetDataForEditor(m_itemCategory,(ItemData)asset,eventData);
-                savePath = $"Assets/_Prefabs/Item/Armor/{formatedName}_ArmorPicker.prefab";
-                CreatePickerHUD("Assets/_Prefabs/UI/ArmorHUDTemplate.prefab", variant,armorPicker);
+                savePath = $"{C_ARMOR_PREFAB_PATH}{formatedName}_ArmorPicker.prefab";
+                CreatePickerHUD(C_ARMOR_PICKER_HUB_PREFAB_PATH, variant,armorPicker);
                 break;
             case ItemCategory.Boots:
                 var bootsPicker = variant.AddComponent<BootsPicker>();
                 bootsPicker.SetDataForEditor(m_itemCategory,(ItemData)asset,eventData);
-                savePath = $"Assets/_Prefabs/Item/Boots/{formatedName}_BootsPicker.prefab";
-                CreatePickerHUD("Assets/_Prefabs/UI/BootsHUDTemplate.prefab", variant,bootsPicker);
+                savePath = $"{C_BOOTS_PREFAB_PATH}{formatedName}_BootsPicker.prefab";
+                CreatePickerHUD(C_BOOTS_PICKER_HUB_PREFAB_PATH, variant,bootsPicker);
                 break;
             case ItemCategory.Gloves:
                 var glovesPicker = variant.AddComponent<GlovesPicker>();
                 glovesPicker.SetDataForEditor(m_itemCategory,(ItemData)asset,eventData);
-                savePath = $"Assets/_Prefabs/Item/Gloves/{formatedName}_GlovesPicker.prefab";
-                CreatePickerHUD("Assets/_Prefabs/UI/GlovesHUDTemplate.prefab", variant,glovesPicker);
+                savePath = $"{C_GLOVES_PREFAB_PATH}{formatedName}_GlovesPicker.prefab";
+                CreatePickerHUD(C_GLOVES_PICKER_HUB_PREFAB_PATH, variant,glovesPicker);
                 break;
             case ItemCategory.Accessories:
                 var accessoriesPicker = variant.AddComponent<AccessoriesPicker>();
                 accessoriesPicker.SetDataForEditor(m_itemCategory,(ItemData)asset,eventData);
-                savePath = $"Assets/_Prefabs/Item/Accessories/{formatedName}_AccessoriesPicker.prefab";
+                savePath = $"{C_ACCESSORIES_PREFAB_PATH}{formatedName}_AccessoriesPicker.prefab";
                 CreatePickerHUD("Assets/_Prefabs/UI/AccessoriesHUDTemplate.prefab", variant,accessoriesPicker);
                 break;
             case ItemCategory.Charm:
                 var charmPicker = variant.AddComponent<CharmPicker>();
                 charmPicker.SetDataForEditor(m_itemCategory,(ItemData)asset,eventData);
-                savePath = $"Assets/_Prefabs/Item/Charm/{formatedName}_CharmPicker.prefab";
-                CreatePickerHUD("Assets/_Prefabs/UI/CharmHUDTemplate.prefab", variant,charmPicker);
+                savePath = $"{C_CHARM_PREFAB_PATH}{formatedName}_CharmPicker.prefab";
+                CreatePickerHUD(C_CHARM_PICKER_HUB_PREFAB_PATH, variant,charmPicker);
                 break;
         }
 
