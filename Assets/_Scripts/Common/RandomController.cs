@@ -9,8 +9,16 @@ namespace SGGames.Scripts.Common
     {
         private static Random m_random;
 
+        private static int m_seed;
+
+        public static int GetSeed()
+        {
+            return m_seed;
+        }
+
         public static void SetSeed(int seed)
         {
+            m_seed = seed;
             m_random = new Random(seed);
             Debug.Log($"SEED {seed}");
         }
