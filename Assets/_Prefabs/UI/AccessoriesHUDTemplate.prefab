@@ -32,10 +32,6 @@ PrefabInstance:
       propertyPath: m_text
       value: Grant immortal <color=yellow>3</color> seconds after entering a room.
       objectReference: {fileID: 0}
-    - target: {fileID: 2269640677556207206, guid: 070498941d7db064083c90eac81d4461, type: 3}
-      propertyPath: m_PresetInfoIsWorld
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: 2386748837668645040, guid: 070498941d7db064083c90eac81d4461, type: 3}
       propertyPath: m_SizeDelta.x
       value: 0

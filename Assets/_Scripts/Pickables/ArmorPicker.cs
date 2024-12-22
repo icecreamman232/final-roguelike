@@ -7,6 +7,8 @@ namespace SGGames.Scripts.Pickables
     public class ArmorPicker : ItemPicker
     {
         [SerializeField] private ArmorPickerHUD m_pickerHUD;
+        public ArmorPickerHUD PickerHUD { set => m_pickerHUD = value; }
+
         protected override void ShowPrompt()
         {
             base.ShowPrompt();

@@ -3,9 +3,11 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Pickables
 {
-    public class BoostPicker : ItemPicker
+    public class BootsPicker : ItemPicker
     {
         [SerializeField] private BootsPickerHUD m_pickerHUD;
+        public BootsPickerHUD PickerHUD { set => m_pickerHUD = value; }
+
         protected override void ShowPrompt()
         {
             base.ShowPrompt();

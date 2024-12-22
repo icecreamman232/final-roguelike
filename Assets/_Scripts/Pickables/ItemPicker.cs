@@ -1,3 +1,4 @@
+using System;
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
@@ -16,6 +17,37 @@ namespace SGGames.Scripts.Pickables
         protected PlayerAttributeController m_playerAttributeController;
         protected PlayerInteract m_playerInteract;
         protected bool m_hasInteract;
+
+        public void SetDataForEditor(ItemCategory itemCategory,ItemData itemData,ItemPickedEvent itemPickedEvent)
+        {
+            m_itemCategory = itemCategory;
+            switch (m_itemCategory)
+            {
+                case ItemCategory.Weapon:
+                    m_type = InteractType.Weapon;
+                    break;
+                case ItemCategory.Helmet:
+                    m_type = InteractType.Helmet;
+                    break;
+                case ItemCategory.Armor:
+                    m_type = InteractType.Armor;
+                    break;
+                case ItemCategory.Boots:
+                    m_type = InteractType.Boots;
+                    break;
+                case ItemCategory.Gloves:
+                    m_type = InteractType.Gloves;
+                    break;
+                case ItemCategory.Accessories:
+                    m_type = InteractType.Accessories;
+                    break;
+                case ItemCategory.Charm:
+                    m_type = InteractType.Charm;
+                    break;
+            }
+            m_itemData = itemData;
+            m_itemPickedEvent = itemPickedEvent;
+        }
         
         protected virtual void OnTriggerEnter2D(Collider2D other)
         {

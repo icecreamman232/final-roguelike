@@ -7,7 +7,8 @@ namespace SGGames.Scripts.Pickables
     public class WeaponPicker : ItemPicker
     {
         [SerializeField] private WeaponPickerHUD m_pickerHUD;
-        
+        public WeaponPickerHUD PickerHUD { set => m_pickerHUD = value; }
+
         protected override void ShowPrompt()
         {
             m_pickerHUD.Show((WeaponData)m_itemData);

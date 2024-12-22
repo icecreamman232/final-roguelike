@@ -6,6 +6,8 @@ namespace SGGames.Scripts.Pickables
     public class CharmPicker : ItemPicker
     {
         [SerializeField] private CharmPickerHUD m_pickerHUD;
+        public CharmPickerHUD PickerHUD { set=> m_pickerHUD = value; }
+
         protected override void ShowPrompt()
         {
             base.ShowPrompt();

@@ -1284,7 +1284,7 @@ GameObject:
   - component: {fileID: 4344492888149203065}
   - component: {fileID: 3938770110650014075}
   m_Layer: 5
-  m_Name: WeaponInfoCanvas
+  m_Name: WeaponHUDTemplate
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
