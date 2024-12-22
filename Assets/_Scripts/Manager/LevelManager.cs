@@ -76,7 +76,7 @@ namespace SGGames.Scripts.Managers
             
             StartCoroutine(OnLevelLoaded());
             
-            RandomController.SetSeed(UnityEngine.Random.Range(Int32.MinValue, Int32.MaxValue));
+            RandomController.SetSeed();
         }
 
         private void OnDestroy()
