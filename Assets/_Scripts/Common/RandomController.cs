@@ -30,7 +30,7 @@ namespace SGGames.Scripts.Common
             }
             m_random = new Random(sum);
             
-            Debug.Log($"APPLIED SEED {m_seed}");
+            Debug.Log($"APPLIED SEED <color=yellow>{m_seed}</color>");
         }
 
         public static void SetSeed()
@@ -51,7 +51,7 @@ namespace SGGames.Scripts.Common
             }
             
             m_random = new Random(sum);
-            Debug.Log($"SEED {m_seed}");
+            Debug.Log($"SEED <color=yellow>{m_seed}</color>");
         }
         
         public static string GetUniqueID()
