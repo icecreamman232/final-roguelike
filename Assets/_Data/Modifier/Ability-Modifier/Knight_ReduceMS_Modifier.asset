@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b916d90ddfa328f4eb65581c92974326, type: 3}
   m_Name: Knight_ReduceMS_Modifier
   m_EditorClassIdentifier: 
-  Description: 
+  Description: Reduce <color=red>3</color> movespeed.
   ModifierType: 0
   Duration: 3
   IsRunning: 0

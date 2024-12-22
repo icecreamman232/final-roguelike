@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feaec82dd1152d94085ba416f86ed592, type: 3}
   m_Name: Knight_ImmortalModifier_Modifier
   m_EditorClassIdentifier: 
-  Description: 
+  Description: Grant <color=yellow>3</color> seconds immortal.
   ModifierType: 1
   Duration: 3
   IsRunning: 0
