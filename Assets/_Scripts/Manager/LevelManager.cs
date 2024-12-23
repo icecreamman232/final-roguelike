@@ -11,7 +11,6 @@ using SGGames.Scripts.Manager;
 using SGGames.Scripts.Rooms;
 using SGGames.Scripts.UI;
 using UnityEngine;
-using Random = System.Random;
 
 namespace SGGames.Scripts.Managers
 {
@@ -62,6 +61,7 @@ namespace SGGames.Scripts.Managers
         
         private void Start()
         {
+            RandomController.SetSeed();
             m_roomIndex = 0;
             m_currentAreaIndex = 0;
             m_enterDoorEvent.AddListener(OnPlayerEnterDoor);
@@ -76,7 +76,7 @@ namespace SGGames.Scripts.Managers
             
             StartCoroutine(OnLevelLoaded());
             
-            RandomController.SetSeed();
+            
         }
 
         private void OnDestroy()
@@ -147,7 +147,7 @@ namespace SGGames.Scripts.Managers
         private void IncreaseRoomAndAreaIndex()
         {
             m_roomIndex++;
-            if (m_roomIndex >=  RoomGenerator.C_MAX_ROOM_NUMBER)
+            if (m_roomIndex >=  RoomGenerator.C_MAX_ROOM_NUMBER + 1) // +1 for counting boss room
             {
                 m_roomIndex = 0;
                 m_currentAreaIndex++;
@@ -167,6 +167,15 @@ namespace SGGames.Scripts.Managers
             m_roomCollider = m_currentRoom.RoomCollider;
             
             AddRewardToRoom(doorIndex, m_currentRoom.ChestSpawnSpot.position,m_currentRoom.transform);
+        }
+
+        private void LoadBossRoom(int areaIndex)
+        {
+            var room = Instantiate(m_roomGenerator.GetBossRoom(areaIndex));
+            m_currentRoom = room;
+            m_roomCollider = m_currentRoom.RoomCollider;
+            
+            Debug.Log($"<color=yellow>Load Boss Room {room.name}</color>");
         }
 
         private void AddRewardToRoom(int doorIndex,Vector2 spawnPos, Transform roomTransform)
@@ -234,8 +243,16 @@ namespace SGGames.Scripts.Managers
             Destroy(m_currentRoom.gameObject);
 
             IncreaseRoomAndAreaIndex();
-            LoadRoom(m_roomIndex);
-            LoadEnemy();
+
+            if (m_roomIndex >= RoomGenerator.C_MAX_ROOM_NUMBER)
+            {
+                LoadBossRoom(m_currentAreaIndex);
+            }
+            else
+            {
+                LoadRoom(m_roomIndex);
+                LoadEnemy();
+            }
             
             yield return new WaitForEndOfFrame();
             

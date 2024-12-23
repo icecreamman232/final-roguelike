@@ -26,3 +26,5 @@ MonoBehaviour:
   m_challengeRooms:
   - {fileID: 11400000, guid: ac8fade8987dbfa4fafa79cc8754ae0b, type: 2}
   - {fileID: 11400000, guid: 2448cd63d997ec5438c0f365a7a6a495, type: 2}
+  m_bossRooms:
+  - {fileID: 8558735862257174374, guid: 47515a39c32a1704fa8460cc8649819d, type: 3}

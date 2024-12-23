@@ -1,5 +1,7 @@
 using System.Collections.Generic;
+using SGGames.Scripts.Common;
 using SGGames.Scripts.Data;
+using SGGames.Scripts.Rooms;
 using UnityEngine;
 
 namespace SGGames.Scripts.Manager
@@ -59,7 +61,7 @@ namespace SGGames.Scripts.Manager
                     return m_areaDataList[areaIndex].GetHardRoom();
                 case >= 6:
                 {
-                    var challengeRoomChance = Random.Range(0, 100);
+                    var challengeRoomChance = RandomController.GetRandomIntInRange(0,100);
                     return challengeRoomChance <= C_CHALLENGE_ROOM_CHANCE 
                         ? m_areaDataList[areaIndex].GetChallengeRoom() 
                         : m_areaDataList[areaIndex].GetHardRoom();
@@ -82,10 +84,15 @@ namespace SGGames.Scripts.Manager
 
         private RoomRewardType GetRoomReward()
         {
-            return (RoomRewardType)Random.Range(1,(int)RoomRewardType.COMMON_ROOM_NUMBER);
+            return (RoomRewardType)RandomController.GetRandomIntInRange(1,C_MAX_ROOM_NUMBER);
         }
         
         #endregion
+
+        public Room GetBossRoom(int areaIndex)
+        {
+            return m_areaDataList[areaIndex].GetBossRoom();
+        }
     } 
 }
 
