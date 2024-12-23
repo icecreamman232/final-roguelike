@@ -240,6 +240,93 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &247281190
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 247281191}
+  - component: {fileID: 247281192}
+  m_Layer: 7
+  m_Name: JumpAttackBrain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 0
+--- !u!4 &247281191
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247281190}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children:
+  - {fileID: 908624215}
+  - {fileID: 738104379}
+  m_Father: {fileID: 3744896002959256126}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &247281192
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 247281190}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3f0fd321a54e08245b30c16ee07e61b0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Owner: {fileID: 333151789018569949}
+  States:
+  - StateName: Trigger Jump
+    Actions:
+    - {fileID: 908624218}
+    Transitions:
+    - BrainDecision: {fileID: 738104383}
+      TrueStateName: Playing Jump Attack
+      FalseStateName: 
+  - StateName: Playing Jump Attack
+    Actions:
+    - {fileID: 908624217}
+    Transitions:
+    - BrainDecision: {fileID: 738104381}
+      TrueStateName: Stop
+      FalseStateName: 
+    - BrainDecision: {fileID: 738104382}
+      TrueStateName: Rest after playing ability
+      FalseStateName: 
+  - StateName: Rest after playing ability
+    Actions:
+    - {fileID: 908624217}
+    Transitions:
+    - BrainDecision: {fileID: 738104380}
+      TrueStateName: Swap to wandering brain
+      FalseStateName: 
+  - StateName: Swap to wandering brain
+    Actions:
+    - {fileID: 908624216}
+    Transitions: []
+  - StateName: Stop
+    Actions:
+    - {fileID: 908624217}
+    Transitions: []
+  Target: {fileID: 0}
+  BrainActive: 0
+  CurrentState:
+    StateName: 
+    Actions: []
+    Transitions: []
+  TimeInState: 0
 --- !u!1 &404604492
 GameObject:
   m_ObjectHideFlags: 0
@@ -597,6 +684,189 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &738104378
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 738104379}
+  - component: {fileID: 738104383}
+  - component: {fileID: 738104382}
+  - component: {fileID: 738104381}
+  - component: {fileID: 738104380}
+  m_Layer: 7
+  m_Name: Decisions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &738104379
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738104378}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 247281191}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &738104380
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738104378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 047a799e0451a1e429c69595c5ba39ba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: Wait after playing ability
+  m_minDuration: 5
+  m_maxDuration: 5
+  m_duration: 0
+--- !u!114 &738104381
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738104378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331e7cfa8d47a2b4782a098419d8476f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: Check player is dead
+--- !u!114 &738104382
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738104378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f14438ba5f003f43a10267dcd28239d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: Check if ability is stop and cooldown
+  m_ability: {fileID: 8620388993476650843}
+  m_stateToCheck: 4
+--- !u!114 &738104383
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 738104378}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fb02fc39d5f51454d8759f1082965479, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: Next state
+--- !u!1 &908624214
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 908624215}
+  - component: {fileID: 908624218}
+  - component: {fileID: 908624217}
+  - component: {fileID: 908624216}
+  m_Layer: 7
+  m_Name: Actions
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &908624215
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908624214}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 247281191}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &908624216
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908624214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 798d36f0b5be82a4997bd52896181b57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: Swap to wandering brain
+  m_brainToSwap: {fileID: 1813567738248379670}
+  m_keepTarget: 1
+--- !u!114 &908624217
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908624214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 107da0aedd7f47c4f8180171e5c83ca1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: Do nothing
+--- !u!114 &908624218
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 908624214}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eb6402f121106bb44a1fbec0c2b361d4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: Trigger Slide Attack
+  m_triggerEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 8620388993476650843}
+        m_TargetAssemblyTypeName: SGGames.Scripts.Abilities.BigJumpSlimeKingAbility,
+          Assembly-CSharp
+        m_MethodName: StartAbility
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1130331190
 GameObject:
   m_ObjectHideFlags: 0
@@ -1142,7 +1412,7 @@ MonoBehaviour:
     - {fileID: 8574085480710682529}
     Transitions:
     - BrainDecision: {fileID: 7840531559768762433}
-      TrueStateName: Swap to slide attack
+      TrueStateName: Choose ability
       FalseStateName: 
     - BrainDecision: {fileID: 1719384996361457374}
       TrueStateName: Choose direction
@@ -1155,7 +1425,7 @@ MonoBehaviour:
     - {fileID: 3981516777350618388}
     Transitions:
     - BrainDecision: {fileID: 7840531559768762433}
-      TrueStateName: Swap to slide attack
+      TrueStateName: Choose ability
       FalseStateName: 
     - BrainDecision: {fileID: 2857038501864977956}
       TrueStateName: Choose direction
@@ -1167,9 +1437,17 @@ MonoBehaviour:
     - BrainDecision: {fileID: 3602949553897039731}
       TrueStateName: Choose direction
       FalseStateName: 
+  - StateName: Choose ability
+    Actions:
+    - {fileID: 8574085480710682531}
+    Transitions: []
   - StateName: Swap to slide attack
     Actions:
     - {fileID: 8574085480710682530}
+    Transitions: []
+  - StateName: Swap to jump attack
+    Actions:
+    - {fileID: 8574085480710682532}
     Transitions: []
   Target: {fileID: 0}
   BrainActive: 1
@@ -1405,6 +1683,7 @@ Transform:
   - {fileID: 3802612541570589865}
   - {fileID: 6400518682094821426}
   - {fileID: 151440808}
+  - {fileID: 247281191}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &3802612541570589865
@@ -6956,6 +7235,8 @@ GameObject:
   - component: {fileID: 6721170516433785238}
   - component: {fileID: 3981516777350618388}
   - component: {fileID: 8574085480710682530}
+  - component: {fileID: 8574085480710682532}
+  - component: {fileID: 8574085480710682531}
   m_Layer: 0
   m_Name: Actions
   m_TagString: Untagged
@@ -7681,8 +7962,41 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 798d36f0b5be82a4997bd52896181b57, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Label: Swap to Slide attack brain
+  Label: Swap to slide attack
   m_brainToSwap: {fileID: 151440809}
+  m_keepTarget: 1
+--- !u!114 &8574085480710682531
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5455120180958799115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bc77282a5e2fe5f4186fdf0212835b6b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: Switch to random ability
+  m_randomnessData: {fileID: 11400000, guid: 11eb2daa1795178438215ec9e71ff988, type: 2}
+  m_stateNames:
+  - Swap to slide attack
+  - Swap to jump attack
+  m_lastChosenState: 
+--- !u!114 &8574085480710682532
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5455120180958799115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 798d36f0b5be82a4997bd52896181b57, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: Swap to jump attack
+  m_brainToSwap: {fileID: 247281192}
   m_keepTarget: 1
 --- !u!1 &8620388993476650841
 GameObject:
@@ -7700,6 +8014,7 @@ GameObject:
   - component: {fileID: 7244818148355380633}
   - component: {fileID: 3744765867816528997}
   - component: {fileID: 8620388993476650842}
+  - component: {fileID: 8620388993476650843}
   m_Layer: 7
   m_Name: Boss-SlimeKing
   m_TagString: Untagged
@@ -7735,6 +8050,25 @@ MonoBehaviour:
   m_enemyHealth: {fileID: 7653812957687349460}
   m_enemyController: {fileID: 333151789018569949}
   m_isShowDebug: 1
+--- !u!114 &8620388993476650843
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8620388993476650841}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff23cf52e59360347a9b38fd80b93d5b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_abilityState: 0
+  m_coolDown: 15
+  m_enemyMovement: {fileID: 7244818148355380633}
+  m_enemyController: {fileID: 333151789018569949}
+  m_jumpUpHeight: 5
+  m_jumpUpSpeed: 8
+  m_jumpDownSpeed: 6
 --- !u!224 &8642950654886884916
 RectTransform:
   m_ObjectHideFlags: 0

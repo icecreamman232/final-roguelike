@@ -58,5 +58,10 @@ namespace SGGames.Scripts.Common
         {
             return m_random.Next(Int32.MaxValue).ToString();
         }
+
+        public static int GetRandomIntInRange(int min, int max)
+        {
+            return m_random.Next(min, max);
+        }
     }
 }

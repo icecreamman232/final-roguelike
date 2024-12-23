@@ -67,7 +67,6 @@ namespace SGGames.Scripts.Abilities
 
             if (CheckObstacle())
             {
-                Debug.Log("Stop by obstacle");
                 StopAbility();
                 return;
             }
