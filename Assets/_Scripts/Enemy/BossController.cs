@@ -5,7 +5,10 @@ namespace SGGames.Scripts.Enemies
 {
     public class BossController : EnemyController
     {
+        //TODO:Change place to store boss name
+        [SerializeField] private string m_bossName; //Placeholder for boss name
         [SerializeField] private GenericBossEvent m_genericBossEvent;
+        [SerializeField] private StringEvent m_showBossNameEvent;
         [SerializeField] private EnemyMovement m_enemyMovement;
 
         private void Awake()
@@ -20,6 +23,7 @@ namespace SGGames.Scripts.Enemies
 
         private void Start()
         {
+            m_showBossNameEvent.Raise(m_bossName);
             m_genericBossEvent.Raise(GenericBossEventType.SHOW_HEALTH_BAR);
         }
         

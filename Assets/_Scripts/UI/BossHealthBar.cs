@@ -1,6 +1,7 @@
 using System.Collections;
 using SGGames.Scripts.Core;
 using SGGames.Scripts.Events;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,19 +11,23 @@ namespace SGGames.Scripts.UI
     {
         [SerializeField] private CanvasGroup m_canvasGroup;
         [SerializeField] private Image m_healthBar;
+        [SerializeField] private TextMeshProUGUI m_bossNameTxt;
         [SerializeField] private GenericBossEvent m_genericBossEvent;
         [SerializeField] private BossHealthUpdateEvent m_bossHealthUpdateEvent;
+        [SerializeField] private StringEvent m_showBossNameEvent;
 
         private void Awake()
         {
             m_genericBossEvent.AddListener(OnGenericBossEvent);
             m_bossHealthUpdateEvent.AddListener(OnBossHealthUpdate);
+            m_showBossNameEvent.AddListener(OnShowBossName);
         }
 
         private void OnDestroy()
         {
             m_genericBossEvent.RemoveListener(OnGenericBossEvent);
             m_bossHealthUpdateEvent.RemoveListener(OnBossHealthUpdate);
+            m_showBossNameEvent.RemoveListener(OnShowBossName);
         }
         
         private void Show()
@@ -44,6 +49,11 @@ namespace SGGames.Scripts.UI
 
             m_canvasGroup.alpha = 1;
             m_genericBossEvent?.Raise(GenericBossEventType.START_FIGHT);
+        }
+        
+        private void OnShowBossName(string bossName)
+        {
+            m_bossNameTxt.text = bossName;
         }
         
         private void OnBossHealthUpdate(float current, float max)

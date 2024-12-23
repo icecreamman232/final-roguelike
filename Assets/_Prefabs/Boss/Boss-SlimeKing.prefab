@@ -692,7 +692,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_currentBrain: {fileID: 1895141799454186004}
+  m_bossName: Slime King
   m_genericBossEvent: {fileID: 11400000, guid: c6fd525202b24034c8b016d91b54b4c4, type: 2}
+  m_showBossNameEvent: {fileID: 11400000, guid: fa7fd61933ccf2c46acad0350777483a, type: 2}
   m_enemyMovement: {fileID: 4951872882075472409}
 --- !u!114 &1582090278741741746
 MonoBehaviour:
