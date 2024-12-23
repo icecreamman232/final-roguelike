@@ -93,7 +93,7 @@ namespace SGGames.Scripts.Enemies
 
         protected override void Update()
         {
-            base.Update();
+            if (!m_isAllow) return;
             UpdateMovement();
         }
         
