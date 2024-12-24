@@ -1,5 +1,4 @@
 using SGGames.Scripts.Data;
-using SGGames.Scripts.Events;
 using SGGames.Scripts.Weapons;
 using UnityEngine;
 
@@ -10,13 +9,14 @@ namespace SGGames.Scripts.Player
     /// </summary>
     public class PlayerWeaponHandler : PlayerBehavior
     {
-        [SerializeField] private PlayerInventory m_playerInventory; 
-        [SerializeField] protected WeaponData m_initialWeaponData;
-        [SerializeField] protected Weapon m_currentWeapon;
-        [SerializeField] protected Transform m_weaponAttachment;
-        [SerializeField] protected PlayerAim m_playerAim;
-        [SerializeField] protected PlayerDamageComputer m_playerDamageComputer;
-        [SerializeField] protected PlayerAttributeController m_playerAttributeController;
+        [SerializeField] private WeaponData m_initialWeaponData;
+        [SerializeField] private Weapon m_currentWeapon;
+        [SerializeField] private Transform m_weaponAttachment;
+        private PlayerAttributeController m_playerAttributeController;
+        
+        private PlayerInventory m_playerInventory; 
+        private PlayerAim m_playerAim;
+        private PlayerDamageComputer m_playerDamageComputer;
         
         public bool IsWeaponInitialized => m_currentWeapon != null;
         public float BaseAtkTime => m_currentWeapon.BaseDelayBetweenShots;
@@ -29,6 +29,30 @@ namespace SGGames.Scripts.Player
 
         protected virtual void Initialize()
         {
+            m_playerInventory = GetComponent<PlayerInventory>();
+            if (m_playerInventory == null)
+            {
+                Debug.LogError("Player Inventory Component is null");
+            }
+            
+            m_playerAim = GetComponent<PlayerAim>();
+            if (m_playerAim == null)
+            {
+                Debug.LogError("Player Aim Component is null");
+            }
+            
+            m_playerDamageComputer = GetComponent<PlayerDamageComputer>();
+            if (m_playerDamageComputer == null)
+            {
+                Debug.LogError("Player Damage Computer Component is null");
+            }
+            
+            m_playerAttributeController = GetComponent<PlayerAttributeController>();
+            if (m_playerAttributeController == null)
+            {
+                Debug.LogError("Player Attribute Controller is null");
+            }
+            
             if (m_currentWeapon == null)
             {
                 EquipWeapon(m_initialWeaponData.WeaponPrefab.GetComponent<Weapon>());
