@@ -175,6 +175,7 @@ MonoBehaviour:
   m_blockDoor: {fileID: 591727302571767168}
   m_triggerCollider: {fileID: 2204096824582879618}
   m_playerEnterDoorEvent: {fileID: 11400000, guid: e1372761e91d0ef489199057825b1ae8, type: 2}
+  m_genericBossEvent: {fileID: 11400000, guid: c6fd525202b24034c8b016d91b54b4c4, type: 2}
 --- !u!1 &3788509404591665391
 GameObject:
   m_ObjectHideFlags: 0
