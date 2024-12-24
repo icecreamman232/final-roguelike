@@ -12,10 +12,10 @@ namespace SGGames.Scripts.Player
         [Header("Speed")]
         [SerializeField] private float m_initialSpeed;
         [SerializeField] private float m_currentSpeed;
+        [SerializeField] private Vector2Event m_playerInputDirectionEvent;
 
         private readonly float m_raycastDistance = 0.2f;
         private bool m_canMove;
-        private PlayerInputAction m_playerInput;
         
         public Vector2 Direction => m_direction;
         public float Speed => m_currentSpeed;
@@ -54,10 +54,8 @@ namespace SGGames.Scripts.Player
 
         protected override void Start()
         {
+            m_playerInputDirectionEvent.AddListener(OnReceivePlayerInputDirection);
             base.Start();
-            m_playerInput = new PlayerInputAction();
-            m_playerInput.Enable();
-
             ResetSpeed();
             ToggleMovement(true);
         }
@@ -65,15 +63,9 @@ namespace SGGames.Scripts.Player
         protected override void Update()
         {
             base.Update();
-            HandleInput();
             UpdateMovement();
         }
-
-        private void HandleInput()
-        {
-            m_direction = m_playerInput.Player.WASD.ReadValue<Vector2>();
-        }
-
+        
         private bool CheckObstacle()
         {
             var hit = Physics2D.BoxCast(
@@ -97,15 +89,23 @@ namespace SGGames.Scripts.Player
         {
             if (isFrozen)
             {
-                m_playerInput.Disable();
                 m_canMove = false;
                 m_direction = Vector2.zero;
             }
             else
             {
-                m_playerInput.Enable();
                 m_canMove = true;
             }
+        }
+        
+        private void OnReceivePlayerInputDirection(Vector2 direction)
+        {
+            m_direction = direction;
+        }
+
+        private void OnDestroy()
+        {
+            m_playerInputDirectionEvent.RemoveListener(OnReceivePlayerInputDirection);
         }
     }
 }
