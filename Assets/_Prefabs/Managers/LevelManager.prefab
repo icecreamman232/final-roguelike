@@ -45,7 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 024b7f354081c984e887b93a93c0e855, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_playerPrefab: {fileID: 633775464036924199, guid: e9a292ff01524a24ba4bf43160f74bd1, type: 3}
+  m_heroData: {fileID: 11400000, guid: 50bdbb5ab25655341a0e4a7095a79f90, type: 2}
   m_playerRef: {fileID: 0}
   m_currentAreaIndex: 0
   m_roomGenerator: {fileID: 1836569492117602669}

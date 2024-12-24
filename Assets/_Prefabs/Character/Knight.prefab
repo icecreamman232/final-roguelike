@@ -346,6 +346,7 @@ MonoBehaviour:
   m_modifierHandler: {fileID: 8978468732513568599}
   m_immortalModifier: {fileID: 11400000, guid: aa82c8f33b40139499e132abf1adc531, type: 2}
   m_reduceMovespeedModifier: {fileID: 11400000, guid: 2018b069c3eb81441b634117c0a2d983, type: 2}
+  m_abilityCoolDownEvent: {fileID: 11400000, guid: 6ce54c66806c93a4e8251e90a483e232, type: 2}
   m_shieldVFXAnimator: {fileID: 3113662769235407616}
   m_showShieldAnimDuration: 0.68
 --- !u!1 &1510195004236968706

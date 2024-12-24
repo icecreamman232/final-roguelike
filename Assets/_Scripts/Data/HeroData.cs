@@ -12,6 +12,8 @@ namespace SGGames.Scripts.Data
     [CreateAssetMenu(fileName = "HeroData", menuName = "SGGames/Data/Hero Data")]
     public class HeroData : ScriptableObject
     {
+        [Header("Prefab")] 
+        [SerializeField] private GameObject m_heroPrefab;
         [Header("Base Attributes")]
         [SerializeField] private HeroID m_heroID;
         [SerializeField] private string m_heroName;
@@ -23,6 +25,12 @@ namespace SGGames.Scripts.Data
         [SerializeField] private float m_criticalChance;
         [SerializeField] private float m_criticalDamage;
         
+        [Header("Defense ability")]
+        [SerializeField] private Sprite m_defenseAbilityEnableSprite;
+        [SerializeField] private Sprite m_defenseAbilityDisableSprite;
+        
+        public GameObject HeroPrefab => m_heroPrefab;
+        
         //Base
         public string HeroName => m_heroName;
         public float BaseStrength => m_baseStrength;
@@ -31,6 +39,9 @@ namespace SGGames.Scripts.Data
 
         public float CriticalChance => m_criticalChance;
         public float CriticalDamage => m_criticalDamage;
+        
+        public Sprite DefenseAbilityEnableSprite => m_defenseAbilityEnableSprite;
+        public Sprite DefenseAbilityDisableSprite => m_defenseAbilityDisableSprite;
     }
 }
 

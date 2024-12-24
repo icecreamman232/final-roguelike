@@ -16,8 +16,8 @@ namespace SGGames.Scripts.Managers
 {
     public class LevelManager : Singleton<LevelManager>
     {
-        [Header("Player")]
-        [SerializeField] private GameObject m_playerPrefab;
+        [Header("Player")] 
+        [SerializeField] private HeroData m_heroData;
         [SerializeField][ReadOnly] private GameObject m_playerRef;
         [Header("Area")]
         [SerializeField] private int m_currentAreaIndex;
@@ -58,6 +58,8 @@ namespace SGGames.Scripts.Managers
         public Room CurrentRoom => m_currentRoom;
         public BoxCollider2D RoomCollider => m_roomCollider;
         
+        public HeroData HeroData => m_heroData;
+        
         public GameObject PlayerRef => m_playerRef;
         
         private void Start()
@@ -85,9 +87,9 @@ namespace SGGames.Scripts.Managers
             m_enterDoorEvent.RemoveListener(OnPlayerEnterDoor);
         }
 
-        public void SetPlayerPrefab(GameObject playerPrefab)
+        public void SetCharacterForPlayer(HeroData data)
         {
-            m_playerPrefab = playerPrefab;
+            m_heroData = data;
         }
 
         private void OnEnemyDeath(EnemyHealth enemyHealth)
@@ -112,7 +114,7 @@ namespace SGGames.Scripts.Managers
 
             yield return new WaitForEndOfFrame();
 
-            m_playerRef = Instantiate(m_playerPrefab, m_currentRoom.PlayerSpawnSpot.position,Quaternion.identity);
+            m_playerRef = Instantiate(m_heroData.HeroPrefab, m_currentRoom.PlayerSpawnSpot.position,Quaternion.identity);
             
             yield return new WaitForEndOfFrame();
             m_freezePlayerEvent.Raise(true);

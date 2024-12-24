@@ -1,6 +1,8 @@
 using System;
 using System.Collections;
 using SGGames.Scripts.Attribute;
+using SGGames.Scripts.Core;
+using SGGames.Scripts.Events;
 using SGGames.Scripts.Modifiers;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -17,6 +19,7 @@ namespace SGGames.Scripts.Player
         [SerializeField] private ModifierHandler m_modifierHandler;
         [SerializeField] private HealthModifier m_immortalModifier;
         [SerializeField] private MovementModifier m_reduceMovespeedModifier;
+        [SerializeField] private AbilityCoolDownEvent m_abilityCoolDownEvent;
         [Header("Animation")]
         [SerializeField] private Animator m_shieldVFXAnimator;
         [SerializeField] private float m_showShieldAnimDuration;
@@ -59,6 +62,7 @@ namespace SGGames.Scripts.Player
                         m_cooldownTimer = 0;
                         m_abilityState = PlayerAbilityState.READY;
                     }
+                    m_abilityCoolDownEvent.Raise(m_cooldownTimer,m_shieldCooldown);
                     break;
             }
         }
@@ -93,6 +97,8 @@ namespace SGGames.Scripts.Player
             m_shieldVFXAnimator.SetBool(m_showShieldAnimParam,false);
             m_shieldCollider.enabled = false;
             yield return new WaitForSeconds(m_showShieldAnimDuration);
+            
+            m_cooldownTimer = m_shieldCooldown;
             m_abilityState = PlayerAbilityState.COOLDOWN;
         }
 

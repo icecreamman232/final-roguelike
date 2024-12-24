@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 01a20d9ee19a31649a1f979dd8ff78b0, type: 3}
   m_Name: Knight_HeroData
   m_EditorClassIdentifier: 
+  m_heroPrefab: {fileID: 633775464036924199, guid: e9a292ff01524a24ba4bf43160f74bd1, type: 3}
   m_heroID: 0
   m_heroName: Knight
   m_baseStrength: 5
@@ -19,3 +20,5 @@ MonoBehaviour:
   m_baseIntelligence: 1
   m_criticalChance: 15
   m_criticalDamage: 1.15
+  m_defenseAbilityEnableSprite: {fileID: -658532341, guid: dc183ed4b6fc4a248bdeaa9213368d55, type: 3}
+  m_defenseAbilityDisableSprite: {fileID: 1063927509, guid: dc183ed4b6fc4a248bdeaa9213368d55, type: 3}
