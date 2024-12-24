@@ -8,15 +8,19 @@ namespace SGGames.Scripts.Player
     {
         [SerializeField] private PlayerBehavior[] m_playersBehaviors;
         [SerializeField] private BoolEvent m_playerFreezeEvent;
+        [SerializeField] private GenericBossEvent m_genericBossEvent;
 
         private void Awake()
         {
             m_playerFreezeEvent.AddListener(OnPlayerFreeze);
+            m_genericBossEvent.AddListener(OnGenericBossEvent);
         }
 
+      
         private void OnDestroy()
         {
             m_playerFreezeEvent.RemoveListener(OnPlayerFreeze);
+            m_genericBossEvent.RemoveListener(OnGenericBossEvent);
         }
 
         private void OnPlayerFreeze(bool isFrozen)
@@ -28,6 +32,14 @@ namespace SGGames.Scripts.Player
             for (int i = 0; i < m_playersBehaviors.Length; i++)
             {
                 m_playersBehaviors[i].OnPlayerFreeze(isFrozen);
+            }
+        }
+        
+        private void OnGenericBossEvent(GenericBossEventType eventType)
+        {
+            if (eventType == GenericBossEventType.START_FIGHT)
+            {
+                m_playerFreezeEvent.Raise(false);
             }
         }
     }

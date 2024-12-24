@@ -143,6 +143,7 @@ MonoBehaviour:
   - {fileID: -2195535169441576329}
   - {fileID: 8985148339537040874}
   m_playerFreezeEvent: {fileID: 11400000, guid: 1338a4fa70285e7488b5acc1fb4c30fe, type: 2}
+  m_genericBossEvent: {fileID: 11400000, guid: c6fd525202b24034c8b016d91b54b4c4, type: 2}
 --- !u!114 &1224419374634297090
 MonoBehaviour:
   m_ObjectHideFlags: 0

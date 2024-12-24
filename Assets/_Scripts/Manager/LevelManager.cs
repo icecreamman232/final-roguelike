@@ -244,7 +244,9 @@ namespace SGGames.Scripts.Managers
 
             IncreaseRoomAndAreaIndex();
 
-            if (m_roomIndex >= RoomGenerator.C_MAX_ROOM_NUMBER)
+            var isBossRoom = m_roomIndex >= RoomGenerator.C_MAX_ROOM_NUMBER;
+            
+            if (isBossRoom)
             {
                 LoadBossRoom(m_currentAreaIndex);
             }
@@ -265,7 +267,10 @@ namespace SGGames.Scripts.Managers
             yield return new WaitForSeconds(ScreenFader.FadeDuration);
             
             m_gameEvent?.Raise(GameEventType.ENTER_THE_ROOM);
-            m_freezePlayerEvent?.Raise(false);
+            if (!isBossRoom)
+            {
+                m_freezePlayerEvent?.Raise(false);
+            }
         }
 
         public bool IsPositionInsideRoomBoundary(Vector2 point)
