@@ -34,6 +34,11 @@ namespace SGGames.Scripts.UI
         {
             StartCoroutine(OnShowingBarAnim());
         }
+
+        private void Hide()
+        {
+            m_canvasGroup.alpha = 0;
+        }
         
         private IEnumerator OnShowingBarAnim()
         {
@@ -71,6 +76,7 @@ namespace SGGames.Scripts.UI
                 case GenericBossEventType.START_FIGHT:
                     break;
                 case GenericBossEventType.END_FIGHT:
+                    Hide();
                     break;
   
             }

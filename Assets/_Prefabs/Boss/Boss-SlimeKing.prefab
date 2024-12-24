@@ -719,6 +719,7 @@ MonoBehaviour:
   m_delayBeforeDeath: 0.5
   m_deathFeedback: {fileID: 7208381426581615128}
   m_BossHealthUpdateEvent: {fileID: 11400000, guid: 55f30ae81ffa56b4bbc3f03a2adf1120, type: 2}
+  m_genericBossEvent: {fileID: 11400000, guid: c6fd525202b24034c8b016d91b54b4c4, type: 2}
 --- !u!114 &4951872882075472409
 MonoBehaviour:
   m_ObjectHideFlags: 0
