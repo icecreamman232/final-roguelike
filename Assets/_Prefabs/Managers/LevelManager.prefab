@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 6946004448931413741}
   - component: {fileID: 9101111211934806997}
   - component: {fileID: 1836569492117602669}
-  - component: {fileID: 5213718174548319969}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -89,32 +88,3 @@ MonoBehaviour:
   m_areaDataList:
   - {fileID: 11400000, guid: f6cb17ed342274649a02b63637f100b6, type: 2}
   - {fileID: 11400000, guid: bc20b3ddbe01b834d97712c36fc2f268, type: 2}
---- !u!114 &5213718174548319969
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930303554149378520}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f12c99901014d464f836ccea7c6aa4c1, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_dropChanceList:
-  - Rate: 0
-    Weight: 8
-    m_lowChance: 0
-    m_upperChance: 40
-  - Rate: 1
-    Weight: 6
-    m_lowChance: 40
-    m_upperChance: 70
-  - Rate: 2
-    Weight: 4
-    m_lowChance: 70
-    m_upperChance: 90
-  - Rate: 3
-    Weight: 2
-    m_lowChance: 90
-    m_upperChance: 100
