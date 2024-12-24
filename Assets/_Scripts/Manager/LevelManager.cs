@@ -49,6 +49,7 @@ namespace SGGames.Scripts.Managers
         [SerializeField] private GameEvent m_gameEvent;
         [SerializeField] private IntEvent m_enterDoorEvent;
         [SerializeField] private BoolEvent m_freezePlayerEvent;
+        [SerializeField] private BoolEvent m_freezeInputEvent;
         [SerializeField] private BoolEvent m_fadeOutScreenEvent;
         
         private readonly int m_maxAreaCount = 7;
@@ -114,7 +115,8 @@ namespace SGGames.Scripts.Managers
             m_playerRef = Instantiate(m_playerPrefab, m_currentRoom.PlayerSpawnSpot.position,Quaternion.identity);
             
             yield return new WaitForEndOfFrame();
-            m_freezePlayerEvent?.Raise(true);
+            m_freezePlayerEvent.Raise(true);
+            m_freezeInputEvent.Raise(true);
             LoadEnemy();
             
             CameraController.Instance.SetTarget(m_playerRef.transform);
@@ -127,7 +129,8 @@ namespace SGGames.Scripts.Managers
             yield return new WaitForSeconds(ScreenFader.FadeDuration);
             
             m_gameEvent?.Raise(GameEventType.ENTER_THE_ROOM);
-            m_freezePlayerEvent?.Raise(false);
+            m_freezePlayerEvent.Raise(false);
+            m_freezeInputEvent.Raise(false);
         }
 
         private void LoadEnemy()
@@ -233,7 +236,9 @@ namespace SGGames.Scripts.Managers
         private IEnumerator OnLoadNextRoom()
         {
             //Freeze player
-            m_freezePlayerEvent?.Raise(true);
+            m_freezePlayerEvent.Raise(true);
+            //Freeze input
+            m_freezeInputEvent.Raise(true);
             
             m_fadeOutScreenEvent?.Raise(true);
             yield return new WaitForSeconds(ScreenFader.FadeDuration);
@@ -269,7 +274,8 @@ namespace SGGames.Scripts.Managers
             m_gameEvent?.Raise(GameEventType.ENTER_THE_ROOM);
             if (!isBossRoom)
             {
-                m_freezePlayerEvent?.Raise(false);
+                m_freezePlayerEvent.Raise(false);
+                m_freezeInputEvent.Raise(false);
             }
         }
 

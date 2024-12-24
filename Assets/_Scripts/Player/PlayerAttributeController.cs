@@ -24,13 +24,13 @@ namespace SGGames.Scripts.Player
         
         [Header("Events")]
         [SerializeField] private AddAttributeEvent m_addAttributeEvent;
+        [SerializeField] private InputContextEvent m_characterInforButtonPressedEvent;
         [SerializeField] private OpenCharacterInfoUIEvent m_openCharacterInfoUIEvent;
         [SerializeField] private BoolEvent m_freezePlayerEvent;
         [SerializeField] private GameEvent m_gameEvent;
         [Header("Data")]
         [SerializeField] private ConstantData m_constantData;
-        
-        private PlayerInputAction m_playerInput;
+
         private bool m_isCharacterInfoOpening;
         
         public float StrengthPoints => m_strengthPoints;
@@ -42,9 +42,7 @@ namespace SGGames.Scripts.Player
         protected override void Start()
         {
             base.Start();
-            m_playerInput = new PlayerInputAction();
-            m_playerInput.Player.Enable();
-            m_playerInput.Player.CharacterInfo.performed += OnCharacterInfoButtonPressed;
+            m_characterInforButtonPressedEvent.AddListener(OnCharacterInfoButtonPressed);
             m_addAttributeEvent.AddListener(OnChooseAttributeReward);
             StartCoroutine(InitializeAttributes());
         }
@@ -61,6 +59,7 @@ namespace SGGames.Scripts.Player
         private void OnDestroy()
         {
             m_addAttributeEvent.RemoveListener(OnChooseAttributeReward);
+            m_characterInforButtonPressedEvent.RemoveListener(OnCharacterInfoButtonPressed);
         }
         
         private IEnumerator InitializeAttributes()

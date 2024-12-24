@@ -1,4 +1,4 @@
-using System;
+using SGGames.Scripts.Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -15,19 +15,17 @@ namespace SGGames.Scripts.Player
     public class PlayerDefenseAbility : PlayerBehavior
     {
         [SerializeField] protected PlayerAbilityState m_abilityState;
-        protected PlayerInputAction m_inputAction;
+        [SerializeField] protected InputContextEvent m_defenseAbilityButtonPressedEvent;
         
         protected override void Start()
         {
             base.Start();
-            m_inputAction = new PlayerInputAction();
-            m_inputAction.Enable();
-            m_inputAction.Player.DefenseAbility.performed += OnPressDefenseAbilityButton;
+            m_defenseAbilityButtonPressedEvent.AddListener(OnPressDefenseAbilityButton);
         }
 
         private void OnDestroy()
         {
-            m_inputAction.Player.DefenseAbility.performed -= OnPressDefenseAbilityButton;
+            m_defenseAbilityButtonPressedEvent.RemoveListener(OnPressDefenseAbilityButton);
         }
 
         protected virtual void OnPressDefenseAbilityButton(InputAction.CallbackContext context)

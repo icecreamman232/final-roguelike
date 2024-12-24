@@ -72,6 +72,7 @@ MonoBehaviour:
   m_gameEvent: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
   m_enterDoorEvent: {fileID: 11400000, guid: e1372761e91d0ef489199057825b1ae8, type: 2}
   m_freezePlayerEvent: {fileID: 11400000, guid: 1338a4fa70285e7488b5acc1fb4c30fe, type: 2}
+  m_freezeInputEvent: {fileID: 11400000, guid: 0010a76d4589bda4d90a358f77263b5f, type: 2}
   m_fadeOutScreenEvent: {fileID: 11400000, guid: 4a94ee6c32caedd4f9429fc54dd6c908, type: 2}
 --- !u!114 &1836569492117602669
 MonoBehaviour:

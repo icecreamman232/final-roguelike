@@ -8,6 +8,7 @@ namespace SGGames.Scripts.Player
     {
         [SerializeField] private PlayerBehavior[] m_playersBehaviors;
         [SerializeField] private BoolEvent m_playerFreezeEvent;
+        [SerializeField] private BoolEvent m_freezeInputEvent;
         [SerializeField] private GenericBossEvent m_genericBossEvent;
 
         private void Awake()
@@ -39,6 +40,7 @@ namespace SGGames.Scripts.Player
         {
             if (eventType == GenericBossEventType.START_FIGHT)
             {
+                m_freezeInputEvent.Raise(false);
                 m_playerFreezeEvent.Raise(false);
             }
         }

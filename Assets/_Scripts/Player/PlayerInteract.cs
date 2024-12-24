@@ -1,4 +1,5 @@
 using SGGames.Scripts.Common;
+using SGGames.Scripts.Events;
 using SGGames.Scripts.Manager;
 using SGGames.Scripts.Rooms;
 using UnityEngine;
@@ -14,16 +15,14 @@ namespace SGGames.Scripts.Player
     public class PlayerInteract : PlayerBehavior
     {
         [SerializeField] private InteractType m_currentInteractType;
+        [SerializeField] private InputContextEvent m_interactButtonPressedEvent;
         
         private IInteractable m_interactObject;
-        private PlayerInputAction m_playerInput;
 
         protected override void Start()
         {
             base.Start();
-            m_playerInput = new PlayerInputAction();
-            m_playerInput.Enable();
-            m_playerInput.Player.Interact.performed += InteractOnPerformed;
+            m_interactButtonPressedEvent.AddListener(InteractOnPerformed);
         }
 
         private void InteractOnPerformed(InputAction.CallbackContext context)
@@ -44,6 +43,11 @@ namespace SGGames.Scripts.Player
         {
             m_currentInteractType = type;
             m_interactObject = interactableObject;
+        }
+
+        private void OnDestroy()
+        {
+            m_interactButtonPressedEvent.RemoveListener(InteractOnPerformed);
         }
     }
 }

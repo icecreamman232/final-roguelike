@@ -12,9 +12,6 @@ namespace SGGames.Scripts.Player
 {
     public class PlayerInventory : PlayerBehavior
     {
-        [Header("Refs")] 
-        [SerializeField] private PlayerWeaponHandler m_playerWeaponHandler;
-        [SerializeField] private ModifierHandler m_playerModifierHandler;
         [Header("Equipment Slots")]
         [SerializeField] private WeaponData m_primaryWeaponSlot;
         [SerializeField] private HelmetData m_helmetSlot;
@@ -31,12 +28,31 @@ namespace SGGames.Scripts.Player
         [SerializeField] private OpenInventoryUIEvent m_openInventoryUI;
         [SerializeField] private UpdateInventoryUIEvent m_updateInventoryUI;
         [SerializeField] private ItemPickedEvent m_itemPickedEvent;
+        [SerializeField] private InputContextEvent m_onInventoryButtonPressedEvent;
         
-        private PlayerInputAction m_playerInputAction;
+        private PlayerWeaponHandler m_playerWeaponHandler;
+        private ModifierHandler m_playerModifierHandler;
         private readonly int C_MAX_INVENTORY_SLOT = 6;
         private int m_occupiedInventoryNumber = 0;
         private bool m_isOpeningInventoryUI;
-        
+
+        private void Awake()
+        {
+            m_playerWeaponHandler = GetComponent<PlayerWeaponHandler>();
+            if (m_playerWeaponHandler == null)
+            {
+                Debug.LogError("Player Weapon Handler is null");
+            }
+
+            m_playerModifierHandler = GetComponentInChildren<ModifierHandler>();
+            if (m_playerModifierHandler == null)
+            {
+                Debug.LogError("Player Modifier Handler is null");
+            }
+            
+            m_onInventoryButtonPressedEvent.AddListener(OnInventoryButtonPressed);
+        }
+
         protected override void Start()
         {
             base.Start();
@@ -46,9 +62,6 @@ namespace SGGames.Scripts.Player
                 m_inventorySlots.Add(null);
             }
             m_itemPickedEvent.AddListener(OnItemPicked);
-            m_playerInputAction = new PlayerInputAction();
-            m_playerInputAction.Player.Enable();
-            m_playerInputAction.Player.Inventory.performed += OnInventoryButtonPressed;
         }
 
         private void OnInventoryButtonPressed(InputAction.CallbackContext context)
@@ -65,6 +78,7 @@ namespace SGGames.Scripts.Player
         private void OnDestroy()
         {
             m_itemPickedEvent.RemoveListener(OnItemPicked);
+            m_onInventoryButtonPressedEvent.RemoveListener(OnInventoryButtonPressed);
         }
         
         private void OnItemPicked(ItemCategory category, ItemData data,GameObject picker)
