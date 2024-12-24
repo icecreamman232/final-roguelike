@@ -19,6 +19,10 @@ namespace SGGames.Scripts.Modifiers
         [Header("Processors")]
         private Dictionary<string,ModifierProcessor> m_processorContainer;
 
+        public PlayerMovement PlayerMovement => m_playerMovement;
+        public PlayerHealth PlayerHealth => m_playerHealth;
+        public PlayerDamageComputer PlayerDamageComputer => m_damageComputer;
+        
         private void Start()
         {
             m_gameEvent.AddListener(OnReceiveGameEvent);
@@ -37,36 +41,36 @@ namespace SGGames.Scripts.Modifiers
             {
                 case ModifierType.MOVEMENT:
                     var movementProcessor = this.gameObject.AddComponent<MovementModifierProcessor>();
-                    movementProcessor.Initialize(uniqueID,this, m_playerMovement,(MovementModifier)modifier);
+                    movementProcessor.Initialize(uniqueID,this, modifier);
                     movementProcessor.StartModifier();
                     m_processorContainer.Add(uniqueID, movementProcessor);
                     break;
                 case ModifierType.HEALTH:
                     var healthProcessor = this.gameObject.AddComponent<HealthModifierProcessor>();
-                    healthProcessor.Initialize(uniqueID,this, m_playerHealth,(HealthModifier)modifier);
+                    healthProcessor.Initialize(uniqueID,this, modifier);
                     healthProcessor.StartModifier();
                     m_processorContainer.Add(uniqueID, healthProcessor);
                     break;
                 case ModifierType.DAMAGE:
                     var damageProcessor = this.gameObject.AddComponent<DamageModifierProcessor>();
-                    damageProcessor.Initialize(uniqueID,this, m_damageComputer,(DamageModifier)modifier);
+                    damageProcessor.Initialize(uniqueID,this, modifier);
                     damageProcessor.StartModifier();
                     m_processorContainer.Add(uniqueID, damageProcessor);
                     break;
                 case ModifierType.TRIGGER_AFTER_GAME_EVENT:
                     var triggerProcessor = this.gameObject.AddComponent<TriggerAfterEventModifierProcessor>();
-                    triggerProcessor.Initialize(uniqueID,this, (TriggerAfterEventModifier)modifier);
+                    triggerProcessor.Initialize(uniqueID,this, modifier);
                     m_processorContainer.Add(uniqueID, triggerProcessor);
                     break;
                 case ModifierType.ARMOR:
                     var armorProcessor = this.gameObject.AddComponent<ArmorModifierProcessor>();
-                    armorProcessor.Initialize(uniqueID,this, (ArmorModifier)modifier,m_playerHealth);
+                    armorProcessor.Initialize(uniqueID,this, modifier);
                     armorProcessor.StartModifier();
                     m_processorContainer.Add(uniqueID, armorProcessor);
                     break;
                 case ModifierType.COIN:
                     var coinProcessor = this.gameObject.AddComponent<CoinModifierProcessor>();
-                    coinProcessor.Initialize(uniqueID,this, (CoinModifier)modifier);
+                    coinProcessor.Initialize(uniqueID,this, modifier);
                     coinProcessor.StartModifier();
                     m_processorContainer.Add(uniqueID, coinProcessor);
                     break;

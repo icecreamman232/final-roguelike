@@ -7,12 +7,10 @@ namespace SGGames.Scripts.Modifiers
     {
         [SerializeField] private PlayerHealth m_playerHealth;
         
-        public void Initialize(string id, ModifierHandler handler, PlayerHealth playerHealth, HealthModifier modifier)
+        public override void Initialize(string id, ModifierHandler handler, Modifier modifier)
         {
-            m_id = id;
-            m_handler = handler;
-            m_playerHealth = playerHealth;
-            m_modifier = modifier;
+            base.Initialize(id, handler, modifier);
+            m_playerHealth = handler.PlayerHealth;
         }
         
         public override void StartModifier()

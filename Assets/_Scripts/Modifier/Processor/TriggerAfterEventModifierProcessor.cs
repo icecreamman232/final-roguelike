@@ -4,13 +4,6 @@ namespace SGGames.Scripts.Modifiers
 {
     public class TriggerAfterEventModifierProcessor : ModifierProcessor
     {
-       public void Initialize(string id, ModifierHandler handler, TriggerAfterEventModifier modifier)
-       {
-           m_id = id;
-           m_handler = handler;
-           m_modifier = modifier;
-       }
-
        public override void StartModifier()
        {
            base.StartModifier();

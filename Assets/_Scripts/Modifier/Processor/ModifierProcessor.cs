@@ -13,6 +13,13 @@ namespace SGGames.Scripts.Modifiers
         
         public string Id => m_id;
         public Modifier Modifier => m_modifier;
+
+        public virtual void Initialize(string id, ModifierHandler modifierHandler, Modifier modifier)
+        {
+            m_id = id;
+            m_handler = modifierHandler;
+            m_modifier = modifier;
+        }
         
         public virtual void StartModifier()
         {

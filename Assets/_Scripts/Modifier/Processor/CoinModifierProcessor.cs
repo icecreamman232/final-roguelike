@@ -5,13 +5,6 @@ namespace SGGames.Scripts.Modifiers
 {
     public class CoinModifierProcessor : ModifierProcessor
     {
-        public void Initialize(string id, ModifierHandler modifierHandler, CoinModifier modifier)
-        {
-            m_id = id;
-            m_handler = modifierHandler;
-            m_modifier = modifier;
-        }
-
         public override void StartModifier()
         {
             base.StartModifier();

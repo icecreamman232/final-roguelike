@@ -7,12 +7,10 @@ namespace SGGames.Scripts.Modifiers
     {
        [SerializeField] private PlayerDamageComputer m_damageComputer;
 
-       public void Initialize(string id, ModifierHandler handler, PlayerDamageComputer damageComputer, DamageModifier modifier)
+       public override void Initialize(string id, ModifierHandler handler, Modifier modifier)
        {
-           m_id = id;
-           m_handler = handler;
-           m_damageComputer = damageComputer;
-           m_modifier = modifier;
+           base.Initialize(id, handler, modifier);
+           m_damageComputer = handler.PlayerDamageComputer;
        }
        
        public override void StartModifier()

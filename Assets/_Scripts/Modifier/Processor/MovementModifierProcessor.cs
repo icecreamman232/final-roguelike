@@ -7,12 +7,10 @@ namespace SGGames.Scripts.Modifiers
     {
         [SerializeField] private PlayerMovement m_playerMovement;
         
-        public void Initialize(string id, ModifierHandler handler, PlayerMovement playerMovement, MovementModifier modifier)
+        public override void Initialize(string id, ModifierHandler handler, Modifier modifier)
         {
-            m_id = id;
-            m_handler = handler;
-            m_playerMovement = playerMovement;
-            m_modifier = modifier;
+            base.Initialize(id,handler,modifier);
+            m_playerMovement = handler.PlayerMovement;
         }
         
         public override void StartModifier()
