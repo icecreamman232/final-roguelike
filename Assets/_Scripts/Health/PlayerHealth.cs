@@ -9,12 +9,11 @@ namespace SGGames.Scripts.Healths
     {
         [SerializeField] private float m_armor;
         [SerializeField] private float m_dodgeRate;
-        [SerializeField] private SpriteFlicker m_spriteFlicker;
         [SerializeField] private float m_flickerFrequency;
         [SerializeField] private PlayerHealthUpdateEvent m_PlayerHealthUpdateEvent;
         [SerializeField] private float m_regenerationRate;
 
-        
+        private SpriteFlicker m_spriteFlicker;
         private readonly float m_regenerationInterval = 0.1f;
         private float m_regenerateTimer;
         
@@ -28,6 +27,11 @@ namespace SGGames.Scripts.Healths
             m_currentHealth = maxHealth;
             m_maxHealth = maxHealth;
             UpdateHealthBar();
+            m_spriteFlicker = GetComponentInChildren<SpriteFlicker>();
+            if (m_spriteFlicker == null)
+            {
+                Debug.LogError($"SpriteFlicker is null on {this.gameObject.name}");
+            }
         }
 
         private void Update()
