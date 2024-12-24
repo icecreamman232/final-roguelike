@@ -12,6 +12,7 @@ namespace SGGames.Scripts.Managers
         [SerializeField] private InputContextEvent m_characterInfoButtonPressedEvent;
         [SerializeField] private InputContextEvent m_interactButtonPressedEvent;
         [SerializeField] private InputContextEvent m_defenseButtonPressedEvent;
+        [SerializeField] private InputContextEvent m_pauseMenuButtonPressedEvent;
         private PlayerInputAction m_playerInputAction;
 
         private void Awake()
@@ -24,6 +25,7 @@ namespace SGGames.Scripts.Managers
             m_playerInputAction.Player.CharacterInfo.performed += OnCharacterInfoButtonPressed;
             m_playerInputAction.Player.Interact.performed += OnInteractButtonPressed;
             m_playerInputAction.Player.DefenseAbility.performed += OnDefenseButtonPressed;
+            m_playerInputAction.Player.PauseMenu.performed += OnPauseMenuButtonPressed;
         }
         
         private void Update()
@@ -65,12 +67,18 @@ namespace SGGames.Scripts.Managers
             m_defenseButtonPressedEvent.Raise(context);
         }
         
+        private void OnPauseMenuButtonPressed(InputAction.CallbackContext context)
+        {
+            m_pauseMenuButtonPressedEvent.Raise(context);
+        }
+        
         private void OnDestroy()
         {
             m_playerInputAction.Player.Interact.performed -= OnInventoryButtonPressed;
             m_playerInputAction.Player.CharacterInfo.performed -= OnCharacterInfoButtonPressed;
             m_playerInputAction.Player.Interact.performed -= OnInteractButtonPressed;
             m_playerInputAction.Player.DefenseAbility.performed -= OnDefenseButtonPressed;
+            m_playerInputAction.Player.PauseMenu.performed -= OnPauseMenuButtonPressed;
             m_freezeInputEvent.RemoveListener(OnFreezeInput);
         }
     }

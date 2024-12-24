@@ -45,5 +45,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_gameEvent: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
+  m_pauseMenuButtonPressed: {fileID: 11400000, guid: 92bf3cf4522ec5e41abf23ec754df4e3, type: 2}
+  m_showPauseMenuEvent: {fileID: 11400000, guid: 9799d98d7a0c43e4ab57bc7e8d8ea017, type: 2}
   m_openInventoryUI: {fileID: 11400000, guid: a368cab554cb21840890473e363380e4, type: 2}
   m_openCharacterInfoUI: {fileID: 11400000, guid: 9c8bcbc8359a26a4db6d550db47ae89d, type: 2}

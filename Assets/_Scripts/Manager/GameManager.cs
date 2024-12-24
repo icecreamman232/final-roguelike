@@ -5,15 +5,19 @@ using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Player;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace SGGames.Scripts.Managers
 {
     public class GameManager : Singleton<GameManager>
     {
         [SerializeField] private GameEvent m_gameEvent;
+        [SerializeField] private InputContextEvent m_pauseMenuButtonPressed;
+        [SerializeField] private BoolEvent m_showPauseMenuEvent;
         [SerializeField] private OpenInventoryUIEvent m_openInventoryUI;
         [SerializeField] private OpenCharacterInfoUIEvent m_openCharacterInfoUI;
 
+        private bool m_isPauseMenuOpened;
         private bool m_isCharacterInfoOpened;
         private bool m_isInventoryOpened;
         public bool IsGamePaused => Time.timeScale == 0;
@@ -23,6 +27,7 @@ namespace SGGames.Scripts.Managers
         
         private void Start()
         {
+            m_pauseMenuButtonPressed.AddListener(OnPauseMenuButtonPressed);
             m_gameEvent.AddListener(OnGameEvent);
             m_openInventoryUI.AddListener(OnOpeningInventoryUI);
             m_openCharacterInfoUI.AddListener(OnOpeningCharacterInfoUI);
@@ -30,6 +35,7 @@ namespace SGGames.Scripts.Managers
         
         private void OnDestroy()
         {
+            m_pauseMenuButtonPressed.RemoveListener(OnPauseMenuButtonPressed);
             m_gameEvent.RemoveListener(OnGameEvent);
             m_openInventoryUI.RemoveListener(OnOpeningInventoryUI);
             m_openCharacterInfoUI.RemoveListener(OnOpeningCharacterInfoUI);
@@ -68,6 +74,33 @@ namespace SGGames.Scripts.Managers
         private void OnOpeningCharacterInfoUI(bool isOpen, PlayerAttributeController arg2)
         {
             m_isCharacterInfoOpened = isOpen;
+        }
+        
+        private void OnPauseMenuButtonPressed(InputAction.CallbackContext context)
+        {
+            if (m_isPauseMenuOpened)
+            {
+                m_isPauseMenuOpened = false;
+                m_showPauseMenuEvent.Raise(false);
+                m_gameEvent.Raise(GameEventType.UNPAUSED);
+            }
+            else
+            {
+                m_isPauseMenuOpened = true;
+                if (m_isInventoryOpened)
+                {
+                    m_openInventoryUI.Raise(false,null,null,null,null,null,null,null,null);
+                }
+
+                if (m_isCharacterInfoOpened)
+                {
+                    m_openCharacterInfoUI.Raise(false,null);
+                }
+                
+                m_gameEvent.Raise(GameEventType.PAUSED);
+                m_showPauseMenuEvent.Raise(true);
+                
+            }
         }
     }
 }

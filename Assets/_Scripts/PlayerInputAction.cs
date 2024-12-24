@@ -80,6 +80,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""PauseMenu"",
+                    ""type"": ""Button"",
+                    ""id"": ""966c1b64-f8b7-4a0a-9a1e-2b95221bc936"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -192,6 +201,17 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""OffenseAbility"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""40597298-b50c-4ad8-a77d-3c62d138499c"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""PauseMenu"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -206,6 +226,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Player_CharacterInfo = m_Player.FindAction("CharacterInfo", throwIfNotFound: true);
         m_Player_DefenseAbility = m_Player.FindAction("DefenseAbility", throwIfNotFound: true);
         m_Player_OffenseAbility = m_Player.FindAction("OffenseAbility", throwIfNotFound: true);
+        m_Player_PauseMenu = m_Player.FindAction("PauseMenu", throwIfNotFound: true);
     }
 
     ~@PlayerInputAction()
@@ -278,6 +299,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_CharacterInfo;
     private readonly InputAction m_Player_DefenseAbility;
     private readonly InputAction m_Player_OffenseAbility;
+    private readonly InputAction m_Player_PauseMenu;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -288,6 +310,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         public InputAction @CharacterInfo => m_Wrapper.m_Player_CharacterInfo;
         public InputAction @DefenseAbility => m_Wrapper.m_Player_DefenseAbility;
         public InputAction @OffenseAbility => m_Wrapper.m_Player_OffenseAbility;
+        public InputAction @PauseMenu => m_Wrapper.m_Player_PauseMenu;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -315,6 +338,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @OffenseAbility.started += instance.OnOffenseAbility;
             @OffenseAbility.performed += instance.OnOffenseAbility;
             @OffenseAbility.canceled += instance.OnOffenseAbility;
+            @PauseMenu.started += instance.OnPauseMenu;
+            @PauseMenu.performed += instance.OnPauseMenu;
+            @PauseMenu.canceled += instance.OnPauseMenu;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -337,6 +363,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @OffenseAbility.started -= instance.OnOffenseAbility;
             @OffenseAbility.performed -= instance.OnOffenseAbility;
             @OffenseAbility.canceled -= instance.OnOffenseAbility;
+            @PauseMenu.started -= instance.OnPauseMenu;
+            @PauseMenu.performed -= instance.OnPauseMenu;
+            @PauseMenu.canceled -= instance.OnPauseMenu;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -362,5 +391,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         void OnCharacterInfo(InputAction.CallbackContext context);
         void OnDefenseAbility(InputAction.CallbackContext context);
         void OnOffenseAbility(InputAction.CallbackContext context);
+        void OnPauseMenu(InputAction.CallbackContext context);
     }
 }
