@@ -1,4 +1,8 @@
+using SGGames.Scripts.Damages;
+using SGGames.Scripts.Enemies;
+using SGGames.Scripts.Healths;
 using SGGames.Scripts.Weapons;
+using UnityEditor;
 using UnityEngine;
 
 namespace SGGames.Scripts.Data
@@ -11,6 +15,7 @@ namespace SGGames.Scripts.Data
         [SerializeField] private float m_maxHealth;
         [SerializeField] private float m_moveSpeed;
         [SerializeField] private Sprite m_enemySprite;
+        [SerializeField] private GameObject m_enemyPrefab;
         [Header("Weapon")] 
         [SerializeField] private float m_minBodyDamage;
         [SerializeField] private float m_maxBodyDamage;
@@ -40,6 +45,114 @@ namespace SGGames.Scripts.Data
         public float ProjectileRange => m_projectileRange;
         public float MinProjectileDamage => m_minProjectileDamage;
         public float MaxProjectileDamage => m_maxProjectileDamage;
+
+        #if UNITY_EDITOR
+        public void ApplyData()
+        {
+            ApplyHealth();
+            ApplyMoveSpeed();
+            ApplyBodyDamage();
+            ApplyWeaponStats();
+            ApplyProjectileStats();
+            
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+        }
+
+        private void ApplyHealth()
+        {
+            if (m_enemyPrefab == null)
+            {
+                Debug.LogError("Enemy Prefab is not found");
+                return;
+            }
+            
+            var enemyHealth = m_enemyPrefab.GetComponent<EnemyHealth>();
+            if (enemyHealth == null)
+            {
+                Debug.LogError("Enemy Health is not found");
+                return;
+            }
+
+            enemyHealth.ApplyDataForHealth(m_maxHealth);
+            PrefabUtility.SavePrefabAsset(m_enemyPrefab);
+            Debug.LogError($"<color=green>Applied health value to enemy prefab {m_enemyPrefab.name}</color>");
+        }
+
+        private void ApplyMoveSpeed()
+        {
+            if (m_enemyPrefab == null)
+            {
+                Debug.LogError("Enemy Prefab is not found");
+                return;
+            }
+            
+            var enemyMovement = m_enemyPrefab.GetComponent<EnemyMovement>();
+
+            if (enemyMovement == null)
+            {
+                Debug.LogError("Enemy Movement is not found");
+                return;
+            }
+            enemyMovement.ApplyMovementData(m_moveSpeed);
+            PrefabUtility.SavePrefabAsset(m_enemyPrefab);
+            Debug.LogError($"<color=green>Applied movespeed value to enemy prefab {m_enemyPrefab.name}</color>");
+        }
+
+        private void ApplyBodyDamage()
+        {
+            if (m_enemyPrefab == null)
+            {
+                Debug.LogError("Enemy Prefab is not found");
+                return;
+            }
+            var damageHandler = m_enemyPrefab.GetComponent<DamageHandler>();
+            if (damageHandler == null)
+            {
+                Debug.LogError("Damage Handler not found");
+                return;
+            }
+            damageHandler.Initialize(m_minBodyDamage, m_maxBodyDamage);
+            PrefabUtility.SavePrefabAsset(m_enemyPrefab);
+            Debug.LogError($"<color=green>Applied body damage value to enemy prefab {m_enemyPrefab.name}</color>");
+        }
+
+        private void ApplyWeaponStats()
+        {
+            if (m_weaponPrefab == null)
+            {
+                Debug.LogError("Weapon Prefab is not found");
+                return;
+            }
+            
+            var weapon = m_weaponPrefab.GetComponent<Weapon>();
+            weapon.ApplyData(m_delayBetweenShot);
+            PrefabUtility.SavePrefabAsset(m_weaponPrefab);
+            Debug.LogError($"<color=green>Applied weapon value to enemy prefab {m_enemyPrefab.name}</color>");
+        }
+
+        private void ApplyProjectileStats()
+        {
+            if (m_projectilePrefab == null)
+            {
+                Debug.LogError("Projectile Prefab is not found");
+                return;
+            }
+            
+            
+            var projectile = m_projectilePrefab.GetComponent<Projectile>();
+            if (projectile == null)
+            {
+                Debug.LogError("Projectile is not found");
+                return;
+            }
+            
+            projectile.ApplyData(m_projectileType, m_projectileSpeed,m_projectileRange,m_minProjectileDamage,m_maxProjectileDamage);
+            PrefabUtility.SavePrefabAsset(m_projectilePrefab);
+            Debug.LogError($"<color=green>Applied projectile value to enemy prefab {m_enemyPrefab.name}</color>");
+        }
+        
+        #endif
     }
 }
 

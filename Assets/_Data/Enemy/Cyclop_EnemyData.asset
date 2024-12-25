@@ -15,7 +15,8 @@ MonoBehaviour:
   m_enemyName: Cyclop
   m_maxHealth: 120
   m_moveSpeed: 3
-  m_enemySprite: {fileID: 21300000, guid: 3f4ebbbb52b8c584f8d4d277e295d2e0, type: 3}
+  m_enemySprite: {fileID: 21300000, guid: ef5888fc28a092741abdd7fc2a07e097, type: 3}
+  m_enemyPrefab: {fileID: 255884338634997963, guid: 40f85a9ce0873a24db80db574be3fe5c, type: 3}
   m_minBodyDamage: 30
   m_maxBodyDamage: 45
   m_delayBetweenShot: 0

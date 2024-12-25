@@ -23,6 +23,11 @@ namespace SGGames.Scripts.EditorExtension
             var texture = AssetPreview.GetAssetPreview(m_data.Sprite);
             GUILayout.Label(texture);
             base.OnInspectorGUI();
+            GUILayout.Space(30);
+            if (GUILayout.Button("Apply Data", GUILayout.Height(50)))
+            {
+                m_data.ApplyData();
+            }
         }
     }
 }

@@ -47,13 +47,6 @@ namespace SGGames.Scripts.Weapons
             m_onEnable?.Invoke();
         }
 
-        public virtual void ApplyData(WeaponData data)
-        {
-            m_initialSpeed = data.ProjectileSpeed;
-            m_range = data.AttackRange;
-            m_damageHandler.Initialize(data.MinDamage, data.MaxDamage);
-        }
-
         public virtual void Spawn(Vector2 position, Quaternion rotation, Vector2 direction, 
             (float addDamage, float multiplyDamage,float criticalDamage) damageInfo)
         {
@@ -121,6 +114,24 @@ namespace SGGames.Scripts.Weapons
             m_damageHandler.OnHitDamageable -= OnHitDamageable;
             m_damageHandler.OnHitNonDamageable -= OnHitNonDamageable;
         }
+        
+        #if UNITY_EDITOR
+        public void ApplyData(WeaponData data)
+        {
+            m_initialSpeed = data.ProjectileSpeed;
+            m_range = data.AttackRange;
+            m_damageHandler.Initialize(data.MinDamage, data.MaxDamage);
+        }
+
+        public void ApplyData(ProjectileType type, float speed, float range, float minDamage, float maxDamage)
+        {
+            m_ProjectileType = type;
+            m_initialSpeed = speed;
+            m_range = range;
+            m_damageHandler.Initialize(minDamage, maxDamage);
+        }
+        
+        #endif
     }
 }
 

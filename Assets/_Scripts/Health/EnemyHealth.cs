@@ -89,6 +89,13 @@ namespace SGGames.Scripts.Healths
             yield return new WaitForSeconds(m_delayBeforeDeath);
             this.gameObject.SetActive(false);
         }
+        
+        #if UNITY_EDITOR
+        public void ApplyDataForHealth(float maxHealth)
+        {
+            m_maxHealth = maxHealth;
+        }
+        #endif
     }
 }
 

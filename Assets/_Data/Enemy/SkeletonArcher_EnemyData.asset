@@ -16,6 +16,7 @@ MonoBehaviour:
   m_maxHealth: 150
   m_moveSpeed: 3
   m_enemySprite: {fileID: 1524193259, guid: 02e42af3d41b10c45ab1ebd6c15a0491, type: 3}
+  m_enemyPrefab: {fileID: 7078730350003177115, guid: 19024bc0b4bf838468cc344025f6d322, type: 3}
   m_minBodyDamage: 15
   m_maxBodyDamage: 25
   m_delayBetweenShot: 1

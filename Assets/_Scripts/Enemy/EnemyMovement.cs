@@ -124,6 +124,14 @@ namespace SGGames.Scripts.Enemies
                 transform.Translate(m_direction * (m_currentSpeed * Time.deltaTime));
             }
         }
+        
+        #if UNITY_EDITOR
+        public void ApplyMovementData(float moveSpeed)
+        {
+            m_initialSpeed = moveSpeed;
+        }
+        
+        #endif
     }
 }
 

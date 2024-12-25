@@ -34,11 +34,6 @@ namespace SGGames.Scripts.Weapons
        
         
         public WeaponState CurrentState => m_currentState;
-
-        public void ApplyData(WeaponData data)
-        {
-            m_baseDelayBetweenShots = data.BaseDelayBetweenShots;
-        }
         
         public void ApplyDelayBetweenShots(float delayBetweenShots)
         {
@@ -115,6 +110,18 @@ namespace SGGames.Scripts.Weapons
         {
             m_projectilePooler.CleanUp();    
         }
+        
+        #if UNITY_EDITOR
+        public void ApplyData(WeaponData data)
+        {
+            m_baseDelayBetweenShots = data.BaseDelayBetweenShots;
+        }
+
+        public void ApplyData(float delayBetweenShots)
+        {
+            m_baseDelayBetweenShots = delayBetweenShots;
+        }
+        #endif
     }
 }
 
