@@ -7950,6 +7950,8 @@ MonoBehaviour:
   m_initialWeapon: {fileID: 8312592250543379475, guid: 9daa67778c37c284ca6e3935ae57dd71, type: 3}
   m_currentWeapon: {fileID: 0}
   m_weaponAttachment: {fileID: 8571918913905571044}
+  m_offsetFromCenter: 0.35
+  m_offsetAngleWeapon: -45
 --- !u!4 &8571918913905571044
 Transform:
   m_ObjectHideFlags: 0

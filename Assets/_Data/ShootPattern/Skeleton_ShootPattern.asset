@@ -16,7 +16,7 @@ MonoBehaviour:
   - IsRelative: 1
     Speed: 0
     MinAngle: -5
-    MaxAngle: -15
+    MaxAngle: -10
     MinDelay: 0.1
     MaxDelay: 0.3
   - IsRelative: 1
@@ -28,6 +28,6 @@ MonoBehaviour:
   - IsRelative: 1
     Speed: 0
     MinAngle: 5
-    MaxAngle: 15
+    MaxAngle: 10
     MinDelay: 0.1
     MaxDelay: 0.3
