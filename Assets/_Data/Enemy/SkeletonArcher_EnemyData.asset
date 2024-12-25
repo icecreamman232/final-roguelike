@@ -12,18 +12,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103a9c0fa3847264fa4e55d761711826, type: 3}
   m_Name: SkeletonArcher_EnemyData
   m_EditorClassIdentifier: 
-  m_enemyName: Blue Skeleton Archer
-  m_maxHealth: 150
+  m_enemyName: Skeleton Archer
+  m_maxHealth: 80
   m_moveSpeed: 3
   m_enemySprite: {fileID: 1524193259, guid: 02e42af3d41b10c45ab1ebd6c15a0491, type: 3}
   m_enemyPrefab: {fileID: 7078730350003177115, guid: 19024bc0b4bf838468cc344025f6d322, type: 3}
   m_minBodyDamage: 15
   m_maxBodyDamage: 25
-  m_delayBetweenShot: 1
-  m_weaponPrefab: {fileID: 4594995694874995804, guid: 9daa67778c37c284ca6e3935ae57dd71, type: 3}
-  m_projectilePrefab: {fileID: 5388476598494066590, guid: 3615e9c90da838c47950751b77950402, type: 3}
+  m_delayBetweenShot: 2
+  m_weaponPrefab: {fileID: 4594995694874995804, guid: 4f82b8daf7c8db54495fe803361d9e07, type: 3}
+  m_projectilePrefab: {fileID: 5388476598494066590, guid: dbe5453e90932ac468b567a06051644f, type: 3}
   m_projectileType: 1
-  m_projectileSpeed: 7
+  m_projectileSpeed: 3
   m_projectileRange: 10
   m_minProjectileDamage: 10
   m_maxProjectileDamage: 15
