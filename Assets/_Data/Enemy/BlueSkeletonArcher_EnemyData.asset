@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: BlueSkeletonArcher_EnemyData
   m_EditorClassIdentifier: 
   m_enemyName: Blue Skeleton Archer
-  m_maxHealth: 150
+  m_maxHealth: 100
   m_moveSpeed: 3
   m_enemySprite: {fileID: -912655827, guid: 02e42af3d41b10c45ab1ebd6c15a0491, type: 3}
   m_enemyPrefab: {fileID: 6106709566713620977, guid: eba5779660fe1464388b9361c6166b16, type: 3}
@@ -25,5 +25,5 @@ MonoBehaviour:
   m_projectileType: 1
   m_projectileSpeed: 7
   m_projectileRange: 10
-  m_minProjectileDamage: 10
-  m_maxProjectileDamage: 15
+  m_minProjectileDamage: 20
+  m_maxProjectileDamage: 30

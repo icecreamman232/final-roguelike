@@ -19,7 +19,7 @@ MonoBehaviour:
   m_enemyPrefab: {fileID: 6558185500957225338, guid: 932f04c741539b947b2bf1111aa79eda, type: 3}
   m_minBodyDamage: 15
   m_maxBodyDamage: 25
-  m_delayBetweenShot: 0
+  m_delayBetweenShot: 1
   m_weaponPrefab: {fileID: 3332540976009037591, guid: 3aa79e978fdbd9a4ea3f848e7062177e, type: 3}
   m_projectilePrefab: {fileID: 4804044786138612156, guid: 7cf126d795d98cb4bb9fe24848e1c447, type: 3}
   m_projectileType: 1

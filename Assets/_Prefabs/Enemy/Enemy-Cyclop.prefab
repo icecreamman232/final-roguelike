@@ -209,7 +209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d24dffb655f734d91f3fe586f4f356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxHealth: 120
+  m_maxHealth: 150
   m_currentHealth: 0
   m_isInvulnerable: 0
   m_isImmortal: 0
@@ -219,6 +219,7 @@ MonoBehaviour:
   m_healthBar: {fileID: 2814771148324957219}
   m_delayBeforeDeath: 0.5
   m_deathFeedback: {fileID: 4084854703289721624}
+  m_weaponGroup: {fileID: 0}
 --- !u!114 &2604295904876219906
 MonoBehaviour:
   m_ObjectHideFlags: 0

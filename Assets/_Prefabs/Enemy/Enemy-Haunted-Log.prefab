@@ -5917,6 +5917,7 @@ MonoBehaviour:
   m_healthBar: {fileID: 827914672657905834}
   m_delayBeforeDeath: 0.5
   m_deathFeedback: {fileID: 2881737637684285751}
+  m_weaponGroup: {fileID: 0}
 --- !u!114 &371827010916482266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5957,6 +5958,8 @@ MonoBehaviour:
   m_initialWeapon: {fileID: 6705463414281065429, guid: 3aa79e978fdbd9a4ea3f848e7062177e, type: 3}
   m_currentWeapon: {fileID: 0}
   m_weaponAttachment: {fileID: 4801410255022399382}
+  m_offsetFromCenter: 0
+  m_offsetAngleWeapon: 0
 --- !u!1 &7789305456985719679
 GameObject:
   m_ObjectHideFlags: 0
