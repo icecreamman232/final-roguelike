@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: PoisonMushroom_EnemyData
   m_EditorClassIdentifier: 
   m_enemyName: Poison Mushroom
-  m_maxHealth: 30
+  m_maxHealth: 100
   m_moveSpeed: 0
   m_enemySprite: {fileID: 387083895, guid: e4abfb737e054314aa8f60261b34c798, type: 3}
   m_enemyPrefab: {fileID: 9186381283538653862, guid: ac8b55650a518bd4bb039e03ac5fbe0f, type: 3}

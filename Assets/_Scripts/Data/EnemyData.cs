@@ -76,7 +76,7 @@ namespace SGGames.Scripts.Data
 
             enemyHealth.ApplyDataForHealth(m_maxHealth);
             PrefabUtility.SavePrefabAsset(m_enemyPrefab);
-            Debug.LogError($"<color=green>Applied health value to enemy prefab {m_enemyPrefab.name}</color>");
+            Debug.Log($"<color=green>Applied health value to enemy prefab {m_enemyPrefab.name}</color>");
         }
 
         private void ApplyMoveSpeed()
@@ -96,7 +96,7 @@ namespace SGGames.Scripts.Data
             }
             enemyMovement.ApplyMovementData(m_moveSpeed);
             PrefabUtility.SavePrefabAsset(m_enemyPrefab);
-            Debug.LogError($"<color=green>Applied movespeed value to enemy prefab {m_enemyPrefab.name}</color>");
+            Debug.Log($"<color=green>Applied movespeed value to enemy prefab {m_enemyPrefab.name}</color>");
         }
 
         private void ApplyBodyDamage()
@@ -114,7 +114,7 @@ namespace SGGames.Scripts.Data
             }
             damageHandler.Initialize(m_minBodyDamage, m_maxBodyDamage);
             PrefabUtility.SavePrefabAsset(m_enemyPrefab);
-            Debug.LogError($"<color=green>Applied body damage value to enemy prefab {m_enemyPrefab.name}</color>");
+            Debug.Log($"<color=green>Applied body damage value to enemy prefab {m_enemyPrefab.name}</color>");
         }
 
         private void ApplyWeaponStats()
@@ -128,7 +128,7 @@ namespace SGGames.Scripts.Data
             var weapon = m_weaponPrefab.GetComponent<Weapon>();
             weapon.ApplyData(m_delayBetweenShot);
             PrefabUtility.SavePrefabAsset(m_weaponPrefab);
-            Debug.LogError($"<color=green>Applied weapon value to enemy prefab {m_enemyPrefab.name}</color>");
+            Debug.Log($"<color=green>Applied weapon value to enemy prefab {m_enemyPrefab.name}</color>");
         }
 
         private void ApplyProjectileStats()
@@ -149,7 +149,7 @@ namespace SGGames.Scripts.Data
             
             projectile.ApplyData(m_projectileType, m_projectileSpeed,m_projectileRange,m_minProjectileDamage,m_maxProjectileDamage);
             PrefabUtility.SavePrefabAsset(m_projectilePrefab);
-            Debug.LogError($"<color=green>Applied projectile value to enemy prefab {m_enemyPrefab.name}</color>");
+            Debug.Log($"<color=green>Applied projectile value to enemy prefab {m_enemyPrefab.name}</color>");
         }
         
         #endif

@@ -5982,7 +5982,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b0d24dffb655f734d91f3fe586f4f356, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_maxHealth: 30
+  m_maxHealth: 100
   m_currentHealth: 0
   m_isInvulnerable: 0
   m_isImmortal: 0
@@ -5992,6 +5992,7 @@ MonoBehaviour:
   m_healthBar: {fileID: 2436060792897506696}
   m_delayBeforeDeath: 0.5
   m_deathFeedback: {fileID: 8934504274730164139}
+  m_weaponGroup: {fileID: 0}
 --- !u!114 &6082960409904655969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6032,3 +6033,5 @@ MonoBehaviour:
   m_initialWeapon: {fileID: 998067294415161247, guid: 82660b8089ed9354fb3855f7e09bc30e, type: 3}
   m_currentWeapon: {fileID: 0}
   m_weaponAttachment: {fileID: 1402645653952703045}
+  m_offsetFromCenter: 0
+  m_offsetAngleWeapon: 0
