@@ -10,24 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: beb68807529287448afa1f2adec5d2bf, type: 3}
-  m_Name: HauntedLog_ShootPattern
+  m_Name: Skeleton_ShootPattern
   m_EditorClassIdentifier: 
   ShootPattern:
   - IsRelative: 1
     Speed: 0
-    MinAngle: -15
+    MinAngle: -5
     MaxAngle: -15
-    MinDelay: 0
-    MaxDelay: 0
+    MinDelay: 0.1
+    MaxDelay: 0.3
   - IsRelative: 1
     Speed: 0
-    MinAngle: 0
-    MaxAngle: 0
-    MinDelay: 0
-    MaxDelay: 0
+    MinAngle: -5
+    MaxAngle: 5
+    MinDelay: 0.1
+    MaxDelay: 0.3
   - IsRelative: 1
     Speed: 0
-    MinAngle: 15
+    MinAngle: 5
     MaxAngle: 15
-    MinDelay: 0
-    MaxDelay: 0
+    MinDelay: 0.1
+    MaxDelay: 0.3

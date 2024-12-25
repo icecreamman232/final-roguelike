@@ -1,4 +1,3 @@
-
 using SGGames.Scripts.Core;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Player;
@@ -9,6 +8,7 @@ namespace SGGames.Scripts.Weapons
     public enum WeaponState
     {
         READY,
+        SHOOTING,
         SHOT,
         DELAY_BETWEEN_SHOTS,
     }

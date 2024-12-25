@@ -1,3 +1,4 @@
+using System.Collections;
 using MoreMountains.Tools;
 using SGGames.Scripts.Data;
 using UnityEngine;
@@ -11,8 +12,18 @@ namespace SGGames.Scripts.Weapons
         public override void Shoot(Vector2 direction,
             (float additionDamage, float multiplierDamage, float criticalDamage) damageInfo = default)
         {
+            if (m_currentState != WeaponState.READY) return;
+            StartCoroutine(ShootWithPattern(direction, damageInfo));
+        }
+        
+        private IEnumerator ShootWithPattern(Vector2 direction,
+            (float additionDamage, float multiplierDamage, float criticalDamage) damageInfo = default)
+        {
+            m_currentState = WeaponState.SHOOTING;
             for (int i = 0; i < m_PatternData.ShootPattern.Length; i++)
             {
+                yield return new WaitForSeconds(m_PatternData.ShootPattern[i].GetDelay());
+                
                 var projectileObj = m_projectilePooler.GetPooledGameObject();
                 var projectile = projectileObj.GetComponent<Projectile>();
                 
@@ -23,13 +34,14 @@ namespace SGGames.Scripts.Weapons
                     m_PatternData.ShootPattern[i].IsRelative 
                         ? direction 
                         : Vector2.right, 
-                    m_PatternData.ShootPattern[i].Angle);
+                    m_PatternData.ShootPattern[i].GetAngle());
 
                 rotation = Quaternion.AngleAxis(Mathf.Atan2(newDirection.y, newDirection.x) * Mathf.Rad2Deg,Vector3.forward);
-
+                
                 projectile.Spawn(transform.position,rotation,newDirection,damageInfo);
-                m_currentState = WeaponState.SHOT;
+                yield return null;
             }
+            m_currentState = WeaponState.SHOT;
         }
     }
 }

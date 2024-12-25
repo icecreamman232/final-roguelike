@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace SGGames.Scripts.Data
 {
@@ -14,7 +15,22 @@ namespace SGGames.Scripts.Data
     {
         public bool IsRelative;
         public float Speed;
-        public float Angle;
+        [Header("Angles")]
+        public float MinAngle;
+        public float MaxAngle;
+        [Header("Delay")]
+        public float MinDelay;
+        public float MaxDelay;
+
+        public float GetAngle()
+        {
+            return Random.Range(MinAngle, MaxAngle);
+        }
+
+        public float GetDelay()
+        {
+            return Random.Range(MinDelay, MaxDelay);
+        }
     }
 }
 

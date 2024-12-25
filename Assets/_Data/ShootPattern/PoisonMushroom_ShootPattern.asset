@@ -15,13 +15,25 @@ MonoBehaviour:
   ShootPattern:
   - IsRelative: 0
     Speed: 0
-    Angle: 0
+    MinAngle: 0
+    MaxAngle: 0
+    MinDelay: 0
+    MaxDelay: 0
   - IsRelative: 0
     Speed: 0
-    Angle: 180
+    MinAngle: 90
+    MaxAngle: 90
+    MinDelay: 0
+    MaxDelay: 0
   - IsRelative: 0
     Speed: 0
-    Angle: 90
+    MinAngle: -90
+    MaxAngle: -90
+    MinDelay: 0
+    MaxDelay: 0
   - IsRelative: 0
     Speed: 0
-    Angle: -90
+    MinAngle: 180
+    MaxAngle: 180
+    MinDelay: 0
+    MaxDelay: 0
