@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103a9c0fa3847264fa4e55d761711826, type: 3}
+  m_Name: Cyclop_EnemyData
+  m_EditorClassIdentifier: 
+  m_enemyName: Cyclop
+  m_maxHealth: 120
+  m_moveSpeed: 3
+  m_enemySprite: {fileID: 21300000, guid: 3f4ebbbb52b8c584f8d4d277e295d2e0, type: 3}
+  m_minBodyDamage: 30
+  m_maxBodyDamage: 45
+  m_delayBetweenShot: 0
+  m_weaponPrefab: {fileID: 0}
+  m_projectilePrefab: {fileID: 0}
+  m_projectileType: 0
+  m_projectileSpeed: 0
+  m_projectileRange: 0
+  m_minProjectileDamage: 0
+  m_maxProjectileDamage: 0

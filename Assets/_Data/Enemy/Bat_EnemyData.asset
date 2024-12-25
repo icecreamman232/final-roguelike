@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103a9c0fa3847264fa4e55d761711826, type: 3}
+  m_Name: Bat_EnemyData
+  m_EditorClassIdentifier: 
+  m_enemyName: Bat
+  m_maxHealth: 80
+  m_moveSpeed: 3
+  m_enemySprite: {fileID: 21300000, guid: d5dc7b6ddb0988746a16037c8f49c449, type: 3}
+  m_minBodyDamage: 15
+  m_maxBodyDamage: 25
+  m_delayBetweenShot: 1
+  m_weaponPrefab: {fileID: 6913071494587362321, guid: 007a6f64dab03694f97edd9a33eb7250, type: 3}
+  m_projectilePrefab: {fileID: 8564910053303944358, guid: 1769650eb0e463344a9a7f473165306e, type: 3}
+  m_projectileType: 1
+  m_projectileSpeed: 10
+  m_projectileRange: 5
+  m_minProjectileDamage: 10
+  m_maxProjectileDamage: 15

@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103a9c0fa3847264fa4e55d761711826, type: 3}
+  m_Name: PoisonMushroom_EnemyData
+  m_EditorClassIdentifier: 
+  m_enemyName: Poison Mushroom
+  m_maxHealth: 30
+  m_moveSpeed: 0
+  m_enemySprite: {fileID: 387083895, guid: e4abfb737e054314aa8f60261b34c798, type: 3}
+  m_minBodyDamage: 15
+  m_maxBodyDamage: 25
+  m_delayBetweenShot: 0
+  m_weaponPrefab: {fileID: 118477653130531295, guid: 82660b8089ed9354fb3855f7e09bc30e, type: 3}
+  m_projectilePrefab: {fileID: 7033417393917381709, guid: ab94df523067d4542b69abde86195dd0, type: 3}
+  m_projectileType: 1
+  m_projectileSpeed: 5
+  m_projectileRange: 8
+  m_minProjectileDamage: 10
+  m_maxProjectileDamage: 15

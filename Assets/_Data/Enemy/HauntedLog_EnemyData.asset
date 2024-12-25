@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103a9c0fa3847264fa4e55d761711826, type: 3}
+  m_Name: HauntedLog_EnemyData
+  m_EditorClassIdentifier: 
+  m_enemyName: Haunted Log
+  m_maxHealth: 100
+  m_moveSpeed: 0
+  m_enemySprite: {fileID: -1022260439, guid: a973d32a14ee8e34d861ef1f07394565, type: 3}
+  m_minBodyDamage: 15
+  m_maxBodyDamage: 25
+  m_delayBetweenShot: 0
+  m_weaponPrefab: {fileID: 3332540976009037591, guid: 3aa79e978fdbd9a4ea3f848e7062177e, type: 3}
+  m_projectilePrefab: {fileID: 4804044786138612156, guid: 7cf126d795d98cb4bb9fe24848e1c447, type: 3}
+  m_projectileType: 1
+  m_projectileSpeed: 7
+  m_projectileRange: 5
+  m_minProjectileDamage: 20
+  m_maxProjectileDamage: 50
