@@ -73,7 +73,7 @@ SpriteRenderer:
   m_SortingLayerID: 50083129
   m_SortingLayer: 2
   m_SortingOrder: 5
-  m_Sprite: {fileID: -227183694, guid: 02e42af3d41b10c45ab1ebd6c15a0491, type: 3}
+  m_Sprite: {fileID: 1092377646, guid: 02e42af3d41b10c45ab1ebd6c15a0491, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -94,9 +94,9 @@ GameObject:
   m_Component:
   - component: {fileID: 3372143124898300738}
   - component: {fileID: 7336600980683310227}
-  - component: {fileID: -2455100745572119312}
+  - component: {fileID: 8312592250543379475}
   m_Layer: 0
-  m_Name: SkeletonArcher_RangedWeapon
+  m_Name: BlueSkeletonArcher_RangedWeapon
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -134,9 +134,9 @@ MonoBehaviour:
   Parent: {fileID: 0}
   Offset: {x: 0, y: 0}
   IsSharePool: 0
-  ObjectToPool: {fileID: 5388476598494066590, guid: dbe5453e90932ac468b567a06051644f, type: 3}
+  ObjectToPool: {fileID: 5388476598494066590, guid: 3615e9c90da838c47950751b77950402, type: 3}
   PoolSize: 20
---- !u!114 &-2455100745572119312
+--- !u!114 &8312592250543379475
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -145,16 +145,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 4594995694874995804}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 732bf32713df3ce47912a4c5f545bd2f, type: 3}
+  m_Script: {fileID: 11500000, guid: d2c231bef829b194e944320193adc22c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   m_currentState: 0
-  m_baseDelayBetweenShots: 2
-  m_currentDelayBetweenShots: 2
+  m_baseDelayBetweenShots: 1
+  m_currentDelayBetweenShots: 1
   m_projectilePooler: {fileID: 7336600980683310227}
   m_offsetFromCenter: 0.5
-  m_model: {fileID: 0}
+  m_model: {fileID: 6757441650883087254}
   m_offsetAngle: 45
   m_animator: {fileID: 0}
   m_spriteRenderer: {fileID: 2814481135437980236}
   m_offsetSpawnPos: {x: 0, y: 0}
+  m_PatternData: {fileID: 11400000, guid: e18e0929ef4301b4487e0bc957176a1f, type: 2}

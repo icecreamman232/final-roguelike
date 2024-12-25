@@ -172,6 +172,69 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: blue-skeleton-archer
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 19bce5d1abc69cb43b1b003b54d2f9c3
+      internalID: -912655827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue-skeleton-archer-bow
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0672bbb6314bebd438da3140a68c4389
+      internalID: 1092377646
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: blue-skeleton-archer-arrow
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 32
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3b6105e7e607cf541aa92f11128360ca
+      internalID: 326736789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -183,6 +246,9 @@ TextureImporter:
     weights: []
     secondaryTextures: []
     nameFileIdTable:
+      blue-skeleton-archer: -912655827
+      blue-skeleton-archer-arrow: 326736789
+      blue-skeleton-archer-bow: 1092377646
       skeleton-archer: 1524193259
       skeleton-archer-bow: -227183694
       skeleton-archer_arrow: 615391670

@@ -49,6 +49,12 @@ MonoBehaviour:
   m_baseDelayBetweenShots: 1
   m_currentDelayBetweenShots: 1
   m_projectilePooler: {fileID: 2725572237339019361}
+  m_offsetFromCenter: 0
+  m_model: {fileID: 0}
+  m_offsetAngle: 0
+  m_animator: {fileID: 0}
+  m_spriteRenderer: {fileID: 0}
+  m_offsetSpawnPos: {x: 0, y: 0}
 --- !u!114 &2725572237339019361
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -61,6 +67,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9788b4e0dfd1bad4784a55bd11b5e1cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  SelfInitialize: 1
   Parent: {fileID: 0}
   Offset: {x: 0, y: 0}
   IsSharePool: 0

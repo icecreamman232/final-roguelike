@@ -178,7 +178,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_isAlive: 0
   m_ProjectileType: 1
-  m_initialSpeed: 7
+  m_initialSpeed: 3
   m_currentSpeed: 0
   m_range: 10
   m_direction: {x: 0, y: 0}
