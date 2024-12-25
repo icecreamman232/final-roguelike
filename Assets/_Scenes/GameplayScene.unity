@@ -621,17 +621,18 @@ MonoBehaviour:
       FalseStateName: 
     - BrainDecision: {fileID: 342033818063914037}
       TrueStateName: Shoot
-      FalseStateName: 
+      FalseStateName: Set to follow target
   - StateName: Shoot
     Actions:
+    - {fileID: 5439110180157058441}
     - {fileID: 5358292353403503915}
     Transitions:
     - BrainDecision: {fileID: 5100849042305475253}
       TrueStateName: Rest
       FalseStateName: 
-    - BrainDecision: {fileID: 847790540887695333}
+    - BrainDecision: {fileID: 342033818063914037}
       TrueStateName: Following
-      FalseStateName: 
+      FalseStateName: Set to follow target
   - StateName: Rest
     Actions:
     - {fileID: 3721640827730983866}
