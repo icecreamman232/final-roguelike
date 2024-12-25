@@ -5937,6 +5937,7 @@ MonoBehaviour:
   m_healthBar: {fileID: 4065106082517196403}
   m_delayBeforeDeath: 0.5
   m_deathFeedback: {fileID: 1400888060790708627}
+  m_weaponGroup: {fileID: 2199964700278897959}
 --- !u!1 &1613130658351260549
 GameObject:
   m_ObjectHideFlags: 0

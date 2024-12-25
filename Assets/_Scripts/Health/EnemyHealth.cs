@@ -14,6 +14,7 @@ namespace SGGames.Scripts.Healths
         [SerializeField] protected EnemyHealthBar m_healthBar;
         [SerializeField] protected float m_delayBeforeDeath;
         [SerializeField] protected MMF_Player m_deathFeedback;
+        [SerializeField] protected GameObject m_weaponGroup;
 
         protected BoxCollider2D m_bodyCollider;
         
@@ -78,6 +79,12 @@ namespace SGGames.Scripts.Healths
                 m_controller.CurrentBrain.BrainActive = false;
             }
             m_spriteRenderer.enabled = false;
+
+            if (m_weaponGroup != null)
+            {
+                m_weaponGroup.SetActive(false);
+            }
+            
             m_deathFeedback.PlayFeedbacks();
             yield return new WaitForSeconds(m_delayBeforeDeath);
             this.gameObject.SetActive(false);
