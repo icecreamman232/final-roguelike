@@ -17,4 +17,5 @@ MonoBehaviour:
   Duration: 0
   IsRunning: 0
   DamageModifierType: 6
+  ChanceToCause: 100
   ModifierValue: 5

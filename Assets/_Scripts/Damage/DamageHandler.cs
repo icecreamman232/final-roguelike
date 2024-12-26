@@ -1,6 +1,7 @@
 using System;
 using SGGames.Scripts.Core;
 using SGGames.Scripts.Healths;
+using SGGames.Scripts.Player;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -10,7 +11,8 @@ namespace SGGames.Scripts.Damages
     {
         [SerializeField] protected float m_minDamage;
         [SerializeField] protected float m_maxDamage;
-        [SerializeField] protected float m_additionalDamage;
+        [SerializeField] protected float m_additionMin;
+        [SerializeField] protected float m_additionMax;
         [SerializeField] protected float m_multiplyDamage;
         [SerializeField] protected float m_critDamage;
         [Header("Damageable")]
@@ -34,18 +36,19 @@ namespace SGGames.Scripts.Damages
             m_maxDamage = maxDmg;
         }
 
-        public void SetDamageInfo((float addition,float multiplier,float critical) damageInfo)
+        public void SetDamageInfo(DamageInfo damageInfo)
         {
-            m_additionalDamage = damageInfo.addition;
-            m_multiplyDamage = damageInfo.multiplier;
-            m_critDamage = damageInfo.critical;
+            m_additionMin = damageInfo.AdditionMinDamage;
+            m_additionMax = damageInfo.AdditionMaxDamage;
+            m_multiplyDamage = damageInfo.MultiplyDamage;
+            m_critDamage = damageInfo.CriticalDamage;
         }
 
         
         protected virtual float ComputeDamage(out bool isCritical)
         {
-            var rawDamage = Mathf.Round(Random.Range(m_minDamage, m_maxDamage));
-            var finalDamage = Mathf.Round(((rawDamage + m_additionalDamage) * m_multiplyDamage) * m_critDamage);
+            var rawDamage = Mathf.Round(Random.Range(m_minDamage + m_additionMin, m_maxDamage + m_additionMax));
+            var finalDamage = Mathf.Round(rawDamage * m_multiplyDamage * m_critDamage);
             isCritical = m_critDamage > 1;
             return finalDamage;
         }

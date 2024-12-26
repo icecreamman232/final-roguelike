@@ -1,6 +1,7 @@
 using System.Collections;
 using MoreMountains.Tools;
 using SGGames.Scripts.Data;
+using SGGames.Scripts.Player;
 using UnityEngine;
 
 namespace SGGames.Scripts.Weapons
@@ -9,15 +10,13 @@ namespace SGGames.Scripts.Weapons
     {
         [SerializeField] private ShootPatternData m_PatternData;
 
-        public override void Shoot(Vector2 direction,
-            (float additionDamage, float multiplierDamage, float criticalDamage) damageInfo = default)
+        public override void Shoot(Vector2 direction, DamageInfo damageInfo)
         {
             if (m_currentState != WeaponState.READY) return;
             StartCoroutine(ShootWithPattern(direction, damageInfo));
         }
         
-        private IEnumerator ShootWithPattern(Vector2 direction,
-            (float additionDamage, float multiplierDamage, float criticalDamage) damageInfo = default)
+        private IEnumerator ShootWithPattern(Vector2 direction, DamageInfo damageInfo)
         {
             m_currentState = WeaponState.SHOOTING;
             for (int i = 0; i < m_PatternData.ShootPattern.Length; i++)

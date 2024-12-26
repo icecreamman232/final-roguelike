@@ -45,7 +45,7 @@ namespace SGGames.Scripts.Weapons
             m_playerAim = playerAim;
         }
         
-        public virtual void Shoot(Vector2 direction, (float additionDamage, float multiplierDamage, float criticalDamage) damageInfo = default)
+        public virtual void Shoot(Vector2 direction, DamageInfo damageInfo)
         {
             var projectileObj = m_projectilePooler.GetPooledGameObject();
             var projectile = projectileObj.GetComponent<Projectile>();

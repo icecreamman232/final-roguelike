@@ -1,3 +1,4 @@
+using SGGames.Scripts.Damages;
 using SGGames.Scripts.Player;
 using UnityEngine;
 
@@ -6,7 +7,9 @@ namespace SGGames.Scripts.Modifiers
     public class DamageModifierProcessor : ModifierProcessor
     {
        [SerializeField] private PlayerDamageComputer m_damageComputer;
-
+        [SerializeField] private int m_damageInfluencerID;
+       
+       
        public override void Initialize(string id, ModifierHandler handler, Modifier modifier)
        {
            base.Initialize(id, handler, modifier);
@@ -16,46 +19,78 @@ namespace SGGames.Scripts.Modifiers
        public override void StartModifier()
         {
             base.StartModifier();
-            switch (((DamageModifier)m_modifier).DamageModifierType)
+            var damageModifier = ((DamageModifier)m_modifier);
+            
+            switch (damageModifier.DamageModifierType)
             {
                 case DamageModifierType.ReduceDamage_ForDuration:
-                    m_damageComputer.UpdateAdditionDamage(-((DamageModifier)m_modifier).ModifierValue);
+                    m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
+                            DamageInfluencerType.ADD_DAMAGE, 
+                            damageModifier.ChanceToCause,
+                            -damageModifier.ModifierValue));
                     m_isProcessing = true;
                     break;
                 case DamageModifierType.IncreaseDamage_ForDuration:
-                    m_damageComputer.UpdateAdditionDamage(((DamageModifier)m_modifier).ModifierValue);
+                    m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
+                        DamageInfluencerType.ADD_DAMAGE, 
+                        damageModifier.ChanceToCause,
+                        damageModifier.ModifierValue));
                     m_isProcessing = true;
                     break;
                 case DamageModifierType.MultiplyDamage_ForDuration:
-                    m_damageComputer.UpdateMultiplyDamage(((DamageModifier)m_modifier).ModifierValue);
+                    m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
+                        DamageInfluencerType.MULTIPLY_DAMAGE, 
+                        damageModifier.ChanceToCause,
+                        damageModifier.ModifierValue));
                     m_isProcessing = true;
                     break;
                 case DamageModifierType.IncreaseDamage:
-                    m_damageComputer.UpdateAdditionDamage(((DamageModifier)m_modifier).ModifierValue);
+                    m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
+                        DamageInfluencerType.ADD_DAMAGE, 
+                        damageModifier.ChanceToCause,
+                        damageModifier.ModifierValue));
                     break;
                 case DamageModifierType.ReduceDamage:
-                    m_damageComputer.UpdateAdditionDamage(-((DamageModifier)m_modifier).ModifierValue);
+                    m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
+                        DamageInfluencerType.ADD_DAMAGE, 
+                        damageModifier.ChanceToCause,
+                        -damageModifier.ModifierValue));
                     break;
                 case DamageModifierType.MultiplyDamage:
-                    m_damageComputer.UpdateMultiplyDamage(((DamageModifier)m_modifier).ModifierValue);
+                    m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
+                        DamageInfluencerType.MULTIPLY_DAMAGE, 
+                        damageModifier.ChanceToCause,
+                        damageModifier.ModifierValue));
                     break;
                 case DamageModifierType.IncreaseCriticalChance:
-                    m_damageComputer.AddCriticalChance(((DamageModifier)m_modifier).ModifierValue);
+                    m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
+                        DamageInfluencerType.CRITICAL_CHANCE, 
+                        damageModifier.ChanceToCause,
+                        damageModifier.ModifierValue));
                     break;
                 case DamageModifierType.IncreaseCriticalDamage:
-                    m_damageComputer.AddCriticalDamage(((DamageModifier)m_modifier).ModifierValue);
+                    m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
+                        DamageInfluencerType.CRITICAL_DAMAGE, 
+                        damageModifier.ChanceToCause,
+                        damageModifier.ModifierValue));
                     break;
                 case DamageModifierType.ReduceCriticalChance:
-                    m_damageComputer.AddCriticalChance(-((DamageModifier)m_modifier).ModifierValue);
+                    m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
+                        DamageInfluencerType.CRITICAL_CHANCE, 
+                        damageModifier.ChanceToCause,
+                        -damageModifier.ModifierValue));
                     break;
                 case DamageModifierType.ReduceCriticalDamage:
-                    m_damageComputer.AddCriticalDamage(-((DamageModifier)m_modifier).ModifierValue);
+                    m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
+                        DamageInfluencerType.CRITICAL_DAMAGE, 
+                        damageModifier.ChanceToCause,
+                        damageModifier.ModifierValue));
                     break;
             }
             
             Debug.Log($"<color=green>Start Modifier Category:{m_modifier.ModifierType} " +
-                      $"- Type:{((DamageModifier)m_modifier).DamageModifierType} " +
-                      $"- Value:{((DamageModifier)m_modifier).ModifierValue}" +
+                      $"- Type:{damageModifier.DamageModifierType} " +
+                      $"- Value:{damageModifier.ModifierValue}" +
                       $"- Duration:{m_modifier.Duration}</color> ");
         }
     
@@ -67,40 +102,8 @@ namespace SGGames.Scripts.Modifiers
                       $"- Duration:{m_modifier.Duration}</color> ");
             
             base.StopModifier();
-            switch (((DamageModifier)m_modifier).DamageModifierType)
-            {
-                case DamageModifierType.ReduceDamage_ForDuration:
-                    m_damageComputer.UpdateAdditionDamage(((DamageModifier)m_modifier).ModifierValue);
-                    break;
-                case DamageModifierType.IncreaseDamage_ForDuration:
-                    m_damageComputer.UpdateAdditionDamage(-((DamageModifier)m_modifier).ModifierValue);
-                    break;
-                case DamageModifierType.MultiplyDamage_ForDuration:
-                    m_damageComputer.UpdateMultiplyDamage(-((DamageModifier)m_modifier).ModifierValue);
-                    break;
-                case DamageModifierType.ReduceDamage:
-                    m_damageComputer.UpdateAdditionDamage(((DamageModifier)m_modifier).ModifierValue);
-                    break;
-                case DamageModifierType.IncreaseDamage:
-                    m_damageComputer.UpdateAdditionDamage(-((DamageModifier)m_modifier).ModifierValue);
-                    break;
-                case DamageModifierType.MultiplyDamage:
-                    m_damageComputer.UpdateMultiplyDamage(-((DamageModifier)m_modifier).ModifierValue);
-                    break;
-                case DamageModifierType.IncreaseCriticalChance:
-                    m_damageComputer.AddCriticalChance(-((DamageModifier)m_modifier).ModifierValue);
-                    break;
-                case DamageModifierType.IncreaseCriticalDamage:
-                    m_damageComputer.AddCriticalDamage(-((DamageModifier)m_modifier).ModifierValue);
-                    break;
-                case DamageModifierType.ReduceCriticalChance:
-                    m_damageComputer.AddCriticalChance(((DamageModifier)m_modifier).ModifierValue);
-                    break;
-                case DamageModifierType.ReduceCriticalDamage:
-                    m_damageComputer.AddCriticalDamage(((DamageModifier)m_modifier).ModifierValue);
-                    break;
-                
-            }
+            
+            m_damageComputer.RemoveDamageInfluencer(m_damageInfluencerID);
 
             m_isProcessing = false;
             m_handler.RemoveProcessor(this);

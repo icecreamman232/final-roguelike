@@ -98,10 +98,10 @@ namespace SGGames.Scripts.Modifiers
             {
                 if (processor.Modifier.ModifierType == ModifierType.TRIGGER_AFTER_GAME_EVENT)
                 {
-                    if (((TriggerAfterEventModifier)processor.Modifier).EventTypeToTrigger == eventType)
+                    if (((TriggerAfterGameEventModifier)processor.Modifier).EventTypeToTrigger == eventType)
                     {
                         processor.StartModifier();
-                        if (((TriggerAfterEventModifier)processor.Modifier).TriggerOnce)
+                        if (((TriggerAfterGameEventModifier)processor.Modifier).TriggerOnce)
                         {
                             RemoveProcessor(processor);
                         }

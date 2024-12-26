@@ -23,6 +23,7 @@ namespace SGGames.Scripts.Modifiers
     public class DamageModifier : Modifier
     {
         public DamageModifierType DamageModifierType;
+        public float ChanceToCause;
         public float ModifierValue;
     }
 }

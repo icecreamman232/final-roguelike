@@ -1,5 +1,6 @@
 using System.Collections;
 using SGGames.Scripts.Common;
+using SGGames.Scripts.Damages;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Healths;
@@ -67,8 +68,10 @@ namespace SGGames.Scripts.Player
             m_strengthPoints = m_heroData.BaseStrength;
             m_agilityPoints = m_heroData.BaseAgility;
             m_intelligencePoints = m_heroData.BaseIntelligence;
-            m_playerDamageComputer.AddCriticalChance(m_heroData.CriticalChance);
-            m_playerDamageComputer.AddCriticalDamage(m_heroData.CriticalDamage);
+            m_playerDamageComputer.AddNewDamageInfluencer(new DamageInfluencer(DamageInfluencerType.CRITICAL_CHANCE,
+                100, m_heroData.CriticalChance));
+            m_playerDamageComputer.AddNewDamageInfluencer(new DamageInfluencer(DamageInfluencerType.CRITICAL_DAMAGE,
+                100, m_heroData.CriticalChance));
             
             m_playerHealth.Initialize(ComputeMaxHealth());
             m_playerHealth.AddRegenerationRate(ComputeRegenerationRate());

@@ -4,8 +4,8 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Modifiers
 {
-    [CreateAssetMenu(fileName = "TriggerAfterEventModifier", menuName = "SGGames/Modifiers/Trigger After Event Modifier")]
-    public class TriggerAfterEventModifier : Modifier
+    [CreateAssetMenu(fileName = "TriggerAfterGameEventModifier", menuName = "SGGames/Modifiers/Trigger After Game Event Modifier")]
+    public class TriggerAfterGameEventModifier : Modifier
     {
         public GameEventType EventTypeToTrigger;
         public Modifier ModifierToBeTriggered;

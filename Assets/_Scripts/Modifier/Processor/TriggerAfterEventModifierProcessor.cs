@@ -7,9 +7,9 @@ namespace SGGames.Scripts.Modifiers
        public override void StartModifier()
        {
            base.StartModifier();
-           m_handler.RegisterModifier(((TriggerAfterEventModifier)m_modifier).ModifierToBeTriggered);
+           m_handler.RegisterModifier(((TriggerAfterGameEventModifier)m_modifier).ModifierToBeTriggered);
            Debug.Log($"<color=green>Start Modifier Category:{m_modifier.ModifierType} " +
-                     $"- Type: Trigger {((TriggerAfterEventModifier)m_modifier).ModifierToBeTriggered} After Event {((TriggerAfterEventModifier)m_modifier).EventTypeToTrigger}</color> ");
+                     $"- Type: Trigger {((TriggerAfterGameEventModifier)m_modifier).ModifierToBeTriggered} After Event {((TriggerAfterGameEventModifier)m_modifier).EventTypeToTrigger}</color> ");
        }
     }
 }

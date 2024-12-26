@@ -1,4 +1,5 @@
 using SGGames.Scripts.Attribute;
+using SGGames.Scripts.Player;
 using SGGames.Scripts.Weapons;
 using UnityEngine;
 
@@ -11,12 +12,21 @@ namespace SGGames.Scripts.Enemies
         [SerializeField] protected Transform m_weaponAttachment;
         [SerializeField] protected float m_offsetFromCenter;
         [SerializeField] protected float m_offsetAngleWeapon;
+        
         protected EnemyController m_controller;
+        private DamageInfo m_damageInfo;
         
         protected override void Start()
         {
             base.Start();
             m_controller = GetComponent<EnemyController>();
+            m_damageInfo = new DamageInfo()
+            {
+                AdditionMinDamage = 0,
+                AdditionMaxDamage = 0,
+                MultiplyDamage = 1,
+                CriticalDamage = 1,
+            };
             Initialize();
         }
 
@@ -59,13 +69,13 @@ namespace SGGames.Scripts.Enemies
         public virtual void UseWeaponAtTarget(Transform target)
         {
             if (!CanUseWeapon()) return;
-            m_currentWeapon.Shoot((target.position-transform.position).normalized, (0,1,1));
+            m_currentWeapon.Shoot((target.position-transform.position).normalized, m_damageInfo);
         }
 
         public virtual void UseWeaponAtDirection(Vector2 direction)
         {
             if (!CanUseWeapon()) return;
-            m_currentWeapon.Shoot(direction);
+            m_currentWeapon.Shoot(direction, m_damageInfo);
         }
     }
 }

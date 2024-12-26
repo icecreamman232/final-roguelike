@@ -103,7 +103,7 @@ namespace SGGames.Scripts.Player
 
         protected virtual void UseWeapon()
         {
-            m_currentWeapon.Shoot(m_playerAim.AimDirection, m_playerDamageComputer.GetDamageInfo);
+            m_currentWeapon.Shoot(m_playerAim.AimDirection, m_playerDamageComputer.GetDamageInfo());
         }
 
         public override void OnPlayerFreeze(bool isFrozen)
