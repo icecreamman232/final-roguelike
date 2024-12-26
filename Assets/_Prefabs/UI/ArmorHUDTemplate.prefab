@@ -26,7 +26,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2269640677556207206, guid: 070498941d7db064083c90eac81d4461, type: 3}
       propertyPath: m_PresetInfoIsWorld
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2386748837668645040, guid: 070498941d7db064083c90eac81d4461, type: 3}
       propertyPath: m_SizeDelta.x
@@ -148,7 +148,8 @@ MonoBehaviour:
   m_commonBGSprite: {fileID: -22837487, guid: 9db2763dc0c7a8240a140332c75dece7, type: 3}
   m_uncommonBGSprite: {fileID: -958620609, guid: 9db2763dc0c7a8240a140332c75dece7, type: 3}
   m_rareBGSprite: {fileID: 147964466, guid: 9db2763dc0c7a8240a140332c75dece7, type: 3}
-  m_legendaryBGSprite: {fileID: -892406175, guid: 9db2763dc0c7a8240a140332c75dece7, type: 3}
+  m_epicBGSprite: {fileID: -892406175, guid: 9db2763dc0c7a8240a140332c75dece7, type: 3}
+  m_legendaryBGSprite: {fileID: -1670221363, guid: 9db2763dc0c7a8240a140332c75dece7, type: 3}
   m_name: {fileID: 3695989761185627138}
   m_rarityType: {fileID: 2572893216664155602}
   m_categoryType: {fileID: 3149373900410073201}

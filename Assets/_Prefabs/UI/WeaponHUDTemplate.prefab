@@ -1391,7 +1391,8 @@ MonoBehaviour:
   m_commonBG: {fileID: -22837487, guid: 9db2763dc0c7a8240a140332c75dece7, type: 3}
   m_uncommonBG: {fileID: -958620609, guid: 9db2763dc0c7a8240a140332c75dece7, type: 3}
   m_rareBG: {fileID: 147964466, guid: 9db2763dc0c7a8240a140332c75dece7, type: 3}
-  m_legendaryBG: {fileID: -892406175, guid: 9db2763dc0c7a8240a140332c75dece7, type: 3}
+  m_epicBG: {fileID: -892406175, guid: 9db2763dc0c7a8240a140332c75dece7, type: 3}
+  m_legendaryBG: {fileID: -1670221363, guid: 9db2763dc0c7a8240a140332c75dece7, type: 3}
   m_name: {fileID: 7179482997607341767}
   m_rarityType: {fileID: 8312710446828476183}
   m_categoryType: {fileID: 8889186765595775668}

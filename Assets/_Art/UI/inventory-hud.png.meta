@@ -307,7 +307,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 3, y: 3, z: 3, w: 3}
       outline: []
       physicsShape: []
@@ -328,7 +328,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 3, y: 3, z: 3, w: 3}
       outline: []
       physicsShape: []
@@ -341,7 +341,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: inventory-info-panel-bg-legendary
+      name: inventory-info-panel-bg-epic
       rect:
         serializedVersion: 2
         x: 96
@@ -349,7 +349,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 3, y: 3, z: 3, w: 3}
       outline: []
       physicsShape: []
@@ -357,6 +357,27 @@ TextureImporter:
       bones: []
       spriteID: bd77ca027439d4e458e307a98b0cbb66
       internalID: -892406175
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: inventory-info-panel-bg-legendary
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 0
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 3, y: 3, z: 3, w: 3}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 484a63227e1d39347801afa1db2667f1
+      internalID: -1670221363
       vertices: []
       indices: 
       edges: []
@@ -373,7 +394,8 @@ TextureImporter:
     secondaryTextures: []
     nameFileIdTable:
       inventory-info-panel-bg: -22837487
-      inventory-info-panel-bg-legendary: -892406175
+      inventory-info-panel-bg-epic: -892406175
+      inventory-info-panel-bg-legendary: -1670221363
       inventory-info-panel-bg-rare: 147964466
       inventory-info-panel-bg-uncommon: -958620609
       inventory-slot-bg: 1059862894

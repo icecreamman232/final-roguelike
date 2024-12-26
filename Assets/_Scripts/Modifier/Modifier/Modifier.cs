@@ -4,6 +4,7 @@ namespace SGGames.Scripts.Modifiers
 {
     public class Modifier : ScriptableObject
     {
+        [TextArea]
         public string Description;
         [Header("Data")]
         public ModifierType ModifierType;

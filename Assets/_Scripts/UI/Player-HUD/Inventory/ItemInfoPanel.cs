@@ -16,6 +16,7 @@ namespace SGGames.Scripts.UI
         [SerializeField] private Sprite m_commonBGSprite;
         [SerializeField] private Sprite m_uncommonBGSprite;
         [SerializeField] private Sprite m_rareBGSprite;
+        [SerializeField] private Sprite m_epicBGSprite;
         [SerializeField] private Sprite m_legendaryBGSprite;
         [SerializeField] private TextMeshProUGUI m_name;
         [SerializeField] private TextMeshProUGUI m_rarityType;
@@ -67,6 +68,9 @@ namespace SGGames.Scripts.UI
                     break;
                 case Rarity.Rare:
                     m_bg.sprite = m_rareBGSprite;
+                    break;
+                case Rarity.Epic:
+                    m_bg.sprite = m_epicBGSprite;
                     break;
                 case Rarity.Legendary:
                     m_bg.sprite = m_legendaryBGSprite;

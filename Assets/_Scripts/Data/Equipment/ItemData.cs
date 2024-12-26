@@ -19,6 +19,7 @@ namespace SGGames.Scripts.Data
         Common,
         Uncommon,
         Rare,
+        Epic,
         Legendary,
     }
     

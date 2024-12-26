@@ -24,6 +24,7 @@ namespace SGGames.Scripts.EditorExtension
             GUILayout.Label(texture);
             base.OnInspectorGUI();
             GUILayout.Space(30);
+            EditorGUILayout.LabelField("", GUI.skin.horizontalSlider);
             if (GUILayout.Button("Apply Data", GUILayout.Height(50)))
             {
                 m_data.ApplyData();
