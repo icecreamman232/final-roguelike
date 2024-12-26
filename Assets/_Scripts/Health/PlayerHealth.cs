@@ -60,9 +60,11 @@ namespace SGGames.Scripts.Healths
                 m_PlayerEvent.Raise(PlayerEventType.DODGE);
                 return;
             }
-            m_PlayerEvent.Raise(PlayerEventType.TAKE_DAMAGE);
+            
             m_currentHealth -= damage * (1- m_armor/100);
             m_lastSourceCauseDamage = source;
+            
+            m_PlayerEvent.Raise(PlayerEventType.TAKE_DAMAGE);
             
             m_spriteFlicker.FlickerSprite(m_spriteRenderer,invincibilityDuration,m_flickerFrequency);
             UpdateHealthBar();
@@ -133,7 +135,7 @@ namespace SGGames.Scripts.Healths
         public void HealingPercentMaxHealth(float percent)
         {
             m_PlayerEvent.Raise(PlayerEventType.HEALING);
-            m_currentHealth += percent * m_maxHealth;
+            m_currentHealth += (percent/100f) * m_maxHealth;
             if (m_currentHealth > m_maxHealth)
             {
                 m_currentHealth = m_maxHealth;
