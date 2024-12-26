@@ -18,17 +18,15 @@ namespace SGGames.Scripts.Data
         [SerializeField] private float m_strToRegenerate;
         [SerializeField] private float m_strToHealth;
         [SerializeField] private float m_agiToAtkSpd;
-        [SerializeField] private float m_atkSpdToAtkRate;
 
 
         public void SetData(float maxAtkSpd, float strToRegenerate, 
-            float strToHealth, float agiToAtkSpd, float atkSpdToAtkRate)
+            float strToHealth, float agiToAtkSpd)
         {
             m_maxAtkSpd = maxAtkSpd;
             m_strToRegenerate = strToRegenerate;
             m_strToHealth = strToHealth;
             m_agiToAtkSpd = agiToAtkSpd;
-            m_atkSpdToAtkRate = atkSpdToAtkRate;
         }
 
         public Color GetRarityColor(Rarity rarity)
@@ -59,7 +57,6 @@ namespace SGGames.Scripts.Data
         public float C_STR_TO_REGENERATE => m_strToRegenerate;
         public float C_STR_TO_HEALTH => m_strToHealth;
         public float C_AGI_TO_ATK_SPD => m_agiToAtkSpd;
-        public float C_ATK_SPD_TO_ATK_RATE => m_atkSpdToAtkRate;
         
     }
 }

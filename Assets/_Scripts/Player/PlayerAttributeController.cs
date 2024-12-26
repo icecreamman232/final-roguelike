@@ -87,23 +87,10 @@ namespace SGGames.Scripts.Player
         {
             return m_strengthPoints * m_constantData.C_STR_TO_REGENERATE;
         }
-
-        private float ComputeAtkSpeed()
-        {
-            var atkSpd = m_agilityPoints * m_constantData.C_AGI_TO_ATK_SPD;
-            atkSpd = Mathf.Clamp(atkSpd, 0, m_constantData.C_MAX_ATK_SPD);
-            
-            return atkSpd;
-        }
-
-        public float ComputeAtkRate(float baseAtkTime)
-        {
-            return ComputeAtkSpeed()/(m_constantData.C_ATK_SPD_TO_ATK_RATE * baseAtkTime);
-        }
-
+        
         public float ComputeDelayBetweenAttacks(float baseAtkTime)
         {
-            return 1 / ComputeAtkRate(baseAtkTime);
+            return baseAtkTime - (m_agilityPoints * m_constantData.C_AGI_TO_ATK_SPD) * baseAtkTime;
         }
 
         private float ComputeArmorFromAgi(float agility)
