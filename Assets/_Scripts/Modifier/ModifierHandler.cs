@@ -16,6 +16,7 @@ namespace SGGames.Scripts.Modifiers
         [SerializeField] private PlayerDamageComputer m_damageComputer;
         [Header("Events")] 
         [SerializeField] private GameEvent m_gameEvent;
+        [SerializeField] private PlayerEvent m_playerEvent;
         [Header("Processors")]
         private Dictionary<string,ModifierProcessor> m_processorContainer;
 
@@ -26,12 +27,14 @@ namespace SGGames.Scripts.Modifiers
         private void Start()
         {
             m_gameEvent.AddListener(OnReceiveGameEvent);
+            m_playerEvent.AddListener(OnReceivePlayerEvent);
             m_processorContainer = new Dictionary<string, ModifierProcessor>();
         }
 
         private void OnDestroy()
         {
             m_gameEvent.RemoveListener(OnReceiveGameEvent);
+            m_playerEvent.RemoveListener(OnReceivePlayerEvent);
         }
 
         public void RegisterModifier(Modifier modifier)
@@ -66,12 +69,12 @@ namespace SGGames.Scripts.Modifiers
                     }
                     m_processorContainer.Add(uniqueID, damageProcessor);
                     break;
-                case ModifierType.TRIGGER_AFTER_GAME_EVENT:
+                case ModifierType.GAME_EVENT:
                     var gameEventProcessor = this.gameObject.AddComponent<GameEventModifierProcessor>();
                     gameEventProcessor.Initialize(uniqueID,this, modifier);
                     m_processorContainer.Add(uniqueID, gameEventProcessor);
                     break;
-                case ModifierType.TRIGGER_AFTER_PLAYER_EVENT:
+                case ModifierType.PLAYER_EVENT:
                     var playerEventProcessor = this.gameObject.AddComponent<PlayerEventModifierProcessor>();
                     playerEventProcessor.Initialize(uniqueID,this, modifier);
                     m_processorContainer.Add(uniqueID, playerEventProcessor);
@@ -132,12 +135,30 @@ namespace SGGames.Scripts.Modifiers
         {
             foreach (var processor in m_processorContainer.Values)
             {
-                if (processor.Modifier.ModifierType == ModifierType.TRIGGER_AFTER_GAME_EVENT)
+                if (processor.Modifier.ModifierType == ModifierType.GAME_EVENT)
                 {
                     if (((GameEventModifier)processor.Modifier).EventTypeToTrigger == eventType)
                     {
                         processor.StartModifier();
                         if (((GameEventModifier)processor.Modifier).TriggerOnce)
+                        {
+                            RemoveProcessor(processor);
+                        }
+                    }
+                }
+            }
+        }
+        
+        private void OnReceivePlayerEvent(PlayerEventType eventType)
+        {
+            foreach (var processor in m_processorContainer.Values)
+            {
+                if (processor.Modifier.ModifierType == ModifierType.PLAYER_EVENT)
+                {
+                    if (((PlayerEventModifier)processor.Modifier).EventTypeToTrigger == eventType)
+                    {
+                        processor.StartModifier();
+                        if (((PlayerEventModifier)processor.Modifier).TriggerOnce)
                         {
                             RemoveProcessor(processor);
                         }

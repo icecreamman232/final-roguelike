@@ -12,7 +12,7 @@ namespace SGGames.Scripts.Healths
         [SerializeField] private float m_flickerFrequency;
         [SerializeField] private PlayerHealthUpdateEvent m_PlayerHealthUpdateEvent;
         [SerializeField] private float m_regenerationRate;
-
+        [SerializeField] private PlayerEvent m_PlayerEvent;
         private SpriteFlicker m_spriteFlicker;
         private readonly float m_regenerationInterval = 0.1f;
         private float m_regenerateTimer;
@@ -57,9 +57,10 @@ namespace SGGames.Scripts.Healths
 
             if (CanDodgeThisAttack())
             {
+                m_PlayerEvent.Raise(PlayerEventType.DODGE);
                 return;
             }
-            
+            m_PlayerEvent.Raise(PlayerEventType.TAKE_DAMAGE);
             m_currentHealth -= damage * (1- m_armor/100);
             m_lastSourceCauseDamage = source;
             
@@ -121,6 +122,7 @@ namespace SGGames.Scripts.Healths
 
         public void HealingFlatAmount(float amount)
         {
+            m_PlayerEvent.Raise(PlayerEventType.HEALING);
             m_currentHealth += amount;
             if (m_currentHealth > m_maxHealth)
             {
@@ -130,6 +132,7 @@ namespace SGGames.Scripts.Healths
 
         public void HealingPercentMaxHealth(float percent)
         {
+            m_PlayerEvent.Raise(PlayerEventType.HEALING);
             m_currentHealth += percent * m_maxHealth;
             if (m_currentHealth > m_maxHealth)
             {

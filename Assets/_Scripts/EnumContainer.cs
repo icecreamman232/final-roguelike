@@ -14,8 +14,12 @@ namespace SGGames.Scripts.Common
     {
         TAKE_DAMAGE,
         HEALING,
+        DODGE,
+        
         USE_WEAPON,
-        DODGE
+        EQUIP_WEAPON,
+        
+        USE_DEFENSE_ABILITY,
     }
     
     public enum InteractType

@@ -19,10 +19,10 @@ namespace SGGames.Scripts.Modifiers
         MOVEMENT,
         HEALTH,
         DAMAGE,
-        TRIGGER_AFTER_GAME_EVENT,
+        GAME_EVENT,
         ARMOR,
         COIN,
-        TRIGGER_AFTER_PLAYER_EVENT,
+        PLAYER_EVENT,
         HEALING,
     }
 }

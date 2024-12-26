@@ -16,7 +16,7 @@ namespace SGGames.Scripts.Player
     {
         [SerializeField] protected PlayerAbilityState m_abilityState;
         [SerializeField] protected InputContextEvent m_defenseAbilityButtonPressedEvent;
-        
+        [SerializeField] protected PlayerEvent m_playerEvent;
         protected override void Start()
         {
             base.Start();

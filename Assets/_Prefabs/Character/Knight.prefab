@@ -232,6 +232,7 @@ MonoBehaviour:
   m_flickerFrequency: 0.1
   m_PlayerHealthUpdateEvent: {fileID: 11400000, guid: 522553b978f7d444282f81b913f8d024, type: 2}
   m_regenerationRate: 0
+  m_PlayerEvent: {fileID: 11400000, guid: b065f74e84bb99e4a9f98567722831a3, type: 2}
 --- !u!114 &6210066009922297151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -248,6 +249,7 @@ MonoBehaviour:
   m_initialWeaponData: {fileID: 11400000, guid: 5d7a5bbf14469d94f8ae8e9a5038159e, type: 2}
   m_currentWeapon: {fileID: 0}
   m_weaponAttachment: {fileID: 81437972260655627}
+  m_playerEvent: {fileID: 11400000, guid: b065f74e84bb99e4a9f98567722831a3, type: 2}
 --- !u!114 &6211949587856999711
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -260,7 +262,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56dbbc2791ca0d14c8c9789338df5e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_additionDamage: 0
+  m_additionMinDamage: 0
+  m_additionMaxDamage: 0
   m_mutiplyDamage: 1
   m_criticalChance: 0
   m_criticalDamage: 0
@@ -338,6 +341,7 @@ MonoBehaviour:
   m_isAllow: 1
   m_abilityState: 0
   m_defenseAbilityButtonPressedEvent: {fileID: 11400000, guid: a20d6c0c4e9f3b240a1069028d584b30, type: 2}
+  m_playerEvent: {fileID: 11400000, guid: b065f74e84bb99e4a9f98567722831a3, type: 2}
   m_shieldDuration: 3
   m_shieldCooldown: 15
   m_durationTimer: 0
@@ -397,6 +401,7 @@ MonoBehaviour:
   m_playerHealth: {fileID: 904574974438328195}
   m_damageComputer: {fileID: 6211949587856999711}
   m_gameEvent: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
+  m_playerEvent: {fileID: 11400000, guid: b065f74e84bb99e4a9f98567722831a3, type: 2}
 --- !u!1 &2082253337759199587
 GameObject:
   m_ObjectHideFlags: 0

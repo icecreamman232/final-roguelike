@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using SGGames.Scripts.Attribute;
+using SGGames.Scripts.Common;
 using SGGames.Scripts.Core;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Modifiers;
@@ -70,6 +71,7 @@ namespace SGGames.Scripts.Player
         protected override void OnPressDefenseAbilityButton(InputAction.CallbackContext context)
         {
             if (m_abilityState != PlayerAbilityState.READY) return;
+            m_playerEvent.Raise(PlayerEventType.USE_DEFENSE_ABILITY);
             StartCoroutine(OnTriggerShield());
             base.OnPressDefenseAbilityButton(context);
         }

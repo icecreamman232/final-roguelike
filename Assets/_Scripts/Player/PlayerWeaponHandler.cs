@@ -1,4 +1,6 @@
+using SGGames.Scripts.Common;
 using SGGames.Scripts.Data;
+using SGGames.Scripts.Events;
 using SGGames.Scripts.Weapons;
 using UnityEngine;
 
@@ -12,6 +14,8 @@ namespace SGGames.Scripts.Player
         [SerializeField] private WeaponData m_initialWeaponData;
         [SerializeField] private Weapon m_currentWeapon;
         [SerializeField] private Transform m_weaponAttachment;
+        [SerializeField] private PlayerEvent m_playerEvent;
+        
         private PlayerAttributeController m_playerAttributeController;
         
         private PlayerInventory m_playerInventory; 
@@ -65,6 +69,7 @@ namespace SGGames.Scripts.Player
             m_currentWeapon = Instantiate(newWeapon, m_weaponAttachment);
             m_currentWeapon.Initialize(m_playerAim);
             ApplyAttackSpeedOnCurrentWeapon(m_playerAttributeController.ComputeDelayBetweenAttacks(BaseAtkTime));
+            m_playerEvent.Raise(PlayerEventType.EQUIP_WEAPON);
         }
 
         public virtual void UnEquipWeapon()
@@ -88,6 +93,7 @@ namespace SGGames.Scripts.Player
             
             if (Input.GetMouseButton(0) && CanUseWeapon())
             {
+                m_playerEvent.Raise(PlayerEventType.USE_WEAPON);
                 UseWeapon();
             }
         }
