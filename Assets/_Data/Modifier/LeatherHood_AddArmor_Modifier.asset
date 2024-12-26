@@ -15,6 +15,7 @@ MonoBehaviour:
   Description: <color=yellow>+2</color> armor.
   ModifierType: 4
   Duration: 0
+  InstantTrigger: 1
   IsRunning: 0
   ArmorModifierType: 0
   ModifierValue: 2

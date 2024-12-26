@@ -9,6 +9,7 @@ namespace SGGames.Scripts.Modifiers
         [Header("Data")]
         public ModifierType ModifierType;
         public float Duration;
+        public bool InstantTrigger;
         [Header("Runtime Data")] 
         public bool IsRunning;
     }
@@ -22,6 +23,7 @@ namespace SGGames.Scripts.Modifiers
         ARMOR,
         COIN,
         TRIGGER_AFTER_PLAYER_EVENT,
+        HEALING,
     }
 }
 

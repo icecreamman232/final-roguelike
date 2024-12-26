@@ -15,6 +15,7 @@ MonoBehaviour:
   Description: Increase <color=yellow>50</color> max health.
   ModifierType: 1
   Duration: 0
+  InstantTrigger: 1
   IsRunning: 0
   HealthModifierType: 3
   ModifierValue: 50

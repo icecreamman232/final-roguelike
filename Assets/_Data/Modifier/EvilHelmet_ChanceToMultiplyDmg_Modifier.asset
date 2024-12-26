@@ -15,6 +15,7 @@ MonoBehaviour:
   Description: Have <color=yellow>30%</color> to <color=yellow>x3</color> damage.
   ModifierType: 2
   Duration: 0
+  InstantTrigger: 1
   IsRunning: 0
   DamageModifierType: 2
   ChanceToCause: 5

@@ -42,41 +42,71 @@ namespace SGGames.Scripts.Modifiers
                 case ModifierType.MOVEMENT:
                     var movementProcessor = this.gameObject.AddComponent<MovementModifierProcessor>();
                     movementProcessor.Initialize(uniqueID,this, modifier);
-                    movementProcessor.StartModifier();
+                    if (modifier.InstantTrigger)
+                    {
+                        movementProcessor.StartModifier();
+                    }
                     m_processorContainer.Add(uniqueID, movementProcessor);
                     break;
                 case ModifierType.HEALTH:
                     var healthProcessor = this.gameObject.AddComponent<HealthModifierProcessor>();
                     healthProcessor.Initialize(uniqueID,this, modifier);
-                    healthProcessor.StartModifier();
+                    if (modifier.InstantTrigger)
+                    {
+                        healthProcessor.StartModifier();
+                    }
                     m_processorContainer.Add(uniqueID, healthProcessor);
                     break;
                 case ModifierType.DAMAGE:
                     var damageProcessor = this.gameObject.AddComponent<DamageModifierProcessor>();
-                    damageProcessor.Initialize(uniqueID,this, modifier);
-                    damageProcessor.StartModifier();
+                    damageProcessor.Initialize(uniqueID, this, modifier);
+                    if (modifier.InstantTrigger)
+                    {
+                        damageProcessor.StartModifier();
+                    }
                     m_processorContainer.Add(uniqueID, damageProcessor);
                     break;
                 case ModifierType.TRIGGER_AFTER_GAME_EVENT:
-                    var triggerProcessor = this.gameObject.AddComponent<TriggerAfterEventModifierProcessor>();
-                    triggerProcessor.Initialize(uniqueID,this, modifier);
-                    m_processorContainer.Add(uniqueID, triggerProcessor);
+                    var gameEventProcessor = this.gameObject.AddComponent<GameEventModifierProcessor>();
+                    gameEventProcessor.Initialize(uniqueID,this, modifier);
+                    m_processorContainer.Add(uniqueID, gameEventProcessor);
+                    break;
+                case ModifierType.TRIGGER_AFTER_PLAYER_EVENT:
+                    var playerEventProcessor = this.gameObject.AddComponent<PlayerEventModifierProcessor>();
+                    playerEventProcessor.Initialize(uniqueID,this, modifier);
+                    m_processorContainer.Add(uniqueID, playerEventProcessor);
                     break;
                 case ModifierType.ARMOR:
                     var armorProcessor = this.gameObject.AddComponent<ArmorModifierProcessor>();
                     armorProcessor.Initialize(uniqueID,this, modifier);
-                    armorProcessor.StartModifier();
+                    if (modifier.InstantTrigger)
+                    {
+                        armorProcessor.StartModifier();
+                    }
                     m_processorContainer.Add(uniqueID, armorProcessor);
                     break;
                 case ModifierType.COIN:
                     var coinProcessor = this.gameObject.AddComponent<CoinModifierProcessor>();
                     coinProcessor.Initialize(uniqueID,this, modifier);
-                    coinProcessor.StartModifier();
+                    if (modifier.InstantTrigger)
+                    {
+                        coinProcessor.StartModifier();
+                    }
                     m_processorContainer.Add(uniqueID, coinProcessor);
                     break;
+                case ModifierType.HEALING:
+                    var healingProcessor = this.gameObject.AddComponent<HealingModifierProcessor>();
+                    healingProcessor.Initialize(uniqueID,this, modifier);
+                    if (modifier.InstantTrigger)
+                    {
+                        healingProcessor.StartModifier();
+                    }
+                    m_processorContainer.Add(uniqueID, healingProcessor);
+                    break;
+                
             }
         }
-
+        
         public void RemoveProcessor(ModifierProcessor modifierProcessor)
         {
             if (m_processorContainer.ContainsKey(modifierProcessor.Id))
@@ -86,10 +116,16 @@ namespace SGGames.Scripts.Modifiers
             }
         }
 
-        public void UnregisterModifier(Modifier info)
+        public void UnregisterModifier(Modifier modifier)
         {
-            var processor = m_processorContainer.FirstOrDefault(x=>(x.Value.Modifier == info)); 
+            var processor = m_processorContainer.FirstOrDefault(x=>(x.Value.Modifier == modifier)); 
             processor.Value.StopModifier();
+        }
+
+        public void StartProcessor(Modifier modifier)
+        {
+            var processor = m_processorContainer.FirstOrDefault(x=>(x.Value.Modifier == modifier));
+            processor.Value.StartModifier();
         }
         
         private void OnReceiveGameEvent(GameEventType eventType)
@@ -98,10 +134,10 @@ namespace SGGames.Scripts.Modifiers
             {
                 if (processor.Modifier.ModifierType == ModifierType.TRIGGER_AFTER_GAME_EVENT)
                 {
-                    if (((TriggerAfterGameEventModifier)processor.Modifier).EventTypeToTrigger == eventType)
+                    if (((GameEventModifier)processor.Modifier).EventTypeToTrigger == eventType)
                     {
                         processor.StartModifier();
-                        if (((TriggerAfterGameEventModifier)processor.Modifier).TriggerOnce)
+                        if (((GameEventModifier)processor.Modifier).TriggerOnce)
                         {
                             RemoveProcessor(processor);
                         }

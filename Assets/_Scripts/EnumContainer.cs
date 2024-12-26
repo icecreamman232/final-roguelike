@@ -9,6 +9,14 @@ namespace SGGames.Scripts.Common
         PAUSED,
         UNPAUSED,
     }
+
+    public enum PlayerEventType
+    {
+        TAKE_DAMAGE,
+        HEALING,
+        USE_WEAPON,
+        DODGE
+    }
     
     public enum InteractType
     {

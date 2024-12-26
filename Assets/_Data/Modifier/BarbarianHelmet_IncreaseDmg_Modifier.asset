@@ -15,6 +15,7 @@ MonoBehaviour:
   Description: Increase <color=yellow>30</color> damage.
   ModifierType: 2
   Duration: 0
+  InstantTrigger: 1
   IsRunning: 0
   DamageModifierType: 0
   ChanceToCause: 100

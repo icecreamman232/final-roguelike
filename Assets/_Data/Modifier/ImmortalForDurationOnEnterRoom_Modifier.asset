@@ -12,8 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: feaec82dd1152d94085ba416f86ed592, type: 3}
   m_Name: ImmortalForDurationOnEnterRoom_Modifier
   m_EditorClassIdentifier: 
+  Description: 
   ModifierType: 1
   Duration: 3
-  IsRunning: 0
+  InstantTrigger: 0
+  IsRunning: 1
   HealthModifierType: 6
   ModifierValue: 0

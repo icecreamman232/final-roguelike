@@ -15,6 +15,7 @@ MonoBehaviour:
   Description: Earn extra <color=yellow>3</color> coins.
   ModifierType: 5
   Duration: 0
+  InstantTrigger: 1
   IsRunning: 0
   CoinModifierType: 2
   ModifierValue: 3

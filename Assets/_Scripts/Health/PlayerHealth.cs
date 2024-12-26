@@ -118,5 +118,23 @@ namespace SGGames.Scripts.Healths
         {
             m_dodgeRate = value;
         }
+
+        public void HealingFlatAmount(float amount)
+        {
+            m_currentHealth += amount;
+            if (m_currentHealth > m_maxHealth)
+            {
+                m_currentHealth = m_maxHealth;
+            }
+        }
+
+        public void HealingPercentMaxHealth(float percent)
+        {
+            m_currentHealth += percent * m_maxHealth;
+            if (m_currentHealth > m_maxHealth)
+            {
+                m_currentHealth = m_maxHealth;
+            }
+        }
     }
 }
