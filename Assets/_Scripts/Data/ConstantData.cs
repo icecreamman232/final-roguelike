@@ -11,6 +11,7 @@ namespace SGGames.Scripts.Data
         [SerializeField] private Color m_rarityCommonColor;
         [SerializeField] private Color m_rarityUncommonColor;
         [SerializeField] private Color m_rarityRareColor;
+        [SerializeField] private Color m_rarityEpicColor;
         [SerializeField] private Color m_rarityLegendaryColor;
         [Header("Constants")]
         [SerializeField] private float m_maxAtkSpd;
@@ -40,6 +41,8 @@ namespace SGGames.Scripts.Data
                     return m_rarityUncommonColor;
                 case Rarity.Rare:
                     return m_rarityRareColor;
+                case Rarity.Epic:
+                    return m_rarityEpicColor;
                 case Rarity.Legendary:
                     return m_rarityLegendaryColor;
             }
@@ -49,6 +52,7 @@ namespace SGGames.Scripts.Data
         public Color RarityCommonColor => m_rarityCommonColor;
         public Color RarityUncommonColor => m_rarityUncommonColor;
         public Color RarityRareColor => m_rarityRareColor;
+        public Color RarityEpicColor => m_rarityEpicColor;
         public Color RarityLegendaryColor => m_rarityLegendaryColor;
         
         public float C_MAX_ATK_SPD => m_maxAtkSpd;
