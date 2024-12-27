@@ -24,6 +24,8 @@ namespace SGGames.Scripts.EditorExtension
             
             if (GUILayout.Button("Add All Items",GUILayout.Height(50)))
             {
+                m_itemContainer.ClearData();
+                
                 var allItemsGUID = AssetDatabase.FindAssets("t:ItemData");
                 foreach (var guid in allItemsGUID)
                 {
@@ -32,7 +34,7 @@ namespace SGGames.Scripts.EditorExtension
                     if(itemData.ItemCategory != m_itemContainer.ContainerCategory) continue;
                     m_itemContainer.AddItemToContainer(itemData.Rarity,itemData);
                 }
-                AssetDatabase.SaveAssetIfDirty(m_itemContainer);
+                AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
             }
         }

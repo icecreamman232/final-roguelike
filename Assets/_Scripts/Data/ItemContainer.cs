@@ -39,6 +39,15 @@ namespace SGGames.Scripts.Data
         }
         
         #if UNITY_EDITOR
+
+        public void ClearData()
+        {
+            m_commonItemList.Clear();
+            m_uncommonItemList.Clear();
+            m_rareItemList.Clear();
+            m_epicItemList.Clear();
+            m_legendaryItemList.Clear();
+        }
         public void AddItemToContainer(Rarity rarity, ItemData item)
         {
             switch (rarity)
