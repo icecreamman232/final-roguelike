@@ -29,4 +29,5 @@ MonoBehaviour:
   m_rareItemList: []
   m_epicItemList:
   - {fileID: 11400000, guid: 70389288e89c48a438681b84c3526d03, type: 2}
-  m_legendaryItemList: []
+  m_legendaryItemList:
+  - {fileID: 11400000, guid: a9cce6dc4ee225d42a6d068e56f234d2, type: 2}
