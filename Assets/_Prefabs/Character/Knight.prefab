@@ -397,6 +397,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f7650a7d8d050974fac6813910ffa338, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_playerAttributeController: {fileID: 1224419374634297090}
   m_playerMovement: {fileID: 5311189830458795856}
   m_playerHealth: {fileID: 904574974438328195}
   m_damageComputer: {fileID: 6211949587856999711}

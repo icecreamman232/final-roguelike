@@ -25,6 +25,10 @@ namespace SGGames.Scripts.Modifiers
         public override void StopModifier()
         {
             base.StopModifier();
+            
+            Debug.Log($"<color=green>Stop Modifier Category:{m_modifier.ModifierType} " +
+                      $"- Type: Trigger {((GameEventModifier)m_modifier).ModifierToBeTriggered} After Event {((GameEventModifier)m_modifier).EventTypeToTrigger}</color> ");
+            
             //Remove sub modifier
             m_handler.UnregisterModifier(((GameEventModifier)m_modifier).ModifierToBeTriggered);
             

@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bcc7cb5c88e74f4fb6a49973df5bc81, type: 3}
+  m_Name: BlackShadowMask_HelmetData
+  m_EditorClassIdentifier: 
+  m_itemID: black-shadow-mask
+  m_translatedName: Black Shadow Mask
+  m_rarity: 3
+  m_itemCategory: 1
+  m_icon: {fileID: -683217886, guid: 079f3decf87c80644bfc04d4052c0c78, type: 3}
+  m_pickerPrefab: {fileID: 8106549467155117078, guid: 50c94cbbe53b5b84a92da4a6a23a123a, type: 3}
+  m_modifierList:
+  - {fileID: 11400000, guid: 13a416c78eaf32347a0637ebba74840d, type: 2}
+  - {fileID: 11400000, guid: f178410d2b705074988c4401af8b59d5, type: 2}
+  - {fileID: 11400000, guid: 04b67fa69bde569498e5d50c9474169e, type: 2}

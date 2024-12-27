@@ -10,22 +10,30 @@ namespace SGGames.Scripts.Modifiers
 {
     public class ModifierHandler : MonoBehaviour
     {
-        [Header("Player Components")]
-        [SerializeField] private PlayerMovement m_playerMovement;
-        [SerializeField] private PlayerHealth m_playerHealth;
-        [SerializeField] private PlayerDamageComputer m_damageComputer;
         [Header("Events")] 
         [SerializeField] private GameEvent m_gameEvent;
         [SerializeField] private PlayerEvent m_playerEvent;
         [Header("Processors")]
         private Dictionary<string,ModifierProcessor> m_processorContainer;
 
+        private PlayerAttributeController m_playerAttributeController;
+        private PlayerMovement m_playerMovement;
+        private PlayerHealth m_playerHealth;
+        private PlayerDamageComputer m_damageComputer;
+        
+        public PlayerAttributeController PlayerAttributeController => m_playerAttributeController;
         public PlayerMovement PlayerMovement => m_playerMovement;
         public PlayerHealth PlayerHealth => m_playerHealth;
         public PlayerDamageComputer PlayerDamageComputer => m_damageComputer;
         
         private void Start()
         {
+            m_playerAttributeController = GetComponentInParent<PlayerAttributeController>();
+            m_playerHealth = GetComponentInParent<PlayerHealth>();
+            m_playerMovement = GetComponentInParent<PlayerMovement>();
+            m_damageComputer = GetComponentInParent<PlayerDamageComputer>();
+            
+            
             m_gameEvent.AddListener(OnReceiveGameEvent);
             m_playerEvent.AddListener(OnReceivePlayerEvent);
             m_processorContainer = new Dictionary<string, ModifierProcessor>();
@@ -105,6 +113,15 @@ namespace SGGames.Scripts.Modifiers
                         healingProcessor.StartModifier();
                     }
                     m_processorContainer.Add(uniqueID, healingProcessor);
+                    break;
+                case ModifierType.ATTRIBUTE:
+                    var attributeProcessor = this.gameObject.AddComponent<AttributeModifierProcessor>();
+                    attributeProcessor.Initialize(uniqueID,this, modifier);
+                    if (modifier.InstantTrigger)
+                    {
+                        attributeProcessor.StartModifier();
+                    }
+                    m_processorContainer.Add(uniqueID, attributeProcessor);
                     break;
                 
             }

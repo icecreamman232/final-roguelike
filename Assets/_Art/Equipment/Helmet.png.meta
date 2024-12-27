@@ -349,7 +349,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -357,6 +357,27 @@ TextureImporter:
       bones: []
       spriteID: 0ec12ea29862332418b0979368dbf660
       internalID: 1740651586
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Black-shadow-mask
+      rect:
+        serializedVersion: 2
+        x: 96
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c673fcf042ceab94a91f6f0485d3998b
+      internalID: -683217886
       vertices: []
       indices: 
       edges: []
@@ -374,6 +395,7 @@ TextureImporter:
     nameFileIdTable:
       Angel-crown: 129118453
       Barbarian-helmet: 125617312
+      Black-shadow-mask: -683217886
       Captain-helmet: 1679268514
       Common-soldier-helmet: -1715481063
       Evil-helmet: 2081394859

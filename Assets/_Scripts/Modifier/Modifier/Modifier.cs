@@ -24,6 +24,7 @@ namespace SGGames.Scripts.Modifiers
         COIN,
         PLAYER_EVENT,
         HEALING,
+        ATTRIBUTE,
     }
 }
 
