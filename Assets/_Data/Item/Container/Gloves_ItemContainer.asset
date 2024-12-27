@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38dd28422033009439976c2fec3b7468, type: 3}
+  m_Name: Gloves_ItemContainer
+  m_EditorClassIdentifier: 
+  m_containerCategory: 4
+  m_commonItemList:
+  - {fileID: 11400000, guid: db6b1ef0b1ba6f345b3cbce90e92b72e, type: 2}
+  - {fileID: 11400000, guid: e0fe23df48933f249be2540771453e40, type: 2}
+  m_uncommonItemList: []
+  m_rareItemList: []
+  m_epicItemList: []
+  m_legendaryItemList: []

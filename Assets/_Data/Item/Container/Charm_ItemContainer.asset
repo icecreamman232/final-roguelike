@@ -10,12 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38dd28422033009439976c2fec3b7468, type: 3}
-  m_Name: ArmorItemContainer
+  m_Name: Charm_ItemContainer
   m_EditorClassIdentifier: 
-  m_containerCategory: 2
+  m_containerCategory: 6
   m_commonItemList:
-  - {fileID: 11400000, guid: 830585dab2e3a6546b1d117e0f7803f6, type: 2}
-  - {fileID: 11400000, guid: 2dbd966f2d67a624ab63825496dc103d, type: 2}
+  - {fileID: 11400000, guid: 5f1971bc041c74340bb664711e519e33, type: 2}
+  - {fileID: 11400000, guid: f49097c117fdcc54cba04894ab51d314, type: 2}
   m_uncommonItemList: []
   m_rareItemList: []
   m_epicItemList: []

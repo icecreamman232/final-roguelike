@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38dd28422033009439976c2fec3b7468, type: 3}
-  m_Name: HelmetItemContainer
+  m_Name: Helmet_ItemContainer
   m_EditorClassIdentifier: 
   m_containerCategory: 1
   m_commonItemList:
