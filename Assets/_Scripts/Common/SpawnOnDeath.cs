@@ -7,10 +7,10 @@ namespace SGGames.Scripts.Common
 {
     public class SpawnOnDeath : MonoBehaviour
     {
-        [SerializeField] private EnemyHealth m_health;
-        [SerializeField] private GameObject m_prefabToSpawn;
-        [SerializeField] private Vector2 m_spawnOffset;
-        [SerializeField] private float m_spawnRange;
+        [SerializeField] protected EnemyHealth m_health;
+        [SerializeField] protected GameObject m_prefabToSpawn;
+        [SerializeField] protected Vector2 m_spawnOffset;
+        [SerializeField] protected float m_spawnRange;
 
         private readonly float m_offset = 0.5f;
         
@@ -19,7 +19,7 @@ namespace SGGames.Scripts.Common
             m_health.OnEnemyDeath += Spawn;
         }
         
-        private void Spawn(EnemyHealth health)
+        protected virtual void Spawn(EnemyHealth health)
         {
             var spawnPos = (Vector2)transform.position +  Random.insideUnitCircle * m_spawnRange + m_spawnOffset;
 
@@ -32,7 +32,7 @@ namespace SGGames.Scripts.Common
             m_health.OnEnemyDeath -= Spawn;
         }
         
-        private Vector2 ClampSpawnPos((Vector2 botLeft,Vector2 topRight) roomPivot, Vector2 spawnPos)
+        protected Vector2 ClampSpawnPos((Vector2 botLeft,Vector2 topRight) roomPivot, Vector2 spawnPos)
         {
             var clampX = Mathf.Clamp(spawnPos.x,roomPivot.botLeft.x + m_offset,roomPivot.topRight.x - m_offset);
             var clampY = Mathf.Clamp(spawnPos.y,roomPivot.botLeft.y + m_offset,roomPivot.topRight.y - m_offset);
