@@ -62,4 +62,18 @@ namespace SGGames.Scripts.Common
         Rare,
         Legendary,
     }
+
+    public enum HealthPotionType
+    {
+        SMALL,
+        MEDIUM,
+        GRANDE,
+    }
+    
+    public enum ManaPotionType
+    {
+        SMALL,
+        MEDIUM,
+        GRANDE,
+    }
 }

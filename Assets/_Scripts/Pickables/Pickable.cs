@@ -46,10 +46,10 @@ namespace SGGames.Scripts.Pickables
                 yield return null;
             }
 
-            Picked();
+            Picked(playerTransform);
         }
 
-        protected virtual void Picked()
+        protected virtual void Picked(Transform playerTransform)
         {
             Destroy(gameObject);
         }

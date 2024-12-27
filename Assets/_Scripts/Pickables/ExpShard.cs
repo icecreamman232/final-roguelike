@@ -8,10 +8,10 @@ namespace SGGames.Scripts.Pickables
         [SerializeField] private IntEvent m_expPickedEvent;
         [SerializeField] private int m_expValue;
 
-        protected override void Picked()
+        protected override void Picked(Transform playerTransform)
         {
             m_expPickedEvent?.Raise(m_expValue);
-            base.Picked();
+            base.Picked(playerTransform);
         }
     }
 }
