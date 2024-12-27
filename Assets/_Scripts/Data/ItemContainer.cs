@@ -19,22 +19,27 @@ namespace SGGames.Scripts.Data
         
         public GameObject GetCommonItem()
         {
+            if (m_commonItemList == null || m_commonItemList.Count == 0) return null;
             return m_commonItemList[RandomController.GetRandomIntInRange(0, m_commonItemList.Count)].PickerPrefab;
         }
         public GameObject GetUncommonItem()
         {
+            if (m_uncommonItemList == null || m_uncommonItemList.Count == 0) return null;
             return m_uncommonItemList[RandomController.GetRandomIntInRange(0, m_uncommonItemList.Count)].PickerPrefab;
         }
         public GameObject GetRareItem()
         {
+            if (m_rareItemList == null || m_rareItemList.Count == 0) return null;
             return m_rareItemList[RandomController.GetRandomIntInRange(0, m_rareItemList.Count)].PickerPrefab;
         }
         public GameObject GetEpicItem()
         {
+            if (m_epicItemList == null || m_epicItemList.Count == 0) return null;
             return m_epicItemList[RandomController.GetRandomIntInRange(0, m_epicItemList.Count)].PickerPrefab;
         }
         public GameObject GetLegendaryItem()
         {
+            if (m_legendaryItemList == null || m_legendaryItemList.Count == 0) return null;
             return m_legendaryItemList[RandomController.GetRandomIntInRange(0, m_legendaryItemList.Count)].PickerPrefab;
         }
         
