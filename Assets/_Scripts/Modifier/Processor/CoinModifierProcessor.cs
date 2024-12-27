@@ -20,6 +20,16 @@ namespace SGGames.Scripts.Modifiers
                     CurrencyManager.Instance.AddExtraCoinForEnemy(((CoinModifier)m_modifier).ModifierValue);
                     CurrencyManager.Instance.AddExtraCoinForChest(((CoinModifier)m_modifier).ModifierValue);
                     break;
+                case CoinModifierType.ADD_COIN_FOR_ENEMY_MULTIPLIER:
+                    CurrencyManager.Instance.AddExtraCoinEnemyMultiplier(((CoinModifier)m_modifier).ModifierValue/100f);
+                    break;
+                case CoinModifierType.ADD_COIN_FOR_CHEST_MULTIPLIER:
+                    CurrencyManager.Instance.AddExtraCoinChestMultiplier(((CoinModifier)m_modifier).ModifierValue/100f);
+                    break;
+                case CoinModifierType.ADD_COIN_MULTIPLIER_FOR_ALL:
+                    CurrencyManager.Instance.AddExtraCoinEnemyMultiplier(((CoinModifier)m_modifier).ModifierValue/100f);
+                    CurrencyManager.Instance.AddExtraCoinChestMultiplier(((CoinModifier)m_modifier).ModifierValue/100f);
+                    break;
             }
             
             Debug.Log($"<color=green>Start Modifier Category:{m_modifier.ModifierType} " +
@@ -42,6 +52,16 @@ namespace SGGames.Scripts.Modifiers
                 case CoinModifierType.ADD_EXTRA_COIN_FOR_ALL:
                     CurrencyManager.Instance.AddExtraCoinForEnemy(-((CoinModifier)m_modifier).ModifierValue);
                     CurrencyManager.Instance.AddExtraCoinForChest(-((CoinModifier)m_modifier).ModifierValue);
+                    break;
+                case CoinModifierType.ADD_COIN_FOR_ENEMY_MULTIPLIER:
+                    CurrencyManager.Instance.AddExtraCoinEnemyMultiplier(-((CoinModifier)m_modifier).ModifierValue/100f);
+                    break;
+                case CoinModifierType.ADD_COIN_FOR_CHEST_MULTIPLIER:
+                    CurrencyManager.Instance.AddExtraCoinChestMultiplier(-((CoinModifier)m_modifier).ModifierValue/100f);
+                    break;
+                case CoinModifierType.ADD_COIN_MULTIPLIER_FOR_ALL:
+                    CurrencyManager.Instance.AddExtraCoinEnemyMultiplier(-((CoinModifier)m_modifier).ModifierValue/100f);
+                    CurrencyManager.Instance.AddExtraCoinChestMultiplier(-((CoinModifier)m_modifier).ModifierValue/100f);
                     break;
             }
             

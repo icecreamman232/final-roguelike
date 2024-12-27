@@ -50,3 +50,7 @@ MonoBehaviour:
   m_keyPickedEvent: {fileID: 11400000, guid: a1e53c2dee977fa4fbcfe1edb497142a, type: 2}
   m_updateKeyCounterEvent: {fileID: 11400000, guid: 21038cdb6a3a1104daea603006d0c60d, type: 2}
   m_keyPicked: 0
+  m_extraCoinEnemyMultiplier: 1
+  m_extraCoinChestMultiplier: 1
+  m_extraCoinForEnemy: 0
+  m_extraCoinForChest: 0

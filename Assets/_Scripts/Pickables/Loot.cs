@@ -33,9 +33,12 @@ namespace SGGames.Scripts.Pickables
         private void SpawnLoot(EnemyHealth enemyHealth)
         {
             //TODO:Check spawn to make sure drops not being spawn outside of the room
+            var currencyManager = CurrencyManager.Instance;
+            var totalCoinAmount = Mathf.RoundToInt((m_dropsTableData.CoinDropAmount + currencyManager.ExtraCoinForEnemy) 
+                                        * currencyManager.ExtraCoinEnemyMultiplier);
             
             //Coin
-            DropCurrency(m_dropsTableData.CoinPrefab,m_dropsTableData.CoinDropAmount + CurrencyManager.Instance.ExtraCoinForEnemy);
+            DropCurrency(m_dropsTableData.CoinPrefab,totalCoinAmount);
             
             //Key
             DropCurrency(m_dropsTableData.KeyPrefab,m_dropsTableData.KeyDropAmount);

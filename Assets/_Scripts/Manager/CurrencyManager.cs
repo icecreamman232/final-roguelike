@@ -14,12 +14,17 @@ namespace SGGames.Scripts.Manager
         [SerializeField] private IntEvent m_keyPickedEvent;
         [SerializeField] private IntEvent m_updateKeyCounterEvent;
         [SerializeField] private int m_keyPicked;
-        [Header("Modifier")]
+        [Header("Modifier")] 
+        [SerializeField] private float m_extraCoinEnemyMultiplier;
+        [SerializeField] private float m_extraCoinChestMultiplier;
         [SerializeField] private int m_extraCoinForEnemy;
         [SerializeField] private int m_extraCoinForChest;
         
         public bool HasKey => m_keyPicked > 0;
 
+        public float ExtraCoinEnemyMultiplier => m_extraCoinEnemyMultiplier;
+        public float ExtraCoinChestMultiplier => m_extraCoinChestMultiplier;
+        
         public int ExtraCoinForEnemy => m_extraCoinForEnemy;
         public int ExtraCoinForChest => m_extraCoinForChest;
 
@@ -63,6 +68,16 @@ namespace SGGames.Scripts.Manager
         public void AddExtraCoinForChest(int amount)
         {
             m_extraCoinForChest += amount;
+        }
+
+        public void AddExtraCoinChestMultiplier(float add)
+        {
+            m_extraCoinChestMultiplier += add;
+        }
+
+        public void AddExtraCoinEnemyMultiplier(float add)
+        {
+            m_extraCoinEnemyMultiplier += add;
         }
     }
 }
