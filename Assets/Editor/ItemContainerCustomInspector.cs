@@ -34,6 +34,7 @@ namespace SGGames.Scripts.EditorExtension
                     if(itemData.ItemCategory != m_itemContainer.ContainerCategory) continue;
                     m_itemContainer.AddItemToContainer(itemData.Rarity,itemData);
                 }
+                EditorUtility.SetDirty(m_itemContainer);
                 AssetDatabase.SaveAssets();
                 AssetDatabase.Refresh();
             }
