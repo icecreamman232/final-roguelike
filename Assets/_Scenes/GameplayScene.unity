@@ -467,6 +467,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 3611446637548967301, guid: 50c94cbbe53b5b84a92da4a6a23a123a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7879184101255485426, guid: 50c94cbbe53b5b84a92da4a6a23a123a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8106549467155117078, guid: 50c94cbbe53b5b84a92da4a6a23a123a, type: 3}
       propertyPath: m_Name
       value: BlackShadowMask_HelmetPicker
