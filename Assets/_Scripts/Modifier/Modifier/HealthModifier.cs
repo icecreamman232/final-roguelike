@@ -18,7 +18,9 @@ namespace SGGames.Scripts.Modifiers
         OverrideCurrentHP,
         
         SetImmortal_ForDuration,
-        Healing,
+
+        IncreaseDodge,
+        ReduceDodge,
     }
     
     

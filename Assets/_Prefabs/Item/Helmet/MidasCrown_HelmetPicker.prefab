@@ -169,6 +169,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MidasCrown_HelmetPicker
       objectReference: {fileID: 0}
+    - target: {fileID: 9075918906512875951, guid: 39b4fc5c9a8aad242b845409e629eb90, type: 3}
+      propertyPath: m_Size.y
+      value: 0.21
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects:

@@ -53,6 +53,12 @@ namespace SGGames.Scripts.Modifiers
                 case HealthModifierType.OverrideMaxHP:
                     m_playerHealth.OverrideMaxHealth(((HealthModifier)m_modifier).ModifierValue);
                     break;
+                case HealthModifierType.IncreaseDodge:
+                    m_playerHealth.AddDodgeRate(((HealthModifier)m_modifier).ModifierValue);
+                    break;
+                case HealthModifierType.ReduceDodge:
+                    m_playerHealth.AddDodgeRate(-((HealthModifier)m_modifier).ModifierValue);
+                    break;
             }
 
             m_modifier.IsRunning = true;
@@ -102,6 +108,12 @@ namespace SGGames.Scripts.Modifiers
                     break;
                 case HealthModifierType.OverrideCurrentHP:
                     //TODO:Implement a way to save previous value before got override
+                    break;
+                case HealthModifierType.IncreaseDodge:
+                    m_playerHealth.AddDodgeRate(-((HealthModifier)m_modifier).ModifierValue);
+                    break;
+                case HealthModifierType.ReduceDodge:
+                    m_playerHealth.AddDodgeRate(((HealthModifier)m_modifier).ModifierValue);
                     break;
             }
 
