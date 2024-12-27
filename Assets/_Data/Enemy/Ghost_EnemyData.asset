@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103a9c0fa3847264fa4e55d761711826, type: 3}
+  m_Name: Ghost_EnemyData
+  m_EditorClassIdentifier: 
+  m_enemyName: Ghost
+  m_maxHealth: 80
+  m_moveSpeed: 4
+  m_enemySprite: {fileID: 113486418, guid: 63034a8ed8224af428755a256fbc30e9, type: 3}
+  m_enemyPrefab: {fileID: 3711012701743259892, guid: 9fd4b1a09678ed242b7d91c21f60ccdd, type: 3}
+  m_minBodyDamage: 30
+  m_maxBodyDamage: 35
+  m_delayBetweenShot: 0
+  m_weaponPrefab: {fileID: 0}
+  m_projectilePrefab: {fileID: 0}
+  m_projectileType: 0
+  m_projectileSpeed: 0
+  m_projectileRange: 0
+  m_minProjectileDamage: 0
+  m_maxProjectileDamage: 0
