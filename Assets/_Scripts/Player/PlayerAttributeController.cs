@@ -71,7 +71,7 @@ namespace SGGames.Scripts.Player
             m_playerDamageComputer.AddNewDamageInfluencer(new DamageInfluencer(DamageInfluencerType.CRITICAL_CHANCE,
                 100, m_heroData.CriticalChance));
             m_playerDamageComputer.AddNewDamageInfluencer(new DamageInfluencer(DamageInfluencerType.CRITICAL_DAMAGE,
-                100, m_heroData.CriticalChance));
+                100, m_heroData.CriticalDamage));
             
             m_playerHealth.Initialize(ComputeMaxHealth());
             m_playerHealth.AddRegenerationRate(ComputeRegenerationRate());

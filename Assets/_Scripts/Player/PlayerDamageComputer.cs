@@ -75,26 +75,30 @@ namespace SGGames.Scripts.Player
                         break;
                     case DamageInfluencerType.MULTIPLY_DAMAGE:
                         m_mutiplyDamage += damageInfluencer.Value.GetDamage();
-                        if (m_mutiplyDamage < 1)
-                        {
-                            m_mutiplyDamage = 1;
-                        }
                         break;
                     case DamageInfluencerType.CRITICAL_DAMAGE:
                         m_criticalDamage += damageInfluencer.Value.GetDamage();
-                        if (m_criticalDamage < 1)
-                        {
-                            m_criticalDamage = 1;
-                        }
                         break;
                     case DamageInfluencerType.CRITICAL_CHANCE:
                         m_criticalChance += damageInfluencer.Value.GetDamage();
-                        if (m_criticalChance < 0)
-                        {
-                            m_criticalChance = 0;
-                        }
+                        
                         break;
                 }
+            }
+            
+            if (m_mutiplyDamage < 1)
+            {
+                m_mutiplyDamage = 1;
+            }
+            
+            if (m_criticalDamage < 1)
+            {
+                m_criticalDamage = 1;
+            }
+            
+            if (m_criticalChance < 0)
+            {
+                m_criticalChance = 0;
             }
             
             m_damageInfo.AdditionMinDamage = m_additionMinDamage;
@@ -109,8 +113,8 @@ namespace SGGames.Scripts.Player
         {
             m_additionMinDamage = 0;
             m_additionMaxDamage = 0;
-            m_mutiplyDamage = 1;
-            m_criticalDamage = 1;
+            m_mutiplyDamage = 0;
+            m_criticalDamage = 0;
             m_criticalChance = 0;
         }
         
