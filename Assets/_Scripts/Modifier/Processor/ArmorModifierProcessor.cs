@@ -42,8 +42,6 @@ namespace SGGames.Scripts.Modifiers
 
         public override void StopModifier()
         {
-            base.StopModifier();
-
             switch (((ArmorModifier)m_modifier).ArmorModifierType)
             {
                 case ArmorModifierType.IncreaseArmor:
@@ -60,8 +58,7 @@ namespace SGGames.Scripts.Modifiers
                     break;
             }
             
-            m_isProcessing = false;
-            m_handler.RemoveProcessor(this);
+            base.StopModifier();
             
             Debug.Log($"<color=red>Stop Modifier Category:{m_modifier.ModifierType} " +
                       $"- Type:{((ArmorModifier)m_modifier).ArmorModifierType} " +

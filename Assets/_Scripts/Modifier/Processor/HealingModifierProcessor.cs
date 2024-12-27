@@ -33,9 +33,6 @@ namespace SGGames.Scripts.Modifiers
                       $"- Duration:{m_modifier.Duration}</color> ");
             
             base.StopModifier();
-            m_modifier.IsRunning = false;
-            m_isProcessing = false;
-            m_handler.RemoveProcessor(this);
         }
     }
 }

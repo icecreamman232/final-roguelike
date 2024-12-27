@@ -29,6 +29,7 @@ namespace SGGames.Scripts.Modifiers
     {
         public HealthModifierType HealthModifierType;
         public float ModifierValue;
+        public bool IsPercentValue;
     }
 }
 

@@ -45,10 +45,10 @@ namespace SGGames.Scripts.Modifiers
                     m_playerHealth.OverrideCurrentHealth(((HealthModifier)m_modifier).ModifierValue);
                     break;
                 case HealthModifierType.DecreaseMaxHP:
-                    m_playerHealth.ModifyMaxHealth(-((HealthModifier)m_modifier).ModifierValue);
+                    m_playerHealth.ModifyMaxHealth(-((HealthModifier)m_modifier).ModifierValue,((HealthModifier)m_modifier).IsPercentValue);
                     break;
                 case HealthModifierType.IncreaseMaxHP:
-                    m_playerHealth.ModifyMaxHealth(((HealthModifier)m_modifier).ModifierValue);
+                    m_playerHealth.ModifyMaxHealth(((HealthModifier)m_modifier).ModifierValue, ((HealthModifier)m_modifier).IsPercentValue);
                     break;
                 case HealthModifierType.OverrideMaxHP:
                     m_playerHealth.OverrideMaxHealth(((HealthModifier)m_modifier).ModifierValue);
@@ -71,7 +71,6 @@ namespace SGGames.Scripts.Modifiers
     
         public override void StopModifier()
         {
-            base.StopModifier();
             Debug.Log($"<color=red>Stop Modifier Category:{m_modifier.ModifierType} " +
                       $"- Type:{((HealthModifier)m_modifier).HealthModifierType} " +
                       $"- Value:{((HealthModifier)m_modifier).ModifierValue}" +
@@ -92,10 +91,10 @@ namespace SGGames.Scripts.Modifiers
                     m_playerHealth.SetImmortal(false);
                     break;
                 case HealthModifierType.DecreaseMaxHP:
-                    m_playerHealth.ModifyMaxHealth(((HealthModifier)m_modifier).ModifierValue);
+                    m_playerHealth.ModifyMaxHealth(((HealthModifier)m_modifier).ModifierValue, ((HealthModifier)m_modifier).IsPercentValue);
                     break;
                 case HealthModifierType.IncreaseMaxHP:
-                    m_playerHealth.ModifyMaxHealth(-((HealthModifier)m_modifier).ModifierValue);
+                    m_playerHealth.ModifyMaxHealth(-((HealthModifier)m_modifier).ModifierValue, ((HealthModifier)m_modifier).IsPercentValue);
                     break;
                 case HealthModifierType.OverrideMaxHP:
                     //TODO:Implement a way to save previous value before got override
@@ -117,9 +116,7 @@ namespace SGGames.Scripts.Modifiers
                     break;
             }
 
-            m_modifier.IsRunning = false;
-            m_isProcessing = false;
-            m_handler.RemoveProcessor(this);
+            base.StopModifier();
         }
 
         protected override void Update()
@@ -129,6 +126,7 @@ namespace SGGames.Scripts.Modifiers
             m_timer += Time.deltaTime;
             if (m_timer >= m_modifier.Duration)
             {
+                m_timer = 0;
                 StopModifier();
             }
         }

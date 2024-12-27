@@ -28,7 +28,18 @@ namespace SGGames.Scripts.Modifiers
 
         public virtual void StopModifier()
         {
+            PostTrigger();
+        }
+
+        protected virtual void PostTrigger()
+        {
+            m_isProcessing = false;
+            m_modifier.IsRunning = false;
             
+            if (m_modifier.PostTriggerBehavior == PostTriggerModifierBehavior.SELF_REMOVED)
+            {
+                m_handler.RemoveProcessor(this);
+            }
         }
         
         protected virtual void Update()

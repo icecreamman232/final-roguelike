@@ -56,7 +56,6 @@ namespace SGGames.Scripts.Modifiers
                       $"- Value:{((MovementModifier)m_modifier).ModifierValue}" +
                       $"- Duration:{m_modifier.Duration}</color> ");
             
-            base.StopModifier();
             switch (((MovementModifier)m_modifier).MovementModifierType)
             {
                 case MovementModifierType.ReduceMSForDuration:
@@ -78,9 +77,7 @@ namespace SGGames.Scripts.Modifiers
                     break;
             }
 
-            m_modifier.IsRunning = false;
-            m_isProcessing = false;
-            m_handler.RemoveProcessor(this);
+            base.StopModifier();
         }
 
         protected override void Update()
@@ -90,6 +87,7 @@ namespace SGGames.Scripts.Modifiers
             m_timer += Time.deltaTime;
             if (m_timer >= m_modifier.Duration)
             {
+                m_timer = 0;
                 StopModifier();
             }
         }

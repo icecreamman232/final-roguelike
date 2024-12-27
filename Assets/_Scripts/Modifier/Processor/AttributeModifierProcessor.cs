@@ -29,7 +29,6 @@ namespace SGGames.Scripts.Modifiers
 
         public override void StopModifier()
         {
-            base.StopModifier();
             switch (((AttributeModifier)m_modifier).AttributeType)
             {
                 case AttributeType.Strength:
@@ -46,6 +45,8 @@ namespace SGGames.Scripts.Modifiers
                       $"- Type:{((AttributeModifier)m_modifier).AttributeType} " +
                       $"- Value:{((AttributeModifier)m_modifier).ModifierValue}" +
                       $"- Duration:{m_modifier.Duration}</color> ");
+            
+            base.StopModifier();
         }
     }
 }

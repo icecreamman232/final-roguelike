@@ -47,10 +47,18 @@ namespace SGGames.Scripts.Healths
             UpdateHealthBar();
         }
 
-        public void ModifyMaxHealth(float amount)
+        public void ModifyMaxHealth(float amount,bool isPercent)
         {
             var currentPercent = m_currentHealth / m_maxHealth;
-            m_maxHealth += amount;
+            if (isPercent)
+            {
+                m_maxHealth += amount * m_maxHealth/100f;
+            }
+            else
+            {
+                m_maxHealth += amount;
+            }
+            
             m_currentHealth = m_maxHealth * currentPercent;
             UpdateHealthBar();
         }

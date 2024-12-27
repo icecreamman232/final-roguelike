@@ -10,6 +10,7 @@ namespace SGGames.Scripts.Modifiers
         public ModifierType ModifierType;
         public float Duration;
         public bool InstantTrigger;
+        public PostTriggerModifierBehavior PostTriggerBehavior;
         [Header("Runtime Data")] 
         public bool IsRunning;
     }
@@ -25,6 +26,12 @@ namespace SGGames.Scripts.Modifiers
         PLAYER_EVENT,
         HEALING,
         ATTRIBUTE,
+    }
+
+    public enum PostTriggerModifierBehavior
+    {
+        SELF_REMOVED,
+        NO_REMOVE,
     }
 }
 

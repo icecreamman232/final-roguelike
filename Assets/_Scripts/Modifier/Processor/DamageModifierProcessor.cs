@@ -101,12 +101,9 @@ namespace SGGames.Scripts.Modifiers
                       $"- Value:{((DamageModifier)m_modifier).ModifierValue}" +
                       $"- Duration:{m_modifier.Duration}</color> ");
             
-            base.StopModifier();
-            
             m_damageComputer.RemoveDamageInfluencer(m_damageInfluencerID);
 
-            m_isProcessing = false;
-            m_handler.RemoveProcessor(this);
+            base.StopModifier();
         }
 
         protected override void Update()
@@ -116,6 +113,7 @@ namespace SGGames.Scripts.Modifiers
             m_timer += Time.deltaTime;
             if (m_timer >= m_modifier.Duration)
             {
+                m_timer = 0;
                 StopModifier();
             }
         }

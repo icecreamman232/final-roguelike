@@ -40,7 +40,6 @@ namespace SGGames.Scripts.Modifiers
 
         public override void StopModifier()
         {
-            base.StopModifier();
             switch (((CoinModifier)m_modifier).CoinModifierType)
             {
                 case CoinModifierType.ADD_EXTRA_COIN_FOR_ENEMY:
@@ -65,12 +64,12 @@ namespace SGGames.Scripts.Modifiers
                     break;
             }
             
-            m_handler.RemoveProcessor(this);
-            
             Debug.Log($"<color=red>Stop Modifier Category:{m_modifier.ModifierType} " +
                       $"- Type:{((CoinModifier)m_modifier).CoinModifierType} " +
                       $"- Value:{((CoinModifier)m_modifier).ModifierValue}" +
                       $"- Duration:{m_modifier.Duration}</color> ");
+            
+            base.StopModifier();
         }
     }
 }
