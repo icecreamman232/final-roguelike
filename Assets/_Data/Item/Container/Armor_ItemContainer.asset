@@ -15,7 +15,6 @@ MonoBehaviour:
   m_containerCategory: 2
   m_commonItemList:
   - {fileID: 11400000, guid: 830585dab2e3a6546b1d117e0f7803f6, type: 2}
-  - {fileID: 11400000, guid: 2dbd966f2d67a624ab63825496dc103d, type: 2}
   m_uncommonItemList: []
   m_rareItemList: []
   m_epicItemList: []

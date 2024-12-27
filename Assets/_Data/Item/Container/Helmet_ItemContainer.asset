@@ -20,7 +20,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: bb86b25f0b3bbfe4d98934cc4f72917b, type: 2}
   - {fileID: 11400000, guid: 03b3c95d13975a942849683012c60522, type: 2}
   - {fileID: 11400000, guid: d1f1e48ee905cc24dae60274206bb15a, type: 2}
-  - {fileID: 11400000, guid: d036c6363719c8f4a830688970ba5c20, type: 2}
   m_uncommonItemList:
   - {fileID: 11400000, guid: 56626b4029f015b4091352f9d01e7306, type: 2}
   - {fileID: 11400000, guid: 217bc2de07de5204bb03a51218f724c4, type: 2}

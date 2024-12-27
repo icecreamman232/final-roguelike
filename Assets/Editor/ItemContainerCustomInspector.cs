@@ -1,5 +1,6 @@
 
 #if UNITY_EDITOR
+using System;
 using SGGames.Scripts.Data;
 using UnityEditor;
 using UnityEngine;
@@ -32,6 +33,7 @@ namespace SGGames.Scripts.EditorExtension
                     var path = AssetDatabase.GUIDToAssetPath(guid);
                     var itemData = AssetDatabase.LoadAssetAtPath<ItemData>(path);
                     if(itemData.ItemCategory != m_itemContainer.ContainerCategory) continue;
+                    if(String.IsNullOrEmpty(itemData.ItemID)) continue;
                     m_itemContainer.AddItemToContainer(itemData.Rarity,itemData);
                 }
                 EditorUtility.SetDirty(m_itemContainer);
