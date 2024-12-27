@@ -185,6 +185,11 @@ MonoBehaviour:
   m_collider2D: {fileID: 3878698853601124763}
   m_loot: {fileID: 8069930759887012824}
   m_gameEvent: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
+  m_commonChance: 45
+  m_uncommonChance: 25
+  m_rareChance: 15
+  m_epicChance: 10
+  m_legendaryChance: 5
 --- !u!114 &8069930759887012824
 MonoBehaviour:
   m_ObjectHideFlags: 0

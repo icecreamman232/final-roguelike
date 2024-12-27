@@ -1,5 +1,3 @@
-using System;
-using SGGames.Scripts.Attribute;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -31,41 +29,23 @@ namespace SGGames.Scripts.Data
         [SerializeField] private GameObject m_bigExpPrefab;
         
         [Header("Drops")]
-        [SerializeField] private LootData[] m_dropsList;
-
-        private void OnEnable()
+        [SerializeField] private ItemContainer m_itemContainer;
+        
+        public GameObject GetNextLoot(Rarity rarity)
         {
-            ComputeItemDropChance();
-        }
-
-        [ContextMenu("Compute Item Drop Chance")]
-        private void ComputeItemDropChance()
-        {
-            if (m_dropsList.Length == 0) return;
-            var currentChance = 0f;
-            var totalWeight = 0f;
-            
-            for (int i = 0; i < m_dropsList.Length; i++)
+            if (m_itemContainer == null) return null;
+            switch (rarity)
             {
-                totalWeight += m_dropsList[i].Weight;
-            }
-
-            for (int i = 0; i < m_dropsList.Length; i++)
-            {
-                m_dropsList[i].SetLowerChance(currentChance);
-                currentChance += m_dropsList[i].Weight/totalWeight * 100f;
-                m_dropsList[i].SetUpperChance(currentChance);
-            }
-        }
-
-        public GameObject GetNextLoot(float chance)
-        {
-            for (int i = 0; i < m_dropsList.Length; i++)
-            {
-                if (m_dropsList[i].LowerChance <= chance && m_dropsList[i].UpperChance >= chance)
-                {
-                    return m_dropsList[i].LootPrefab;
-                }
+                case Rarity.Common:
+                    return m_itemContainer.GetCommonItem();
+                case Rarity.Uncommon:
+                    return m_itemContainer.GetUncommonItem();
+                case Rarity.Rare:
+                    return m_itemContainer.GetRareItem();
+                case Rarity.Epic:
+                    return m_itemContainer.GetEpicItem();
+                case Rarity.Legendary:
+                    return m_itemContainer.GetLegendaryItem();
             }
             return null;
         }
@@ -97,27 +77,5 @@ namespace SGGames.Scripts.Data
         public GameObject SmallExpPrefab=> m_smallExpPrefab;
         public GameObject BigExpPrefab=> m_bigExpPrefab;
         
-    }
-
-    [Serializable]
-    public class LootData
-    {
-        public GameObject LootPrefab;
-        public float Weight;
-        [SerializeField] [ReadOnly] private float m_lowerChance;
-        [SerializeField] [ReadOnly] private float m_upperChance;
-        
-        public float LowerChance => m_lowerChance;
-        public float UpperChance => m_upperChance;
-
-        public void SetLowerChance(float value)
-        {
-            m_lowerChance = value;
-        }
-
-        public void SetUpperChance(float value)
-        {
-            m_upperChance = value;
-        }
     }
 }

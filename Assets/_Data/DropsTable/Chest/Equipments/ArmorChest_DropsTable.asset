@@ -15,6 +15,7 @@ MonoBehaviour:
   m_minCoinDrop: 10
   m_maxCoinDrop: 30
   m_coinPrefab: {fileID: 7996711730950076425, guid: 9457189a38fd9354897514e979c782b7, type: 3}
+  m_chanceToDropKey: 0
   m_minKeyDrop: 0
   m_maxKeyDrop: 0
   m_keyPrefab: {fileID: 7996711730950076425, guid: 422c92e3582332340ae906b6e9c62181, type: 3}
@@ -25,8 +26,4 @@ MonoBehaviour:
   m_minBigExpDrop: 1
   m_maxBigExpDrop: 1
   m_bigExpPrefab: {fileID: 7996711730950076425, guid: a286a2b78edada443802bd9c114aeb11, type: 3}
-  m_dropsList:
-  - LootPrefab: {fileID: 2011092294068072587, guid: 5b597a373536e8e48b971619a80e09c0, type: 3}
-    Weight: 2
-    m_lowerChance: 0
-    m_upperChance: 100
+  m_itemContainer: {fileID: 11400000, guid: 88699151c4e95984fae15da43ce6f871, type: 2}

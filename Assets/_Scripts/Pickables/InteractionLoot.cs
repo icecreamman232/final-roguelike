@@ -16,7 +16,7 @@ namespace SGGames.Scripts.Pickables
         /// </summary>
         private readonly int m_maxCheckPosCount = 8;
         
-        public void SpawnLoot(Transform spawnParent)
+        public void SpawnLoot(Transform spawnParent, Rarity rarityItem)
         {
             m_spawnParent = spawnParent;
             
@@ -32,7 +32,7 @@ namespace SGGames.Scripts.Pickables
             //Big Exp
             DropCurrency(m_dropsTableData.BigExpPrefab,m_dropsTableData.BigExpDropAmount);
 
-            DropItems();
+            DropItems(rarityItem);
         }
 
         private void DropCurrency(GameObject prefab, int amount)
@@ -47,10 +47,9 @@ namespace SGGames.Scripts.Pickables
             }
         }
         
-        private void DropItems()
+        private void DropItems(Rarity item)
         {
-            var chance = Random.Range(0f, 100f);
-            var prefab = m_dropsTableData.GetNextLoot(chance);
+            var prefab = m_dropsTableData.GetNextLoot(item);
             if (prefab == null) return;
             Instantiate(prefab, GetRandomDropPosition(m_dropRadius), Quaternion.identity,m_spawnParent);
         }
