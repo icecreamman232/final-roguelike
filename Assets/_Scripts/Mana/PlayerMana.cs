@@ -27,6 +27,7 @@ namespace SGGames.Scripts.Player
         public void AddManaRegeneration(float rate)
         {
             m_manaRegenRate += rate;
+            UpdateManaBar();
         }
 
         public void SpentMana(float amount)
@@ -38,6 +39,7 @@ namespace SGGames.Scripts.Player
             {
                 m_currentMana = 0;
             }
+            UpdateManaBar();
         }
 
         public void AddMaxMana(float amount)
@@ -45,6 +47,7 @@ namespace SGGames.Scripts.Player
             var percentOfCurrent = m_currentMana / m_maxMana;
             m_maxMana += amount;
             m_currentMana = percentOfCurrent * m_maxMana;
+            UpdateManaBar();
         }
 
         public void AddCurrentMana(float amount)
@@ -54,6 +57,7 @@ namespace SGGames.Scripts.Player
             {
                 m_currentMana = m_maxMana;
             }
+            UpdateManaBar();
         }
 
         private void Update()

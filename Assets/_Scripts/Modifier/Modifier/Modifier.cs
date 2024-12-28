@@ -26,6 +26,7 @@ namespace SGGames.Scripts.Modifiers
         PLAYER_EVENT,
         HEALING,
         ATTRIBUTE,
+        MANA,
     }
 
     public enum PostTriggerModifierBehavior

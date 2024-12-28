@@ -19,17 +19,20 @@ namespace SGGames.Scripts.Modifiers
         private PlayerAttributeController m_playerAttributeController;
         private PlayerMovement m_playerMovement;
         private PlayerHealth m_playerHealth;
+        private PlayerMana m_playerMana;
         private PlayerDamageComputer m_damageComputer;
         
         public PlayerAttributeController PlayerAttributeController => m_playerAttributeController;
         public PlayerMovement PlayerMovement => m_playerMovement;
         public PlayerHealth PlayerHealth => m_playerHealth;
+        public PlayerMana PlayerMana => m_playerMana;
         public PlayerDamageComputer PlayerDamageComputer => m_damageComputer;
         
         private void Start()
         {
             m_playerAttributeController = GetComponentInParent<PlayerAttributeController>();
             m_playerHealth = GetComponentInParent<PlayerHealth>();
+            m_playerMana = GetComponentInParent<PlayerMana>();
             m_playerMovement = GetComponentInParent<PlayerMovement>();
             m_damageComputer = GetComponentInParent<PlayerDamageComputer>();
             
@@ -122,6 +125,15 @@ namespace SGGames.Scripts.Modifiers
                         attributeProcessor.StartModifier();
                     }
                     m_processorContainer.Add(uniqueID, attributeProcessor);
+                    break;
+                case ModifierType.MANA: 
+                    var manaProcessor = this.gameObject.AddComponent<ManaModifierProcessor>();
+                    manaProcessor.Initialize(uniqueID,this, modifier);
+                    if (modifier.InstantTrigger)
+                    {
+                        manaProcessor.StartModifier();
+                    }
+                    m_processorContainer.Add(uniqueID, manaProcessor);
                     break;
                 
             }
