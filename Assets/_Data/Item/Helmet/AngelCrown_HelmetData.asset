@@ -19,4 +19,5 @@ MonoBehaviour:
   m_icon: {fileID: 129118453, guid: 079f3decf87c80644bfc04d4052c0c78, type: 3}
   m_pickerPrefab: {fileID: 2468019919394225829, guid: a4e43e7730cb635489b14235c7361b40, type: 3}
   m_modifierList:
+  - {fileID: 11400000, guid: 0bb28f27eed0c8c4a8d81845587b4a45, type: 2}
   - {fileID: 11400000, guid: d4d009bb1b7f4e74289c442feead3f16, type: 2}
