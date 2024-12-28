@@ -8,6 +8,7 @@ namespace SGGames.Scripts.Common
         ROOM_CLEARED,
         PAUSED,
         UNPAUSED,
+        PAUSED_WITH_DELAY,
     }
 
     public enum PlayerEventType

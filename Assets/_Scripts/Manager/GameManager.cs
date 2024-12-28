@@ -1,3 +1,4 @@
+using System.Collections;
 using System.Collections.Generic;
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Core;
@@ -20,6 +21,10 @@ namespace SGGames.Scripts.Managers
         private bool m_isPauseMenuOpened;
         private bool m_isCharacterInfoOpened;
         private bool m_isInventoryOpened;
+        
+        private readonly float C_SLOW_DOWN_TIME_BEFORE_PAUSE = 0.5f;
+        
+        private bool m_isCoroutineRunning;
         public bool IsGamePaused => Time.timeScale == 0;
         
         public bool IsCharacterInfoOpened => m_isCharacterInfoOpened;
@@ -46,6 +51,27 @@ namespace SGGames.Scripts.Managers
             Time.timeScale = 0;    
         }
 
+        private void PauseWithDelay()
+        {
+            if (m_isCoroutineRunning) return;
+            StartCoroutine(OnDelayBeforePause());
+        }
+
+        private IEnumerator OnDelayBeforePause()
+        {
+            m_isCoroutineRunning = true;
+            var slowDownDuration = C_SLOW_DOWN_TIME_BEFORE_PAUSE;
+            while (slowDownDuration > 0)
+            {
+                slowDownDuration -= Time.unscaledDeltaTime;
+                Time.timeScale = MathHelpers.Remap(slowDownDuration, 0, C_SLOW_DOWN_TIME_BEFORE_PAUSE, 0, 1);
+                yield return null;
+            }
+
+            Time.timeScale = 0;
+            m_isCoroutineRunning = false;
+        }
+
         private void UnpauseGame()
         {
             if (!m_isInventoryOpened && !m_isCharacterInfoOpened)
@@ -59,6 +85,10 @@ namespace SGGames.Scripts.Managers
             if (eventType == GameEventType.PAUSED)
             {
                 PauseGame();
+            }
+            else if (eventType == GameEventType.PAUSED_WITH_DELAY)
+            {
+                PauseWithDelay();
             }
             else if (eventType == GameEventType.UNPAUSED)
             {

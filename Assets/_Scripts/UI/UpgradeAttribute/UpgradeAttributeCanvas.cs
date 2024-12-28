@@ -38,11 +38,17 @@ namespace SGGames.Scripts.UI
 
         private void Show()
         {
+            StartCoroutine(OnDelayBeforeShow());
+        }
+        
+        private IEnumerator OnDelayBeforeShow()
+        {
+            m_gameEvent.Raise(GameEventType.PAUSED_WITH_DELAY);
+            yield return new WaitUntil(()=>GameManager.Instance.IsGamePaused);
             m_canvasGroup.alpha = 1;
             m_canvasGroup.interactable = true;
             m_canvasGroup.blocksRaycasts = true;
             m_freezePlayerEvent.Raise(true);
-            m_gameEvent.Raise(GameEventType.PAUSED);
         }
 
         private void Hide()
