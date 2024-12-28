@@ -43,7 +43,7 @@ namespace SGGames.Scripts.UI
                 var textObj = m_statusTextPooler.GetPooledGameObject();
                 var textMesh = textObj.GetComponentInChildren<TextMeshPro>();
                 textMesh.color = m_immortalColor;
-                textMesh.text = "Immunity";
+                textMesh.text = "Immortal";
             }
             else if (isDodge)
             {
