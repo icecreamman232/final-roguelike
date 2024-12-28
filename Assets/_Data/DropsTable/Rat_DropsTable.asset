@@ -26,4 +26,7 @@ MonoBehaviour:
   m_minBigExpDrop: 0
   m_maxBigExpDrop: 0
   m_bigExpPrefab: {fileID: 7996711730950076425, guid: a286a2b78edada443802bd9c114aeb11, type: 3}
-  m_dropsList: []
+  m_smallHealingPotionPrefab: {fileID: 7996711730950076425, guid: c74ec89b2e73ed9408bddfc5d52859b8, type: 3}
+  m_mediumHealingPotionPrefab: {fileID: 2978515653420692076, guid: f03c391125ad2f8439c58d0914938f8e, type: 3}
+  m_grandeHealingPotionPrefab: {fileID: 2978515653420692076, guid: 51d8168576858594783e3b58df2481fd, type: 3}
+  m_itemContainer: {fileID: 0}

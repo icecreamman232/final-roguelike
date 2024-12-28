@@ -1,3 +1,6 @@
+using SGGames.Scripts.Healths;
+using SGGames.Scripts.Manager;
+using SGGames.Scripts.Managers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -27,6 +30,10 @@ namespace SGGames.Scripts.Data
         [SerializeField] private int m_minBigExpDrop;
         [SerializeField] private int m_maxBigExpDrop;
         [SerializeField] private GameObject m_bigExpPrefab;
+        [Header("Healing Potion")]
+        [SerializeField] private GameObject m_smallHealingPotionPrefab;
+        [SerializeField] private GameObject m_mediumHealingPotionPrefab;
+        [SerializeField] private GameObject m_grandeHealingPotionPrefab;
         
         [Header("Drops")]
         [SerializeField] private ItemContainer m_itemContainer;
@@ -48,6 +55,30 @@ namespace SGGames.Scripts.Data
                     return m_itemContainer.GetLegendaryItem();
             }
             return null;
+        }
+
+        public GameObject GetNextPotion()
+        {
+            //Only drop healing potion if player's health is below 50%
+            var playerHealth = LevelManager.Instance.PlayerRef.GetComponent<PlayerHealth>();
+            if (playerHealth.CurrentHealth > playerHealth.MaxHealth * 0.5f)
+            {
+                return null;
+            }
+
+            var currentPlayerLv = InGameProgressManager.Instance.CurrentLevel;
+            
+            if (currentPlayerLv <= 10)
+            {
+                return m_smallHealingPotionPrefab;
+            }
+
+            if (currentPlayerLv <= 20)
+            {
+                return m_mediumHealingPotionPrefab;
+            }
+            
+            return m_grandeHealingPotionPrefab;
         }
         
         public int CoinDropAmount => Random.Range(m_minCoinDrop, m_maxCoinDrop + 1);

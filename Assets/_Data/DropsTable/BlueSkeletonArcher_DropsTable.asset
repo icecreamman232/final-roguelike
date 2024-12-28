@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 240515b1c68a9c2468bd6a12c8cd4f20, type: 3}
-  m_Name: Spider_DropsTable
+  m_Name: BlueSkeletonArcher_DropsTable
   m_EditorClassIdentifier: 
   m_minCoinDrop: 1
   m_maxCoinDrop: 2
