@@ -50,6 +50,15 @@ namespace SGGames.Scripts.Pickables
             DropCurrency(m_dropsTableData.BigExpPrefab,m_dropsTableData.BigExpDropAmount);
 
             DropItems();
+            
+            DropHealingPotion();   
+        }
+        
+        private void DropHealingPotion()
+        {
+            var prefab = m_dropsTableData.GetNextPotion();
+            if (prefab == null) return;
+            Instantiate(prefab, GetRandomDropPosition(m_dropRadius), Quaternion.identity,m_enemyHealth.transform.parent);
         }
 
         private void DropCurrency(GameObject prefab, int amount)
