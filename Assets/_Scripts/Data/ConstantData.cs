@@ -18,6 +18,8 @@ namespace SGGames.Scripts.Data
         [SerializeField] private float m_strToRegenerate;
         [SerializeField] private float m_strToHealth;
         [SerializeField] private float m_agiToAtkSpd;
+        [SerializeField] private float m_intelToMana;
+        [SerializeField] private float m_intelToManaRegenerate;
 
 
         public void SetData(float maxAtkSpd, float strToRegenerate, 
@@ -57,6 +59,9 @@ namespace SGGames.Scripts.Data
         public float C_STR_TO_REGENERATE => m_strToRegenerate;
         public float C_STR_TO_HEALTH => m_strToHealth;
         public float C_AGI_TO_ATK_SPD => m_agiToAtkSpd;
+        
+        public float C_INTEL_TO_MANA => m_intelToMana;
+        public float C_INTEL_TO_MANA_REGENERATE => m_intelToManaRegenerate;
         
     }
 }

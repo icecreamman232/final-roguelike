@@ -20,6 +20,7 @@ namespace SGGames.Scripts.Player
         
         [Header("Components")]
         [SerializeField] private PlayerHealth m_playerHealth;
+        [SerializeField] private PlayerMana m_playerMana;
         [SerializeField] private PlayerDamageComputer m_playerDamageComputer;
         [SerializeField] private PlayerWeaponHandler m_playerWeaponHandler;
         
@@ -76,6 +77,9 @@ namespace SGGames.Scripts.Player
             m_playerHealth.Initialize(ComputeMaxHealth());
             m_playerHealth.AddRegenerationRate(ComputeRegenerationRate());
             m_playerHealth.SetArmor(ComputeArmorFromAgi(m_agilityPoints));
+            
+            m_playerMana.Initialize(ComputeMaxMana());
+            m_playerMana.AddManaRegeneration(ComputeManaRegenerationRate());
 
             yield return new WaitUntil(() =>
                 m_playerWeaponHandler != null && m_playerWeaponHandler.IsWeaponInitialized);
@@ -89,6 +93,16 @@ namespace SGGames.Scripts.Player
         private float ComputeRegenerationRate()
         {
             return m_strengthPoints * m_constantData.C_STR_TO_REGENERATE;
+        }
+
+        private float ComputeMaxMana()
+        {
+            return m_intelligencePoints * m_constantData.C_INTEL_TO_MANA;
+        }
+        
+        private float ComputeManaRegenerationRate()
+        {
+            return m_intelligencePoints * m_constantData.C_INTEL_TO_MANA_REGENERATE;
         }
         
         public float ComputeDelayBetweenAttacks(float baseAtkTime)

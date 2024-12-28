@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 5311189830458795856}
   - component: {fileID: 9095760099221184924}
   - component: {fileID: 904574974438328195}
+  - component: {fileID: 3632583597495443813}
   - component: {fileID: 6210066009922297151}
   - component: {fileID: 6211949587856999711}
   - component: {fileID: 8170920390037149282}
@@ -164,6 +165,7 @@ MonoBehaviour:
   m_agilityPoints: 0
   m_intelligencePoints: 0
   m_playerHealth: {fileID: 904574974438328195}
+  m_playerMana: {fileID: 3632583597495443813}
   m_playerDamageComputer: {fileID: 6211949587856999711}
   m_playerWeaponHandler: {fileID: 6210066009922297151}
   m_addAttributeEvent: {fileID: 11400000, guid: 0dbc4449929bc8d4aaac30d6cb0305f8, type: 2}
@@ -235,6 +237,22 @@ MonoBehaviour:
   m_regenerationRate: 0
   m_PlayerEvent: {fileID: 11400000, guid: b065f74e84bb99e4a9f98567722831a3, type: 2}
   m_playerGainImmortalEvent: {fileID: 11400000, guid: 0a4f665936e4b4a43876b26e1a6683ad, type: 2}
+--- !u!114 &3632583597495443813
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633775464036924199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d66447c99b1d7d24bb27fcf789c70558, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_maxMana: 0
+  m_currentMana: 0
+  m_manaRegenRate: 0
+  m_playerUpdateManaEvent: {fileID: 11400000, guid: 30f065676dd1e06419300e4e9c67bcf7, type: 2}
 --- !u!114 &6210066009922297151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,6 +362,7 @@ MonoBehaviour:
   m_abilityState: 0
   m_defenseAbilityButtonPressedEvent: {fileID: 11400000, guid: a20d6c0c4e9f3b240a1069028d584b30, type: 2}
   m_playerEvent: {fileID: 11400000, guid: b065f74e84bb99e4a9f98567722831a3, type: 2}
+  m_manaCost: 15
   m_shieldDuration: 3
   m_shieldCooldown: 15
   m_durationTimer: 0

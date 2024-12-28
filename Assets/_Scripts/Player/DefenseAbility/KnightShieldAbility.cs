@@ -2,7 +2,6 @@ using System;
 using System.Collections;
 using SGGames.Scripts.Attribute;
 using SGGames.Scripts.Common;
-using SGGames.Scripts.Core;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Modifiers;
 using UnityEngine;
@@ -12,6 +11,7 @@ namespace SGGames.Scripts.Player
 {
     public class KnightShieldAbility : PlayerDefenseAbility
     {
+        [SerializeField] private float m_manaCost;
         [SerializeField] private float m_shieldDuration;
         [SerializeField] private float m_shieldCooldown;
         [SerializeField][ReadOnly] private float m_durationTimer;
@@ -26,12 +26,14 @@ namespace SGGames.Scripts.Player
         [SerializeField] private float m_showShieldAnimDuration;
         
         private PlayerMovement m_playerMovement;
+        private PlayerMana m_playerMana;
         private readonly int m_showShieldAnimParam = Animator.StringToHash("Trigger_Shield");
         
         
         protected override void Start()
         {
             m_playerMovement = GetComponent<PlayerMovement>();
+            m_playerMana = GetComponent<PlayerMana>();
             m_shieldCollider.enabled = false;
             base.Start();
         }
@@ -71,7 +73,11 @@ namespace SGGames.Scripts.Player
         protected override void OnPressDefenseAbilityButton(InputAction.CallbackContext context)
         {
             if (m_abilityState != PlayerAbilityState.READY) return;
+            if (m_playerMana.CurrentMana < m_manaCost) return;
+            
             m_playerEvent.Raise(PlayerEventType.USE_DEFENSE_ABILITY);
+            m_playerMana.SpentMana(m_manaCost);
+            
             StartCoroutine(OnTriggerShield());
             base.OnPressDefenseAbilityButton(context);
         }

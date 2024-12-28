@@ -17,7 +17,7 @@ MonoBehaviour:
   m_heroName: Knight
   m_baseStrength: 5
   m_baseAgility: 2
-  m_baseIntelligence: 1
+  m_baseIntelligence: 2
   m_criticalChance: 15
   m_criticalDamage: 1.15
   m_defenseAbilityEnableSprite: {fileID: -658532341, guid: dc183ed4b6fc4a248bdeaa9213368d55, type: 3}
