@@ -1,6 +1,8 @@
+using System;
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Events;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace SGGames.Scripts.Healths
 {
@@ -16,6 +18,9 @@ namespace SGGames.Scripts.Healths
         private SpriteFlicker m_spriteFlicker;
         private readonly float m_regenerationInterval = 0.1f;
         private float m_regenerateTimer;
+
+        public Action<bool> OnHit; //Boolean pass is for dodge chance
+        public Action<float> OnHealing;
         
         /// <summary>
         /// Use this with caution since it could be null at some point.
@@ -57,12 +62,14 @@ namespace SGGames.Scripts.Healths
 
             if (CanDodgeThisAttack())
             {
+                OnHit?.Invoke(true);
                 m_PlayerEvent.Raise(PlayerEventType.DODGE);
                 return;
             }
             
             m_currentHealth -= damage * (1- m_armor/100);
             m_lastSourceCauseDamage = source;
+            OnHit?.Invoke(false);
             
             m_PlayerEvent.Raise(PlayerEventType.TAKE_DAMAGE);
             
@@ -130,16 +137,21 @@ namespace SGGames.Scripts.Healths
             {
                 m_currentHealth = m_maxHealth;
             }
+            
+            OnHealing?.Invoke(amount);
         }
 
         public void HealingPercentMaxHealth(float percent)
         {
             m_PlayerEvent.Raise(PlayerEventType.HEALING);
-            m_currentHealth += (percent/100f) * m_maxHealth;
+            var healingAmount = (percent / 100f) * m_maxHealth;
+            m_currentHealth += healingAmount;
             if (m_currentHealth > m_maxHealth)
             {
                 m_currentHealth = m_maxHealth;
             }
+            
+            OnHealing?.Invoke(healingAmount);
         }
     }
 }
