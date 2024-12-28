@@ -424,6 +424,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: god-mage-hat
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ba41e3cf37f2de4cb3270f710047d25
+      internalID: 414171641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -450,6 +471,7 @@ TextureImporter:
       Shinobi-Mask: 1740651586
       Thief-band-helmet: 1002600149
       Wood-mask-helmet: -9935663
+      god-mage-hat: 414171641
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

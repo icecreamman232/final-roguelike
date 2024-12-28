@@ -29,7 +29,7 @@ namespace SGGames.Scripts.UI
             {
                 current = 0;
             }
-            m_manaText.text = $"{current:F0}/{max}";
+            m_manaText.text = $"{current:F0}/{max:F0}";
         }
     }
 }

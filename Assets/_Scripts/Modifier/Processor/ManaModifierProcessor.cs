@@ -4,24 +4,60 @@ namespace SGGames.Scripts.Modifiers
 {
     public class ManaModifierProcessor : ModifierProcessor
     {
+        [SerializeField] private float m_totalModifiedValue;
+        
         public override void StartModifier()
         {
             base.StartModifier();
             var manaModifier = ((ManaModifier)m_modifier);
+            
+            
             switch (manaModifier.ManaModifierType)
             {
                 case ManaModifierType.Modify_Max_Mana:
-                    m_handler.PlayerMana.AddMaxMana(manaModifier.ModifierValue);
+                    m_totalModifiedValue = manaModifier.IsPercentValue 
+                        ? m_handler.PlayerMana.MaxMana * manaModifier.ModifierValue
+                        : manaModifier.ModifierValue;
+                    
+                    m_handler.PlayerMana.AddMaxMana(m_totalModifiedValue);
                     break;
                 case ManaModifierType.Modify_Current_Mana:
-                    m_handler.PlayerMana.AddCurrentMana(manaModifier.ModifierValue);
+                    m_totalModifiedValue = manaModifier.IsPercentValue 
+                        ? m_handler.PlayerMana.CurrentMana * manaModifier.ModifierValue
+                        : manaModifier.ModifierValue;
+                    
+                    m_handler.PlayerMana.AddCurrentMana(m_totalModifiedValue);
                     break;
                 case ManaModifierType.Modify_Max_Mana_For_Duration:
-                    m_handler.PlayerMana.AddMaxMana(manaModifier.ModifierValue);
+                    m_totalModifiedValue = manaModifier.IsPercentValue 
+                        ? m_handler.PlayerMana.MaxMana * manaModifier.ModifierValue
+                        : manaModifier.ModifierValue;
+                    
+                    
+                    m_handler.PlayerMana.AddMaxMana(m_totalModifiedValue);
                     m_isProcessing = true;
                     break;
                 case ManaModifierType.Modify_Current_Mana_For_Duration:
-                    m_handler.PlayerMana.AddCurrentMana(manaModifier.ModifierValue);
+                    m_totalModifiedValue = manaModifier.IsPercentValue 
+                        ? m_handler.PlayerMana.CurrentMana * manaModifier.ModifierValue
+                        : manaModifier.ModifierValue;
+                    
+                    m_handler.PlayerMana.AddCurrentMana(m_totalModifiedValue);
+                    m_isProcessing = true;
+                    break;
+                case ManaModifierType.Modify_Mana_Regenerate:
+                    m_totalModifiedValue = manaModifier.IsPercentValue 
+                        ? m_handler.PlayerMana.ManaRegenerateRate * manaModifier.ModifierValue
+                        : manaModifier.ModifierValue;
+                    
+                    m_handler.PlayerMana.AddManaRegeneration(m_totalModifiedValue);
+                    break;
+                case ManaModifierType.Modify_Mana_Regenerate_For_Duration:
+                    m_totalModifiedValue = manaModifier.IsPercentValue 
+                        ? m_handler.PlayerMana.ManaRegenerateRate * manaModifier.ModifierValue
+                        : manaModifier.ModifierValue;
+                    
+                    m_handler.PlayerMana.AddManaRegeneration(m_totalModifiedValue);
                     m_isProcessing = true;
                     break;
             }
@@ -38,16 +74,22 @@ namespace SGGames.Scripts.Modifiers
             switch (manaModifier.ManaModifierType)
             {
                 case ManaModifierType.Modify_Max_Mana:
-                    m_handler.PlayerMana.AddMaxMana(-manaModifier.ModifierValue);
+                    m_handler.PlayerMana.AddMaxMana(-m_totalModifiedValue);
                     break;
                 case ManaModifierType.Modify_Current_Mana:
-                    m_handler.PlayerMana.AddCurrentMana(-manaModifier.ModifierValue);
+                    m_handler.PlayerMana.AddCurrentMana(-m_totalModifiedValue);
                     break;
                 case ManaModifierType.Modify_Max_Mana_For_Duration:
-                    m_handler.PlayerMana.AddMaxMana(-manaModifier.ModifierValue);
+                    m_handler.PlayerMana.AddMaxMana(-m_totalModifiedValue);
                     break;
                 case ManaModifierType.Modify_Current_Mana_For_Duration:
-                    m_handler.PlayerMana.AddCurrentMana(-manaModifier.ModifierValue);
+                    m_handler.PlayerMana.AddCurrentMana(-m_totalModifiedValue);
+                    break;
+                case ManaModifierType.Modify_Mana_Regenerate:
+                    m_handler.PlayerMana.AddManaRegeneration(-m_totalModifiedValue);
+                    break;
+                case ManaModifierType.Modify_Mana_Regenerate_For_Duration:
+                    m_handler.PlayerMana.AddManaRegeneration(-m_totalModifiedValue);
                     break;
             }
             base.StopModifier();

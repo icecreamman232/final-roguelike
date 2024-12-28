@@ -34,7 +34,7 @@ namespace SGGames.Scripts.UI
             {
                 current = 0;
             }
-            m_healthText.text = $"{current:F0}/{max}";
+            m_healthText.text = $"{current:F0}/{max:FO}";
         }
         
         private void OnPlayerGainImmortal(bool isImmortal)

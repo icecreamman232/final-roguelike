@@ -14,6 +14,7 @@ namespace SGGames.Scripts.Player
         
         public float MaxMana => m_maxMana;
         public float CurrentMana => m_currentMana;
+        public float ManaRegenerateRate => m_manaRegenRate;
 
         public Action<float> OnChangeMaxMana;
 
