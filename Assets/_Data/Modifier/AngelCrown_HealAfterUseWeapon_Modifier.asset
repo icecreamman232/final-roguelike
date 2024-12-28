@@ -16,7 +16,8 @@ MonoBehaviour:
     max health on getting hit.
   ModifierType: 6
   Duration: 0
-  InstantTrigger: 0
+  InstantTrigger: 1
+  PostTriggerBehavior: 0
   IsRunning: 0
   EventTypeToTrigger: 0
   ModifierToBeTriggered: {fileID: 11400000, guid: abbeb0092dda890419bc0ff9c14cf68d, type: 2}
