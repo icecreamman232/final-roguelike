@@ -1,4 +1,5 @@
 
+using System;
 using SGGames.Scripts.Events;
 using UnityEngine;
 
@@ -13,6 +14,8 @@ namespace SGGames.Scripts.Player
         
         public float MaxMana => m_maxMana;
         public float CurrentMana => m_currentMana;
+
+        public Action<float> OnChangeMaxMana;
 
         private float m_regenerateTimer;
         private readonly float m_regenerationInternal = 0.1f;
@@ -48,6 +51,7 @@ namespace SGGames.Scripts.Player
             m_maxMana += amount;
             m_currentMana = percentOfCurrent * m_maxMana;
             UpdateManaBar();
+            OnChangeMaxMana?.Invoke(m_maxMana);
         }
 
         public void AddCurrentMana(float amount)

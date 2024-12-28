@@ -27,6 +27,7 @@ namespace SGGames.Scripts.Modifiers
         HEALING,
         ATTRIBUTE,
         MANA,
+        CONVERT_MANA_TO_DAMAGE,
     }
 
     public enum PostTriggerModifierBehavior

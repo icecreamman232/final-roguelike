@@ -135,7 +135,15 @@ namespace SGGames.Scripts.Modifiers
                     }
                     m_processorContainer.Add(uniqueID, manaProcessor);
                     break;
-                
+                case ModifierType.CONVERT_MANA_TO_DAMAGE:
+                    var manaToDamageProcessor = this.gameObject.AddComponent<ConvertManaToDamageModifierProcessor>();
+                    manaToDamageProcessor.Initialize(uniqueID, this, modifier);
+                    if (modifier.InstantTrigger)
+                    {
+                        manaToDamageProcessor.StartModifier();
+                    }
+                    m_processorContainer.Add(uniqueID, manaToDamageProcessor);
+                    break;
             }
         }
         
