@@ -20,4 +20,4 @@ MonoBehaviour:
   IsRunning: 0
   DamageModifierType: 7
   ChanceToCause: 100
-  ModifierValue: 250
+  ModifierValue: 2.5
