@@ -15,6 +15,8 @@ MonoBehaviour:
   Description: Reduce <color=red>3</color> movespeed.
   ModifierType: 0
   Duration: 3
+  InstantTrigger: 1
+  PostTriggerBehavior: 0
   IsRunning: 0
   MovementModifierType: 0
   ModifierValue: 3

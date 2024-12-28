@@ -25,6 +25,10 @@ namespace SGGames.Scripts.Modifiers
                     m_isProcessing = true;
                     break;
             }
+            Debug.Log($"<color=green>Start Modifier Category:{m_modifier.ModifierType} " +
+                      $"- Type:{((ManaModifier)m_modifier).ManaModifierType} " +
+                      $"- Value:{((ManaModifier)m_modifier).ModifierValue}" +
+                      $"- Duration:{m_modifier.Duration}</color> ");
         }
 
         public override void StopModifier()
@@ -47,6 +51,11 @@ namespace SGGames.Scripts.Modifiers
                     break;
             }
             base.StopModifier();
+            
+            Debug.Log($"<color=red>Stop Modifier Category:{m_modifier.ModifierType} " +
+                      $"- Type:{((ManaModifier)m_modifier).ManaModifierType} " +
+                      $"- Value:{((ManaModifier)m_modifier).ModifierValue}" +
+                      $"- Duration:{m_modifier.Duration}</color> ");
         }
         
         protected override void Update()

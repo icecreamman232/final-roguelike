@@ -15,6 +15,9 @@ MonoBehaviour:
   Description: Grant <color=yellow>3</color> seconds immortal.
   ModifierType: 1
   Duration: 3
+  InstantTrigger: 1
+  PostTriggerBehavior: 1
   IsRunning: 0
   HealthModifierType: 9
   ModifierValue: 0
+  IsPercentValue: 0

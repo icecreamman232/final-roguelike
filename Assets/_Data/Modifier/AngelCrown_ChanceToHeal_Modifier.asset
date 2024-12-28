@@ -15,7 +15,8 @@ MonoBehaviour:
   Description: 
   ModifierType: 7
   Duration: 0
-  InstantTrigger: 0
+  InstantTrigger: 1
+  PostTriggerBehavior: 0
   IsRunning: 0
   HealingModifierType: 1
   ChanceToHeal: 30
