@@ -1,4 +1,5 @@
 using SGGames.Scripts.Core;
+using SGGames.Scripts.Events;
 using SGGames.Scripts.Healths;
 using TMPro;
 using UnityEngine;
@@ -10,6 +11,7 @@ namespace SGGames.Scripts.UI
         [SerializeField] private ObjectPooler m_statusTextPooler;
         [SerializeField] private Color m_normalColor;
         [SerializeField] private Color m_healingColor;
+        [SerializeField] private Color m_immortalColor;
         
         private PlayerHealth m_PlayerHealth;
 
@@ -25,7 +27,7 @@ namespace SGGames.Scripts.UI
             m_PlayerHealth.OnHit -= OnPlayerGetHit;
             m_PlayerHealth.OnHealing -= OnPlayerHealing;
         }
-
+        
         private void OnPlayerHealing(float amount)
         {
             var textObj = m_statusTextPooler.GetPooledGameObject();
@@ -34,9 +36,16 @@ namespace SGGames.Scripts.UI
             textMesh.text = $"+{amount}";
         }
 
-        private void OnPlayerGetHit(bool isDodge)
+        private void OnPlayerGetHit(bool isDodge, bool isImmortal)
         {
-            if (isDodge)
+            if (isImmortal)
+            {
+                var textObj = m_statusTextPooler.GetPooledGameObject();
+                var textMesh = textObj.GetComponentInChildren<TextMeshPro>();
+                textMesh.color = m_immortalColor;
+                textMesh.text = "Immunity";
+            }
+            else if (isDodge)
             {
                 var textObj = m_statusTextPooler.GetPooledGameObject();
                 var textMesh = textObj.GetComponentInChildren<TextMeshPro>();

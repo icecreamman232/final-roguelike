@@ -280,8 +280,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_healthBar: {fileID: 1856389392446612847}
+  m_border: {fileID: 2117114605853895585}
   m_healthText: {fileID: 2928129689462069960}
   m_playerHealthUpdateEvent: {fileID: 11400000, guid: 522553b978f7d444282f81b913f8d024, type: 2}
+  m_playerGainImmortalEvent: {fileID: 11400000, guid: 0a4f665936e4b4a43876b26e1a6683ad, type: 2}
 --- !u!1 &5156181291736985052
 GameObject:
   m_ObjectHideFlags: 0

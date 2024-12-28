@@ -64,5 +64,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_statusTextPooler: {fileID: 6629826508596464610}
+  m_playerImmortalEvent: {fileID: 11400000, guid: 0a4f665936e4b4a43876b26e1a6683ad, type: 2}
   m_normalColor: {r: 1, g: 1, b: 1, a: 1}
   m_healingColor: {r: 0.17849922, g: 1, b: 0, a: 1}
+  m_immortalColor: {r: 1, g: 0.79510856, b: 0, a: 1}

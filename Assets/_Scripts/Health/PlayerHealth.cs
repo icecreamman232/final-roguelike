@@ -15,11 +15,12 @@ namespace SGGames.Scripts.Healths
         [SerializeField] private PlayerHealthUpdateEvent m_PlayerHealthUpdateEvent;
         [SerializeField] private float m_regenerationRate;
         [SerializeField] private PlayerEvent m_PlayerEvent;
+        [SerializeField] private BoolEvent m_playerGainImmortalEvent;
         private SpriteFlicker m_spriteFlicker;
         private readonly float m_regenerationInterval = 0.1f;
         private float m_regenerateTimer;
 
-        public Action<bool> OnHit; //Boolean pass is for dodge chance
+        public Action<bool,bool> OnHit; //Boolean pass is for dodge chance
         public Action<float> OnHealing;
         
         /// <summary>
@@ -57,19 +58,24 @@ namespace SGGames.Scripts.Healths
         {
             base.TakeDamage(damage, source, invincibilityDuration,isCritical);
 
+            if (m_isImmortal)
+            {
+                OnHit?.Invoke(false,true);
+            }
+            
             //Player cant take damage this frame
             if (!CanTakeDamage()) return;
 
             if (CanDodgeThisAttack())
             {
-                OnHit?.Invoke(true);
+                OnHit?.Invoke(true,false);
                 m_PlayerEvent.Raise(PlayerEventType.DODGE);
                 return;
             }
             
             m_currentHealth -= damage * (1- m_armor/100);
             m_lastSourceCauseDamage = source;
-            OnHit?.Invoke(false);
+            OnHit?.Invoke(false,false);
             
             m_PlayerEvent.Raise(PlayerEventType.TAKE_DAMAGE);
             
@@ -152,6 +158,12 @@ namespace SGGames.Scripts.Healths
             }
             
             OnHealing?.Invoke(healingAmount);
+        }
+
+        public override void SetImmortal(bool immortal)
+        {
+            base.SetImmortal(immortal);
+            m_playerGainImmortalEvent.Raise(immortal);
         }
     }
 }

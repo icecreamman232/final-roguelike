@@ -234,6 +234,7 @@ MonoBehaviour:
   m_PlayerHealthUpdateEvent: {fileID: 11400000, guid: 522553b978f7d444282f81b913f8d024, type: 2}
   m_regenerationRate: 0
   m_PlayerEvent: {fileID: 11400000, guid: b065f74e84bb99e4a9f98567722831a3, type: 2}
+  m_playerGainImmortalEvent: {fileID: 11400000, guid: 0a4f665936e4b4a43876b26e1a6683ad, type: 2}
 --- !u!114 &6210066009922297151
 MonoBehaviour:
   m_ObjectHideFlags: 0

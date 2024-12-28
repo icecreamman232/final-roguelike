@@ -15,6 +15,8 @@ MonoBehaviour:
   Description: Grant <color=yellow>3</color> seconds immortal on entering a room.
   ModifierType: 3
   Duration: 0
+  InstantTrigger: 0
+  PostTriggerBehavior: 1
   IsRunning: 0
   EventTypeToTrigger: 0
   ModifierToBeTriggered: {fileID: 11400000, guid: 0b018bb56f0181e4e926f109565d35cf, type: 2}

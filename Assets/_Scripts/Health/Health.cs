@@ -71,7 +71,7 @@ namespace SGGames.Scripts.Healths
             UpdateHealthBar();
         }
 
-        public void SetImmortal(bool immortal)
+        public virtual void SetImmortal(bool immortal)
         {
             m_isImmortal = immortal;
         }
@@ -83,7 +83,7 @@ namespace SGGames.Scripts.Healths
 
         protected virtual bool CanTakeDamage()
         {
-            if (m_isImmortal) return false;
+            if (m_isImmortal) {return false;}
 
             if (m_isDead) return false;
             
