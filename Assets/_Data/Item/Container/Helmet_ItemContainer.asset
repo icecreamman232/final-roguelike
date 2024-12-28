@@ -26,7 +26,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: f7dcca9b4445e3b4aa52fb4272199950, type: 2}
   - {fileID: 11400000, guid: 4a0396806c2109049b36ba8f32a71418, type: 2}
   - {fileID: 11400000, guid: fa96d936fd8447847802d076ca393d22, type: 2}
-  m_rareItemList: []
+  m_rareItemList:
+  - {fileID: 11400000, guid: 44c18b810f983f44192d505ab40baf82, type: 2}
   m_epicItemList:
   - {fileID: 11400000, guid: 70389288e89c48a438681b84c3526d03, type: 2}
   m_legendaryItemList:

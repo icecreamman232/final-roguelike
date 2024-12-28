@@ -391,7 +391,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -399,6 +399,27 @@ TextureImporter:
       bones: []
       spriteID: a3221db59bcb1334f9d9c479dde8d3e0
       internalID: -1782871475
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Deadeye-mask
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 96
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cfbc71fb52fee148a03976db27564c6
+      internalID: -2012977387
       vertices: []
       indices: 
       edges: []
@@ -420,6 +441,7 @@ TextureImporter:
       Captain-helmet: 1679268514
       Common-soldier-helmet: -1715481063
       Conqueror-Helmet: -1782871475
+      Deadeye-mask: -2012977387
       Evil-helmet: 2081394859
       Helmet_0: 1539394391
       Leather-hood: -934698402
