@@ -61,10 +61,18 @@ namespace SGGames.Scripts.Managers
         {
             m_isCoroutineRunning = true;
             var slowDownDuration = C_SLOW_DOWN_TIME_BEFORE_PAUSE;
+            var remapValue = 1f;
             while (slowDownDuration > 0)
             {
                 slowDownDuration -= Time.unscaledDeltaTime;
-                Time.timeScale = MathHelpers.Remap(slowDownDuration, 0, C_SLOW_DOWN_TIME_BEFORE_PAUSE, 0, 1);
+                remapValue = MathHelpers.Remap(slowDownDuration, 0, C_SLOW_DOWN_TIME_BEFORE_PAUSE, 0, 1);
+                if (remapValue < 0)
+                {
+                    remapValue = 0;
+                    Time.timeScale = remapValue;
+                    break;
+                }
+                Time.timeScale = remapValue;
                 yield return null;
             }
 
