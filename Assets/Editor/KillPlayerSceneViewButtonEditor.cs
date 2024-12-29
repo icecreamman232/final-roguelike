@@ -9,14 +9,14 @@ public class KillPlayerSceneViewButtonEditor : Editor
 {
     private static GUIStyle m_style = new GUIStyle();
     
-    [MenuItem("SGGames/Show Scene Tools")]
+    //[MenuItem("SGGames/Show Scene Tools")]
     public static void Enable()
     {
         SceneView.duringSceneGui += OnSceneGUIDrawn;
         m_style = GUI.skin.label;
     }
 
-    [MenuItem("SGGames/Hide Scene Tools")]
+    //[MenuItem("SGGames/Hide Scene Tools")]
     public static void Disable()
     {
         SceneView.duringSceneGui -= OnSceneGUIDrawn;
