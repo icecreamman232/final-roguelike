@@ -28,6 +28,8 @@ namespace SGGames.Scripts.Modifiers
         ATTRIBUTE,
         MANA,
         CONVERT_MANA_TO_DAMAGE,
+        
+        COUNT,
     }
 
     public enum PostTriggerModifierBehavior

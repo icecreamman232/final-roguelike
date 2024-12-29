@@ -1,3 +1,4 @@
+using SGGames.Scripts.Modifiers;
 using UnityEngine;
 
 
@@ -33,7 +34,15 @@ namespace SGGames.Scripts.Data
         [SerializeField] private ItemCategory m_itemCategory;
         [SerializeField] private Sprite m_icon;
         [SerializeField] private GameObject m_pickerPrefab;
+        [Header("Modifier")] 
+        [SerializeField] private Modifier[] m_modifierList;
         
+        public Modifier[] ModifierList
+        {
+            get => m_modifierList;
+            set => m_modifierList = value;
+        }
+
         public string ItemID
         {
             get => m_itemID;

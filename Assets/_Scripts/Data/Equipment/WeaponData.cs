@@ -1,6 +1,5 @@
 
 using SGGames.Scripts.Common;
-using SGGames.Scripts.Modifiers;
 using SGGames.Scripts.Weapons;
 using UnityEditor;
 using UnityEngine;
@@ -20,8 +19,7 @@ namespace SGGames.Scripts.Data
         [Header("Prefab")]
         [SerializeField] private GameObject m_weaponPrefab;
         [SerializeField] private GameObject m_projectilePrefab;
-        [Header("Modifier")] 
-        [SerializeField] private Modifier[] m_modifierList;
+        
         
         public WeaponCategory WeaponCategory => m_weaponCategory;
         public float MinDamage => m_minDamage;
@@ -31,7 +29,6 @@ namespace SGGames.Scripts.Data
         public float ProjectileSpeed => m_projectileSpeed;
         public GameObject WeaponPrefab => m_weaponPrefab;
         public GameObject ProjectilePrefab => m_projectilePrefab;
-        public Modifier[] ModifierList => m_modifierList;
 
 #if UNITY_EDITOR
         public void ApplyData()

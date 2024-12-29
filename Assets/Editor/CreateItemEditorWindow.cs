@@ -48,7 +48,7 @@ public class CreateItemEditorWindow : EditorWindow
     [MenuItem("SGGames/Create Item Tool")]
     private static void OpenWindow()
     {
-        var window = EditorWindow.GetWindow<CreateItemEditorWindow>("Create Item Tool");
+        var window = EditorWindow.GetWindow<CreateItemEditorWindow>("Item Tool");
         window.ShowPopup();
     }
 
