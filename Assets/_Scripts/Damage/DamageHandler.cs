@@ -44,15 +44,6 @@ namespace SGGames.Scripts.Damages
             m_critDamage = damageInfo.CriticalDamage;
         }
 
-        
-        protected virtual float ComputeDamage(out bool isCritical)
-        {
-            var rawDamage = Mathf.Round(Random.Range(m_minDamage + m_additionMin, m_maxDamage + m_additionMax));
-            var finalDamage = Mathf.Round(rawDamage * m_multiplyDamage * m_critDamage);
-            isCritical = m_critDamage > 1;
-            return finalDamage;
-        }
-
         protected virtual void OnTriggerEnter2D(Collider2D other)
         {
             if (LayerManager.IsInLayerMask(other.gameObject.layer, m_damageableLayerMask))
@@ -76,7 +67,10 @@ namespace SGGames.Scripts.Damages
             if (health != null)
             {
                 OnHitDamageable?.Invoke(target);
-                health.TakeDamage(ComputeDamage(out var isCritical),this.gameObject,m_damageableInvulnerableTime,isCritical);
+                health.TakeDamage(
+                    PlayerDamageComputer.ComputeOutputDamage(m_minDamage,m_additionMin, m_maxDamage,m_additionMax,
+                        m_multiplyDamage,m_critDamage,out var isCritical)
+                    ,this.gameObject,m_damageableInvulnerableTime,isCritical);
             }
         }
     }

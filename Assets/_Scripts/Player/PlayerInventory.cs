@@ -142,7 +142,7 @@ namespace SGGames.Scripts.Player
             if (m_primaryWeaponSlot == null)
             {
                 m_primaryWeaponSlot = data;
-                m_playerWeaponHandler.EquipWeapon(data.WeaponPrefab.GetComponent<Weapon>());
+                m_playerWeaponHandler.EquipWeapon(data);
                 return true;
             }
             else

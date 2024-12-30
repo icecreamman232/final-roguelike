@@ -677,6 +677,13 @@ MonoBehaviour:
   m_strengthNumberText: {fileID: 5121057815383373859}
   m_agilityNumberText: {fileID: 4294427787542851431}
   m_intelligenceNumberText: {fileID: 7284330730412259556}
+  m_attackDamageText: {fileID: 3756152351630865222}
+  m_criticalChanceText: {fileID: 2316714971015767143}
+  m_criticalDamageText: {fileID: 2941111525559497889}
+  m_armorText: {fileID: 8416411427642975979}
+  m_dodgeRateText: {fileID: 8177876304951468483}
+  m_hpRegenText: {fileID: 7781144729867309363}
+  m_manaRegenText: {fileID: 444027871523232452}
   m_openCharacterInfoUIEvent: {fileID: 11400000, guid: 9c8bcbc8359a26a4db6d550db47ae89d, type: 2}
 --- !u!1 &1752988035737684676
 GameObject:
@@ -713,7 +720,7 @@ RectTransform:
   m_AnchorMin: {x: 1, y: 0.5}
   m_AnchorMax: {x: 1, y: 0.5}
   m_AnchoredPosition: {x: -15, y: 0}
-  m_SizeDelta: {x: 100, y: 30}
+  m_SizeDelta: {x: 200, y: 30}
   m_Pivot: {x: 1, y: 0.5}
 --- !u!222 &7588030264819500024
 CanvasRenderer:

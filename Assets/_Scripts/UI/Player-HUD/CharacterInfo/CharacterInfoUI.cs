@@ -1,5 +1,7 @@
 using SGGames.Scripts.Events;
+using SGGames.Scripts.Healths;
 using SGGames.Scripts.Manager;
+using SGGames.Scripts.Managers;
 using SGGames.Scripts.Player;
 using TMPro;
 using UnityEngine;
@@ -13,9 +15,19 @@ namespace SGGames.Scripts.UI
        [SerializeField] private TextMeshProUGUI m_strengthNumberText;
        [SerializeField] private TextMeshProUGUI m_agilityNumberText;
        [SerializeField] private TextMeshProUGUI m_intelligenceNumberText;
+       [SerializeField] private TextMeshProUGUI m_attackDamageText;
+       [SerializeField] private TextMeshProUGUI m_criticalChanceText;
+       [SerializeField] private TextMeshProUGUI m_criticalDamageText;
+       [SerializeField] private TextMeshProUGUI m_armorText;
+       [SerializeField] private TextMeshProUGUI m_dodgeRateText;
+       [SerializeField] private TextMeshProUGUI m_hpRegenText;
+       [SerializeField] private TextMeshProUGUI m_manaRegenText;
        [SerializeField] private OpenCharacterInfoUIEvent m_openCharacterInfoUIEvent;
 
        private PlayerAttributeController m_playerAttributeController;
+       private PlayerDamageComputer m_playerDamageComputer;
+       private PlayerHealth m_playerHealth;
+       private PlayerMana m_playerMana;
        
        private void Start()
        {
@@ -33,6 +45,20 @@ namespace SGGames.Scripts.UI
            if (isOpen)
            {
                m_playerAttributeController = playerAttributeController;
+               if (m_playerDamageComputer == null)
+               {
+                   m_playerDamageComputer = LevelManager.Instance.PlayerRef.GetComponent<PlayerDamageComputer>();
+               }
+
+               if (m_playerHealth == null)
+               {
+                   m_playerHealth = LevelManager.Instance.PlayerRef.GetComponent<PlayerHealth>();
+               }
+
+               if (m_playerMana == null)
+               {
+                   m_playerMana = LevelManager.Instance.PlayerRef.GetComponent<PlayerMana>();
+               }
                FillInfo();
                Show();
            }
@@ -48,6 +74,15 @@ namespace SGGames.Scripts.UI
            m_strengthNumberText.text = m_playerAttributeController.StrengthPoints.ToString("F0");
            m_agilityNumberText.text = m_playerAttributeController.AgilityPoints.ToString("F0");
            m_intelligenceNumberText.text = m_playerAttributeController.IntelligencePoints.ToString("F0");
+
+           m_attackDamageText.text = $"{m_playerDamageComputer.TotalMinDamage:F0}-{m_playerDamageComputer.TotalMaxDamage:F0}";
+           m_criticalChanceText.text = $"{m_playerDamageComputer.CriticalChance:F2}%";
+           m_criticalDamageText.text = $"{(m_playerDamageComputer.CriticalDamage * 100f):F2}%";
+           
+           m_armorText.text = m_playerHealth.Armor.ToString("F0");
+           m_dodgeRateText.text = m_playerHealth.DodgeRate.ToString("F0");
+           m_hpRegenText.text = m_playerHealth.HPRegenerationRate.ToString();
+           m_manaRegenText.text = m_playerMana.ManaRegenerateRate.ToString();
        }
        
 

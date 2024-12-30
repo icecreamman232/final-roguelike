@@ -1,3 +1,4 @@
+using System;
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
@@ -24,6 +25,8 @@ namespace SGGames.Scripts.Player
         
         public bool IsWeaponInitialized => m_currentWeapon != null;
         public float BaseAtkTime => m_currentWeapon.BaseDelayBetweenShots;
+
+        public Action<WeaponData> OnEquipWeapon;
         
         protected override void Start()
         {
@@ -59,16 +62,18 @@ namespace SGGames.Scripts.Player
             
             if (m_currentWeapon == null)
             {
-                EquipWeapon(m_initialWeaponData.WeaponPrefab.GetComponent<Weapon>());
+                EquipWeapon(m_initialWeaponData);
                 m_playerInventory.AddInitialWeapon(m_initialWeaponData);
             }
         }
         
-        public virtual void EquipWeapon(Weapon newWeapon)
+        public virtual void EquipWeapon(WeaponData newWeapon)
         {
-            m_currentWeapon = Instantiate(newWeapon, m_weaponAttachment);
+            m_currentWeapon = Instantiate(newWeapon.WeaponPrefab.GetComponent<Weapon>(), m_weaponAttachment);
             m_currentWeapon.Initialize(m_playerAim);
             ApplyAttackSpeedOnCurrentWeapon(m_playerAttributeController.ComputeDelayBetweenAttacks(BaseAtkTime));
+            
+            OnEquipWeapon?.Invoke(newWeapon);
             m_playerEvent.Raise(PlayerEventType.EQUIP_WEAPON);
         }
 
@@ -78,7 +83,7 @@ namespace SGGames.Scripts.Player
             Destroy(m_currentWeapon.gameObject);
         }
 
-        public virtual void SwitchWeapon(Weapon newWeapon)
+        public virtual void SwitchWeapon(WeaponData newWeapon)
         {
             m_currentWeapon.StopShooting();
             Destroy(m_currentWeapon.gameObject);

@@ -22,6 +22,9 @@ namespace SGGames.Scripts.Healths
 
         public Action<bool,bool> OnHit; //Boolean pass is for dodge chance
         public Action<float> OnHealing;
+        public float Armor => m_armor;
+        public float DodgeRate => m_dodgeRate;
+        public float HPRegenerationRate => m_regenerationRate;
         
         /// <summary>
         /// Use this with caution since it could be null at some point.
