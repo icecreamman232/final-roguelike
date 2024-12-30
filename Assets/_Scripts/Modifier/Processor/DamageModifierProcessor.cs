@@ -23,64 +23,33 @@ namespace SGGames.Scripts.Modifiers
             
             switch (damageModifier.DamageModifierType)
             {
-                case DamageModifierType.ReduceDamage_ForDuration:
-                    m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
-                            DamageInfluencerType.ADD_DAMAGE, 
-                            damageModifier.ChanceToCause,
-                            -damageModifier.ModifierValue));
-                    m_isProcessing = true;
-                    break;
-                case DamageModifierType.IncreaseDamage_ForDuration:
+                case DamageModifierType.ModifyDamageForDuration:
                     m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
                         DamageInfluencerType.ADD_DAMAGE, 
                         damageModifier.ChanceToCause,
                         damageModifier.ModifierValue));
                     m_isProcessing = true;
                     break;
-                case DamageModifierType.MultiplyDamage_ForDuration:
+                case DamageModifierType.ModifyMultiplyDamageForDuration:
                     m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
                         DamageInfluencerType.MULTIPLY_DAMAGE, 
                         damageModifier.ChanceToCause,
                         damageModifier.ModifierValue));
                     m_isProcessing = true;
                     break;
-                case DamageModifierType.IncreaseDamage:
+                case DamageModifierType.ModifyDamage:
                     m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
                         DamageInfluencerType.ADD_DAMAGE, 
                         damageModifier.ChanceToCause,
                         damageModifier.ModifierValue));
                     break;
-                case DamageModifierType.ReduceDamage:
-                    m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
-                        DamageInfluencerType.ADD_DAMAGE, 
-                        damageModifier.ChanceToCause,
-                        -damageModifier.ModifierValue));
-                    break;
-                case DamageModifierType.MultiplyDamage:
-                    m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
-                        DamageInfluencerType.MULTIPLY_DAMAGE, 
-                        damageModifier.ChanceToCause,
-                        damageModifier.ModifierValue));
-                    break;
-                case DamageModifierType.IncreaseCriticalChance:
+                case DamageModifierType.ModifyCriticalChance:
                     m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
                         DamageInfluencerType.CRITICAL_CHANCE, 
                         damageModifier.ChanceToCause,
                         damageModifier.ModifierValue));
                     break;
-                case DamageModifierType.IncreaseCriticalDamage:
-                    m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
-                        DamageInfluencerType.CRITICAL_DAMAGE, 
-                        damageModifier.ChanceToCause,
-                        damageModifier.ModifierValue));
-                    break;
-                case DamageModifierType.ReduceCriticalChance:
-                    m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
-                        DamageInfluencerType.CRITICAL_CHANCE, 
-                        damageModifier.ChanceToCause,
-                        -damageModifier.ModifierValue));
-                    break;
-                case DamageModifierType.ReduceCriticalDamage:
+                case DamageModifierType.ModifyCriticalDamage:
                     m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
                         DamageInfluencerType.CRITICAL_DAMAGE, 
                         damageModifier.ChanceToCause,

@@ -5,18 +5,12 @@ namespace SGGames.Scripts.Modifiers
 {
     public enum DamageModifierType
     {
-        IncreaseDamage,
-        ReduceDamage,
-        MultiplyDamage,
+        ModifyDamage,
+        ModifyDamageForDuration,
+        ModifyMultiplyDamageForDuration,
         
-        IncreaseDamage_ForDuration,
-        ReduceDamage_ForDuration,
-        MultiplyDamage_ForDuration,
-        
-        IncreaseCriticalChance,
-        IncreaseCriticalDamage,
-        ReduceCriticalChance,
-        ReduceCriticalDamage,
+        ModifyCriticalChance,
+        ModifyCriticalDamage,
     }
     
     [CreateAssetMenu(fileName = "DamageModifier", menuName = "SGGames/Modifiers/Damage Modifier")]
