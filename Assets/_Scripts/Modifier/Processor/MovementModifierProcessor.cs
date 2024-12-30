@@ -16,64 +16,43 @@ namespace SGGames.Scripts.Modifiers
         public override void StartModifier()
         {
             base.StartModifier();
-            switch (((MovementModifier)m_modifier).MovementModifierType)
+            var moveSpeedModifier = (MovementModifier)m_modifier;
+            
+            switch (moveSpeedModifier.MovementModifierType)
             {
-                case MovementModifierType.ReduceMSForDuration:
-                    m_playerMovement.ModifySpeed(-((MovementModifier)m_modifier).ModifierValue);
+                case MovementModifierType.ModifyMovespeedForDuration:
+                    m_playerMovement.ModifySpeed(moveSpeedModifier.ModifierValue);
                     m_isProcessing = true;
                     break;
-                case MovementModifierType.IncreaseMSForDuration:
-                    m_playerMovement.ModifySpeed(((MovementModifier)m_modifier).ModifierValue);
-                    m_isProcessing = true;
-                    break;
-                case MovementModifierType.OverrideSpeedForDuration:
-                    m_playerMovement.OverrideSpeed(((MovementModifier)m_modifier).ModifierValue);
-                    m_isProcessing = true;
-                    break;
-                case MovementModifierType.ReduceMS:
-                    m_playerMovement.ModifySpeed(-((MovementModifier)m_modifier).ModifierValue);
-                    break;
-                case MovementModifierType.IncreaseMS:
-                    m_playerMovement.ModifySpeed(((MovementModifier)m_modifier).ModifierValue);
-                    break;
-                case MovementModifierType.OverrideSpeed:
-                    m_playerMovement.OverrideSpeed(((MovementModifier)m_modifier).ModifierValue);
+                case MovementModifierType.ModifyMovespeed:
+                    m_playerMovement.ModifySpeed(moveSpeedModifier.ModifierValue);
                     break;
             }
 
             m_modifier.IsRunning = true;
             
             Debug.Log($"<color=green>Start Modifier Category:{m_modifier.ModifierType} " +
-                      $"- Type:{((MovementModifier)m_modifier).MovementModifierType} " +
-                      $"- Value:{((MovementModifier)m_modifier).ModifierValue}" +
+                      $"- Type:{moveSpeedModifier.MovementModifierType} " +
+                      $"- Value:{moveSpeedModifier.ModifierValue}" +
                       $"- Duration:{m_modifier.Duration}</color> ");
         }
     
         public override void StopModifier()
         {
+            var moveSpeedModifier = (MovementModifier)m_modifier;
+            
             Debug.Log($"<color=red>Stop Modifier Category:{m_modifier.ModifierType} " +
-                      $"- Type:{((MovementModifier)m_modifier).MovementModifierType} " +
-                      $"- Value:{((MovementModifier)m_modifier).ModifierValue}" +
+                      $"- Type:{moveSpeedModifier.MovementModifierType} " +
+                      $"- Value:{moveSpeedModifier.ModifierValue}" +
                       $"- Duration:{m_modifier.Duration}</color> ");
             
-            switch (((MovementModifier)m_modifier).MovementModifierType)
+            switch (moveSpeedModifier.MovementModifierType)
             {
-                case MovementModifierType.ReduceMSForDuration:
-                    m_playerMovement.ModifySpeed(((MovementModifier)m_modifier).ModifierValue);
+                case MovementModifierType.ModifyMovespeedForDuration:
+                    m_playerMovement.ModifySpeed(-moveSpeedModifier.ModifierValue);
                     break;
-                case MovementModifierType.IncreaseMSForDuration:
-                    m_playerMovement.ModifySpeed(-((MovementModifier)m_modifier).ModifierValue);
-                    break;
-                case MovementModifierType.OverrideSpeedForDuration:
-                    m_playerMovement.ResetSpeed();
-                    break;
-                case MovementModifierType.ReduceMS:
-                    m_playerMovement.ModifySpeed(((MovementModifier)m_modifier).ModifierValue);
-                    break;
-                case MovementModifierType.IncreaseMS:
-                    m_playerMovement.ModifySpeed(-((MovementModifier)m_modifier).ModifierValue);
-                    break;
-                case MovementModifierType.OverrideSpeed:
+                case MovementModifierType.ModifyMovespeed:
+                    m_playerMovement.ModifySpeed(-moveSpeedModifier.ModifierValue);
                     break;
             }
 

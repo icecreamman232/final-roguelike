@@ -4,15 +4,8 @@ namespace SGGames.Scripts.Modifiers
 {
     public enum MovementModifierType
     {
-        //Temporary type
-        ReduceMSForDuration,
-        IncreaseMSForDuration,
-        OverrideSpeedForDuration,
-        
-        //Permanent type
-        ReduceMS,
-        IncreaseMS,
-        OverrideSpeed,
+        ModifyMovespeedForDuration,
+        ModifyMovespeed,
     }
     
     [CreateAssetMenu(fileName = "MovementModifier", menuName = "SGGames/Modifiers/Movement Modifier")]
