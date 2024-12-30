@@ -16,48 +16,31 @@ namespace SGGames.Scripts.Modifiers
         public override void StartModifier()
         {
             base.StartModifier();
-            switch (((HealthModifier)m_modifier).HealthModifierType)
+
+            var healthModifier = (HealthModifier)m_modifier;
+            
+            switch (healthModifier.HealthModifierType)
             {
-                case HealthModifierType.DecreaseCurrentHP_ForDuration:
-                    m_playerHealth.ModifyCurrentHealth(-((HealthModifier)m_modifier).ModifierValue);
+                case HealthModifierType.ModifyCurrentHPForDuration:
+                    m_playerHealth.ModifyCurrentHealth(healthModifier.ModifierValue);
                     m_isProcessing = true;
                     break;
-                case HealthModifierType.IncreaseCurrentHP_ForDuration:
-                    m_playerHealth.ModifyCurrentHealth(((HealthModifier)m_modifier).ModifierValue);
-                    m_isProcessing = true;
-                    break;
-                case HealthModifierType.OverrideCurrentHP_ForDuration:
-                    m_playerHealth.OverrideCurrentHealth(((HealthModifier)m_modifier).ModifierValue);
+                case HealthModifierType.ModifyMaxHPForDuration:
+                    m_playerHealth.ModifyMaxHealth(healthModifier.ModifierValue,healthModifier.IsPercentValue);
                     m_isProcessing = true;
                     break;
                 case HealthModifierType.SetImmortal_ForDuration:
                     m_playerHealth.SetImmortal(true);
                     m_isProcessing = true;
                     break;
-                
-                case HealthModifierType.IncreaseCurrentHP:
-                    m_playerHealth.ModifyCurrentHealth(((HealthModifier)m_modifier).ModifierValue);
+                case HealthModifierType.ModifyCurrentHP:
+                    m_playerHealth.ModifyCurrentHealth(healthModifier.ModifierValue);
                     break;
-                case HealthModifierType.DecreaseCurrentHP:
-                    m_playerHealth.ModifyCurrentHealth(-((HealthModifier)m_modifier).ModifierValue);
+                case HealthModifierType.ModifyMaxHP:
+                    m_playerHealth.ModifyMaxHealth(healthModifier.ModifierValue, healthModifier.IsPercentValue);
                     break;
-                case HealthModifierType.OverrideCurrentHP:
-                    m_playerHealth.OverrideCurrentHealth(((HealthModifier)m_modifier).ModifierValue);
-                    break;
-                case HealthModifierType.DecreaseMaxHP:
-                    m_playerHealth.ModifyMaxHealth(-((HealthModifier)m_modifier).ModifierValue,((HealthModifier)m_modifier).IsPercentValue);
-                    break;
-                case HealthModifierType.IncreaseMaxHP:
-                    m_playerHealth.ModifyMaxHealth(((HealthModifier)m_modifier).ModifierValue, ((HealthModifier)m_modifier).IsPercentValue);
-                    break;
-                case HealthModifierType.OverrideMaxHP:
-                    m_playerHealth.OverrideMaxHealth(((HealthModifier)m_modifier).ModifierValue);
-                    break;
-                case HealthModifierType.IncreaseDodge:
-                    m_playerHealth.AddDodgeRate(((HealthModifier)m_modifier).ModifierValue);
-                    break;
-                case HealthModifierType.ReduceDodge:
-                    m_playerHealth.AddDodgeRate(-((HealthModifier)m_modifier).ModifierValue);
+                case HealthModifierType.ModifyDodgeRate:
+                    m_playerHealth.AddDodgeRate(healthModifier.ModifierValue);
                     break;
             }
 
@@ -71,48 +54,29 @@ namespace SGGames.Scripts.Modifiers
     
         public override void StopModifier()
         {
+            var healthModifier = (HealthModifier)m_modifier;
+            
             Debug.Log($"<color=red>Stop Modifier Category:{m_modifier.ModifierType} " +
-                      $"- Type:{((HealthModifier)m_modifier).HealthModifierType} " +
-                      $"- Value:{((HealthModifier)m_modifier).ModifierValue}" +
+                      $"- Type:{healthModifier.HealthModifierType} " +
+                      $"- Value:{healthModifier.ModifierValue}" +
                       $"- Duration:{m_modifier.Duration}</color> ");
             
-            switch (((HealthModifier)m_modifier).HealthModifierType)
+            switch (healthModifier.HealthModifierType)
             {
-                case HealthModifierType.DecreaseCurrentHP_ForDuration:
-                    m_playerHealth.ModifyCurrentHealth(((HealthModifier)m_modifier).ModifierValue);
-                    break;
-                case HealthModifierType.IncreaseCurrentHP_ForDuration:
-                    m_playerHealth.ModifyCurrentHealth(-((HealthModifier)m_modifier).ModifierValue);
-                    break;
-                case HealthModifierType.OverrideCurrentHP_ForDuration:
-                    m_playerHealth.ResetHealth();
+                case HealthModifierType.ModifyCurrentHPForDuration:
+                    m_playerHealth.ModifyCurrentHealth(-healthModifier.ModifierValue);
                     break;
                 case HealthModifierType.SetImmortal_ForDuration:
                     m_playerHealth.SetImmortal(false);
                     break;
-                case HealthModifierType.DecreaseMaxHP:
-                    m_playerHealth.ModifyMaxHealth(((HealthModifier)m_modifier).ModifierValue, ((HealthModifier)m_modifier).IsPercentValue);
+                case HealthModifierType.ModifyMaxHP:
+                    m_playerHealth.ModifyMaxHealth(-healthModifier.ModifierValue, healthModifier.IsPercentValue);
                     break;
-                case HealthModifierType.IncreaseMaxHP:
-                    m_playerHealth.ModifyMaxHealth(-((HealthModifier)m_modifier).ModifierValue, ((HealthModifier)m_modifier).IsPercentValue);
+                case HealthModifierType.ModifyCurrentHP:
+                    m_playerHealth.ModifyCurrentHealth(-healthModifier.ModifierValue);
                     break;
-                case HealthModifierType.OverrideMaxHP:
-                    //TODO:Implement a way to save previous value before got override
-                    break;
-                case HealthModifierType.IncreaseCurrentHP:
-                    m_playerHealth.ModifyCurrentHealth(-((HealthModifier)m_modifier).ModifierValue);
-                    break;
-                case HealthModifierType.DecreaseCurrentHP:
-                    m_playerHealth.ModifyCurrentHealth(((HealthModifier)m_modifier).ModifierValue);
-                    break;
-                case HealthModifierType.OverrideCurrentHP:
-                    //TODO:Implement a way to save previous value before got override
-                    break;
-                case HealthModifierType.IncreaseDodge:
-                    m_playerHealth.AddDodgeRate(-((HealthModifier)m_modifier).ModifierValue);
-                    break;
-                case HealthModifierType.ReduceDodge:
-                    m_playerHealth.AddDodgeRate(((HealthModifier)m_modifier).ModifierValue);
+                case HealthModifierType.ModifyDodgeRate:
+                    m_playerHealth.AddDodgeRate(-healthModifier.ModifierValue);
                     break;
             }
 

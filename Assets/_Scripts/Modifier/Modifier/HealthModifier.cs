@@ -5,22 +5,12 @@ namespace SGGames.Scripts.Modifiers
 {
     public enum HealthModifierType
     {
-        IncreaseCurrentHP_ForDuration,
-        DecreaseCurrentHP_ForDuration,
-        OverrideCurrentHP_ForDuration,
-        
-        IncreaseMaxHP,
-        DecreaseMaxHP,
-        OverrideMaxHP,
-        
-        IncreaseCurrentHP,
-        DecreaseCurrentHP,
-        OverrideCurrentHP,
-        
+        ModifyCurrentHPForDuration,
+        ModifyMaxHPForDuration,
+        ModifyMaxHP,
+        ModifyCurrentHP,
         SetImmortal_ForDuration,
-
-        IncreaseDodge,
-        ReduceDodge,
+        ModifyDodgeRate,
     }
     
     
