@@ -7,66 +7,69 @@ namespace SGGames.Scripts.Modifiers
     {
         public override void StartModifier()
         {
+            var coinModifier = ((CoinModifier)m_modifier);
+            
             base.StartModifier();
-            switch (((CoinModifier)m_modifier).CoinModifierType)
+            switch (coinModifier.CoinModifierType)
             {
                 case CoinModifierType.ADD_EXTRA_COIN_FOR_ENEMY:
-                    CurrencyManager.Instance.AddExtraCoinForEnemy(((CoinModifier)m_modifier).ModifierValue);
+                    CurrencyManager.Instance.AddExtraCoinForEnemy(coinModifier.ModifierValue);
                     break;
                 case CoinModifierType.ADD_EXTRA_COIN_FOR_CHEST:
-                    CurrencyManager.Instance.AddExtraCoinForChest(((CoinModifier)m_modifier).ModifierValue);
+                    CurrencyManager.Instance.AddExtraCoinForChest(coinModifier.ModifierValue);
                     break;
                 case CoinModifierType.ADD_EXTRA_COIN_FOR_ALL:
-                    CurrencyManager.Instance.AddExtraCoinForEnemy(((CoinModifier)m_modifier).ModifierValue);
-                    CurrencyManager.Instance.AddExtraCoinForChest(((CoinModifier)m_modifier).ModifierValue);
+                    CurrencyManager.Instance.AddExtraCoinForEnemy(coinModifier.ModifierValue);
+                    CurrencyManager.Instance.AddExtraCoinForChest(coinModifier.ModifierValue);
                     break;
                 case CoinModifierType.ADD_COIN_FOR_ENEMY_MULTIPLIER:
-                    CurrencyManager.Instance.AddExtraCoinEnemyMultiplier(((CoinModifier)m_modifier).ModifierValue/100f);
+                    CurrencyManager.Instance.AddExtraCoinEnemyMultiplier(coinModifier.ModifierValue/100f);
                     break;
                 case CoinModifierType.ADD_COIN_FOR_CHEST_MULTIPLIER:
-                    CurrencyManager.Instance.AddExtraCoinChestMultiplier(((CoinModifier)m_modifier).ModifierValue/100f);
+                    CurrencyManager.Instance.AddExtraCoinChestMultiplier(coinModifier.ModifierValue/100f);
                     break;
                 case CoinModifierType.ADD_COIN_MULTIPLIER_FOR_ALL:
-                    CurrencyManager.Instance.AddExtraCoinEnemyMultiplier(((CoinModifier)m_modifier).ModifierValue/100f);
-                    CurrencyManager.Instance.AddExtraCoinChestMultiplier(((CoinModifier)m_modifier).ModifierValue/100f);
+                    CurrencyManager.Instance.AddExtraCoinEnemyMultiplier(coinModifier.ModifierValue/100f);
+                    CurrencyManager.Instance.AddExtraCoinChestMultiplier(coinModifier.ModifierValue/100f);
                     break;
             }
             
             Debug.Log($"<color=green>Start Modifier Category:{m_modifier.ModifierType} " +
-                      $"- Type:{((CoinModifier)m_modifier).CoinModifierType} " +
-                      $"- Value:{((CoinModifier)m_modifier).ModifierValue}" +
+                      $"- Type:{coinModifier.CoinModifierType} " +
+                      $"- Value:{coinModifier.ModifierValue}" +
                       $"- Duration:{m_modifier.Duration}</color> ");
         }
 
         public override void StopModifier()
         {
-            switch (((CoinModifier)m_modifier).CoinModifierType)
+            var coinModifier = ((CoinModifier)m_modifier);
+            switch (coinModifier.CoinModifierType)
             {
                 case CoinModifierType.ADD_EXTRA_COIN_FOR_ENEMY:
-                    CurrencyManager.Instance.AddExtraCoinForEnemy(-((CoinModifier)m_modifier).ModifierValue);
+                    CurrencyManager.Instance.AddExtraCoinForEnemy(-coinModifier.ModifierValue);
                     break;
                 case CoinModifierType.ADD_EXTRA_COIN_FOR_CHEST:
-                    CurrencyManager.Instance.AddExtraCoinForChest(-((CoinModifier)m_modifier).ModifierValue);
+                    CurrencyManager.Instance.AddExtraCoinForChest(-coinModifier.ModifierValue);
                     break;
                 case CoinModifierType.ADD_EXTRA_COIN_FOR_ALL:
-                    CurrencyManager.Instance.AddExtraCoinForEnemy(-((CoinModifier)m_modifier).ModifierValue);
-                    CurrencyManager.Instance.AddExtraCoinForChest(-((CoinModifier)m_modifier).ModifierValue);
+                    CurrencyManager.Instance.AddExtraCoinForEnemy(-coinModifier.ModifierValue);
+                    CurrencyManager.Instance.AddExtraCoinForChest(-coinModifier.ModifierValue);
                     break;
                 case CoinModifierType.ADD_COIN_FOR_ENEMY_MULTIPLIER:
-                    CurrencyManager.Instance.AddExtraCoinEnemyMultiplier(-((CoinModifier)m_modifier).ModifierValue/100f);
+                    CurrencyManager.Instance.AddExtraCoinEnemyMultiplier(-coinModifier.ModifierValue/100f);
                     break;
                 case CoinModifierType.ADD_COIN_FOR_CHEST_MULTIPLIER:
-                    CurrencyManager.Instance.AddExtraCoinChestMultiplier(-((CoinModifier)m_modifier).ModifierValue/100f);
+                    CurrencyManager.Instance.AddExtraCoinChestMultiplier(-coinModifier.ModifierValue/100f);
                     break;
                 case CoinModifierType.ADD_COIN_MULTIPLIER_FOR_ALL:
-                    CurrencyManager.Instance.AddExtraCoinEnemyMultiplier(-((CoinModifier)m_modifier).ModifierValue/100f);
-                    CurrencyManager.Instance.AddExtraCoinChestMultiplier(-((CoinModifier)m_modifier).ModifierValue/100f);
+                    CurrencyManager.Instance.AddExtraCoinEnemyMultiplier(-coinModifier.ModifierValue/100f);
+                    CurrencyManager.Instance.AddExtraCoinChestMultiplier(-coinModifier.ModifierValue/100f);
                     break;
             }
             
             Debug.Log($"<color=red>Stop Modifier Category:{m_modifier.ModifierType} " +
-                      $"- Type:{((CoinModifier)m_modifier).CoinModifierType} " +
-                      $"- Value:{((CoinModifier)m_modifier).ModifierValue}" +
+                      $"- Type:{coinModifier.CoinModifierType} " +
+                      $"- Value:{coinModifier.ModifierValue}" +
                       $"- Duration:{m_modifier.Duration}</color> ");
             
             base.StopModifier();
