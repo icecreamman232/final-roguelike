@@ -4,11 +4,8 @@ namespace SGGames.Scripts.Modifiers
 {
     public enum ArmorModifierType
     {
-        IncreaseArmor,
-        DecreaseArmor,
-        
-        IncreaseArmor_ForDuration,
-        DecreaseArmor_ForDuration,
+        ModifyArmor,
+        ModifyArmorForDuration,
     }
     
     [CreateAssetMenu(fileName = "ArmorModifier", menuName = "SGGames/Modifiers/Armor Modifier")]

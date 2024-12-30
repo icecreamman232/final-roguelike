@@ -15,54 +15,45 @@ namespace SGGames.Scripts.Modifiers
 
         public override void StartModifier()
         {
+            var armorModifier = (ArmorModifier)m_modifier;
+            
             base.StartModifier();
-            switch (((ArmorModifier)m_modifier).ArmorModifierType)
+            switch (armorModifier.ArmorModifierType)
             {
-                case ArmorModifierType.IncreaseArmor:
-                    m_playerHealth.AddArmor(((ArmorModifier)m_modifier).ModifierValue);
+                case ArmorModifierType.ModifyArmor:
+                    m_playerHealth.AddArmor(armorModifier.ModifierValue);
                     break;
-                case ArmorModifierType.DecreaseArmor:
-                    m_playerHealth.AddArmor(-((ArmorModifier)m_modifier).ModifierValue);
-                    break;
-                case ArmorModifierType.IncreaseArmor_ForDuration:
-                    m_playerHealth.AddArmor(((ArmorModifier)m_modifier).ModifierValue);
-                    m_isProcessing = true;
-                    break;
-                case ArmorModifierType.DecreaseArmor_ForDuration:
-                    m_playerHealth.AddArmor(-((ArmorModifier)m_modifier).ModifierValue);
+                case ArmorModifierType.ModifyArmorForDuration:
+                    m_playerHealth.AddArmor(armorModifier.ModifierValue);
                     m_isProcessing = true;
                     break;
             }
             
             Debug.Log($"<color=green>Start Modifier Category:{m_modifier.ModifierType} " +
-                      $"- Type:{((ArmorModifier)m_modifier).ArmorModifierType} " +
-                      $"- Value:{((ArmorModifier)m_modifier).ModifierValue}" +
+                      $"- Type:{armorModifier.ArmorModifierType} " +
+                      $"- Value:{armorModifier.ModifierValue}" +
                       $"- Duration:{m_modifier.Duration}</color> ");
         }
 
         public override void StopModifier()
         {
-            switch (((ArmorModifier)m_modifier).ArmorModifierType)
+            var armorModifier = (ArmorModifier)m_modifier;
+            
+            switch (armorModifier.ArmorModifierType)
             {
-                case ArmorModifierType.IncreaseArmor:
-                    m_playerHealth.AddArmor(-((ArmorModifier)m_modifier).ModifierValue);
+                case ArmorModifierType.ModifyArmor:
+                    m_playerHealth.AddArmor(-armorModifier.ModifierValue);
                     break;
-                case ArmorModifierType.DecreaseArmor:
-                    m_playerHealth.AddArmor(((ArmorModifier)m_modifier).ModifierValue);
-                    break;
-                case ArmorModifierType.IncreaseArmor_ForDuration:
-                    m_playerHealth.AddArmor(-((ArmorModifier)m_modifier).ModifierValue);
-                    break;
-                case ArmorModifierType.DecreaseArmor_ForDuration:
-                    m_playerHealth.AddArmor(((ArmorModifier)m_modifier).ModifierValue);
+                case ArmorModifierType.ModifyArmorForDuration:
+                    m_playerHealth.AddArmor(-armorModifier.ModifierValue);
                     break;
             }
             
             base.StopModifier();
             
             Debug.Log($"<color=red>Stop Modifier Category:{m_modifier.ModifierType} " +
-                      $"- Type:{((ArmorModifier)m_modifier).ArmorModifierType} " +
-                      $"- Value:{((ArmorModifier)m_modifier).ModifierValue}" +
+                      $"- Type:{armorModifier.ArmorModifierType} " +
+                      $"- Value:{armorModifier.ModifierValue}" +
                       $"- Duration:{m_modifier.Duration}</color> ");
         }
     }
