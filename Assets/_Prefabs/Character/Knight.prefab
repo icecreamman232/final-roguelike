@@ -50,6 +50,7 @@ Transform:
   - {fileID: 976171658848419605}
   - {fileID: 1396105887902963807}
   - {fileID: 6073285626879195098}
+  - {fileID: 3983339605933269276}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &9207394351103251092
@@ -282,6 +283,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 56dbbc2791ca0d14c8c9789338df5e70, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_minDamage: 0
+  m_maxDamage: 0
   m_additionMinDamage: 0
   m_additionMaxDamage: 0
   m_mutiplyDamage: 1
@@ -664,6 +667,52 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_flickerColor: {r: 1, g: 0.21226418, b: 0.21226418, a: 1}
+--- !u!1 &3464413134041579058
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3983339605933269276}
+  - component: {fileID: 6939811774327053997}
+  m_Layer: 0
+  m_Name: StatusEffectHandler
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3983339605933269276
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3464413134041579058}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6263496985321535266}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6939811774327053997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3464413134041579058}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e2bd5db4ac70ead468d1cb33e06aa7f5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_statusEffectEvent: {fileID: 11400000, guid: 123d524b8973ffe469081cdfd5360d9a, type: 2}
+  m_modifierHandler: {fileID: 8978468732513568599}
 --- !u!1 &4080844376328353483
 GameObject:
   m_ObjectHideFlags: 0
