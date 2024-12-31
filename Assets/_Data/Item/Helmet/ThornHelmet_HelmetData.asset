@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bcc7cb5c88e74f4fb6a49973df5bc81, type: 3}
+  m_Name: ThornHelmet_HelmetData
+  m_EditorClassIdentifier: 
+  m_itemID: thorn-helmet
+  m_translatedName: Thorn Helmet
+  m_rarity: 2
+  m_itemCategory: 1
+  m_icon: {fileID: -795683323, guid: 079f3decf87c80644bfc04d4052c0c78, type: 3}
+  m_pickerPrefab: {fileID: 8991297880479778408, guid: 6564c3325cd3d10429e45b4c58f55cf0, type: 3}
+  m_modifierList:
+  - {fileID: 11400000, guid: 3dcfbab33cf0aff4fbab959b0df739df, type: 2}
+  - {fileID: 11400000, guid: 69cf7ebfb4fd00349b40a0ab5b876ff8, type: 2}

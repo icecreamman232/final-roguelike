@@ -433,7 +433,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -441,6 +441,27 @@ TextureImporter:
       bones: []
       spriteID: 7ba41e3cf37f2de4cb3270f710047d25
       internalID: 414171641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Thorn-helmet
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 992c4c1a22ca2c44b9a35eea5a38d2c8
+      internalID: -795683323
       vertices: []
       indices: 
       edges: []
@@ -470,6 +491,7 @@ TextureImporter:
       Ranged-Cap: -710671636
       Shinobi-Mask: 1740651586
       Thief-band-helmet: 1002600149
+      Thorn-helmet: -795683323
       Wood-mask-helmet: -9935663
       god-mage-hat: 414171641
   mipmapLimitGroupName: 
