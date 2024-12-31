@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bcc7cb5c88e74f4fb6a49973df5bc81, type: 3}
+  m_Name: WitchHat_HelmetData
+  m_EditorClassIdentifier: 
+  m_itemID: witch-hat
+  m_translatedName: 'Witch Hat '
+  m_rarity: 1
+  m_itemCategory: 1
+  m_icon: {fileID: 1250357084, guid: 079f3decf87c80644bfc04d4052c0c78, type: 3}
+  m_pickerPrefab: {fileID: 6207480588402229075, guid: 5143c4dba7d4a2343acbb962f1fdd0d7, type: 3}
+  m_modifierList:
+  - {fileID: 11400000, guid: 6207e5303e7fe1c41b9695aa0434c36e, type: 2}
+  - {fileID: 11400000, guid: 081d1de15eda7264d8848d2b72d3dcac, type: 2}

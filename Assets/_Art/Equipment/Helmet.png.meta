@@ -475,7 +475,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -483,6 +483,27 @@ TextureImporter:
       bones: []
       spriteID: 6116fa782e7f5ec4fb30b12913f2c3b4
       internalID: 222037094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Witch-Hat
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cfe419a7aed8a5749a678ba57449038a
+      internalID: 1250357084
       vertices: []
       indices: 
       edges: []
@@ -514,6 +535,7 @@ TextureImporter:
       Shinobi-Mask: 1740651586
       Thief-band-helmet: 1002600149
       Thorn-helmet: -795683323
+      Witch-Hat: 1250357084
       Wood-mask-helmet: -9935663
       god-mage-hat: 414171641
   mipmapLimitGroupName: 

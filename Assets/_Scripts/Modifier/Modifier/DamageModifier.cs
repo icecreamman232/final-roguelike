@@ -11,6 +11,8 @@ namespace SGGames.Scripts.Modifiers
         
         ModifyCriticalChance,
         ModifyCriticalDamage,
+        
+        ModifyMultiplyDamage,
     }
     
     [CreateAssetMenu(fileName = "DamageModifier", menuName = "SGGames/Modifiers/Damage Modifier")]

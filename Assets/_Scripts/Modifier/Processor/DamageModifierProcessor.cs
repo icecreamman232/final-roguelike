@@ -37,6 +37,12 @@ namespace SGGames.Scripts.Modifiers
                         damageModifier.ModifierValue));
                     m_isProcessing = true;
                     break;
+                case DamageModifierType.ModifyMultiplyDamage:
+                    m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
+                        DamageInfluencerType.MULTIPLY_DAMAGE, 
+                        damageModifier.ChanceToCause,
+                        damageModifier.ModifierValue));
+                    break;
                 case DamageModifierType.ModifyDamage:
                     m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
                         DamageInfluencerType.ADD_DAMAGE, 
