@@ -20,3 +20,4 @@ MonoBehaviour:
   m_pickerPrefab: {fileID: 420575458334077950, guid: 105bc1a7a1db5c141a4cbeb9fdd43cf3, type: 3}
   m_modifierList:
   - {fileID: 11400000, guid: 3492e2a914fbcce40b03557e6637bb2b, type: 2}
+  - {fileID: 11400000, guid: 4f522b6803754a64bad19389d8d625fe, type: 2}
