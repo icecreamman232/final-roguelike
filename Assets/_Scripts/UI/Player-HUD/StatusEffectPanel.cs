@@ -9,12 +9,14 @@ namespace SGGames.Scripts.UI
         [SerializeField] private StatusEffectEvent m_StatusEffectEvent;
         [SerializeField] private StatusEffectUINode m_burnNode;
         [SerializeField] private StatusEffectUINode m_poisonNode;
+        [SerializeField] private StatusEffectUINode m_bleedNode;
 
         private void Start()
         {
             m_StatusEffectEvent.AddListener(OnStatusEffectEvent);
             m_burnNode.Hide();
             m_poisonNode.Hide();
+            m_bleedNode.Hide();
         }
         
         private void OnDestroy()
@@ -35,6 +37,9 @@ namespace SGGames.Scripts.UI
                 case StatusEffectType.Freeze:
                     break;
                 case StatusEffectType.Shock:
+                    break;
+                case StatusEffectType.Bleed:
+                    m_bleedNode.UpdateStack(stackAmount);
                     break;
             }
         }

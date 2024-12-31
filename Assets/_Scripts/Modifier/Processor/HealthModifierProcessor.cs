@@ -21,6 +21,9 @@ namespace SGGames.Scripts.Modifiers
             
             switch (healthModifier.HealthModifierType)
             {
+                case HealthModifierType.ModifyPercentDamageTaken:
+                    m_playerHealth.ModifyPercentDamageTaken(healthModifier.ModifierValue);
+                    break;
                 case HealthModifierType.ModifyCurrentHPForDuration:
                     m_playerHealth.ModifyCurrentHealth(healthModifier.ModifierValue);
                     m_isProcessing = true;
@@ -63,6 +66,9 @@ namespace SGGames.Scripts.Modifiers
             
             switch (healthModifier.HealthModifierType)
             {
+                case HealthModifierType.ModifyPercentDamageTaken:
+                    m_playerHealth.ModifyPercentDamageTaken(-healthModifier.ModifierValue);
+                    break;
                 case HealthModifierType.ModifyCurrentHPForDuration:
                     m_playerHealth.ModifyCurrentHealth(-healthModifier.ModifierValue);
                     break;

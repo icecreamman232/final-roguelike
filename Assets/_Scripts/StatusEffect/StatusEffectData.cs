@@ -1,6 +1,5 @@
 using SGGames.Scripts.Modifiers;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 namespace SGGames.Scripts.StatusEffects
 {
@@ -10,6 +9,7 @@ namespace SGGames.Scripts.StatusEffects
         Poison,
         Freeze,
         Shock,
+        Bleed,
     }
 
     public enum DamageStackingType

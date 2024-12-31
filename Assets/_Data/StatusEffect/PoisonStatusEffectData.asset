@@ -16,7 +16,7 @@ MonoBehaviour:
   InitialDamage: 10
   MinDamage: 20
   MaxDamage: 25
-  Stackable: 0
+  Stackable: 1
   DamageStackingType: 1
   PercentPerStack: 0.05
   MaxStack: 3

@@ -5,6 +5,7 @@ namespace SGGames.Scripts.Modifiers
 {
     public enum HealthModifierType
     {
+        ModifyPercentDamageTaken,
         ModifyCurrentHPForDuration,
         ModifyMaxHPForDuration,
         ModifyMaxHP,

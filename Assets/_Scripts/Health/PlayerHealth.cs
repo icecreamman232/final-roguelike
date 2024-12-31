@@ -9,6 +9,7 @@ namespace SGGames.Scripts.Healths
     [SelectionBase]
     public class PlayerHealth : Health
     {
+        [SerializeField] private float m_percentDamageTaken;
         [SerializeField] private float m_armor;
         [SerializeField] private float m_dodgeRate;
         [SerializeField] private float m_flickerFrequency;
@@ -33,6 +34,7 @@ namespace SGGames.Scripts.Healths
         
         public void Initialize(float maxHealth)
         {
+            m_percentDamageTaken = 1;
             m_currentHealth = maxHealth;
             m_maxHealth = maxHealth;
             UpdateHealthBar();
@@ -59,6 +61,8 @@ namespace SGGames.Scripts.Healths
 
         public override void TakeDamage(float damage, GameObject source, float invincibilityDuration, bool isCritical)
         {
+            damage = m_percentDamageTaken * damage;
+            
             base.TakeDamage(damage, source, invincibilityDuration,isCritical);
 
             if (m_isImmortal)
@@ -113,6 +117,11 @@ namespace SGGames.Scripts.Healths
             return chance <= m_dodgeRate;
         }
 
+        public void ModifyPercentDamageTaken(float addPercent)
+        {
+            m_percentDamageTaken += addPercent;
+        }
+        
         public void AddRegenerationRate(float regenerationRate)
         {
             m_regenerationRate += regenerationRate;
