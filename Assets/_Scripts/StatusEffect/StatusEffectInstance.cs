@@ -27,7 +27,6 @@ namespace SGGames.Scripts.StatusEffects
             m_timeStart = Time.time;
             MarkToBeRemoved = false;
             m_durationTimer = data.Duration;
-            Debug.Log($"Apply Status {m_statusEffectData.StatusEffectType}");
         }
 
         public void IncreaseStack()
@@ -88,7 +87,7 @@ namespace SGGames.Scripts.StatusEffects
         {
             if (m_health == null) return;
             if (m_statusEffectData.InitialDamage <= 0) return;
-            Debug.Log($"Status {m_statusEffectData.StatusEffectType} cause {m_statusEffectData.InitialDamage} initial dmg.");
+            Debug.Log($"Status <color=orange>{m_statusEffectData.StatusEffectType}</color> cause <color=yellow>{m_statusEffectData.InitialDamage}</color> initial dmg.");
             m_health.TakeDamage(m_statusEffectData.InitialDamage,null,0);
         }
         
@@ -96,7 +95,7 @@ namespace SGGames.Scripts.StatusEffects
         {
             if (m_health == null) return;
             var tickDamage = GetDamage();
-            Debug.Log($"Tick from {m_statusEffectData.StatusEffectType} cause {tickDamage} dmg");
+            Debug.Log($"Tick from <color=orange>{m_statusEffectData.StatusEffectType}</color> cause <color=yellow>{tickDamage}</color> dmg");
             m_health.TakeDamage(tickDamage,null,0);
         }
         
