@@ -16,6 +16,7 @@ MonoBehaviour:
   ModifierType: 0
   Duration: 0
   InstantTrigger: 1
+  PostTriggerBehavior: 0
   IsRunning: 1
-  MovementModifierType: 4
+  MovementModifierType: 1
   ModifierValue: 2

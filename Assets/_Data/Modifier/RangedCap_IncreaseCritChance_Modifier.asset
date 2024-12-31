@@ -16,7 +16,8 @@ MonoBehaviour:
   ModifierType: 2
   Duration: 0
   InstantTrigger: 1
+  PostTriggerBehavior: 0
   IsRunning: 0
-  DamageModifierType: 6
+  DamageModifierType: 3
   ChanceToCause: 100
   ModifierValue: 5

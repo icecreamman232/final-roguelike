@@ -19,4 +19,4 @@ MonoBehaviour:
   PostTriggerBehavior: 0
   IsRunning: 0
   MovementModifierType: 0
-  ModifierValue: 3
+  ModifierValue: -3

@@ -10,9 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b916d90ddfa328f4eb65581c92974326, type: 3}
-  m_Name: RedudeMS_Modifier
+  m_Name: KnightDefenseAbility_RedudeMS_Modifier
   m_EditorClassIdentifier: 
+  Description: 
   ModifierType: 0
   Duration: 3
+  InstantTrigger: 1
+  PostTriggerBehavior: 0
+  IsRunning: 0
   MovementModifierType: 0
-  ModifierValue: 2
+  ModifierValue: -2
