@@ -45,6 +45,9 @@ namespace SGGames.Scripts.Modifiers
                 case HealthModifierType.ModifyDodgeRate:
                     m_playerHealth.AddDodgeRate(healthModifier.ModifierValue);
                     break;
+                case HealthModifierType.ChanceToNotTakingDamage:
+                    m_playerHealth.ModifyChanceToNotTakeDamage(healthModifier.ModifierValue);
+                    break;
             }
 
             m_modifier.IsRunning = true;
@@ -83,6 +86,9 @@ namespace SGGames.Scripts.Modifiers
                     break;
                 case HealthModifierType.ModifyDodgeRate:
                     m_playerHealth.AddDodgeRate(-healthModifier.ModifierValue);
+                    break;
+                case HealthModifierType.ChanceToNotTakingDamage:
+                    m_playerHealth.ModifyChanceToNotTakeDamage(-healthModifier.ModifierValue);
                     break;
             }
 

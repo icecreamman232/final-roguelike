@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: feaec82dd1152d94085ba416f86ed592, type: 3}
+  m_Name: LuckyHat_ReduceDmgTaken_Modifier
+  m_EditorClassIdentifier: 
+  Description: Have <color=yellow>33.3%</color> chance to not taking damage.
+  ModifierType: 1
+  Duration: 0
+  InstantTrigger: 1
+  PostTriggerBehavior: 0
+  IsRunning: 1
+  HealthModifierType: 7
+  ModifierValue: 33.3
+  IsPercentValue: 0

@@ -90,7 +90,7 @@ namespace SGGames.Scripts.Healths
             if (m_isInvulnerable) return false;
             
             if(m_currentHealth <= 0) return false;
-            
+
             return true;
         }
 

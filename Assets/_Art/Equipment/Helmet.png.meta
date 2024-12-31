@@ -454,7 +454,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -462,6 +462,27 @@ TextureImporter:
       bones: []
       spriteID: 992c4c1a22ca2c44b9a35eea5a38d2c8
       internalID: -795683323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Lucky-hat
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 128
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6116fa782e7f5ec4fb30b12913f2c3b4
+      internalID: 222037094
       vertices: []
       indices: 
       edges: []
@@ -487,6 +508,7 @@ TextureImporter:
       Deadeye-mask: -2012977387
       Evil-helmet: 2081394859
       Leather-hood: -934698402
+      Lucky-hat: 222037094
       Midas-crown: 1577370035
       Ranged-Cap: -710671636
       Shinobi-Mask: 1740651586

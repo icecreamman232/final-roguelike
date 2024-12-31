@@ -9,6 +9,7 @@ namespace SGGames.Scripts.Healths
     [SelectionBase]
     public class PlayerHealth : Health
     {
+        [SerializeField] private float m_chanceToNotTakeDamage;
         [SerializeField] private float m_percentDamageTaken;
         [SerializeField] private float m_armor;
         [SerializeField] private float m_dodgeRate;
@@ -57,6 +58,17 @@ namespace SGGames.Scripts.Healths
 
                 m_regenerateTimer = 0;
             }
+        }
+
+        protected override bool CanTakeDamage()
+        {
+            var chance = Random.Range(0f, 100f);
+            if (chance <= m_chanceToNotTakeDamage)
+            {
+                return false;
+            }
+            
+            return base.CanTakeDamage();
         }
 
         public override void TakeDamage(float damage, GameObject source, float invincibilityDuration, bool isCritical)
@@ -117,9 +129,18 @@ namespace SGGames.Scripts.Healths
             return chance <= m_dodgeRate;
         }
 
+        public void ModifyChanceToNotTakeDamage(float chance)
+        {
+            m_chanceToNotTakeDamage += chance;
+        }
+
         public void ModifyPercentDamageTaken(float addPercent)
         {
             m_percentDamageTaken += addPercent;
+            if (m_percentDamageTaken < 0)
+            {
+                m_percentDamageTaken = 0;
+            }
         }
         
         public void AddRegenerationRate(float regenerationRate)
