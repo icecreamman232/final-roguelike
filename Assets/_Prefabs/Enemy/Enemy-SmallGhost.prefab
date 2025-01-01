@@ -239,6 +239,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba6161ed2638ad4c8b9ac3ef529ca52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_isSubEnemy: 1
+  m_subEnemyNumber: 0
   m_currentBrain: {fileID: 4784588756740374459}
 --- !u!114 &3393809872426416298
 MonoBehaviour:

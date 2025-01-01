@@ -42,9 +42,9 @@ namespace SGGames.Scripts.Managers
         [SerializeField] private GameObject m_bootsChest;
         [SerializeField] private GameObject m_accessoriesChest;
         [SerializeField] private GameObject m_charmChest;
-        
-        [Header("Enemies")]
-        [SerializeField]private List<EnemyHealth> m_enemyList;
+
+        [Header("Enemies")] 
+        [SerializeField] private int m_enemyNumberInRoom;
         [Header("Events")] 
         [SerializeField] private GameEvent m_gameEvent;
         [SerializeField] private IntEvent m_enterDoorEvent;
@@ -95,12 +95,19 @@ namespace SGGames.Scripts.Managers
         private void OnEnemyDeath(EnemyHealth enemyHealth)
         {
             enemyHealth.OnEnemyDeath -= OnEnemyDeath;
-            m_enemyList.Remove(enemyHealth);
-            if (m_enemyList.Count <= 0)
+            m_enemyNumberInRoom--;
+            if (m_enemyNumberInRoom <= 0)
             {
                 m_currentRoom.OpenDoors();
                 m_gameEvent?.Raise(GameEventType.ROOM_CLEARED);
             }
+
+            // m_enemyList.Remove(enemyHealth);
+            // if (m_enemyList.Count <= 0)
+            // {
+            //     m_currentRoom.OpenDoors();
+            //     m_gameEvent?.Raise(GameEventType.ROOM_CLEARED);
+            // }
         }
         
         
@@ -133,15 +140,11 @@ namespace SGGames.Scripts.Managers
 
         private void LoadEnemy()
         {
-            m_enemyList = new List<EnemyHealth>();
             for (int i = 0; i < m_currentRoomData.EnemyList.Length; i++)
             {
                 var enemyPrefab = m_currentRoomData.EnemyList[i].EnemyPrefab;
                 var spawnPos = m_currentRoomData.EnemyList[i].SpawnPosition;
-                var enemyObj = Instantiate(enemyPrefab,spawnPos,Quaternion.identity,m_currentRoom.transform);
-                var enemyHealth = enemyObj.GetComponent<EnemyHealth>();
-                enemyHealth.OnEnemyDeath += OnEnemyDeath;
-                m_enemyList.Add(enemyHealth);
+                Instantiate(enemyPrefab,spawnPos,Quaternion.identity,m_currentRoom.transform);
             }
         }
 
@@ -245,6 +248,8 @@ namespace SGGames.Scripts.Managers
             
             Destroy(m_currentRoom.gameObject);
 
+            m_enemyNumberInRoom = 0;
+            
             IncreaseRoomAndAreaIndex();
 
             var isBossRoom = m_roomIndex >= RoomGenerator.C_MAX_ROOM_NUMBER;
@@ -280,6 +285,16 @@ namespace SGGames.Scripts.Managers
         public bool IsPositionInsideRoomBoundary(Vector2 point)
         {
             return m_roomCollider.OverlapPoint(point);
+        }
+
+        public void AddEnemyNumberInRoom(int number)
+        {
+            m_enemyNumberInRoom += number;
+        }
+
+        public void RegisterEnemyDeathEvent(EnemyHealth health)
+        {
+            health.OnEnemyDeath += OnEnemyDeath;
         }
     }
 }

@@ -3,6 +3,7 @@ using System.Collections;
 using MoreMountains.Feedbacks;
 using SGGames.Scripts.Core;
 using SGGames.Scripts.Enemies;
+using SGGames.Scripts.Managers;
 using SGGames.Scripts.UI;
 using UnityEngine;
 
@@ -25,6 +26,7 @@ namespace SGGames.Scripts.Healths
         protected override void Start()
         {
             base.Start();
+            LevelManager.Instance.RegisterEnemyDeathEvent(this);
             ResetHealth();
             m_bodyCollider = GetComponent<BoxCollider2D>();
             m_enemyMovement = GetComponent<EnemyMovement>();
