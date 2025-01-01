@@ -1702,10 +1702,6 @@ PrefabInstance:
       propertyPath: m_SizeDelta.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8373521293533523848, guid: 952155904769d8a4ab9a1ae2dfe35c53, type: 3}
-      propertyPath: m_AnchoredPosition.y
-      value: -28.800049
-      objectReference: {fileID: 0}
     - target: {fileID: 8725527756225429752, guid: 952155904769d8a4ab9a1ae2dfe35c53, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -2212,10 +2208,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 9101111211934806997, guid: 47ef58027824cfc4cbbe7a57a3af1ede, type: 3}
-      propertyPath: m_defaultRoom
-      value: 
-      objectReference: {fileID: 11400000, guid: 30e9211f57ddf384c89e3186be1dfe01, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

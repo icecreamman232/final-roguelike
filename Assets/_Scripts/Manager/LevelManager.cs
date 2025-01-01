@@ -46,6 +46,7 @@ namespace SGGames.Scripts.Managers
         [Header("Enemies")] 
         [SerializeField] private int m_enemyNumberInRoom;
         [Header("Events")] 
+        [SerializeField] private ChangeRoomEvent m_changeRoomEvent;
         [SerializeField] private GameEvent m_gameEvent;
         [SerializeField] private IntEvent m_enterDoorEvent;
         [SerializeField] private BoolEvent m_freezePlayerEvent;
@@ -67,6 +68,7 @@ namespace SGGames.Scripts.Managers
             RandomController.SetSeed();
             m_roomIndex = 0;
             m_currentAreaIndex = 0;
+            m_changeRoomEvent.Raise(m_currentAreaIndex,m_roomIndex);
             m_enterDoorEvent.AddListener(OnPlayerEnterDoor);
 
             //Room Layout
@@ -101,13 +103,6 @@ namespace SGGames.Scripts.Managers
                 m_currentRoom.OpenDoors();
                 m_gameEvent?.Raise(GameEventType.ROOM_CLEARED);
             }
-
-            // m_enemyList.Remove(enemyHealth);
-            // if (m_enemyList.Count <= 0)
-            // {
-            //     m_currentRoom.OpenDoors();
-            //     m_gameEvent?.Raise(GameEventType.ROOM_CLEARED);
-            // }
         }
         
         
@@ -251,6 +246,8 @@ namespace SGGames.Scripts.Managers
             m_enemyNumberInRoom = 0;
             
             IncreaseRoomAndAreaIndex();
+            
+            m_changeRoomEvent.Raise(m_currentAreaIndex,m_roomIndex);
 
             var isBossRoom = m_roomIndex >= RoomGenerator.C_MAX_ROOM_NUMBER;
             

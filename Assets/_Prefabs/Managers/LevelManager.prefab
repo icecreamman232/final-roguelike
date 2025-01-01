@@ -53,7 +53,7 @@ MonoBehaviour:
   m_rightSideRoomList: []
   m_leftRoomRewardList: 
   m_rightRoomRewardList: 
-  m_defaultRoom: {fileID: 11400000, guid: 4aa85c418a038d64796ee215a576a764, type: 2}
+  m_defaultRoom: {fileID: 11400000, guid: 30e9211f57ddf384c89e3186be1dfe01, type: 2}
   m_currentRoomData: {fileID: 0}
   m_currentRoom: {fileID: 0}
   m_roomIndex: 0
@@ -67,7 +67,8 @@ MonoBehaviour:
   m_bootsChest: {fileID: 3369234309532769636, guid: 21f3684eaa9f60544bc2515cb73f194d, type: 3}
   m_accessoriesChest: {fileID: 3369234309532769636, guid: 05e5342af755f344aa6f3d9ee6eb9582, type: 3}
   m_charmChest: {fileID: 3369234309532769636, guid: b9c1ee7af2d220640bfc119c6633a3ce, type: 3}
-  m_enemyList: []
+  m_enemyNumberInRoom: 0
+  m_changeRoomEvent: {fileID: 11400000, guid: 3446c21423fe6924e82ba65b391eeded, type: 2}
   m_gameEvent: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
   m_enterDoorEvent: {fileID: 11400000, guid: e1372761e91d0ef489199057825b1ae8, type: 2}
   m_freezePlayerEvent: {fileID: 11400000, guid: 1338a4fa70285e7488b5acc1fb4c30fe, type: 2}
