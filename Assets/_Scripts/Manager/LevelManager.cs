@@ -106,12 +106,8 @@ namespace SGGames.Scripts.Managers
         
         private IEnumerator OnLevelLoaded()
         {
-            m_currentRoomData = m_defaultRoom;
-            Debug.Log($"<color=yellow>Load Room 0: {m_currentRoomData.name}</color>");
-            var roomObj = Instantiate(m_currentRoomData.RoomPrefab);
-            m_currentRoom = roomObj.GetComponent<Room>();
-            m_roomCollider = m_currentRoom.RoomCollider;
-
+            LoadRoom(0);
+        
             yield return new WaitForEndOfFrame();
 
             m_playerRef = Instantiate(m_heroData.HeroPrefab, m_currentRoom.PlayerSpawnSpot.position,Quaternion.identity);
@@ -195,9 +191,9 @@ namespace SGGames.Scripts.Managers
                 case RoomRewardType.Coin:
                     Instantiate(m_coinChest, spawnPos, Quaternion.identity, roomTransform);
                     break;
-                case RoomRewardType.Item:
-                    Instantiate(m_itemChest, spawnPos, Quaternion.identity, roomTransform);
-                    break;
+                // case RoomRewardType.Item:
+                //     Instantiate(m_itemChest, spawnPos, Quaternion.identity, roomTransform);
+                //     break;
                 case RoomRewardType.Weapon:
                     Instantiate(m_weaponChest, spawnPos, Quaternion.identity, roomTransform);
                     break;

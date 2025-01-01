@@ -11,7 +11,7 @@ namespace SGGames.Scripts.Manager
         None,
         Key,
         Coin,
-        Item,
+        //Item,
         Weapon,
         Helmet,
         Armor,
