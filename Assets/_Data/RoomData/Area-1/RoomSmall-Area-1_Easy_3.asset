@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 82e1219f47d13d24eaf97e860fd5fd15, type: 3}
+  m_Name: RoomSmall-Area-1_Easy_3
+  m_EditorClassIdentifier: 
+  m_roomPrefab: {fileID: 1619650375611626117, guid: 96bc498b429a3b24ba39280205d319cb, type: 3}
+  m_enemyList:
+  - EnemyPrefab: {fileID: 3711012701743259892, guid: 9fd4b1a09678ed242b7d91c21f60ccdd, type: 3}
+    SpawnPosition: {x: -1.135, y: 0}
+  - EnemyPrefab: {fileID: 3711012701743259892, guid: 9fd4b1a09678ed242b7d91c21f60ccdd, type: 3}
+    SpawnPosition: {x: -1.135, y: 0}
+  - EnemyPrefab: {fileID: 3711012701743259892, guid: 9fd4b1a09678ed242b7d91c21f60ccdd, type: 3}
+    SpawnPosition: {x: -1.135, y: 0}
+  - EnemyPrefab: {fileID: 3711012701743259892, guid: 9fd4b1a09678ed242b7d91c21f60ccdd, type: 3}
+    SpawnPosition: {x: -1.135, y: 0}
