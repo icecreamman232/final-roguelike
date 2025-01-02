@@ -16,6 +16,7 @@ MonoBehaviour:
   ModifierType: 0
   Duration: 2.5
   InstantTrigger: 1
+  PostTriggerBehavior: 0
   IsRunning: 0
   MovementModifierType: 0
-  ModifierValue: 3
+  ModifierValue: -3
