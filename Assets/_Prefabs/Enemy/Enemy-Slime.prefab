@@ -98,6 +98,7 @@ GameObject:
   - component: {fileID: 8300882229992981992}
   - component: {fileID: 2575296009539577132}
   - component: {fileID: 459664164550069377}
+  - component: {fileID: 3168855418378304786}
   m_Layer: 0
   m_Name: Decisions
   m_TagString: Untagged
@@ -196,6 +197,19 @@ MonoBehaviour:
   Label: Check hit obstacle
   m_movement: {fileID: 8446419928612837318}
   m_isHitObstacle: 0
+--- !u!114 &3168855418378304786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5071277546187072785}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 331e7cfa8d47a2b4782a098419d8476f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: Is player dead
 --- !u!1 &5976752077958122652
 GameObject:
   m_ObjectHideFlags: 0
@@ -207,7 +221,7 @@ GameObject:
   - component: {fileID: 5291237257292440173}
   - component: {fileID: 618791588690018121}
   m_Layer: 7
-  m_Name: WanderingBrain
+  m_Name: ChasePlayerBrain
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -244,38 +258,26 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Owner: {fileID: 1523028514524487298}
   States:
-  - StateName: Choose direction
+  - StateName: Set player as target
     Actions:
-    - {fileID: 6418842121525779179}
+    - {fileID: 2210174249666506550}
+    - {fileID: 2273916490019569697}
     - {fileID: 5547046527452861385}
     Transitions:
     - BrainDecision: {fileID: 5312012922525152784}
       TrueStateName: Moving
       FalseStateName: 
-  - StateName: Rest
-    Actions:
-    - {fileID: 2809197224033312587}
-    Transitions:
-    - BrainDecision: {fileID: 3898790121587061883}
-      TrueStateName: Choose direction
-      FalseStateName: 
   - StateName: Moving
     Actions:
     - {fileID: 7440000207487579646}
     Transitions:
-    - BrainDecision: {fileID: 459664164550069377}
-      TrueStateName: Choose direction
-      FalseStateName: 
-    - BrainDecision: {fileID: 8300882229992981992}
+    - BrainDecision: {fileID: 3168855418378304786}
       TrueStateName: Rest
       FalseStateName: 
-  - StateName: Wait before changing direction
+  - StateName: Rest
     Actions:
-    - {fileID: 7440000207487579646}
-    Transitions:
-    - BrainDecision: {fileID: 2575296009539577132}
-      TrueStateName: Choose direction
-      FalseStateName: 
+    - {fileID: 2809197224033312587}
+    Transitions: []
   Target: {fileID: 0}
   BrainActive: 0
   CurrentState:
@@ -296,6 +298,8 @@ GameObject:
   - component: {fileID: 6418842121525779179}
   - component: {fileID: 5547046527452861385}
   - component: {fileID: 2809197224033312587}
+  - component: {fileID: 2210174249666506550}
+  - component: {fileID: 2273916490019569697}
   m_Layer: 0
   m_Name: Actions
   m_TagString: Untagged
@@ -372,6 +376,33 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: Stop moving
+  m_movement: {fileID: 8446419928612837318}
+--- !u!114 &2210174249666506550
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6487733724239898452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 18c017554cab5524d8d4c200c56bd1e7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: Set player as target
+--- !u!114 &2273916490019569697
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6487733724239898452}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 916f9cd54e9f5ee4faf2e4413b5aac51, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: Following player
   m_movement: {fileID: 8446419928612837318}
 --- !u!1 &7357953295604114694
 GameObject:
