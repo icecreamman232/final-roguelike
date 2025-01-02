@@ -20,9 +20,14 @@ namespace SGGames.Scripts.Enemies
             {
                 //Try to find how many sub enemy will be spawned on enemy death
                 var numberSpawnOnDeathComponent = GetComponentsInChildren<SpawnOnDeath>();
-                if (numberSpawnOnDeathComponent.Length > 0)
+
+                for (int i = 0; i < numberSpawnOnDeathComponent.Length; i++)
                 {
-                    m_subEnemyNumber = numberSpawnOnDeathComponent.Length;
+                    if (numberSpawnOnDeathComponent[i] is SpawnProjectileOnDeath)
+                    {
+                        continue;
+                    }
+                    m_subEnemyNumber++;
                 }
                 LevelManager.Instance.AddEnemyNumberInRoom(m_subEnemyNumber + 1); //Include this enemy self
             }
