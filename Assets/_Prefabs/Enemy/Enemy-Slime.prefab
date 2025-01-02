@@ -277,7 +277,7 @@ MonoBehaviour:
       TrueStateName: Choose direction
       FalseStateName: 
   Target: {fileID: 0}
-  BrainActive: 1
+  BrainActive: 0
   CurrentState:
     StateName: 
     Actions: []
@@ -500,7 +500,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba6161ed2638ad4c8b9ac3ef529ca52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_isSubEnemy: 0
+  m_subEnemyNumber: 0
   m_currentBrain: {fileID: 618791588690018121}
+  m_gameEvent: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
 --- !u!114 &8902134053059527307
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -523,6 +526,7 @@ MonoBehaviour:
   m_healthBar: {fileID: 836592077360575834}
   m_delayBeforeDeath: 0.5
   m_deathFeedback: {fileID: 6294899832581434155}
+  m_weaponGroup: {fileID: 0}
 --- !u!114 &8446419928612837318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -559,13 +563,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_minDamage: 15
   m_maxDamage: 25
-  m_additionalDamage: 0
+  m_additionMin: 0
+  m_additionMax: 0
   m_multiplyDamage: 1
   m_critDamage: 0
   m_damageableInvulnerableTime: 0.3
   m_damageableLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  m_nonDamageableLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1001 &374753740953252952
 PrefabInstance:
   m_ObjectHideFlags: 0

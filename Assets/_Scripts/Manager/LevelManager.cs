@@ -52,7 +52,8 @@ namespace SGGames.Scripts.Managers
         [SerializeField] private BoolEvent m_freezePlayerEvent;
         [SerializeField] private BoolEvent m_freezeInputEvent;
         [SerializeField] private BoolEvent m_fadeOutScreenEvent;
-        
+
+        private readonly float m_delayBeforeEnemyAtk = 0.3f;
         private readonly int m_maxAreaCount = 7;
         private BoxCollider2D m_roomCollider;
         
@@ -88,24 +89,8 @@ namespace SGGames.Scripts.Managers
         {
             m_enterDoorEvent.RemoveListener(OnPlayerEnterDoor);
         }
-
-        public void SetCharacterForPlayer(HeroData data)
-        {
-            m_heroData = data;
-        }
-
-        private void OnEnemyDeath(EnemyHealth enemyHealth)
-        {
-            enemyHealth.OnEnemyDeath -= OnEnemyDeath;
-            m_enemyNumberInRoom--;
-            if (m_enemyNumberInRoom <= 0)
-            {
-                m_currentRoom.OpenDoors();
-                m_gameEvent?.Raise(GameEventType.ROOM_CLEARED);
-            }
-        }
         
-        
+        #region Loading Room Methods
         private IEnumerator OnLevelLoaded()
         {
             LoadRoom(0);
@@ -118,7 +103,7 @@ namespace SGGames.Scripts.Managers
             m_freezePlayerEvent.Raise(true);
             m_freezeInputEvent.Raise(true);
             LoadEnemy();
-            
+  
             CameraController.Instance.SetTarget(m_playerRef.transform);
             CameraController.Instance.SetRoomCollider(m_currentRoom.RoomCollider);
             CameraController.Instance.SetCameraPosition(m_playerRef.transform.position);
@@ -127,12 +112,76 @@ namespace SGGames.Scripts.Managers
             m_fadeOutScreenEvent?.Raise(false);
 
             yield return new WaitForSeconds(ScreenFader.FadeDuration);
-            
-            m_gameEvent?.Raise(GameEventType.ENTER_THE_ROOM);
+            yield return new WaitForSeconds(m_delayBeforeEnemyAtk);
+    
+            m_gameEvent.Raise(GameEventType.ENTER_THE_ROOM);
             m_freezePlayerEvent.Raise(false);
             m_freezeInputEvent.Raise(false);
         }
+        
+        private IEnumerator OnLoadNextRoom()
+        {
+            //Freeze player
+            m_freezePlayerEvent.Raise(true);
+            //Freeze input
+            m_freezeInputEvent.Raise(true);
+            
+            m_fadeOutScreenEvent.Raise(true);
+            yield return new WaitForSeconds(ScreenFader.FadeDuration);
+            
+            CameraController.Instance.SetPermission(false);
+            
+            Destroy(m_currentRoom.gameObject);
 
+            m_enemyNumberInRoom = 0;
+            
+            IncreaseRoomAndAreaIndex();
+            
+            m_changeRoomEvent.Raise(m_currentAreaIndex,m_roomIndex);
+
+            var isBossRoom = m_roomIndex >= RoomGenerator.C_MAX_ROOM_NUMBER;
+            
+            if (isBossRoom)
+            {
+                LoadBossRoom(m_currentAreaIndex);
+            }
+            else
+            {
+                LoadRoom(m_roomIndex);
+                LoadEnemy();
+            }
+            
+            yield return new WaitForEndOfFrame();
+  
+            m_playerRef.transform.position = m_currentRoom.PlayerSpawnSpot.position;
+            CameraController.Instance.SetRoomCollider(m_currentRoom.RoomCollider);
+            CameraController.Instance.SetCameraPosition(m_currentRoom.PlayerSpawnSpot.position);
+            CameraController.Instance.SetPermission(true);
+            
+            m_fadeOutScreenEvent?.Raise(false);
+            yield return new WaitForSeconds(ScreenFader.FadeDuration);
+            yield return new WaitForSeconds(m_delayBeforeEnemyAtk);
+            m_gameEvent.Raise(GameEventType.ENTER_THE_ROOM);
+            if (!isBossRoom)
+            {
+                m_freezePlayerEvent.Raise(false);
+                m_freezeInputEvent.Raise(false);
+            }
+        }
+        
+        #endregion
+
+        private void OnEnemyDeath(EnemyHealth enemyHealth)
+        {
+            enemyHealth.OnEnemyDeath -= OnEnemyDeath;
+            m_enemyNumberInRoom--;
+            if (m_enemyNumberInRoom <= 0)
+            {
+                m_currentRoom.OpenDoors();
+                m_gameEvent?.Raise(GameEventType.ROOM_CLEARED);
+            }
+        }
+        
         private void LoadEnemy()
         {
             for (int i = 0; i < m_currentRoomData.EnemyList.Length; i++)
@@ -213,8 +262,6 @@ namespace SGGames.Scripts.Managers
                 case RoomRewardType.Charm:
                     Instantiate(m_charmChest, spawnPos, Quaternion.identity, roomTransform);
                     break;
-
-         
                 case RoomRewardType.Coin_Monster:
                     break;
                 case RoomRewardType.Blood_Room:
@@ -228,57 +275,15 @@ namespace SGGames.Scripts.Managers
         {
             StartCoroutine(OnLoadNextRoom());
         }
+
+        #region Public methods
         
-        private IEnumerator OnLoadNextRoom()
+        public void SetCharacterForPlayer(HeroData data)
         {
-            //Freeze player
-            m_freezePlayerEvent.Raise(true);
-            //Freeze input
-            m_freezeInputEvent.Raise(true);
-            
-            m_fadeOutScreenEvent?.Raise(true);
-            yield return new WaitForSeconds(ScreenFader.FadeDuration);
-            
-            CameraController.Instance.SetPermission(false);
-            
-            Destroy(m_currentRoom.gameObject);
-
-            m_enemyNumberInRoom = 0;
-            
-            IncreaseRoomAndAreaIndex();
-            
-            m_changeRoomEvent.Raise(m_currentAreaIndex,m_roomIndex);
-
-            var isBossRoom = m_roomIndex >= RoomGenerator.C_MAX_ROOM_NUMBER;
-            
-            if (isBossRoom)
-            {
-                LoadBossRoom(m_currentAreaIndex);
-            }
-            else
-            {
-                LoadRoom(m_roomIndex);
-                LoadEnemy();
-            }
-            
-            yield return new WaitForEndOfFrame();
-            
-            m_playerRef.transform.position = m_currentRoom.PlayerSpawnSpot.position;
-            CameraController.Instance.SetRoomCollider(m_currentRoom.RoomCollider);
-            CameraController.Instance.SetCameraPosition(m_currentRoom.PlayerSpawnSpot.position);
-            CameraController.Instance.SetPermission(true);
-            
-            m_fadeOutScreenEvent?.Raise(false);
-            yield return new WaitForSeconds(ScreenFader.FadeDuration);
-            
-            m_gameEvent?.Raise(GameEventType.ENTER_THE_ROOM);
-            if (!isBossRoom)
-            {
-                m_freezePlayerEvent.Raise(false);
-                m_freezeInputEvent.Raise(false);
-            }
+            m_heroData = data;
         }
 
+        
         public bool IsPositionInsideRoomBoundary(Vector2 point)
         {
             return m_roomCollider.OverlapPoint(point);
@@ -293,6 +298,8 @@ namespace SGGames.Scripts.Managers
         {
             health.OnEnemyDeath += OnEnemyDeath;
         }
+        
+        #endregion
     }
 }
 

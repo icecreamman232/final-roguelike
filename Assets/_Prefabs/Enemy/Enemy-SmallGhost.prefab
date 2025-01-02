@@ -242,6 +242,7 @@ MonoBehaviour:
   m_isSubEnemy: 1
   m_subEnemyNumber: 0
   m_currentBrain: {fileID: 4784588756740374459}
+  m_gameEvent: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
 --- !u!114 &3393809872426416298
 MonoBehaviour:
   m_ObjectHideFlags: 0

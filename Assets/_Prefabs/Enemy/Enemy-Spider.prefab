@@ -367,7 +367,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fba6161ed2638ad4c8b9ac3ef529ca52, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_isSubEnemy: 0
+  m_subEnemyNumber: 0
   m_currentBrain: {fileID: 6078541572531969470}
+  m_gameEvent: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
 --- !u!114 &5641471565434600134
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -390,6 +393,7 @@ MonoBehaviour:
   m_healthBar: {fileID: 6261605419656103997}
   m_delayBeforeDeath: 0.5
   m_deathFeedback: {fileID: 4062580847861942466}
+  m_weaponGroup: {fileID: 0}
 --- !u!114 &6532866389331848629
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -426,13 +430,17 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_minDamage: 15
   m_maxDamage: 25
-  m_additionalDamage: 0
+  m_additionMin: 0
+  m_additionMax: 0
   m_multiplyDamage: 0
   m_critDamage: 0
   m_damageableInvulnerableTime: 0.3
   m_damageableLayerMask:
     serializedVersion: 2
     m_Bits: 64
+  m_nonDamageableLayerMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &8353668922407743853
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -449,6 +457,8 @@ MonoBehaviour:
   m_initialWeapon: {fileID: 3666948932025814601, guid: d74a9edcbcbaadb4c817d6f071923fa0, type: 3}
   m_currentWeapon: {fileID: 0}
   m_weaponAttachment: {fileID: 8901685798404121879}
+  m_offsetFromCenter: 0
+  m_offsetAngleWeapon: 0
 --- !u!1 &3523365584074237902
 GameObject:
   m_ObjectHideFlags: 0
@@ -946,7 +956,7 @@ MonoBehaviour:
     - {fileID: 4829243036981298778}
     Transitions: []
   Target: {fileID: 0}
-  BrainActive: 1
+  BrainActive: 0
   CurrentState:
     StateName: 
     Actions: []
