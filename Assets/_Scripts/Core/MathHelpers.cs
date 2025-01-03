@@ -81,5 +81,19 @@ namespace SGGames.Scripts.Core
         {
             return (x / 100f * percent);
         }
+
+        public static Vector2 GetPerpendicularDirection(Vector2 vector)
+        {
+            var normalized = vector.normalized;
+            return new Vector2(-normalized.y, normalized.x);
+        }
+
+        public static Vector2 GetPointAtDistanceFromLine(Vector2 point, Vector2 pointA, Vector2 pointB, float distance)
+        {
+            Vector2 lineDirection = (pointB - pointA).normalized;
+            Vector2 offsetDirection = GetPerpendicularDirection(lineDirection); // Perpendicular to line
+
+            return point + offsetDirection * distance;
+        }
     }
 }
