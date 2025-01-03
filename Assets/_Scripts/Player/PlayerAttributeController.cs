@@ -145,23 +145,23 @@ namespace SGGames.Scripts.Player
             m_intelligencePoints = Mathf.Clamp(m_intelligencePoints, m_heroData.BaseIntelligence, int.MaxValue);
         }
 
-        private int GetRewardAmount(UpgradeAttributeRate rate)
+        private int GetRewardAmount(AttributeTier rate)
         {
             switch (rate)
             {
-                case UpgradeAttributeRate.Common:
+                case AttributeTier.Tier1:
                     return AttributeRewardController.CommonRewardPoint;
-                case UpgradeAttributeRate.Uncommon:
+                case AttributeTier.Tier2:
                     return AttributeRewardController.UncommonRewardPoint;
-                case UpgradeAttributeRate.Rare:
+                case AttributeTier.Tier3:
                     return AttributeRewardController.RareRewardPoint;
-                case UpgradeAttributeRate.Legendary:
+                case AttributeTier.Tier4:
                     return AttributeRewardController.LegendaryRewardPoint;
             }
             return AttributeRewardController.CommonRewardPoint;
         }
         
-        private void OnChooseAttributeReward((UpgradeAttributeRate rate, AttributeType type) reward)
+        private void OnChooseAttributeReward((AttributeTier rate, AttributeType type) reward)
         {
             var amount= GetRewardAmount(reward.rate);
             switch (reward.type)

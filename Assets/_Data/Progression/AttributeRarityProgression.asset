@@ -1,0 +1,165 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 002f2355bba01a748bb7be2e55b3f4b3, type: 3}
+  m_Name: AttributeRarityProgression
+  m_EditorClassIdentifier: 
+  m_progressions:
+  - Level: 1
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 2
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 3
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 4
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 5
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 6
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 7
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 8
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 9
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 10
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 11
+    TierChance:
+    - 30
+    - 25
+    - 0
+    - 0
+  - Level: 12
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 13
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 14
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 15
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 16
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 17
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 18
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 19
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 20
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 21
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 22
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 23
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 24
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0
+  - Level: 25
+    TierChance:
+    - 75
+    - 25
+    - 0
+    - 0

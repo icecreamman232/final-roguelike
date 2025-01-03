@@ -23,9 +23,9 @@ namespace SGGames.Scripts.UI
         [SerializeField] private MMF_Player m_showFeedback;
         [SerializeField] private MMF_Player m_notSelectFeedback;
 
-        private (UpgradeAttributeRate rate, AttributeType type) m_reward;
+        private (AttributeTier rate, AttributeType type) m_reward;
         
-        public (UpgradeAttributeRate rate, AttributeType type) Reward => m_reward;
+        public (AttributeTier rate, AttributeType type) Reward => m_reward;
         
         public Action<int> OnSelectCard;
 
@@ -39,7 +39,7 @@ namespace SGGames.Scripts.UI
             m_initAnchorMax = ((RectTransform)transform).anchorMax;
         }
 
-        public void Show((UpgradeAttributeRate rate, AttributeType type) attributeReward)
+        public void Show((AttributeTier rate, AttributeType type) attributeReward)
         {
             //Reset values
             ((RectTransform)transform).anchorMin = m_initAnchorMin;
@@ -50,16 +50,16 @@ namespace SGGames.Scripts.UI
             m_reward = attributeReward;
             switch (attributeReward.rate)
             {
-                case UpgradeAttributeRate.Common:
+                case AttributeTier.Tier1:
                     m_bg.sprite = m_commonBG;
                     break;
-                case UpgradeAttributeRate.Uncommon:
+                case AttributeTier.Tier2:
                     m_bg.sprite = m_uncommonBG;
                     break;
-                case UpgradeAttributeRate.Rare:
+                case AttributeTier.Tier3:
                     m_bg.sprite = m_rareBG;
                     break;
-                case UpgradeAttributeRate.Legendary:
+                case AttributeTier.Tier4:
                     m_bg.sprite = m_legendaryBG;
                     break;
             }
@@ -87,18 +87,18 @@ namespace SGGames.Scripts.UI
             return "Strength";
         }
 
-        private string GetDescText(AttributeType type , UpgradeAttributeRate rate)
+        private string GetDescText(AttributeType type , AttributeTier rate)
         {
             //f4b41b is yellow
             switch (rate)
             {
-                case UpgradeAttributeRate.Common:
+                case AttributeTier.Tier1:
                     return $"<color=#f4b41b>+{AttributeRewardController.CommonRewardPoint}</color> {GetTitleText(type)}";
-                case UpgradeAttributeRate.Uncommon:
+                case AttributeTier.Tier2:
                     return $"<color=#f4b41b>+{AttributeRewardController.UncommonRewardPoint}</color> {GetTitleText(type)}";
-                case UpgradeAttributeRate.Rare:
+                case AttributeTier.Tier3:
                     return $"<color=#f4b41b>+{AttributeRewardController.RareRewardPoint}</color> {GetTitleText(type)}";
-                case UpgradeAttributeRate.Legendary:
+                case AttributeTier.Tier4:
                     return $"<color=#f4b41b>+{AttributeRewardController.LegendaryRewardPoint}</color> {GetTitleText(type)}";
             }
             return $"+ {AttributeRewardController.CommonRewardPoint} {GetTitleText(type)}";

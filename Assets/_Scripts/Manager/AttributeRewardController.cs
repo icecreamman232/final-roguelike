@@ -9,7 +9,7 @@ namespace SGGames.Scripts.Managers
     [Serializable]
     public class AttributeChance
     {
-        public UpgradeAttributeRate Rate;
+        public AttributeTier Rate;
         public float Weight;
         [SerializeField] [ReadOnly] private float m_lowChance;
         [SerializeField] [ReadOnly] private float m_upperChance;
@@ -62,7 +62,7 @@ namespace SGGames.Scripts.Managers
             }
         }
 
-        private UpgradeAttributeRate GetRandomRate(float chance)
+        private AttributeTier GetRandomRate(float chance)
         {
             for (int i = 0; i < m_dropChanceList.Length; i++)
             {
@@ -91,10 +91,10 @@ namespace SGGames.Scripts.Managers
             }
         }
 
-        public (UpgradeAttributeRate rate, AttributeType type) GetAttributeReward()
+        public (AttributeTier rate, AttributeType type) GetAttributeReward()
         {
             var rateDropChance = UnityEngine.Random.Range(0f, 100f);
-            var typeDropChance = UnityEngine.Random.Range(0f, 90f);
+            var typeDropChance = UnityEngine.Random.Range(0f, 90f); //0-90 so we have 30% for each str, agi and intel
             var randomRate = GetRandomRate(rateDropChance);
             var randomType = GetRandomType(typeDropChance);
             return (randomRate, randomType);

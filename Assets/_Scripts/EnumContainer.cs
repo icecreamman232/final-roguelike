@@ -56,12 +56,12 @@ namespace SGGames.Scripts.Common
         Intelligence,
     }
 
-    public enum UpgradeAttributeRate
+    public enum AttributeTier
     {
-        Common,
-        Uncommon,
-        Rare,
-        Legendary,
+        Tier1,
+        Tier2,
+        Tier3,
+        Tier4,
     }
 
     public enum HealthPotionType

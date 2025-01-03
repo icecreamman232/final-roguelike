@@ -66,7 +66,7 @@ namespace SGGames.Scripts.UI
             m_gameEvent.Raise(GameEventType.UNPAUSED);
         }
 
-        private void FillDataToCard(int index, (UpgradeAttributeRate rate, AttributeType type) attributeReward)
+        private void FillDataToCard(int index, (AttributeTier rate, AttributeType type) attributeReward)
         {
             m_upgradeCardList[index].Show(attributeReward);
         }
