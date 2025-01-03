@@ -21,145 +21,145 @@ MonoBehaviour:
     - 0
   - Level: 2
     TierChance:
-    - 75
-    - 25
+    - 74
+    - 26
     - 0
     - 0
   - Level: 3
     TierChance:
-    - 75
-    - 25
+    - 73
+    - 27
     - 0
     - 0
   - Level: 4
     TierChance:
-    - 75
-    - 25
+    - 72
+    - 28
     - 0
     - 0
   - Level: 5
     TierChance:
-    - 75
-    - 25
+    - 0
+    - 100
     - 0
     - 0
   - Level: 6
     TierChance:
-    - 75
-    - 25
-    - 0
+    - 55
+    - 35
+    - 10
     - 0
   - Level: 7
     TierChance:
-    - 75
-    - 25
-    - 0
+    - 50
+    - 40
+    - 10
     - 0
   - Level: 8
     TierChance:
-    - 75
-    - 25
-    - 0
+    - 45
+    - 45
+    - 10
     - 0
   - Level: 9
     TierChance:
-    - 75
-    - 25
-    - 0
+    - 40
+    - 50
+    - 10
     - 0
   - Level: 10
     TierChance:
-    - 75
-    - 25
     - 0
+    - 0
+    - 100
     - 0
   - Level: 11
     TierChance:
+    - 20
+    - 50
     - 30
-    - 25
-    - 0
     - 0
   - Level: 12
     TierChance:
-    - 75
-    - 25
-    - 0
+    - 15
+    - 55
+    - 30
     - 0
   - Level: 13
     TierChance:
-    - 75
-    - 25
-    - 0
+    - 10
+    - 60
+    - 30
     - 0
   - Level: 14
     TierChance:
-    - 75
-    - 25
     - 0
+    - 70
+    - 30
     - 0
   - Level: 15
     TierChance:
-    - 75
-    - 25
     - 0
     - 0
+    - 50
+    - 50
   - Level: 16
     TierChance:
-    - 75
-    - 25
-    - 0
-    - 0
+    - 5
+    - 55
+    - 30
+    - 10
   - Level: 17
     TierChance:
-    - 75
-    - 25
-    - 0
-    - 0
+    - 5
+    - 50
+    - 35
+    - 10
   - Level: 18
     TierChance:
-    - 75
-    - 25
-    - 0
-    - 0
+    - 5
+    - 45
+    - 40
+    - 10
   - Level: 19
     TierChance:
-    - 75
-    - 25
-    - 0
-    - 0
+    - 5
+    - 40
+    - 45
+    - 10
   - Level: 20
     TierChance:
-    - 75
-    - 25
     - 0
     - 0
+    - 0
+    - 100
   - Level: 21
     TierChance:
-    - 75
-    - 25
-    - 0
-    - 0
+    - 5
+    - 38
+    - 45
+    - 12
   - Level: 22
     TierChance:
-    - 75
-    - 25
-    - 0
-    - 0
+    - 5
+    - 37
+    - 46
+    - 12
   - Level: 23
     TierChance:
-    - 75
-    - 25
-    - 0
-    - 0
+    - 5
+    - 36
+    - 47
+    - 12
   - Level: 24
     TierChance:
-    - 75
-    - 25
-    - 0
-    - 0
+    - 5
+    - 35
+    - 48
+    - 12
   - Level: 25
     TierChance:
-    - 75
-    - 25
     - 0
     - 0
+    - 50
+    - 50

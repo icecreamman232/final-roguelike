@@ -44,20 +44,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f12c99901014d464f836ccea7c6aa4c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_dropChanceList:
-  - Rate: 0
-    Weight: 10
-    m_lowChance: 0
-    m_upperChance: 52.63158
-  - Rate: 1
-    Weight: 6
-    m_lowChance: 52.63158
-    m_upperChance: 84.210526
-  - Rate: 2
-    Weight: 2
-    m_lowChance: 84.210526
-    m_upperChance: 94.73684
-  - Rate: 3
-    Weight: 1
-    m_lowChance: 94.73684
-    m_upperChance: 100
+  m_attributeTierProgressionData: {fileID: 11400000, guid: 02ab857f68dd7444aadb97a9ff52ab24, type: 2}

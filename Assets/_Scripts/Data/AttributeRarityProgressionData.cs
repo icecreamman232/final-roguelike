@@ -17,11 +17,11 @@ namespace SGGames.Scripts.Data
             {
                 return AttributeTier.Tier1;
             }
-            if (chance <= progression.TierChance[1])
+            if (chance <= progression.TierChance[0]  + progression.TierChance[1])
             {
                 return AttributeTier.Tier2;
             }
-            if (chance <= progression.TierChance[2])
+            if (chance <=  + progression.TierChance[0]  + progression.TierChance[1] + progression.TierChance[2])
             {
                 return AttributeTier.Tier3;
             }
