@@ -6,9 +6,9 @@ using UnityEngine;
 namespace SGGames.Scripts.Data
 {
     [CreateAssetMenu(fileName = "AttributeTierProgression", menuName = "SGGames/Progression/Attribute Tier Progression")]
-    public class AttributeRarityProgressionData : ScriptableObject
+    public class AttributeTierProgressionData : ScriptableObject
     {
-        [SerializeField] private AttributeRarityProgression[] m_progressions;
+        [SerializeField] private AttributeTierProgression[] m_progressions;
 
         public AttributeTier GetAttributeTierAtLevel(int level, float chance)
         {
@@ -28,15 +28,15 @@ namespace SGGames.Scripts.Data
             return AttributeTier.Tier4;
         }
 
-        public void SetData(List<AttributeRarityProgression> attributeTiers)
+        public void SetData(List<AttributeTierProgression> attributeTiers)
         {
-            m_progressions = new AttributeRarityProgression[attributeTiers.Count];
+            m_progressions = new AttributeTierProgression[attributeTiers.Count];
             m_progressions = attributeTiers.ToArray();
         }
     }
 
     [Serializable]
-    public struct AttributeRarityProgression
+    public struct AttributeTierProgression
     {
         public int Level;
         public float[] TierChance;

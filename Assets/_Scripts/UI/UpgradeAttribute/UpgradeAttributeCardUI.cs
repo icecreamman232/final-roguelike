@@ -23,9 +23,9 @@ namespace SGGames.Scripts.UI
         [SerializeField] private MMF_Player m_showFeedback;
         [SerializeField] private MMF_Player m_notSelectFeedback;
 
-        private (AttributeTier rate, AttributeType type) m_reward;
+        private (AttributeTier tier, AttributeType type) m_reward;
         
-        public (AttributeTier rate, AttributeType type) Reward => m_reward;
+        public (AttributeTier tier, AttributeType type) Reward => m_reward;
         
         public Action<int> OnSelectCard;
 
@@ -39,7 +39,7 @@ namespace SGGames.Scripts.UI
             m_initAnchorMax = ((RectTransform)transform).anchorMax;
         }
 
-        public void Show((AttributeTier rate, AttributeType type) attributeReward)
+        public void Show((AttributeTier tier, AttributeType type) attributeReward)
         {
             //Reset values
             ((RectTransform)transform).anchorMin = m_initAnchorMin;
@@ -48,7 +48,7 @@ namespace SGGames.Scripts.UI
             
             m_showFeedback.PlayFeedbacks();
             m_reward = attributeReward;
-            switch (attributeReward.rate)
+            switch (attributeReward.tier)
             {
                 case AttributeTier.Tier1:
                     m_bg.sprite = m_commonBG;
@@ -65,7 +65,7 @@ namespace SGGames.Scripts.UI
             }
 
             m_titleText.text = GetTitleText(attributeReward.type) + " Upgrade";
-            m_descText.text = GetDescText(attributeReward.type, attributeReward.rate);
+            m_descText.text = GetDescText(attributeReward.type, attributeReward.tier);
         }
 
         public void PlayNotSelectFeedback()
@@ -87,10 +87,10 @@ namespace SGGames.Scripts.UI
             return "Strength";
         }
 
-        private string GetDescText(AttributeType type , AttributeTier rate)
+        private string GetDescText(AttributeType type , AttributeTier tier)
         {
             //f4b41b is yellow
-            switch (rate)
+            switch (tier)
             {
                 case AttributeTier.Tier1:
                     return $"<color=#f4b41b>+{AttributeRewardController.CommonRewardPoint}</color> {GetTitleText(type)}";

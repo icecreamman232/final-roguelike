@@ -145,9 +145,9 @@ namespace SGGames.Scripts.Player
             m_intelligencePoints = Mathf.Clamp(m_intelligencePoints, m_heroData.BaseIntelligence, int.MaxValue);
         }
 
-        private int GetRewardAmount(AttributeTier rate)
+        private int GetRewardAmount(AttributeTier tier)
         {
-            switch (rate)
+            switch (tier)
             {
                 case AttributeTier.Tier1:
                     return AttributeRewardController.CommonRewardPoint;

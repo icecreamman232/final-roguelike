@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 002f2355bba01a748bb7be2e55b3f4b3, type: 3}
-  m_Name: AttributeRarityProgression
+  m_Name: AttributeTierProgression
   m_EditorClassIdentifier: 
   m_progressions:
   - Level: 1

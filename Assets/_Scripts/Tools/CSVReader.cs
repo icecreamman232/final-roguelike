@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using SGGames.Scripts.Data;
 using UnityEditor;
 using UnityEngine;
-using AttributeRarityProgressionData = SGGames.Scripts.Data.AttributeRarityProgressionData;
 
 namespace SGGames.Scripts.Tools
 {
@@ -32,12 +31,12 @@ namespace SGGames.Scripts.Tools
         {
             var dataAsset = AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/_Data/CSV-Data/AttributeTierProgression.csv");
             var lines = dataAsset.text.Split("\n");
-            List<AttributeRarityProgression> progressions = new List<AttributeRarityProgression>();
+            List<AttributeTierProgression> progressions = new List<AttributeTierProgression>();
             
             for (int i = 1; i < lines.Length; i++)
             {
                 if(lines[i] == "") continue;
-                progressions.Add(new AttributeRarityProgression
+                progressions.Add(new AttributeTierProgression
                 {
                     Level = int.Parse(lines[i].Split(',')[0]),
                     TierChance = new float[]
@@ -50,7 +49,7 @@ namespace SGGames.Scripts.Tools
                 });
             }
             
-            var data = AssetDatabase.LoadAssetAtPath<AttributeRarityProgressionData>("Assets/_Data/Progression/AttributeRarityProgression.asset");
+            var data = AssetDatabase.LoadAssetAtPath<AttributeTierProgressionData>("Assets/_Data/Progression/AttributeRarityProgression.asset");
             data.SetData(progressions);
             EditorUtility.SetDirty(data);
             AssetDatabase.SaveAssets();

@@ -9,7 +9,7 @@ namespace SGGames.Scripts.Managers
     public class AttributeRewardController : Singleton<AttributeRewardController>
     {
         [Header("Progression")]
-        [SerializeField] private AttributeRarityProgressionData m_attributeTierProgressionData;
+        [SerializeField] private AttributeTierProgressionData m_attributeTierProgressionData;
 
         public static int CommonRewardPoint = 1;
         public static int UncommonRewardPoint = 2;
@@ -29,15 +29,15 @@ namespace SGGames.Scripts.Managers
             return AttributeType.Intelligence;
         }
 
-        public (AttributeTier rate, AttributeType type) GetAttributeReward()
+        public (AttributeTier tier, AttributeType type) GetAttributeReward()
         {
-            var rateDropChance = UnityEngine.Random.Range(0f, 100f);
+            var tierDropChance = UnityEngine.Random.Range(0f, 100f);
             var typeDropChance = UnityEngine.Random.Range(0f, 90f); //0-90 so we have 30% for each str, agi and intel
             var randomRate = m_attributeTierProgressionData
-                .GetAttributeTierAtLevel(InGameProgressManager.Instance.CurrentLevel, rateDropChance);
+                .GetAttributeTierAtLevel(InGameProgressManager.Instance.CurrentLevel, tierDropChance);
             var randomType = GetRandomType(typeDropChance);
             
-            Debug.Log($"<color=orange>Get att. tier {randomRate} at level:{InGameProgressManager.Instance.CurrentLevel} with chance:{rateDropChance}</color>");
+            Debug.Log($"<color=orange>Get att. tier {randomRate} at level:{InGameProgressManager.Instance.CurrentLevel} with chance:{tierDropChance}</color>");
             
             return (randomRate, randomType);
         }
