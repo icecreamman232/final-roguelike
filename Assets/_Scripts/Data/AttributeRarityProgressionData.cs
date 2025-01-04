@@ -12,7 +12,7 @@ namespace SGGames.Scripts.Data
 
         public AttributeTier GetAttributeTierAtLevel(int level, float chance)
         {
-            var progression = m_progressions[level];
+            var progression = m_progressions[level-1];
             if (chance <= progression.TierChance[0])
             {
                 return AttributeTier.Tier1;
@@ -21,7 +21,7 @@ namespace SGGames.Scripts.Data
             {
                 return AttributeTier.Tier2;
             }
-            if (chance <=  + progression.TierChance[0]  + progression.TierChance[1] + progression.TierChance[2])
+            if (chance <= progression.TierChance[0]  + progression.TierChance[1] + progression.TierChance[2])
             {
                 return AttributeTier.Tier3;
             }
