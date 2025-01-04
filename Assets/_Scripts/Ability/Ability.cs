@@ -11,40 +11,26 @@ namespace SGGames.Scripts.Abilities
         COOLDOWN,
     }
 
-    public class Ability : MonoBehaviour, ICooldown
+    public class Ability : MonoBehaviour
     {
+        [Header("Base")]
         [SerializeField] protected AbilityState m_abilityState = AbilityState.READY;
-        [SerializeField] protected float m_coolDown;
+        [SerializeField] [Min(0)] protected float m_coolDown;
 
         protected float m_cooldownTimer;
         
         public AbilityState CurrentState => m_abilityState;
 
-        public void StartCooldown()
+        protected virtual void Start()
         {
-            m_cooldownTimer = m_coolDown;
+            
         }
-
-        public void StopCooldown()
-        {
-            m_cooldownTimer = 0;
-        }
-
-        public virtual void Update()
+        
+        protected virtual void Update()
         {
             UpdateState();
         }
-
-        public virtual void StartAbility()
-        {
-            m_abilityState = AbilityState.PRE_TRIGGER;
-        }
-
-        public virtual void StopAbility()
-        {
-            m_abilityState = AbilityState.POST_TRIGGER;
-        }
-
+        
         protected virtual void UpdateState()
         {
             switch (m_abilityState)
@@ -74,7 +60,7 @@ namespace SGGames.Scripts.Abilities
 
         protected virtual void PreTriggerState()
         {
-            m_abilityState = AbilityState.TRIGGERING;
+            
         }
 
         protected virtual void TriggeringState()
@@ -94,7 +80,33 @@ namespace SGGames.Scripts.Abilities
             if (m_cooldownTimer <= 0)
             {
                 StopCooldown();
+                m_abilityState = AbilityState.READY;
             }
+        }
+        
+        protected virtual void StartCooldown()
+        {
+            m_cooldownTimer = m_coolDown;
+        }
+
+        protected virtual void StopCooldown()
+        {
+            m_cooldownTimer = 0;
+        }
+        
+        protected virtual void ResetAbility()
+        {
+            
+        }
+        
+        public virtual void StartAbility()
+        {
+            m_abilityState = AbilityState.PRE_TRIGGER;
+        }
+
+        public virtual void StopAbility()
+        {
+            m_abilityState = AbilityState.POST_TRIGGER;
         }
     }
 }

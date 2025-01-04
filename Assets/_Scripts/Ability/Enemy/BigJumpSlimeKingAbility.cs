@@ -40,6 +40,8 @@ namespace SGGames.Scripts.Abilities
                 traveledUpDistance = Vector2.Distance(transform.position, m_initialPos);
                 yield return null;
             }
+
+            m_abilityState = AbilityState.TRIGGERING;
             base.PreTriggerState();
         }
 

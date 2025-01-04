@@ -1,5 +1,6 @@
 using System;
 using System.Collections;
+using SGGames.Scripts.Abilities;
 using SGGames.Scripts.Attribute;
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Events;
@@ -9,13 +10,13 @@ using UnityEngine.InputSystem;
 
 namespace SGGames.Scripts.Player
 {
-    public class KnightShieldAbility : PlayerDefenseAbility
+    public class KnightShieldAbility : PlayerActiveAbility
     {
+        [Header("Shield Params")]
         [SerializeField] private float m_manaCost;
         [SerializeField] private float m_shieldDuration;
-        [SerializeField] private float m_shieldCooldown;
         [SerializeField][ReadOnly] private float m_durationTimer;
-        [SerializeField][ReadOnly] private float m_cooldownTimer;
+        [Header("Component Refs")]
         [SerializeField] private CircleCollider2D m_shieldCollider;
         [SerializeField] private ModifierHandler m_modifierHandler;
         [SerializeField] private HealthModifier m_immortalModifier;
@@ -29,7 +30,6 @@ namespace SGGames.Scripts.Player
         private PlayerMana m_playerMana;
         private readonly int m_showShieldAnimParam = Animator.StringToHash("Trigger_Shield");
         
-        
         protected override void Start()
         {
             m_playerMovement = GetComponent<PlayerMovement>();
@@ -38,57 +38,40 @@ namespace SGGames.Scripts.Player
             base.Start();
         }
 
-        protected override void Update()
+        protected override void TriggeringState()
         {
-            if (!m_isAllow) return;
-
-            switch (m_abilityState)
+            m_durationTimer -= Time.deltaTime;
+            if (m_durationTimer <= 0)
             {
-                case PlayerAbilityState.READY:
-                    break;
-                case PlayerAbilityState.BEFORE_PLAYING:
-                    
-                    break;
-                case PlayerAbilityState.PLAYING:
-                    m_durationTimer -= Time.deltaTime;
-                    if (m_durationTimer <= 0)
-                    {
-                        ResetAbility();
-                    }
-                    break;
-                case PlayerAbilityState.POST_PLAYING:
-                    break;
-                case PlayerAbilityState.COOLDOWN:
-                    m_cooldownTimer -= Time.deltaTime;
-                    if (m_cooldownTimer <= 0)
-                    {
-                        m_cooldownTimer = 0;
-                        m_abilityState = PlayerAbilityState.READY;
-                    }
-                    m_abilityCoolDownEvent.Raise(m_cooldownTimer,m_shieldCooldown);
-                    break;
+                ResetAbility();
             }
+            base.TriggeringState();
         }
 
-        protected override void OnPressDefenseAbilityButton(InputAction.CallbackContext context)
+        protected override void CooldownState()
         {
-            if (m_abilityState != PlayerAbilityState.READY) return;
+            base.CooldownState();
+            m_abilityCoolDownEvent.Raise(m_cooldownTimer,m_coolDown);
+        }
+        
+        protected override void OnPressedAbilityButton(InputAction.CallbackContext context)
+        {
+            if (m_abilityState != AbilityState.READY) return;
             if (m_playerMana.CurrentMana < m_manaCost) return;
             
             m_playerEvent.Raise(PlayerEventType.USE_DEFENSE_ABILITY);
             m_playerMana.SpentMana(m_manaCost);
             
             StartCoroutine(OnTriggerShield());
-            base.OnPressDefenseAbilityButton(context);
+            base.OnPressedAbilityButton(context);
         }
 
         private IEnumerator OnTriggerShield()
         {
-            m_abilityState = PlayerAbilityState.BEFORE_PLAYING;
+            m_abilityState = AbilityState.PRE_TRIGGER;
             m_playerMovement.ToggleMovement(false);
             m_shieldVFXAnimator.SetBool(m_showShieldAnimParam, true);
             yield return new WaitForSeconds(m_showShieldAnimDuration);
-            m_abilityState = PlayerAbilityState.PLAYING;
             m_shieldCollider.enabled = true;
             m_playerMovement.ToggleMovement(true);
             
@@ -96,18 +79,17 @@ namespace SGGames.Scripts.Player
             m_modifierHandler.RegisterModifier(m_reduceMovespeedModifier);
             
             m_durationTimer = m_shieldDuration;
+            
+            m_abilityState = AbilityState.TRIGGERING;
         }
 
         private IEnumerator OnStopShield()
         {
-            m_abilityState = PlayerAbilityState.POST_PLAYING;
             m_durationTimer = 0;
             m_shieldVFXAnimator.SetBool(m_showShieldAnimParam,false);
             m_shieldCollider.enabled = false;
             yield return new WaitForSeconds(m_showShieldAnimDuration);
-            
-            m_cooldownTimer = m_shieldCooldown;
-            m_abilityState = PlayerAbilityState.COOLDOWN;
+            m_abilityState = AbilityState.POST_TRIGGER;
         }
 
         protected override void ResetAbility()

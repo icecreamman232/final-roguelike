@@ -231,6 +231,8 @@ MonoBehaviour:
   m_isImmortal: 0
   m_isDead: 0
   m_spriteRenderer: {fileID: 8048074491649769888}
+  m_chanceToNotTakeDamage: 0
+  m_percentDamageTaken: 0
   m_armor: 0
   m_dodgeRate: 0
   m_flickerFrequency: 0.1
@@ -361,15 +363,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2cbc1b13712b35c46a6dba3853eb94dc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_isAllow: 1
   m_abilityState: 0
-  m_defenseAbilityButtonPressedEvent: {fileID: 11400000, guid: a20d6c0c4e9f3b240a1069028d584b30, type: 2}
+  m_coolDown: 5
+  m_abilityButtonPressedEvent: {fileID: 11400000, guid: a20d6c0c4e9f3b240a1069028d584b30, type: 2}
   m_playerEvent: {fileID: 11400000, guid: b065f74e84bb99e4a9f98567722831a3, type: 2}
   m_manaCost: 15
   m_shieldDuration: 3
-  m_shieldCooldown: 15
   m_durationTimer: 0
-  m_cooldownTimer: 0
   m_shieldCollider: {fileID: 5389140239208495862}
   m_modifierHandler: {fileID: 8978468732513568599}
   m_immortalModifier: {fileID: 11400000, guid: aa82c8f33b40139499e132abf1adc531, type: 2}
