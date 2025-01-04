@@ -3,7 +3,6 @@ using SGGames.Scripts.Core;
 using SGGames.Scripts.Healths;
 using SGGames.Scripts.Player;
 using UnityEngine;
-using Random = UnityEngine.Random;
 
 namespace SGGames.Scripts.Damages
 {
