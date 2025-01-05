@@ -10,7 +10,7 @@ namespace SGGames.Scripts.Enemies
         public override void DoAction()
         {
             var randDirection = UnityEngine.Random.insideUnitCircle;
-            m_movement.SetDirection(randDirection);
+            m_movement.SetDirection(randDirection.normalized);
         }
     }
 }
