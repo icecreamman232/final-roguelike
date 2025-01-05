@@ -1,5 +1,5 @@
-using System;
 using System.Collections;
+using SGGames.Scripts.Attribute;
 using SGGames.Scripts.Damages;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Player;
@@ -25,14 +25,18 @@ namespace SGGames.Scripts.Weapons
         [SerializeField] protected Transform m_model;
         [SerializeField] protected DamageHandler m_damageHandler;
         [SerializeField] protected float m_delayBeforeDestruction;
+
+        [Header("Piercing Settings")] 
+        [SerializeField] protected int m_piercingNumber = 1;
+        [SerializeField][ReadOnly] protected int m_piercingCounter;
+        [Header("Events")]
         [SerializeField] protected UnityEvent m_onEnable;
         [SerializeField] protected UnityEvent m_onDestroy;
-        
         /// <summary>
         /// Offset angle of projectile visual.Ex: if projectile visual is up, the angle should be 90
         /// </summary>
         [SerializeField] protected float m_offsetRotationAngle;
-        
+
         protected Vector2 m_wakeupPosition;
         protected YieldInstruction DelayBeforeDestructionCoroutine;
         
@@ -46,6 +50,7 @@ namespace SGGames.Scripts.Weapons
         private void OnEnable()
         {
             m_onEnable?.Invoke();
+            m_piercingCounter = m_piercingNumber;
         }
 
         public virtual void Spawn(Vector2 position, Quaternion rotation, Vector2 direction, DamageInfo damageInfo)
@@ -73,11 +78,15 @@ namespace SGGames.Scripts.Weapons
         
         protected virtual void OnHitDamageable(GameObject obj)
         {
+            m_piercingCounter--;
+            if (m_piercingCounter >= 0) return;
             DestroyProjectile();
         }
 
         protected virtual void OnHitNonDamageable(GameObject obj)
         {
+            m_piercingCounter--;
+            if (m_piercingCounter >= 0) return;
             DestroyProjectile();
         }
 
