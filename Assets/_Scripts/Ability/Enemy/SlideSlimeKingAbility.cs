@@ -59,6 +59,7 @@ namespace SGGames.Scripts.Abilities
             yield return new WaitForSeconds(m_warningDuration);
             m_markSpriteObject.SetActive(false);
             base.PreTriggerState();
+            m_abilityState = AbilityState.TRIGGERING;
         }
 
         protected override void TriggeringState()
