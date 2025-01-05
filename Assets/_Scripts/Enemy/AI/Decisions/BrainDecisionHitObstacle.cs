@@ -9,16 +9,20 @@ namespace SGGames.SCripts.Enemies
     /// </summary>
     public class BrainDecisionHitObstacle : BrainDecision
     {
-        [SerializeField] private EnemyMovement m_movement;
         [SerializeField] private bool m_isHitObstacle;
-        private void OnEnable()
+        
+        private EnemyMovement m_movement;
+        
+        public override void Initialize(EnemyBrain brain)
         {
-            m_movement.OnHitObstacle += OnHitObstacle;
+            base.Initialize(brain);
+            m_movement = m_brain.Owner.gameObject.GetComponent<EnemyMovement>();
         }
 
-        private void OnDisable()
+        public override void OnEnterState()
         {
-            m_movement.OnHitObstacle -= OnHitObstacle;
+            base.OnEnterState();
+            m_movement.OnHitObstacle += OnHitObstacle;
         }
         
         private void OnHitObstacle()
@@ -35,6 +39,7 @@ namespace SGGames.SCripts.Enemies
         {
             base.OnExitState();
             m_isHitObstacle = false;
+            m_movement.OnHitObstacle -= OnHitObstacle;
         }
     }
 }

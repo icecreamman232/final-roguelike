@@ -1,10 +1,15 @@
-using UnityEngine;
 
 namespace SGGames.Scripts.Enemies
 {
     public class BrainActionStopMoving : BrainAction
     {
-        [SerializeField] private EnemyMovement m_movement;
+        private EnemyMovement m_movement;
+        public override void Initialize(EnemyBrain brain)
+        {
+            base.Initialize(brain);
+            m_movement = m_brain.Owner.gameObject.GetComponent<EnemyMovement>();
+        }
+        
         public override void DoAction()
         {
             m_movement.StopMoving();
