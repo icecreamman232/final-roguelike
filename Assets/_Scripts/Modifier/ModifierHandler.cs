@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using SGGames.Scripts.Common;
@@ -166,6 +167,55 @@ namespace SGGames.Scripts.Modifiers
         {
             var processor = m_processorContainer.FirstOrDefault(x=>(x.Value.Modifier == modifier));
             processor.Value.StartModifier();
+        }
+
+        public bool IsExist(Modifier modifier)
+        {
+            foreach (var dictValue in m_processorContainer)
+            {
+                if (dictValue.Value.Modifier == modifier)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+        
+
+        /// <summary>
+        /// Find a modifier by specific query
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public Modifier QueryModifier(Func<Modifier,bool> query)
+        {
+            foreach (var dictValue in m_processorContainer)
+            {
+                if (query(dictValue.Value.Modifier))
+                {
+                    return dictValue.Value.Modifier;
+                }
+            }
+
+            return null;
+        }
+
+        /// <summary>
+        /// Find a processor by modifier the handler process
+        /// </summary>
+        /// <param name="query"></param>
+        /// <returns></returns>
+        public ModifierProcessor QueryProcessor(Func<Modifier, bool> query)
+        {
+            foreach (var dictValue in m_processorContainer)
+            {
+                if (query(dictValue.Value.Modifier))
+                {
+                    return dictValue.Value;
+                }
+            }
+
+            return null;
         }
         
         private void OnReceiveGameEvent(GameEventType eventType)
