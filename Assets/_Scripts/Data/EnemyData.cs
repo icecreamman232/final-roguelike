@@ -49,7 +49,6 @@ namespace SGGames.Scripts.Data
             ApplyMoveSpeed();
             ApplyBodyDamage();
             ApplyWeaponStats();
-            ApplyProjectileStats();
             
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
@@ -125,27 +124,6 @@ namespace SGGames.Scripts.Data
             weapon.ApplyData(m_delayBetweenShot);
             PrefabUtility.SavePrefabAsset(m_weaponPrefab);
             Debug.Log($"<color=green>Applied weapon value to enemy prefab {m_enemyPrefab.name}</color>");
-        }
-
-        private void ApplyProjectileStats()
-        {
-            if (m_projectilePrefab == null)
-            {
-                Debug.LogError("Projectile Prefab is not found");
-                return;
-            }
-            
-            
-            var projectile = m_projectilePrefab.GetComponent<Projectile>();
-            if (projectile == null)
-            {
-                Debug.LogError("Projectile is not found");
-                return;
-            }
-            
-            //projectile.ApplyData(m_projectileSettings,m_minProjectileDamage,m_maxProjectileDamage);
-            PrefabUtility.SavePrefabAsset(m_projectilePrefab);
-            Debug.Log($"<color=green>Applied projectile value to enemy prefab {m_enemyPrefab.name}</color>");
         }
         
         #endif
