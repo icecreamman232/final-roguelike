@@ -21,6 +21,8 @@ namespace SGGames.Scripts.Manager
         [SerializeField] private int m_extraCoinForChest;
         
         public bool HasKey => m_keyPicked > 0;
+        
+        public int CurrentCoin => m_coinPicked;
 
         public float ExtraCoinEnemyMultiplier => m_extraCoinEnemyMultiplier;
         public float ExtraCoinChestMultiplier => m_extraCoinChestMultiplier;

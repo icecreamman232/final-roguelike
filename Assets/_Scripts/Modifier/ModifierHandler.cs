@@ -67,13 +67,15 @@ namespace SGGames.Scripts.Modifiers
 
         public void UnregisterModifier(Modifier modifier)
         {
-            var processor = m_processorContainer.FirstOrDefault(x=>(x.Value.Modifier == modifier)); 
+            var processor = m_processorContainer.FirstOrDefault(x=>(x.Value.Modifier == modifier));
+            if (processor.Key == null) return;
             processor.Value.StopModifier();
         }
 
         public void StartProcessor(Modifier modifier)
         {
             var processor = m_processorContainer.FirstOrDefault(x=>(x.Value.Modifier == modifier));
+            if (processor.Key == null) return;
             processor.Value.StartModifier();
         }
 

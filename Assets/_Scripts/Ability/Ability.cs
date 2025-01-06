@@ -1,3 +1,4 @@
+using SGGames.Scripts.Modifiers;
 using UnityEngine;
 
 namespace SGGames.Scripts.Abilities
@@ -9,6 +10,14 @@ namespace SGGames.Scripts.Abilities
         TRIGGERING,
         POST_TRIGGER,
         COOLDOWN,
+    }
+
+    /// <summary>
+    /// Ability that player can choose when leveling up
+    /// </summary>
+    public interface ISelectableAbility
+    {
+        public void Initialize(ModifierHandler modifierHandler);
     }
 
     public class Ability : MonoBehaviour

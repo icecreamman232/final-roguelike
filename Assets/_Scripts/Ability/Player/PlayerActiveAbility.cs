@@ -2,7 +2,6 @@ using SGGames.Scripts.Abilities;
 using SGGames.Scripts.Events;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using UnityEngine.Serialization;
 
 namespace SGGames.Scripts.Player
 {
