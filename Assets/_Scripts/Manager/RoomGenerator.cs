@@ -42,7 +42,12 @@ namespace SGGames.Scripts.Manager
             var newRooms = new List<RoomData>();
             for (int i = 0; i < C_MAX_ROOM_NUMBER; i++)
             {
-                newRooms.Add(GetCurrentRoom(i,areaIndex));
+                RoomData chosenRoom = GetCurrentRoom(i, areaIndex);
+                while (newRooms.Contains(chosenRoom))
+                {
+                    chosenRoom = GetCurrentRoom(i, areaIndex);
+                }
+                newRooms.Add(chosenRoom);
             }
 
             return newRooms;

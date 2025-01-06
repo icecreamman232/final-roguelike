@@ -83,8 +83,6 @@ namespace SGGames.Scripts.Managers
             m_rightRoomRewardList = m_roomGenerator.GetRoomRewards(m_currentAreaIndex);
             
             StartCoroutine(OnLevelLoaded());
-            
-            
         }
 
         private void OnDestroy()

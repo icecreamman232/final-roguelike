@@ -2311,12 +2311,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 9101111211934806997, guid: 47ef58027824cfc4cbbe7a57a3af1ede, type: 3}
       propertyPath: m_isDebug
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9101111211934806997, guid: 47ef58027824cfc4cbbe7a57a3af1ede, type: 3}
       propertyPath: m_defaultRoom
       value: 
-      objectReference: {fileID: 11400000, guid: 0292120692df412468dbd3103555d355, type: 2}
+      objectReference: {fileID: 11400000, guid: 5418ab6951e426c47997f38f9fdb1447, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
