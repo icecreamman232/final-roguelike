@@ -52,6 +52,8 @@ namespace SGGames.Scripts.Managers
         [SerializeField] private BoolEvent m_freezePlayerEvent;
         [SerializeField] private BoolEvent m_freezeInputEvent;
         [SerializeField] private BoolEvent m_fadeOutScreenEvent;
+        [Header("Debug")]
+        [SerializeField] private bool m_isDebug;
 
         private readonly float m_delayBeforeEnemyAtk = 0.3f;
         private readonly int m_maxAreaCount = 7;
@@ -209,6 +211,12 @@ namespace SGGames.Scripts.Managers
         private void LoadRoom(int doorIndex)
         {
             m_currentRoomData = doorIndex == 0 ? m_leftSideRoomList[m_roomIndex] : m_rightSideRoomList[m_roomIndex];
+            
+            if (m_isDebug)
+            {
+                m_currentRoomData = m_defaultRoom;
+            }
+
             Debug.Log($"<color=yellow>Load Room {m_roomIndex}: {m_currentRoomData.name}</color>");
             var roomObj = Instantiate(m_currentRoomData.RoomPrefab);
             m_currentRoom = roomObj.GetComponent<Room>();
