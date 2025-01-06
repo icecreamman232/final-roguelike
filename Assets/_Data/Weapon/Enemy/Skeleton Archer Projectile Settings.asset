@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: Skeleton Archer Projectile Settings
   m_EditorClassIdentifier: 
   m_type: 1
-  m_speed: 0
-  m_range: 0
+  m_speed: 3
+  m_range: 10
   m_piercingNumber: 0
   m_delayBeforeDestruction: 0
-  m_offsetRotationAngle: 0
+  m_offsetRotationAngle: -90
