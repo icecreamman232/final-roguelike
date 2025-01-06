@@ -51,14 +51,14 @@ namespace SGGames.Scripts.EditorExtension
                 var prefabPath = PrefabUtility.GetPrefabAssetPathOfNearestInstanceRoot(enemyPrefabs[i]);
                 
                 var asset = AssetDatabase.LoadAssetAtPath<GameObject>(prefabPath);
-                
+                var pos = ((EnemyController)enemyPrefabs[i]).gameObject.transform.position;
                 roomDataAsset.EnemyList[i] = new EnemySpawnInfo
                 {
                     EnemyPrefab = asset,
-                    SpawnPosition = asset.transform.position
+                    SpawnPosition = pos
                 };
             }
-            AssetDatabase.CreateAsset(roomDataAsset, $"Assets/_Data/RoomData/Area-{m_areaIndex}/{m_roomPrefab.name}_{m_difficultType}_{m_postFixIndex}.asset");
+            AssetDatabase.CreateAsset(roomDataAsset, $"Assets/_Data/RoomData/Area-{m_areaIndex}/{m_roomPrefab.name}-{m_difficultType}-{m_postFixIndex}.asset");
             AssetDatabase.SaveAssets();
         }
     }
