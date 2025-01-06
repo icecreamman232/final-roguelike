@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103a9c0fa3847264fa4e55d761711826, type: 3}
+  m_Name: RedGhost_EnemyData
+  m_EditorClassIdentifier: 
+  m_enemyName: Red Ghost
+  m_maxHealth: 80
+  m_moveSpeed: 4
+  m_enemySprite: {fileID: -1797568851, guid: 63034a8ed8224af428755a256fbc30e9, type: 3}
+  m_enemyPrefab: {fileID: 1813744210294403046, guid: 35f13f3a62c93e143aefe8244df86635, type: 3}
+  m_minBodyDamage: 30
+  m_maxBodyDamage: 35
+  m_delayBetweenShot: 0
+  m_projectileSettings: {fileID: 11400000, guid: 6df650b3f228a014caac1fefc4f550c8, type: 2}
+  m_weaponPrefab: {fileID: 0}
+  m_projectilePrefab: {fileID: 4718482001757931030, guid: ca598aa01865f2a4d8f9fe23098c7ff6, type: 3}
+  m_minProjectileDamage: 20
+  m_maxProjectileDamage: 50

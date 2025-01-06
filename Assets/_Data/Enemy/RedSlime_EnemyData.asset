@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103a9c0fa3847264fa4e55d761711826, type: 3}
+  m_Name: RedSlime_EnemyData
+  m_EditorClassIdentifier: 
+  m_enemyName: Red Slime
+  m_maxHealth: 30
+  m_moveSpeed: 3
+  m_enemySprite: {fileID: 1829255450, guid: f684ce3a037dcdc4985381e68701f4f0, type: 3}
+  m_enemyPrefab: {fileID: 3525120331538969626, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+  m_minBodyDamage: 15
+  m_maxBodyDamage: 25
+  m_delayBetweenShot: 0
+  m_projectileSettings: {fileID: 11400000, guid: d14966fb18b150445ba4f7bc226b2f16, type: 2}
+  m_weaponPrefab: {fileID: 0}
+  m_projectilePrefab: {fileID: 1716120488588487865, guid: ef0615bf5e4989649863ee2e6f151555, type: 3}
+  m_minProjectileDamage: 10
+  m_maxProjectileDamage: 15
