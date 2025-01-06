@@ -213,7 +213,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: Shoot
-  m_weaponHandler: {fileID: 8339783687004959235}
 --- !u!1 &4344435255455557345
 GameObject:
   m_ObjectHideFlags: 0
@@ -605,7 +604,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2978341369451746414, guid: 09ada9810c99a4a40a26bcf4425c5fd2, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 0.271
       objectReference: {fileID: 0}
     - target: {fileID: 2978341369451746414, guid: 09ada9810c99a4a40a26bcf4425c5fd2, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
