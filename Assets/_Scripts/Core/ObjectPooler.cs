@@ -48,6 +48,9 @@ namespace SGGames.Scripts.Core
             for (int i = 0; i < PoolSize; i++)
             {
                 var pooledObject = Instantiate(ObjectToPool, Parent);
+                var currentName = pooledObject.name;
+                currentName += $"({i})";
+                pooledObject.name = currentName;
                 pooledObject.SetActive(false);
                 m_pool.Add(pooledObject);
             }
