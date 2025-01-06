@@ -20,10 +20,8 @@ MonoBehaviour:
   m_minBodyDamage: 15
   m_maxBodyDamage: 25
   m_delayBetweenShot: 1
+  m_projectileSettings: {fileID: 11400000, guid: 575afed17e7bc3845b73bdf611adefa8, type: 2}
   m_weaponPrefab: {fileID: 118477653130531295, guid: 82660b8089ed9354fb3855f7e09bc30e, type: 3}
   m_projectilePrefab: {fileID: 7033417393917381709, guid: ab94df523067d4542b69abde86195dd0, type: 3}
-  m_projectileType: 1
-  m_projectileSpeed: 5
-  m_projectileRange: 8
   m_minProjectileDamage: 10
   m_maxProjectileDamage: 15

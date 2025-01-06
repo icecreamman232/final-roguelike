@@ -24,12 +24,8 @@ namespace SGGames.Scripts.Data
         [SerializeField] private ProjectileSettings m_projectileSettings;
         [SerializeField] private GameObject m_weaponPrefab;
         [SerializeField] private GameObject m_projectilePrefab;
-        [SerializeField] private ProjectileType m_projectileType;
-        [SerializeField] private float m_projectileSpeed;
-        [SerializeField] private float m_projectileRange;
         [SerializeField] private float m_minProjectileDamage;
         [SerializeField] private float m_maxProjectileDamage;
-        [SerializeField] private int m_piercingNumber;
 
         public string EnemyName => m_enemyName;
         public float MaxHealth => m_maxHealth;
@@ -42,14 +38,8 @@ namespace SGGames.Scripts.Data
         
         public GameObject WeaponPrefab => m_weaponPrefab;
         public GameObject ProjectilePrefab => m_projectilePrefab;
-        public ProjectileType ProjectileType => m_projectileType;
-        public float ProjectileSpeed => m_projectileSpeed;
-        public float ProjectileRange => m_projectileRange;
         public float MinProjectileDamage => m_minProjectileDamage;
         public float MaxProjectileDamage => m_maxProjectileDamage;
-        
-        public int PiercingNumber => m_piercingNumber;
-        
         public ProjectileSettings ProjectileSettings => m_projectileSettings;
 
         #if UNITY_EDITOR
@@ -153,7 +143,7 @@ namespace SGGames.Scripts.Data
                 return;
             }
             
-            projectile.ApplyData(m_projectileType, m_projectileSpeed,m_projectileRange,m_minProjectileDamage,m_maxProjectileDamage);
+            //projectile.ApplyData(m_projectileSettings,m_minProjectileDamage,m_maxProjectileDamage);
             PrefabUtility.SavePrefabAsset(m_projectilePrefab);
             Debug.Log($"<color=green>Applied projectile value to enemy prefab {m_enemyPrefab.name}</color>");
         }

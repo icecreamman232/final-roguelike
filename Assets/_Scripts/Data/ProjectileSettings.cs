@@ -11,15 +11,18 @@ namespace SGGames.Scripts.Data
         [SerializeField] private ProjectileType m_type;
         [SerializeField] private float m_speed;
         [SerializeField] private float m_range;
-        [SerializeField] private float m_piercingNumber;
+        [SerializeField] private int m_piercingNumber;
         [SerializeField] private float m_delayBeforeDestruction;
         [Header("Visual Settings")]
+        /// <summary>
+        /// Offset angle of projectile visual.Ex: if projectile visual is up, the angle should be 90
+        /// </summary>
         [SerializeField] private float m_offsetRotationAngle;
         
         public ProjectileType ProjectileType => m_type;
         public float Speed => m_speed;
         public float Range => m_range;
-        public float PiercingNumber => m_piercingNumber;
+        public int PiercingNumber => m_piercingNumber;
         public float DelayBeforeDestruction => m_delayBeforeDestruction;
         public float OffsetRotationAngle => m_offsetRotationAngle;
     }

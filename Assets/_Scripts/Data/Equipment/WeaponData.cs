@@ -36,9 +36,6 @@ namespace SGGames.Scripts.Data
             var weapon = m_weaponPrefab.GetComponent<Weapon>();
             weapon.ApplyData(this);
             
-            var projectile = m_projectilePrefab.GetComponent<Projectile>();
-            projectile.ApplyData(this);
-            
             PrefabUtility.SavePrefabAsset(m_weaponPrefab);
             PrefabUtility.SavePrefabAsset(m_projectilePrefab);
             AssetDatabase.SaveAssets();

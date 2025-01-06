@@ -176,22 +176,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9433a239ab73a6947bcd7e15fd1daa1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_projectileSettings: {fileID: 11400000, guid: f508ab9bc9df15a41a26350182cef6fd, type: 2}
   m_isAlive: 0
-  m_ProjectileType: 1
-  m_initialSpeed: 3
   m_currentSpeed: 0
-  m_range: 10
   m_direction: {x: 0, y: 0}
   m_model: {fileID: 7545946542835307436}
   m_damageHandler: {fileID: 14270251147731655}
-  m_delayBeforeDestruction: 0
+  m_piercingCounter: 0
   m_onEnable:
     m_PersistentCalls:
       m_Calls: []
   m_onDestroy:
     m_PersistentCalls:
       m_Calls: []
-  m_offsetRotationAngle: -90
 --- !u!114 &14270251147731655
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -206,7 +203,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_minDamage: 10
   m_maxDamage: 15
-  m_additionalDamage: 0
+  m_additionMin: 0
+  m_additionMax: 0
   m_multiplyDamage: 1
   m_critDamage: 0
   m_damageableInvulnerableTime: 0.3
