@@ -21,6 +21,7 @@ namespace SGGames.Scripts.Data
         [SerializeField] private float m_maxBodyDamage;
         [SerializeField] private float m_delayBetweenShot;
         [Header("Projectile")]
+        [SerializeField] private ProjectileSettings m_projectileSettings;
         [SerializeField] private GameObject m_weaponPrefab;
         [SerializeField] private GameObject m_projectilePrefab;
         [SerializeField] private ProjectileType m_projectileType;
@@ -28,6 +29,7 @@ namespace SGGames.Scripts.Data
         [SerializeField] private float m_projectileRange;
         [SerializeField] private float m_minProjectileDamage;
         [SerializeField] private float m_maxProjectileDamage;
+        [SerializeField] private int m_piercingNumber;
 
         public string EnemyName => m_enemyName;
         public float MaxHealth => m_maxHealth;
@@ -45,6 +47,10 @@ namespace SGGames.Scripts.Data
         public float ProjectileRange => m_projectileRange;
         public float MinProjectileDamage => m_minProjectileDamage;
         public float MaxProjectileDamage => m_maxProjectileDamage;
+        
+        public int PiercingNumber => m_piercingNumber;
+        
+        public ProjectileSettings ProjectileSettings => m_projectileSettings;
 
         #if UNITY_EDITOR
         public void ApplyData()
