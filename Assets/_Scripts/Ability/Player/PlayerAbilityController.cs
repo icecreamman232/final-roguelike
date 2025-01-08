@@ -12,7 +12,7 @@ namespace SGGames.Scripts.Abilities
         [ContextMenu("Add Ability")]
         private void TestAddAbility()
         {
-            AddAbility(m_abilityContainer.MoneyTalkAbilityPrefab);
+            AddAbility(m_abilityContainer.BloodRageAbilityPrefab);
         }
 
         private void AddAbility(GameObject abilityPrefab)

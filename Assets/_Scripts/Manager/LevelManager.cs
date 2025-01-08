@@ -65,6 +65,8 @@ namespace SGGames.Scripts.Managers
         public HeroData HeroData => m_heroData;
         
         public GameObject PlayerRef => m_playerRef;
+
+        public Action<int> EnemyCountChangedAction;
         
         private void Start()
         {
@@ -175,6 +177,7 @@ namespace SGGames.Scripts.Managers
         {
             enemyHealth.OnEnemyDeath -= OnEnemyDeath;
             m_enemyNumberInRoom--;
+            EnemyCountChangedAction?.Invoke(m_enemyNumberInRoom);
             if (m_enemyNumberInRoom <= 0)
             {
                 m_currentRoom.OpenDoors();
@@ -298,6 +301,7 @@ namespace SGGames.Scripts.Managers
         public void AddEnemyNumberInRoom(int number)
         {
             m_enemyNumberInRoom += number;
+            EnemyCountChangedAction?.Invoke(m_enemyNumberInRoom);
         }
 
         public void RegisterEnemyDeathEvent(EnemyHealth health)

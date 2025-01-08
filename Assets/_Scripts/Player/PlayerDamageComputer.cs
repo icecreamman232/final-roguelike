@@ -148,7 +148,7 @@ namespace SGGames.Scripts.Player
         {
             m_additionMinDamage = 0;
             m_additionMaxDamage = 0;
-            m_mutiplyDamage = 0;
+            m_mutiplyDamage = 1;
             m_criticalDamage = 0;
             m_criticalChance = 0;
         }

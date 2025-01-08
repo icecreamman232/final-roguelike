@@ -77,4 +77,10 @@ namespace SGGames.Scripts.Common
         MEDIUM,
         GRANDE,
     }
+
+    public enum SelectableAbility
+    {
+        Money_Talk,
+        Blood_Rage,
+    }
 }

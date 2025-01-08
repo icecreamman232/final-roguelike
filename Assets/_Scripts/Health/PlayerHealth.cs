@@ -69,9 +69,9 @@ namespace SGGames.Scripts.Healths
             }
             
             return base.CanTakeDamage();
-        }
 
-        public override void TakeDamage(float damage, GameObject source, float invincibilityDuration, bool isCritical)
+        }
+        public override void TakeDamage(float damage, GameObject source, float invincibilityDuration, bool isCritical = false)
         {
             damage = m_percentDamageTaken * damage;
             

@@ -13,3 +13,4 @@ MonoBehaviour:
   m_Name: Player Ability Container
   m_EditorClassIdentifier: 
   m_moneyTalkAbilityPrefab: {fileID: 4963451475481578229, guid: a40c5d965ab16c7408270ef5dea0e95b, type: 3}
+  m_bloodRageAbilityPrefab: {fileID: 2152055195164634077, guid: 87d2ef8889ce34447ae215dc0aca7c92, type: 3}

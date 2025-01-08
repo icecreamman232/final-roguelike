@@ -6,8 +6,10 @@ namespace SGGames.Scripts.Data
     public class PlayerAbilityContainer : ScriptableObject
     {
         [SerializeField] private GameObject m_moneyTalkAbilityPrefab;
+        [SerializeField] private GameObject m_bloodRageAbilityPrefab;
         
         public GameObject MoneyTalkAbilityPrefab => m_moneyTalkAbilityPrefab;
+        public GameObject BloodRageAbilityPrefab => m_bloodRageAbilityPrefab;
     } 
 }
 
