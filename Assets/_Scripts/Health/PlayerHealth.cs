@@ -1,5 +1,6 @@
 using System;
 using SGGames.Scripts.Common;
+using SGGames.Scripts.Core;
 using SGGames.Scripts.Events;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -7,7 +8,7 @@ using Random = UnityEngine.Random;
 namespace SGGames.Scripts.Healths
 {
     [SelectionBase]
-    public class PlayerHealth : Health
+    public class PlayerHealth : Health, IPlayerHealthService
     {
         [SerializeField] private float m_chanceToNotTakeDamage;
         [SerializeField] private float m_percentDamageTaken;
@@ -32,6 +33,7 @@ namespace SGGames.Scripts.Healths
         /// Use this with caution since it could be null at some point.
         /// </summary>
         private GameObject m_lastSourceCauseDamage;
+
         
         public void Initialize(float maxHealth)
         {
@@ -44,6 +46,8 @@ namespace SGGames.Scripts.Healths
             {
                 Debug.LogError($"SpriteFlicker is null on {this.gameObject.name}");
             }
+            
+            ServiceLocator.RegisterService<IPlayerHealthService>(this);
         }
 
         private void Update()
@@ -69,7 +73,6 @@ namespace SGGames.Scripts.Healths
             }
             
             return base.CanTakeDamage();
-
         }
         public override void TakeDamage(float damage, GameObject source, float invincibilityDuration, bool isCritical = false)
         {
@@ -119,6 +122,7 @@ namespace SGGames.Scripts.Healths
 
         protected override void Kill()
         {
+            ServiceLocator.UnregisterService<IPlayerHealthService>();
             base.Kill();
             this.gameObject.SetActive(false);
         }
