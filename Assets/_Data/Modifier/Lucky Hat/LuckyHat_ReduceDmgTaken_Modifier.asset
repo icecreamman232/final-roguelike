@@ -17,7 +17,7 @@ MonoBehaviour:
   Duration: 0
   InstantTrigger: 1
   PostTriggerBehavior: 0
-  IsRunning: 1
+  IsRunning: 0
   HealthModifierType: 7
   ModifierValue: 33.3
-  IsPercentValue: 0
+  ValueType: 0
