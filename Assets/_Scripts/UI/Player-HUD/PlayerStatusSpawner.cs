@@ -1,5 +1,4 @@
 using SGGames.Scripts.Core;
-using SGGames.Scripts.Events;
 using SGGames.Scripts.Healths;
 using TMPro;
 using UnityEngine;
@@ -36,16 +35,16 @@ namespace SGGames.Scripts.UI
             textMesh.text = $"+{amount}";
         }
 
-        private void OnPlayerGetHit(bool isDodge, bool isImmortal)
+        private void OnPlayerGetHit(OnHitInfo hitInfo)
         {
-            if (isImmortal)
+            if (hitInfo.IsImmortal)
             {
                 var textObj = m_statusTextPooler.GetPooledGameObject();
                 var textMesh = textObj.GetComponentInChildren<TextMeshPro>();
                 textMesh.color = m_immortalColor;
                 textMesh.text = "Immortal";
             }
-            else if (isDodge)
+            else if (hitInfo.IsDodged)
             {
                 var textObj = m_statusTextPooler.GetPooledGameObject();
                 var textMesh = textObj.GetComponentInChildren<TextMeshPro>();

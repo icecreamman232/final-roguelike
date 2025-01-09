@@ -7,6 +7,13 @@ using Random = UnityEngine.Random;
 
 namespace SGGames.Scripts.Healths
 {
+    public struct OnHitInfo
+    {
+        public bool IsDodged;
+        public bool IsImmortal;
+        public float DamageTaken;
+    }
+    
     [SelectionBase]
     public class PlayerHealth : Health, IPlayerHealthService
     {
@@ -22,12 +29,14 @@ namespace SGGames.Scripts.Healths
         private SpriteFlicker m_spriteFlicker;
         private readonly float m_regenerationInterval = 0.1f;
         private float m_regenerateTimer;
-
-        public Action<bool,bool> OnHit; //Boolean pass is for dodge chance
+        private OnHitInfo m_onHitInfo;
+        
+        public Action<OnHitInfo> OnHit; //Boolean pass is for dodge chance
         public Action<float> OnHealing;
         public float Armor => m_armor;
         public float DodgeRate => m_dodgeRate;
         public float HPRegenerationRate => m_regenerationRate;
+        
         
         /// <summary>
         /// Use this with caution since it could be null at some point.
@@ -41,6 +50,7 @@ namespace SGGames.Scripts.Healths
 
         public void Initialize(float maxHealth)
         {
+            m_onHitInfo = new OnHitInfo();
             m_percentDamageTaken = 1;
             m_currentHealth = maxHealth;
             m_maxHealth = maxHealth;
@@ -84,7 +94,10 @@ namespace SGGames.Scripts.Healths
 
             if (m_isImmortal)
             {
-                OnHit?.Invoke(false,true);
+                m_onHitInfo.IsDodged = false;
+                m_onHitInfo.IsImmortal = true;
+                m_onHitInfo.DamageTaken = 0;
+                OnHit?.Invoke(m_onHitInfo);
             }
             
             //Player cant take damage this frame
@@ -92,14 +105,21 @@ namespace SGGames.Scripts.Healths
 
             if (CanDodgeThisAttack())
             {
-                OnHit?.Invoke(true,false);
+                m_onHitInfo.IsDodged = true;
+                m_onHitInfo.IsImmortal = false;
+                m_onHitInfo.DamageTaken = 0;
+                OnHit?.Invoke(m_onHitInfo);
                 m_PlayerEvent.Raise(PlayerEventType.DODGE);
                 return;
             }
-            
-            m_currentHealth -= damage * (1- m_armor/100);
+            var finalDamage = damage * (1- m_armor/100);;
+            m_currentHealth -= finalDamage;
             m_lastSourceCauseDamage = source;
-            OnHit?.Invoke(false,false);
+            
+            m_onHitInfo.IsDodged = false;
+            m_onHitInfo.IsImmortal = false;
+            m_onHitInfo.DamageTaken = finalDamage;
+            OnHit?.Invoke(m_onHitInfo);
             
             m_PlayerEvent.Raise(PlayerEventType.TAKE_DAMAGE);
             
