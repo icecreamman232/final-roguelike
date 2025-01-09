@@ -1,5 +1,6 @@
 using System.Collections;
 using SGGames.Scripts.Common;
+using SGGames.Scripts.Core;
 using SGGames.Scripts.Damages;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
@@ -20,7 +21,6 @@ namespace SGGames.Scripts.Player
         
         [Header("Components")]
         [SerializeField] private PlayerHealth m_playerHealth;
-        [SerializeField] private PlayerMana m_playerMana;
         [SerializeField] private PlayerDamageComputer m_playerDamageComputer;
         [SerializeField] private PlayerWeaponHandler m_playerWeaponHandler;
         
@@ -33,6 +33,7 @@ namespace SGGames.Scripts.Player
         [Header("Data")]
         [SerializeField] private ConstantData m_constantData;
 
+        private PlayerMana m_playerMana;
         private bool m_isCharacterInfoOpening;
         
         public float StrengthPoints => m_strengthPoints;
@@ -44,6 +45,7 @@ namespace SGGames.Scripts.Player
         protected override void Start()
         {
             base.Start();
+            m_playerMana = ServiceLocator.GetService<PlayerMana>();
             m_characterInforButtonPressedEvent.AddListener(OnCharacterInfoButtonPressed);
             m_addAttributeEvent.AddListener(OnChooseAttributeReward);
             StartCoroutine(InitializeAttributes());

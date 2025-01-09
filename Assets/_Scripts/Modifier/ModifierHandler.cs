@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using SGGames.Scripts.Common;
+using SGGames.Scripts.Core;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Healths;
 using SGGames.Scripts.Player;
@@ -32,8 +33,8 @@ namespace SGGames.Scripts.Modifiers
         private void Start()
         {
             m_playerAttributeController = GetComponentInParent<PlayerAttributeController>();
-            m_playerHealth = GetComponentInParent<PlayerHealth>();
-            m_playerMana = GetComponentInParent<PlayerMana>();
+            m_playerHealth = ServiceLocator.GetService<PlayerHealth>();
+            m_playerMana = ServiceLocator.GetService<PlayerMana>();
             m_playerMovement = GetComponentInParent<PlayerMovement>();
             m_damageComputer = GetComponentInParent<PlayerDamageComputer>();
             

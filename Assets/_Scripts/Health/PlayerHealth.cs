@@ -34,7 +34,11 @@ namespace SGGames.Scripts.Healths
         /// </summary>
         private GameObject m_lastSourceCauseDamage;
 
-        
+        private void Awake()
+        {
+            ServiceLocator.RegisterService<PlayerHealth>(this);
+        }
+
         public void Initialize(float maxHealth)
         {
             m_percentDamageTaken = 1;
@@ -46,8 +50,6 @@ namespace SGGames.Scripts.Healths
             {
                 Debug.LogError($"SpriteFlicker is null on {this.gameObject.name}");
             }
-            
-            ServiceLocator.RegisterService<IPlayerHealthService>(this);
         }
 
         private void Update()

@@ -1,4 +1,5 @@
 using SGGames.Scripts.Common;
+using SGGames.Scripts.Core;
 using SGGames.Scripts.Healths;
 using UnityEngine;
 
@@ -12,7 +13,7 @@ namespace SGGames.Scripts.Pickables
         
         protected override void Picked(Transform playerTransform)
         {
-            var playerHealth = playerTransform.GetComponentInChildren<PlayerHealth>();
+            var playerHealth = ServiceLocator.GetService<PlayerHealth>();
             playerHealth.HealingFlatAmount(m_healingAmount);
             base.Picked(playerTransform);
         }

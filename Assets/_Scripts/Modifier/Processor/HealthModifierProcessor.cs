@@ -1,17 +1,9 @@
-using SGGames.Scripts.Healths;
 using UnityEngine;
 
 namespace SGGames.Scripts.Modifiers
 {
     public class HealthModifierProcessor : ModifierProcessor
     {
-        [SerializeField] private PlayerHealth m_playerHealth;
-        
-        public override void Initialize(string id, ModifierHandler handler, Modifier modifier)
-        {
-            base.Initialize(id, handler, modifier);
-            m_playerHealth = handler.PlayerHealth;
-        }
         
         public override void StartModifier()
         {
@@ -22,31 +14,31 @@ namespace SGGames.Scripts.Modifiers
             switch (healthModifier.HealthModifierType)
             {
                 case HealthModifierType.ModifyPercentDamageTaken:
-                    m_playerHealth.ModifyPercentDamageTaken(healthModifier.ModifierValue);
+                    m_handler.PlayerHealth.ModifyPercentDamageTaken(healthModifier.ModifierValue);
                     break;
                 case HealthModifierType.ModifyCurrentHPForDuration:
-                    m_playerHealth.ModifyCurrentHealth(healthModifier.ModifierValue);
+                    m_handler.PlayerHealth.ModifyCurrentHealth(healthModifier.ModifierValue);
                     m_isProcessing = true;
                     break;
                 case HealthModifierType.ModifyMaxHPForDuration:
-                    m_playerHealth.ModifyMaxHealth(healthModifier.ModifierValue,healthModifier.IsPercentValue);
+                    m_handler.PlayerHealth.ModifyMaxHealth(healthModifier.ModifierValue,healthModifier.IsPercentValue);
                     m_isProcessing = true;
                     break;
                 case HealthModifierType.SetImmortal_ForDuration:
-                    m_playerHealth.SetImmortal(true);
+                    m_handler.PlayerHealth.SetImmortal(true);
                     m_isProcessing = true;
                     break;
                 case HealthModifierType.ModifyCurrentHP:
-                    m_playerHealth.ModifyCurrentHealth(healthModifier.ModifierValue);
+                    m_handler.PlayerHealth.ModifyCurrentHealth(healthModifier.ModifierValue);
                     break;
                 case HealthModifierType.ModifyMaxHP:
-                    m_playerHealth.ModifyMaxHealth(healthModifier.ModifierValue, healthModifier.IsPercentValue);
+                    m_handler.PlayerHealth.ModifyMaxHealth(healthModifier.ModifierValue, healthModifier.IsPercentValue);
                     break;
                 case HealthModifierType.ModifyDodgeRate:
-                    m_playerHealth.AddDodgeRate(healthModifier.ModifierValue);
+                    m_handler.PlayerHealth.AddDodgeRate(healthModifier.ModifierValue);
                     break;
                 case HealthModifierType.ChanceToNotTakingDamage:
-                    m_playerHealth.ModifyChanceToNotTakeDamage(healthModifier.ModifierValue);
+                    m_handler.PlayerHealth.ModifyChanceToNotTakeDamage(healthModifier.ModifierValue);
                     break;
             }
 
@@ -70,25 +62,25 @@ namespace SGGames.Scripts.Modifiers
             switch (healthModifier.HealthModifierType)
             {
                 case HealthModifierType.ModifyPercentDamageTaken:
-                    m_playerHealth.ModifyPercentDamageTaken(-healthModifier.ModifierValue);
+                    m_handler.PlayerHealth.ModifyPercentDamageTaken(-healthModifier.ModifierValue);
                     break;
                 case HealthModifierType.ModifyCurrentHPForDuration:
-                    m_playerHealth.ModifyCurrentHealth(-healthModifier.ModifierValue);
+                    m_handler.PlayerHealth.ModifyCurrentHealth(-healthModifier.ModifierValue);
                     break;
                 case HealthModifierType.SetImmortal_ForDuration:
-                    m_playerHealth.SetImmortal(false);
+                    m_handler.PlayerHealth.SetImmortal(false);
                     break;
                 case HealthModifierType.ModifyMaxHP:
-                    m_playerHealth.ModifyMaxHealth(-healthModifier.ModifierValue, healthModifier.IsPercentValue);
+                    m_handler.PlayerHealth.ModifyMaxHealth(-healthModifier.ModifierValue, healthModifier.IsPercentValue);
                     break;
                 case HealthModifierType.ModifyCurrentHP:
-                    m_playerHealth.ModifyCurrentHealth(-healthModifier.ModifierValue);
+                    m_handler.PlayerHealth.ModifyCurrentHealth(-healthModifier.ModifierValue);
                     break;
                 case HealthModifierType.ModifyDodgeRate:
-                    m_playerHealth.AddDodgeRate(-healthModifier.ModifierValue);
+                    m_handler.PlayerHealth.AddDodgeRate(-healthModifier.ModifierValue);
                     break;
                 case HealthModifierType.ChanceToNotTakingDamage:
-                    m_playerHealth.ModifyChanceToNotTakeDamage(-healthModifier.ModifierValue);
+                    m_handler.PlayerHealth.ModifyChanceToNotTakeDamage(-healthModifier.ModifierValue);
                     break;
             }
 

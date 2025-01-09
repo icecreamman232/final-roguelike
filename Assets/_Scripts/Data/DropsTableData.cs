@@ -1,3 +1,4 @@
+using SGGames.Scripts.Core;
 using SGGames.Scripts.Healths;
 using SGGames.Scripts.Manager;
 using SGGames.Scripts.Managers;
@@ -60,7 +61,7 @@ namespace SGGames.Scripts.Data
         public GameObject GetNextPotion()
         {
             //Only drop healing potion if player's health is below 50%
-            var playerHealth = LevelManager.Instance.PlayerRef.GetComponent<PlayerHealth>();
+            var playerHealth = ServiceLocator.GetService<PlayerHealth>();
             if (playerHealth.CurrentHealth > playerHealth.MaxHealth * 0.5f)
             {
                 return null;

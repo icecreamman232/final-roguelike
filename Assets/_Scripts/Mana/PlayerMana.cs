@@ -1,11 +1,12 @@
 
 using System;
+using SGGames.Scripts.Core;
 using SGGames.Scripts.Events;
 using UnityEngine;
 
 namespace SGGames.Scripts.Player
 {
-    public class PlayerMana : MonoBehaviour
+    public class PlayerMana : MonoBehaviour, IPlayerManaService
     {
         [SerializeField][Min(0)] private float m_maxMana;
         [SerializeField][Min(0)] private float m_currentMana;
@@ -20,12 +21,18 @@ namespace SGGames.Scripts.Player
 
         private float m_regenerateTimer;
         private readonly float m_regenerationInternal = 0.1f;
-        
+
+        private void Awake()
+        {
+            ServiceLocator.RegisterService<PlayerMana>(this);
+        }
+
         public void Initialize(float maxMana)
         {
             m_maxMana = maxMana;
             m_currentMana = maxMana;
             UpdateManaBar();
+            
         }
 
         public void AddManaRegeneration(float rate)

@@ -3,6 +3,7 @@ using System.Collections;
 using SGGames.Scripts.Abilities;
 using SGGames.Scripts.Attribute;
 using SGGames.Scripts.Common;
+using SGGames.Scripts.Core;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Modifiers;
 using UnityEngine;
@@ -33,7 +34,7 @@ namespace SGGames.Scripts.Player
         protected override void Start()
         {
             m_playerMovement = GetComponent<PlayerMovement>();
-            m_playerMana = GetComponent<PlayerMana>();
+            m_playerMana = ServiceLocator.GetService<PlayerMana>();
             m_shieldCollider.enabled = false;
             base.Start();
         }

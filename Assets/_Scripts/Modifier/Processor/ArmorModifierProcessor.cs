@@ -5,14 +5,6 @@ namespace SGGames.Scripts.Modifiers
 {
     public class ArmorModifierProcessor : ModifierProcessor
     {
-        [SerializeField] private PlayerHealth m_playerHealth;
-
-        public override void Initialize(string id, ModifierHandler modifierHandler,Modifier modifier)
-        {
-            base.Initialize(id, modifierHandler, modifier);
-            m_playerHealth = modifierHandler.PlayerHealth;
-        }
-
         public override void StartModifier()
         {
             var armorModifier = (ArmorModifier)m_modifier;
@@ -21,10 +13,10 @@ namespace SGGames.Scripts.Modifiers
             switch (armorModifier.ArmorModifierType)
             {
                 case ArmorModifierType.ModifyArmor:
-                    m_playerHealth.AddArmor(armorModifier.ModifierValue);
+                    m_handler.PlayerHealth.AddArmor(armorModifier.ModifierValue);
                     break;
                 case ArmorModifierType.ModifyArmorForDuration:
-                    m_playerHealth.AddArmor(armorModifier.ModifierValue);
+                    m_handler.PlayerHealth.AddArmor(armorModifier.ModifierValue);
                     m_isProcessing = true;
                     break;
             }
@@ -42,10 +34,10 @@ namespace SGGames.Scripts.Modifiers
             switch (armorModifier.ArmorModifierType)
             {
                 case ArmorModifierType.ModifyArmor:
-                    m_playerHealth.AddArmor(-armorModifier.ModifierValue);
+                    m_handler.PlayerHealth.AddArmor(-armorModifier.ModifierValue);
                     break;
                 case ArmorModifierType.ModifyArmorForDuration:
-                    m_playerHealth.AddArmor(-armorModifier.ModifierValue);
+                    m_handler.PlayerHealth.AddArmor(-armorModifier.ModifierValue);
                     break;
             }
             

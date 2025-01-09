@@ -17,7 +17,7 @@ namespace SGGames.Scripts.UI
 
         private void Start()
         {
-            m_PlayerHealth = GetComponentInParent<PlayerHealth>();
+            m_PlayerHealth = ServiceLocator.GetService<PlayerHealth>();
             m_PlayerHealth.OnHit += OnPlayerGetHit;
             m_PlayerHealth.OnHealing += OnPlayerHealing;
         }

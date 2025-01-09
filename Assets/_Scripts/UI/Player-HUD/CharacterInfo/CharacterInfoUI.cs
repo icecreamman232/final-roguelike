@@ -1,3 +1,4 @@
+using SGGames.Scripts.Core;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Healths;
 using SGGames.Scripts.Manager;
@@ -52,12 +53,12 @@ namespace SGGames.Scripts.UI
 
                if (m_playerHealth == null)
                {
-                   m_playerHealth = LevelManager.Instance.PlayerRef.GetComponent<PlayerHealth>();
+                   m_playerHealth = ServiceLocator.GetService<PlayerHealth>();
                }
 
                if (m_playerMana == null)
                {
-                   m_playerMana = LevelManager.Instance.PlayerRef.GetComponent<PlayerMana>();
+                   m_playerMana = ServiceLocator.GetService<PlayerMana>();
                }
                FillInfo();
                Show();

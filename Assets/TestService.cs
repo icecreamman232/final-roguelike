@@ -7,7 +7,7 @@ public class TestService : MonoBehaviour
     [ContextMenu("Test")]
     private void Test()
     {
-        var playerHealth = ServiceLocator.GetService<IPlayerHealthService>();
-        Debug.Log(((PlayerHealth)playerHealth).CurrentHealth);
+        var playerHealth = ServiceLocator.GetService<PlayerHealth>();
+        Debug.Log(playerHealth.CurrentHealth);
     }
 }
