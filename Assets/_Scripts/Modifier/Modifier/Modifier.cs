@@ -1,4 +1,3 @@
-using System;
 using UnityEngine;
 
 namespace SGGames.Scripts.Modifiers
@@ -14,11 +13,6 @@ namespace SGGames.Scripts.Modifiers
         public PostTriggerModifierBehavior PostTriggerBehavior;
         [Header("Runtime Data")] 
         public bool IsRunning;
-
-        private void OnDisable()
-        {
-            IsRunning = false;
-        }
     }
 
     public enum ModifierType
@@ -42,12 +36,6 @@ namespace SGGames.Scripts.Modifiers
     {
         SELF_REMOVED,
         NO_REMOVE,
-    }
-
-    public enum ValueType
-    {
-        Number,
-        Percentage,
     }
 }
 

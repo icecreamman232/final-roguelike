@@ -21,7 +21,7 @@ namespace SGGames.Scripts.Modifiers
                     m_isProcessing = true;
                     break;
                 case HealthModifierType.ModifyMaxHPForDuration:
-                    m_handler.PlayerHealth.ModifyMaxHealth(healthModifier.ModifierValue,healthModifier.ValueType == ValueType.Percentage);
+                    m_handler.PlayerHealth.ModifyMaxHealth(healthModifier.ModifierValue,healthModifier.IsPercentValue);
                     m_isProcessing = true;
                     break;
                 case HealthModifierType.SetImmortal_ForDuration:
@@ -32,7 +32,7 @@ namespace SGGames.Scripts.Modifiers
                     m_handler.PlayerHealth.ModifyCurrentHealth(healthModifier.ModifierValue);
                     break;
                 case HealthModifierType.ModifyMaxHP:
-                    m_handler.PlayerHealth.ModifyMaxHealth(healthModifier.ModifierValue, healthModifier.ValueType == ValueType.Percentage);
+                    m_handler.PlayerHealth.ModifyMaxHealth(healthModifier.ModifierValue, healthModifier.IsPercentValue);
                     break;
                 case HealthModifierType.ModifyDodgeRate:
                     m_handler.PlayerHealth.AddDodgeRate(healthModifier.ModifierValue);
@@ -71,7 +71,7 @@ namespace SGGames.Scripts.Modifiers
                     m_handler.PlayerHealth.SetImmortal(false);
                     break;
                 case HealthModifierType.ModifyMaxHP:
-                    m_handler.PlayerHealth.ModifyMaxHealth(-healthModifier.ModifierValue, healthModifier.ValueType == ValueType.Percentage);
+                    m_handler.PlayerHealth.ModifyMaxHealth(-healthModifier.ModifierValue, healthModifier.IsPercentValue);
                     break;
                 case HealthModifierType.ModifyCurrentHP:
                     m_handler.PlayerHealth.ModifyCurrentHealth(-healthModifier.ModifierValue);
