@@ -862,6 +862,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: GuardianHelmet_HelmetPicker
       objectReference: {fileID: 0}
+    - target: {fileID: 4373526537500971715, guid: 0158cba3a48ab924cbb8068ecf76832a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7203490639464550580, guid: 0158cba3a48ab924cbb8068ecf76832a, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8260424489019009886, guid: 0158cba3a48ab924cbb8068ecf76832a, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

@@ -16,7 +16,7 @@ namespace SGGames.Scripts.StatusEffects
         
         public ModifierHandler ModifierHandler => m_modifierHandler;
         
-        private void Start()
+        protected virtual void Start()
         {
             m_health = GetComponentInParent<Health>();
             m_statusEffectInstanceDictionary = new Dictionary<StatusEffectType, StatusEffectInstance>();
@@ -27,11 +27,13 @@ namespace SGGames.Scripts.StatusEffects
         {
             if (m_statusEffectInstanceDictionary.ContainsKey(data.StatusEffectType))
             {
+                Debug.Log($"Increase stack {data.StatusEffectType}");
                 //Increase stack if possible
                 m_statusEffectInstanceDictionary[data.StatusEffectType].IncreaseStack();
             }
             else
             {
+                Debug.Log($"Adding status effect {data.StatusEffectType}");
                 //Add new status
                 var newInstance = new StatusEffectInstance
                         .StatusEffectBuilder()

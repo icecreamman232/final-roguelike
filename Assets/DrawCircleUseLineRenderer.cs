@@ -44,6 +44,11 @@ namespace SGGames.Scripts.Common
                 m_lineRenderer.loop = true;
             }
         }
+
+        public void SetCircleRadius(float radius)
+        {
+            m_radius = radius;
+        }
     }
 }
 

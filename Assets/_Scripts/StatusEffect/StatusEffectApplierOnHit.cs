@@ -8,7 +8,7 @@ namespace SGGames.Scripts.StatusEffects
     /// Apply status on damage hit
     /// </summary>
     [RequireComponent(typeof(DamageHandler))]
-    public class StatusEffectApplier : MonoBehaviour
+    public class StatusEffectApplierOnHit : MonoBehaviour
     {
         [SerializeField] private StatusEffectData m_StatusEffectData;
         private DamageHandler m_damageHandler;
