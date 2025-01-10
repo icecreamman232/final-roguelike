@@ -16,6 +16,13 @@ namespace SGGames.Scripts.Modifiers
             playerHealth.OnChangeCurrentHealth += OnChangeCurrentHealth;
         }
 
+        public override void StopModifier()
+        {
+            base.StopModifier();
+            var playerHealth = ServiceLocator.GetService<PlayerHealth>();
+            playerHealth.OnChangeCurrentHealth -= OnChangeCurrentHealth;
+        }
+
         private void OnChangeCurrentHealth(float currentHealth)
         {
             var healthConditionMod = m_modifier as HealthConditionModifier;

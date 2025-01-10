@@ -1,5 +1,6 @@
 using System;
 using SGGames.Scripts.Common;
+using SGGames.Scripts.Core;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Weapons;
@@ -10,7 +11,7 @@ namespace SGGames.Scripts.Player
     /// <summary>
     /// Script that handle weapons for player such as: equip, switch, reload etc...
     /// </summary>
-    public class PlayerWeaponHandler : PlayerBehavior
+    public class PlayerWeaponHandler : PlayerBehavior, IPlayerWeaponService
     {
         [SerializeField] private WeaponData m_initialWeaponData;
         [SerializeField] private Weapon m_currentWeapon;
@@ -22,11 +23,13 @@ namespace SGGames.Scripts.Player
         private PlayerInventory m_playerInventory; 
         private PlayerAim m_playerAim;
         private PlayerDamageComputer m_playerDamageComputer;
+        private WeaponData m_curWeaponData;
         
         public bool IsWeaponInitialized => m_currentWeapon != null;
         public float BaseAtkTime => m_currentWeapon.BaseDelayBetweenShots;
 
         public Action<WeaponData> OnEquipWeapon;
+        public WeaponData CurrentWeaponData => m_curWeaponData;
         
         protected override void Start()
         {
@@ -65,6 +68,8 @@ namespace SGGames.Scripts.Player
                 EquipWeapon(m_initialWeaponData);
                 m_playerInventory.AddInitialWeapon(m_initialWeaponData);
             }
+            
+            ServiceLocator.RegisterService<PlayerWeaponHandler>(this);
         }
         
         public virtual void EquipWeapon(WeaponData newWeapon)
@@ -72,7 +77,8 @@ namespace SGGames.Scripts.Player
             m_currentWeapon = Instantiate(newWeapon.WeaponPrefab.GetComponent<Weapon>(), m_weaponAttachment);
             m_currentWeapon.Initialize(m_playerAim);
             ApplyAttackSpeedOnCurrentWeapon(m_playerAttributeController.ComputeDelayBetweenAttacks(BaseAtkTime));
-            
+
+            m_curWeaponData = newWeapon;
             OnEquipWeapon?.Invoke(newWeapon);
             m_playerEvent.Raise(PlayerEventType.EQUIP_WEAPON);
         }

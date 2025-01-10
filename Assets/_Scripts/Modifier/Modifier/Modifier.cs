@@ -17,18 +17,11 @@ namespace SGGames.Scripts.Modifiers
 
     public enum ModifierType
     {
-        MOVEMENT,
-        HEALTH,
-        DAMAGE,
-        GAME_EVENT,
-        ARMOR,
-        COIN,
-        PLAYER_EVENT,
-        HEALING,
-        ATTRIBUTE,
-        MANA,
-        CONVERT_MANA_TO_DAMAGE,
-        HEALTH_CONDITION,
+        MOVEMENT, HEALTH, DAMAGE,
+        GAME_EVENT, ARMOR, COIN,
+        PLAYER_EVENT, HEALING, ATTRIBUTE,
+        MANA, CONVERT_MANA_TO_DAMAGE, HEALTH_CONDITION,
+        WEAPON_TYPE_BASED,
         
         COUNT,
     }

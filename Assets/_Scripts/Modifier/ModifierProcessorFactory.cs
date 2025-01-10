@@ -49,6 +49,9 @@ namespace SGGames.Scripts.Modifiers
                 case ModifierType.HEALTH_CONDITION:
                     processor = handler.gameObject.AddComponent<HealthConditionModifierProcessor>();
                     break;
+                case ModifierType.WEAPON_TYPE_BASED:
+                    processor = handler.gameObject.AddComponent<WeaponTypeModifierProcessor>();
+                    break;
                 default:
                     throw new ArgumentException("Unknown modifier type");
             }
