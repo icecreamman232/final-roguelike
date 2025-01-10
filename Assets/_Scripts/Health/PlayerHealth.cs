@@ -32,6 +32,7 @@ namespace SGGames.Scripts.Healths
         private OnHitInfo m_onHitInfo;
         
         public Action<OnHitInfo> OnHit; //Boolean pass is for dodge chance
+        
         public Action<float> OnHealing;
         public float Armor => m_armor;
         public float DodgeRate => m_dodgeRate;
@@ -70,6 +71,7 @@ namespace SGGames.Scripts.Healths
             {
                 m_currentHealth += m_regenerationRate;
                 m_currentHealth = Mathf.Clamp(m_currentHealth, 0, MaxHealth);
+                OnChangeCurrentHealth?.Invoke(m_currentHealth);
                 UpdateHealthBar();
 
                 m_regenerateTimer = 0;
@@ -120,6 +122,8 @@ namespace SGGames.Scripts.Healths
             m_onHitInfo.IsImmortal = false;
             m_onHitInfo.DamageTaken = finalDamage;
             OnHit?.Invoke(m_onHitInfo);
+            
+            OnChangeCurrentHealth?.Invoke(m_currentHealth);
             
             m_PlayerEvent.Raise(PlayerEventType.TAKE_DAMAGE);
             
@@ -202,7 +206,7 @@ namespace SGGames.Scripts.Healths
             {
                 m_currentHealth = m_maxHealth;
             }
-            
+            OnChangeCurrentHealth?.Invoke(m_currentHealth);
             OnHealing?.Invoke(amount);
         }
 

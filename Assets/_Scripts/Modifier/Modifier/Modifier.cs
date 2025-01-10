@@ -28,6 +28,7 @@ namespace SGGames.Scripts.Modifiers
         ATTRIBUTE,
         MANA,
         CONVERT_MANA_TO_DAMAGE,
+        HEALTH_CONDITION,
         
         COUNT,
     }
@@ -36,6 +37,15 @@ namespace SGGames.Scripts.Modifiers
     {
         SELF_REMOVED,
         NO_REMOVE,
+    }
+
+    public enum ComparisonType
+    {
+        Equal,
+        EqualAndGreaterThan,
+        GreaterThan,
+        EqualAndLessThan,
+        LessThan,
     }
 }
 

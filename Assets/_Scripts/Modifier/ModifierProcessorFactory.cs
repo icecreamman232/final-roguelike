@@ -46,6 +46,9 @@ namespace SGGames.Scripts.Modifiers
                 case ModifierType.CONVERT_MANA_TO_DAMAGE:
                     processor = handler.gameObject.AddComponent<ConvertManaToDamageModifierProcessor>();
                     break;
+                case ModifierType.HEALTH_CONDITION:
+                    processor = handler.gameObject.AddComponent<HealthConditionModifierProcessor>();
+                    break;
                 default:
                     throw new ArgumentException("Unknown modifier type");
             }

@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 namespace SGGames.Scripts.Modifiers
@@ -45,6 +46,25 @@ namespace SGGames.Scripts.Modifiers
         protected virtual void Update()
         {
             if (!m_isProcessing) return;
+        }
+
+        protected virtual bool Compare(ComparisonType type, float toCompare, float tobeCompared)
+        {
+            switch (type)
+            {
+                case ComparisonType.Equal:
+                    return Mathf.Abs(toCompare - tobeCompared) < 0.1f;
+                case ComparisonType.EqualAndGreaterThan:
+                    return toCompare >= tobeCompared;
+                case ComparisonType.GreaterThan:
+                    return toCompare > tobeCompared;
+                case ComparisonType.EqualAndLessThan:
+                    return toCompare <= tobeCompared;
+                case ComparisonType.LessThan:
+                    return toCompare < tobeCompared;
+                default:
+                    throw new ArgumentOutOfRangeException(nameof(type), type, null);
+            }
         }
     }
 }

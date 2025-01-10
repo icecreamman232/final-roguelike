@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 
@@ -28,25 +29,22 @@ namespace SGGames.Scripts.Healths
 
         public bool CanTakeDamageThisFrame => CanTakeDamage();
         
+        public Action<float> OnChangeCurrentHealth;
+        public Action<float> OnChangeMaxHealth;
+        
         public void ResetHealth()
         {
             m_currentHealth = m_maxHealth;
         }
 
-        public void ModifyCurrentHealth(float amount)
+        public virtual void ModifyCurrentHealth(float amount)
         {
             m_currentHealth += amount;
             m_currentHealth = Mathf.Clamp(m_currentHealth, 0, m_maxHealth);
+            OnChangeCurrentHealth?.Invoke(m_currentHealth);
             UpdateHealthBar();
         }
-
-        public void OverrideCurrentHealth(float amount)
-        {
-            m_currentHealth = amount;
-            m_currentHealth = Mathf.Clamp(m_currentHealth, 0, m_maxHealth);
-            UpdateHealthBar();
-        }
-
+        
         public void ModifyMaxHealth(float amount,bool isPercent)
         {
             var currentPercent = m_currentHealth / m_maxHealth;
@@ -60,6 +58,8 @@ namespace SGGames.Scripts.Healths
             }
             
             m_currentHealth = m_maxHealth * currentPercent;
+            OnChangeMaxHealth?.Invoke(m_maxHealth);
+            OnChangeCurrentHealth?.Invoke(m_currentHealth);
             UpdateHealthBar();
         }
 
@@ -68,6 +68,7 @@ namespace SGGames.Scripts.Healths
             var currentPercent = m_currentHealth / m_maxHealth;
             m_maxHealth = amount;
             m_currentHealth = m_maxHealth * currentPercent;
+            OnChangeMaxHealth?.Invoke(m_maxHealth);
             UpdateHealthBar();
         }
 

@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Modifiers
 {
-    public class ModifierHandler : MonoBehaviour
+    public class ModifierHandler : MonoBehaviour, IPlayerModifierService
     {
         [Header("Events")] 
         [SerializeField] private GameEvent m_gameEvent;
@@ -42,6 +42,8 @@ namespace SGGames.Scripts.Modifiers
             m_gameEvent.AddListener(OnReceiveGameEvent);
             m_playerEvent.AddListener(OnReceivePlayerEvent);
             m_processorContainer = new Dictionary<string, ModifierProcessor>();
+            
+            ServiceLocator.RegisterService<ModifierHandler>(this);
         }
 
         private void OnDestroy()
