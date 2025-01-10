@@ -517,7 +517,7 @@ TextureImporter:
         width: 32
         height: 32
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
@@ -525,6 +525,27 @@ TextureImporter:
       bones: []
       spriteID: 9a7461581db6d9942ae4841a60f2ed7d
       internalID: 870946648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Guardian-helmet
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 160
+        width: 32
+        height: 32
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6da5e9563f3765e439a049e0fa933199
+      internalID: -89403075
       vertices: []
       indices: 
       edges: []
@@ -549,6 +570,7 @@ TextureImporter:
       Conqueror-Helmet: -1782871475
       Deadeye-mask: -2012977387
       Evil-helmet: 2081394859
+      Guardian-helmet: -89403075
       Hunter-cap: 870946648
       Leather-hood: -934698402
       Lucky-hat: 222037094

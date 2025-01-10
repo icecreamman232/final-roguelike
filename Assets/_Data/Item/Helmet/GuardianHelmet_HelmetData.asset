@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3bcc7cb5c88e74f4fb6a49973df5bc81, type: 3}
+  m_Name: GuardianHelmet_HelmetData
+  m_EditorClassIdentifier: 
+  m_itemID: guardian-helmet
+  m_translatedName: Guardian Helmet
+  m_rarity: 2
+  m_itemCategory: 1
+  m_icon: {fileID: -89403075, guid: 079f3decf87c80644bfc04d4052c0c78, type: 3}
+  m_pickerPrefab: {fileID: 0}
+  m_modifierList: []
