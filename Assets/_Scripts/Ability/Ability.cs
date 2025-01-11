@@ -17,7 +17,7 @@ namespace SGGames.Scripts.Abilities
     /// </summary>
     public interface ISelectableAbility
     {
-        public void Initialize(ModifierHandler modifierHandler);
+        public void Initialize(PlayerModifierHandler modifierHandler);
     }
 
     public class Ability : MonoBehaviour

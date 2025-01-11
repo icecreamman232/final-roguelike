@@ -5,11 +5,11 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Modifiers
 {
-    public class HealthConditionModifierProcessor : ModifierProcessor
+    public class PlayerHealthConditionModifierProcessor : ModifierProcessor
     {
         [SerializeField] [ReadOnly] private bool m_isTriggered;
         
-        public override void Initialize(string id, ModifierHandler modifierHandler, Modifier modifier)
+        public override void Initialize(string id, PlayerModifierHandler modifierHandler, Modifier modifier)
         {
             base.Initialize(id, modifierHandler, modifier);
             var playerHealth = ServiceLocator.GetService<PlayerHealth>();

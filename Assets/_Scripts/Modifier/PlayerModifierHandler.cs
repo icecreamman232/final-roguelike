@@ -10,7 +10,7 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Modifiers
 {
-    public class ModifierHandler : MonoBehaviour, IPlayerModifierService
+    public class PlayerModifierHandler : MonoBehaviour, IPlayerModifierService
     {
         [Header("Events")] 
         [SerializeField] private GameEvent m_gameEvent;
@@ -43,7 +43,7 @@ namespace SGGames.Scripts.Modifiers
             m_playerEvent.AddListener(OnReceivePlayerEvent);
             m_processorContainer = new Dictionary<string, ModifierProcessor>();
             
-            ServiceLocator.RegisterService<ModifierHandler>(this);
+            ServiceLocator.RegisterService<PlayerModifierHandler>(this);
         }
 
         private void OnDestroy()
@@ -55,7 +55,7 @@ namespace SGGames.Scripts.Modifiers
         public void RegisterModifier(Modifier modifier)
         {
             var uniqueID = RandomController.GetUniqueID();
-            var processor = ModifierProcessorFactory.Create(uniqueID,this, modifier);
+            var processor = PlayerModifierProcessorFactory.Create(uniqueID,this, modifier);
             m_processorContainer.Add(uniqueID,processor);
         }
         

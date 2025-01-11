@@ -19,7 +19,7 @@ namespace SGGames.Scripts.Player
         [SerializeField][ReadOnly] private float m_durationTimer;
         [Header("Component Refs")]
         [SerializeField] private CircleCollider2D m_shieldCollider;
-        [SerializeField] private ModifierHandler m_modifierHandler;
+        [SerializeField] private PlayerModifierHandler m_modifierHandler;
         [SerializeField] private HealthModifier m_immortalModifier;
         [SerializeField] private MovementModifier m_reduceMovespeedModifier;
         [SerializeField] private AbilityCoolDownEvent m_abilityCoolDownEvent;

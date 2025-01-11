@@ -9,6 +9,6 @@ public class TestModifier : MonoBehaviour
     [ContextMenu("TEST")]
     private void Test()
     {
-        ServiceLocator.GetService<ModifierHandler>().RegisterModifier(Modifier);
+        ServiceLocator.GetService<PlayerModifierHandler>().RegisterModifier(Modifier);
     }
 }

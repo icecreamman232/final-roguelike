@@ -6,7 +6,7 @@ namespace SGGames.Scripts.Abilities
 {
     public class PlayerAbilityController : MonoBehaviour
     {
-        [SerializeField] private ModifierHandler m_modifierHandler;
+        [SerializeField] private PlayerModifierHandler m_modifierHandler;
         [SerializeField] private PlayerAbilityContainer m_abilityContainer;
 
         [ContextMenu("Add Ability")]

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Modifiers
 {
-    public class ArmorModifierProcessor : ModifierProcessor
+    public class PlayerArmorModifierProcessor : ModifierProcessor
     {
         public override void StartModifier()
         {

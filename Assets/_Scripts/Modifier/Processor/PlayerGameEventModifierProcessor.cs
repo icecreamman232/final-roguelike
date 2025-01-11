@@ -2,9 +2,9 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Modifiers
 {
-    public class GameEventModifierProcessor : ModifierProcessor
+    public class PlayerGameEventModifierProcessor : ModifierProcessor
     {
-        public override void Initialize(string id, ModifierHandler modifierHandler, Modifier modifier)
+        public override void Initialize(string id, PlayerModifierHandler modifierHandler, Modifier modifier)
         {
             base.Initialize(id, modifierHandler, modifier);
             

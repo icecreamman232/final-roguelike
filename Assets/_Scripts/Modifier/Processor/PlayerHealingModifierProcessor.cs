@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Modifiers
 {
-    public class HealingModifierProcessor : ModifierProcessor
+    public class PlayerHealingModifierProcessor : ModifierProcessor
     {
         public override void StartModifier()
         {

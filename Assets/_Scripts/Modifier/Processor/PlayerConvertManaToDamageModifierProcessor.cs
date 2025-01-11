@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Modifiers
 {
-    public class ConvertManaToDamageModifierProcessor : ModifierProcessor
+    public class PlayerConvertManaToDamageModifierProcessor : ModifierProcessor
     {
         [SerializeField] private int m_damageInfluencerID;
         

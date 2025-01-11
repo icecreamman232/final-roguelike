@@ -34,7 +34,7 @@ namespace SGGames.Scripts.Enemies
         {
             if (other.CompareTag("Player") && m_canTrigger)
             {
-                var handler  = other.gameObject.GetComponentInChildren<ModifierHandler>();
+                var handler  = other.gameObject.GetComponentInChildren<PlayerModifierHandler>();
                 handler.RegisterModifier(m_reduceMSModifier);
                 Destroy(this.gameObject);
             }

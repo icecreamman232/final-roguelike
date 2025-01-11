@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Modifiers
 {
-    public class CoinModifierProcessor : ModifierProcessor
+    public class PlayerCoinModifierProcessor : ModifierProcessor
     {
         public override void StartModifier()
         {

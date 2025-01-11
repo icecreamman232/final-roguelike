@@ -10,11 +10,11 @@ namespace SGGames.Scripts.Abilities
         [SerializeField] private float m_tickTime;
         [SerializeField] private float m_healthToLosePerTick;
         [SerializeField] private DamageModifier m_damageModifier;
-        private ModifierHandler m_modifierHandler;
+        private PlayerModifierHandler m_modifierHandler;
 
         private float m_tickTimer;
         
-        public void Initialize(ModifierHandler modifierHandler)
+        public void Initialize(PlayerModifierHandler modifierHandler)
         {
             m_modifierHandler = modifierHandler;
             m_modifierHandler.RegisterModifier(m_damageModifier);

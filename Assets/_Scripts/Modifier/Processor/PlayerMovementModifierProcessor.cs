@@ -3,11 +3,11 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Modifiers
 {
-    public class MovementModifierProcessor : ModifierProcessor
+    public class PlayerMovementModifierProcessor : ModifierProcessor
     {
         [SerializeField] private PlayerMovement m_playerMovement;
         
-        public override void Initialize(string id, ModifierHandler handler, Modifier modifier)
+        public override void Initialize(string id, PlayerModifierHandler handler, Modifier modifier)
         {
             base.Initialize(id,handler,modifier);
             m_playerMovement = handler.PlayerMovement;

@@ -10,12 +10,12 @@ namespace SGGames.Scripts.Modifiers
         [SerializeField] protected bool m_isProcessing;
 
         protected float m_timer;
-        protected ModifierHandler m_handler;
+        protected PlayerModifierHandler m_handler;
         
         public string Id => m_id;
         public Modifier Modifier => m_modifier;
 
-        public virtual void Initialize(string id, ModifierHandler modifierHandler, Modifier modifier)
+        public virtual void Initialize(string id, PlayerModifierHandler modifierHandler, Modifier modifier)
         {
             m_id = id;
             m_handler = modifierHandler;

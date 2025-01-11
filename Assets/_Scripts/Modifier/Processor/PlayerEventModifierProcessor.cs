@@ -4,7 +4,7 @@ namespace SGGames.Scripts.Modifiers
 {
     public class PlayerEventModifierProcessor : ModifierProcessor
     {
-        public override void Initialize(string id, ModifierHandler modifierHandler, Modifier modifier)
+        public override void Initialize(string id, PlayerModifierHandler modifierHandler, Modifier modifier)
         {
             base.Initialize(id, modifierHandler, modifier);
             

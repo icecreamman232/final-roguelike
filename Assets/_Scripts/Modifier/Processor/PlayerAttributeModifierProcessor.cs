@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Modifiers
 {
-    public class AttributeModifierProcessor : ModifierProcessor
+    public class PlayerAttributeModifierProcessor : ModifierProcessor
     {
         public override void StartModifier()
         {

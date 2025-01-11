@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Modifiers
 {
-    public class ManaModifierProcessor : ModifierProcessor
+    public class PlayerManaModifierProcessor : ModifierProcessor
     {
         [SerializeField] private float m_totalModifiedValue;
         

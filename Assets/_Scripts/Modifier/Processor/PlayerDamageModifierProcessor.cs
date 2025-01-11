@@ -4,13 +4,13 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Modifiers
 {
-    public class DamageModifierProcessor : ModifierProcessor
+    public class PlayerDamageModifierProcessor : ModifierProcessor
     {
        [SerializeField] private PlayerDamageComputer m_damageComputer;
         [SerializeField] private int m_damageInfluencerID;
        
        
-       public override void Initialize(string id, ModifierHandler handler, Modifier modifier)
+       public override void Initialize(string id, PlayerModifierHandler handler, Modifier modifier)
        {
            base.Initialize(id, handler, modifier);
            m_damageComputer = handler.PlayerDamageComputer;

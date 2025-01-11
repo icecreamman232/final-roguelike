@@ -31,7 +31,7 @@ namespace SGGames.Scripts.Player
         [SerializeField] private InputContextEvent m_onInventoryButtonPressedEvent;
         
         private PlayerWeaponHandler m_playerWeaponHandler;
-        private ModifierHandler m_playerModifierHandler;
+        private PlayerModifierHandler m_playerModifierHandler;
         private readonly int C_MAX_INVENTORY_SLOT = 6;
         private int m_occupiedInventoryNumber = 0;
         private bool m_isOpeningInventoryUI;
@@ -44,7 +44,7 @@ namespace SGGames.Scripts.Player
                 Debug.LogError("Player Weapon Handler is null");
             }
 
-            m_playerModifierHandler = GetComponentInChildren<ModifierHandler>();
+            m_playerModifierHandler = GetComponentInChildren<PlayerModifierHandler>();
             if (m_playerModifierHandler == null)
             {
                 Debug.LogError("Player Modifier Handler is null");

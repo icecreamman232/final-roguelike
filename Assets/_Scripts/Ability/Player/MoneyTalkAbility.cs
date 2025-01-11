@@ -12,9 +12,9 @@ namespace SGGames.Scripts.Abilities
         [SerializeField] private float m_currentBonusDamage;
         [SerializeField] private IntEvent m_updateCoinCounterEvent;
 
-        private ModifierHandler m_modifierHandler;
+        private PlayerModifierHandler m_modifierHandler;
 
-        public void Initialize(ModifierHandler modifierHandler)
+        public void Initialize(PlayerModifierHandler modifierHandler)
         {
             m_modifierHandler = modifierHandler;
             OnUpdateCoin(CurrencyManager.Instance.CurrentCoin);

@@ -5,10 +5,10 @@ using SGGames.Scripts.Player;
 
 namespace SGGames.Scripts.Modifiers
 {
-    public class WeaponTypeModifierProcessor : ModifierProcessor
+    public class PlayerWeaponTypeModifierProcessor : ModifierProcessor
     {
         private PlayerWeaponHandler m_playerWeaponHandler;
-        public override void Initialize(string id, ModifierHandler modifierHandler, Modifier modifier)
+        public override void Initialize(string id, PlayerModifierHandler modifierHandler, Modifier modifier)
         {
             base.Initialize(id, modifierHandler, modifier);
             m_playerWeaponHandler = ServiceLocator.GetService<PlayerWeaponHandler>();
