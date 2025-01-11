@@ -81,14 +81,9 @@ namespace SGGames.Scripts.Enemies
             m_currentSpeed = m_initialSpeed;
         }
 
-        public virtual void AddSpeed(float addAmount)
+        public virtual void ModifySpeed(float addAmount)
         {
             m_currentSpeed += addAmount;
-        }
-
-        public virtual void OverrideSpeed(float newSpeed)
-        {
-            m_currentSpeed = newSpeed;
         }
 
         protected override void Update()
