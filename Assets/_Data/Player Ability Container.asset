@@ -14,3 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_moneyTalkAbilityPrefab: {fileID: 4963451475481578229, guid: a40c5d965ab16c7408270ef5dea0e95b, type: 3}
   m_bloodRageAbilityPrefab: {fileID: 2152055195164634077, guid: 87d2ef8889ce34447ae215dc0aca7c92, type: 3}
+  m_burnAuraAbilityPrefab: {fileID: 6192294020820094411, guid: 06c5e7078d5a87e47926e5755bbcce92, type: 3}
+  m_frozenAuraAbilityPrefab: {fileID: 3518647074329425141, guid: c298988806540ac41bf8ed11ae36d0bd, type: 3}
+  m_poisonAuraAbilityPrefab: {fileID: 1000854102543471804, guid: 634c1ce170ee57f4ea6a40b6564236fe, type: 3}
