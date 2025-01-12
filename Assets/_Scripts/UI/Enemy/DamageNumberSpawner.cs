@@ -33,7 +33,7 @@ namespace SGGames.Scripts.UI
             dmgNumberObj.transform.position = transform.position + (Vector3)Random.insideUnitCircle * m_showRadius;
             var damageText = dmgNumberObj.GetComponentInChildren<TextMeshPro>();
             damageText.color = isCritical ? m_criticalColor : m_normalColor;
-            damageText.text = isCritical ? $"{damage.ToString()} !" :damage.ToString();
+            damageText.text = isCritical ? $"{damage:F0} !" : $"{damage:F0}";
         }
     }
 }

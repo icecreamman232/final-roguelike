@@ -8,13 +8,13 @@ namespace SGGames.Scripts.StatusEffects
 {
     public class StatusEffectHandler : MonoBehaviour
     {
+        [SerializeField] protected bool m_forPlayer;
         [SerializeField] protected StatusEffectEvent m_statusEffectEvent;
-        [SerializeField] protected PlayerModifierHandler m_modifierHandler;
         private Health m_health;
         private Dictionary<StatusEffectType, StatusEffectInstance> m_statusEffectInstanceDictionary;
         private List<StatusEffectType> m_toBeRemoveList;
         
-        public PlayerModifierHandler ModifierHandler => m_modifierHandler;
+        public bool IsForPlayer => m_forPlayer;
         
         protected virtual void Start()
         {

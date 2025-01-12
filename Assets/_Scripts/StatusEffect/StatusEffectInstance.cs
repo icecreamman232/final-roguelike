@@ -1,5 +1,6 @@
 using System;
 using SGGames.Scripts.Healths;
+using SGGames.Scripts.Modifiers;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -69,17 +70,57 @@ namespace SGGames.Scripts.StatusEffects
 
         protected virtual void ApplyModifier()
         {
-            for (int i = 0; i < m_statusEffectData.Modifiers.Length; i++)
+            if (m_handler.IsForPlayer)
             {
-                m_handler.ModifierHandler.RegisterModifier(m_statusEffectData.Modifiers[i]);
+                var playerHandler = m_handler as PlayerStatusEffectHandler;
+                if (playerHandler == null)
+                {
+                    throw new NullReferenceException("PlayerStatusEffectHandler cannot be null");
+                }
+                for (int i = 0; i < m_statusEffectData.Modifiers.Length; i++)
+                {
+                    playerHandler.ModifierHandler.RegisterModifier(m_statusEffectData.Modifiers[i]);
+                }
+            }
+            else
+            {
+                var enemyHandler = m_handler as EnemyStatusEffectHandler;
+                if (enemyHandler == null)
+                {
+                    throw new NullReferenceException("EnemyStatusEffectHandler cannot be null");
+                }
+                for (int i = 0; i < m_statusEffectData.Modifiers.Length; i++)
+                {
+                    enemyHandler.ModifierHandler.RegisterModifier(m_statusEffectData.Modifiers[i]);
+                }
             }
         }
 
         protected virtual void RemoveModifier()
         {
-            for (int i = 0; i < m_statusEffectData.Modifiers.Length; i++)
+            if (m_handler.IsForPlayer)
             {
-                m_handler.ModifierHandler.UnregisterModifier(m_statusEffectData.Modifiers[i]);
+                var playerHandler = m_handler as PlayerStatusEffectHandler;
+                if (playerHandler == null)
+                {
+                    throw new NullReferenceException("PlayerStatusEffectHandler cannot be null");
+                }
+                for (int i = 0; i < m_statusEffectData.Modifiers.Length; i++)
+                {
+                    playerHandler.ModifierHandler.UnregisterModifier(m_statusEffectData.Modifiers[i]);
+                }
+            }
+            else
+            {
+                var enemyHandler = m_handler as EnemyStatusEffectHandler;
+                if (enemyHandler == null)
+                {
+                    throw new NullReferenceException("EnemyStatusEffectHandler cannot be null");
+                }
+                for (int i = 0; i < m_statusEffectData.Modifiers.Length; i++)
+                {
+                    enemyHandler.ModifierHandler.UnregisterModifier(m_statusEffectData.Modifiers[i]);
+                }
             }
         }
 

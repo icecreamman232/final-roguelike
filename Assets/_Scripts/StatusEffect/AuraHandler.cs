@@ -76,7 +76,12 @@ namespace SGGames.Scripts.StatusEffects
             }
             else 
             {
-                
+                if (other.gameObject.layer == LayerManager.EnemyLayer)
+                {
+                    var statusFXHandler = other.gameObject.GetComponentInChildren<EnemyStatusEffectHandler>();
+                    statusFXHandler.AddStatus(m_statusEffectData,this.gameObject);
+                    StartCoroutine(DelayAfterTrigger());
+                }
             }
         }
     }

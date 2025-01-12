@@ -311,6 +311,7 @@ Transform:
   - {fileID: 3016508915068968306}
   - {fileID: 3704473022715560250}
   - {fileID: 1899469079895813672}
+  - {fileID: 2758978958339576815}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &4164159474481913399
@@ -786,6 +787,72 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d7d3a6edc189204fae938e8fb4e03f5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1001 &2876266869899636811
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 2827675220115710158}
+    m_Modifications:
+    - target: {fileID: 36370502171386371, guid: a7f830a26b4d07649b06717ba0c3be3f, type: 3}
+      propertyPath: m_Name
+      value: EnemyStatusFXHandler
+      objectReference: {fileID: 0}
+    - target: {fileID: 118027917783212964, guid: a7f830a26b4d07649b06717ba0c3be3f, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 118027917783212964, guid: a7f830a26b4d07649b06717ba0c3be3f, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 118027917783212964, guid: a7f830a26b4d07649b06717ba0c3be3f, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 118027917783212964, guid: a7f830a26b4d07649b06717ba0c3be3f, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 118027917783212964, guid: a7f830a26b4d07649b06717ba0c3be3f, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 118027917783212964, guid: a7f830a26b4d07649b06717ba0c3be3f, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 118027917783212964, guid: a7f830a26b4d07649b06717ba0c3be3f, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 118027917783212964, guid: a7f830a26b4d07649b06717ba0c3be3f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 118027917783212964, guid: a7f830a26b4d07649b06717ba0c3be3f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 118027917783212964, guid: a7f830a26b4d07649b06717ba0c3be3f, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1779511518084553507, guid: a7f830a26b4d07649b06717ba0c3be3f, type: 3}
+      propertyPath: m_modifierHandler
+      value: 
+      objectReference: {fileID: 1693311263836964146}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: a7f830a26b4d07649b06717ba0c3be3f, type: 3}
+--- !u!4 &2758978958339576815 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 118027917783212964, guid: a7f830a26b4d07649b06717ba0c3be3f, type: 3}
+  m_PrefabInstance: {fileID: 2876266869899636811}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &3679758785497007177
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1048,6 +1115,17 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 0b8ce5b939ae86443b5600b239762311, type: 3}
+--- !u!114 &1693311263836964146 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8592730391050181518, guid: 0b8ce5b939ae86443b5600b239762311, type: 3}
+  m_PrefabInstance: {fileID: 6935643880168906428}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b25fda4868751b64ab4e97d88bad4763, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &1899469079895813672 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 8798941086947176596, guid: 0b8ce5b939ae86443b5600b239762311, type: 3}
