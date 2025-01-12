@@ -34,7 +34,7 @@ namespace SGGames.Scripts.UI
                 case StatusEffectType.Poison:
                     m_poisonNode.UpdateStack(stackAmount);
                     break;
-                case StatusEffectType.Freeze:
+                case StatusEffectType.Frozen:
                     break;
                 case StatusEffectType.Shock:
                     break;

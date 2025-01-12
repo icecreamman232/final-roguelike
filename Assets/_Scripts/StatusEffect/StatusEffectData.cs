@@ -7,7 +7,7 @@ namespace SGGames.Scripts.StatusEffects
     {
         Burn,
         Poison,
-        Freeze,
+        Frozen,
         Shock,
         Bleed,
     }
