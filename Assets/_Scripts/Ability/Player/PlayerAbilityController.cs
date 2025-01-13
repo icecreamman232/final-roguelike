@@ -1,3 +1,4 @@
+using SGGames.Scripts.Common;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Modifiers;
 using UnityEngine;
@@ -12,7 +13,7 @@ namespace SGGames.Scripts.Abilities
         [ContextMenu("Add Ability")]
         private void TestAddAbility()
         {
-            AddAbility(m_abilityContainer.BloodRageAbilityPrefab);
+            AddAbility(m_abilityContainer.GetAbility(SelectableAbility.Blood_Rage));
         }
 
         private void AddAbility(GameObject abilityPrefab)

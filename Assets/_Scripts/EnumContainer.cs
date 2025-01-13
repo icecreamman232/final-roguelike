@@ -82,5 +82,15 @@ namespace SGGames.Scripts.Common
     {
         Money_Talk,
         Blood_Rage,
+        Burning_Circle,
+        Frozen_Field,
+        Poison_Cloud,
+        
+        PLACE_HOLDER_ABILITY_1 = 999,
+        PLACE_HOLDER_ABILITY_2,
+        PLACE_HOLDER_ABILITY_3,
+        PLACE_HOLDER_ABILITY_4,
+        PLACE_HOLDER_ABILITY_5,
+        PLACE_HOLDER_ABILITY_6,
     }
 }
