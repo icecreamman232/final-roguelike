@@ -225,8 +225,8 @@ GameObject:
   - component: {fileID: 5380295716604117150}
   - component: {fileID: 6539904361662612627}
   - component: {fileID: 7668281522605777609}
-  - component: {fileID: 7589398833877106338}
   - component: {fileID: 7249222409309376662}
+  - component: {fileID: 7589398833877106338}
   m_Layer: 5
   m_Name: PickAbilityCanvas
   m_TagString: Untagged
@@ -317,18 +317,6 @@ MonoBehaviour:
   m_BlockingMask:
     serializedVersion: 2
     m_Bits: 4294967295
---- !u!114 &7589398833877106338
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5056289557547024246}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 02e0ef408f3e89f448d05364ff485151, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!225 &7249222409309376662
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -341,6 +329,22 @@ CanvasGroup:
   m_Interactable: 0
   m_BlocksRaycasts: 0
   m_IgnoreParentGroups: 0
+--- !u!114 &7589398833877106338
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5056289557547024246}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02e0ef408f3e89f448d05364ff485151, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_canvasGroup: {fileID: 7249222409309376662}
+  m_openingAbilitySelectUIEvent: {fileID: 11400000, guid: fd77bca6bd38e6e4b943cebaa028ed9e, type: 2}
+  m_freezePlayerEvent: {fileID: 11400000, guid: 1338a4fa70285e7488b5acc1fb4c30fe, type: 2}
+  m_gameEvent: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
 --- !u!1001 &1857258251202918450
 PrefabInstance:
   m_ObjectHideFlags: 0

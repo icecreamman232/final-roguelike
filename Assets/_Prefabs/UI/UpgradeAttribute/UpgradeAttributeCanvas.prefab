@@ -133,6 +133,7 @@ MonoBehaviour:
   m_freezePlayerEvent: {fileID: 11400000, guid: 1338a4fa70285e7488b5acc1fb4c30fe, type: 2}
   m_gameEvent: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
   m_addAttributeEvent: {fileID: 11400000, guid: 0dbc4449929bc8d4aaac30d6cb0305f8, type: 2}
+  m_openingAbilitySelectUIEvent: {fileID: 11400000, guid: fd77bca6bd38e6e4b943cebaa028ed9e, type: 2}
   m_upgradeCardList:
   - {fileID: 6336823296007417218}
   - {fileID: 8800097352616928776}

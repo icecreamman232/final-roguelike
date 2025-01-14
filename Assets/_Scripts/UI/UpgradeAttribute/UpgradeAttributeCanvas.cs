@@ -13,6 +13,7 @@ namespace SGGames.Scripts.UI
         [SerializeField] private BoolEvent m_freezePlayerEvent;
         [SerializeField] private GameEvent m_gameEvent;
         [SerializeField] private AddAttributeEvent m_addAttributeEvent;
+        [SerializeField] private BoolEvent m_openingAbilitySelectUIEvent;
         [SerializeField] private UpgradeAttributeCardUI[] m_upgradeCardList;
         
         private readonly float C_CLOSE_FEEDBACK_TIME = 0.3f;
@@ -56,14 +57,18 @@ namespace SGGames.Scripts.UI
             StartCoroutine(OnHide());
         }
 
-        private IEnumerator OnHide()
+        private IEnumerator OnHide(bool shouldOpenAbilityScreen = false)
         {
             yield return new WaitForSecondsRealtime(C_CLOSE_FEEDBACK_TIME);
             m_canvasGroup.interactable = false;
             m_canvasGroup.blocksRaycasts = false;
             m_canvasGroup.alpha = 0;
-            m_freezePlayerEvent.Raise(false);
-            m_gameEvent.Raise(GameEventType.UNPAUSED);
+
+            if (shouldOpenAbilityScreen)
+            {
+                //Open ability select UI
+                m_openingAbilitySelectUIEvent.Raise(true);
+            }
         }
 
         private void FillDataToCard(int index, (AttributeTier tier, AttributeType type) attributeReward)
@@ -89,7 +94,7 @@ namespace SGGames.Scripts.UI
                 m_upgradeCardList[0].PlayNotSelectFeedback();
                 m_upgradeCardList[1].PlayNotSelectFeedback();
             }
-            Hide();
+            StartCoroutine(OnHide(shouldOpenAbilityScreen:true));
         }
         
         private void OnLevelUp(int level)
