@@ -8,7 +8,7 @@ namespace SGGames.Scripts.Data
     [CreateAssetMenu(menuName = "SGGames/Data/Player Ability Container")]
     public class PlayerAbilityContainer : ScriptableObject
     {
-        [SerializeField] private SelectableAbilityData[] m_abilityContainer;
+        [SerializeField] private AbilityData[] m_abilityContainer;
 
         public GameObject GetAbility(SelectableAbility abilityID)
         {
@@ -19,13 +19,6 @@ namespace SGGames.Scripts.Data
             }
             return abilityData.AbilityPrefab;
         }
-    }
-    
-    [Serializable]
-    public class SelectableAbilityData
-    {
-        public SelectableAbility AbilityID;
-        public GameObject AbilityPrefab;
     }
 }
 

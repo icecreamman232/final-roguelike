@@ -13,25 +13,14 @@ MonoBehaviour:
   m_Name: Player Ability Container
   m_EditorClassIdentifier: 
   m_abilityContainer:
-  - AbilityID: 0
-    AbilityPrefab: {fileID: 4963451475481578229, guid: a40c5d965ab16c7408270ef5dea0e95b, type: 3}
-  - AbilityID: 1
-    AbilityPrefab: {fileID: 2152055195164634077, guid: 87d2ef8889ce34447ae215dc0aca7c92, type: 3}
-  - AbilityID: 2
-    AbilityPrefab: {fileID: 6192294020820094411, guid: 06c5e7078d5a87e47926e5755bbcce92, type: 3}
-  - AbilityID: 3
-    AbilityPrefab: {fileID: 3518647074329425141, guid: c298988806540ac41bf8ed11ae36d0bd, type: 3}
-  - AbilityID: 4
-    AbilityPrefab: {fileID: 1000854102543471804, guid: 634c1ce170ee57f4ea6a40b6564236fe, type: 3}
-  - AbilityID: 999
-    AbilityPrefab: {fileID: 1803938031440600766, guid: 70613d85e0d9037419906ffbac939485, type: 3}
-  - AbilityID: 1000
-    AbilityPrefab: {fileID: 9008164407084527502, guid: 5000cc4adcd995c4b902a335d6fddbae, type: 3}
-  - AbilityID: 1001
-    AbilityPrefab: {fileID: 9008164407084527502, guid: 5302a5c6c701f2e43a462f9eb2ce1163, type: 3}
-  - AbilityID: 1002
-    AbilityPrefab: {fileID: 9008164407084527502, guid: a2d29203cdcc26f4e8a595c4ee2f374d, type: 3}
-  - AbilityID: 1003
-    AbilityPrefab: {fileID: 9008164407084527502, guid: 8592a6ec652729d48867e2ba00141b60, type: 3}
-  - AbilityID: 1004
-    AbilityPrefab: {fileID: 9008164407084527502, guid: 7f2736dd31290984aa42dd96354d62cd, type: 3}
+  - {fileID: 11400000, guid: 0ae5459afdd44764f95923249ef3455b, type: 2}
+  - {fileID: 11400000, guid: 30e7505c0b658be43a1911f1f3a52ccf, type: 2}
+  - {fileID: 11400000, guid: 4baf6dc8490d77142ae67d10f186a944, type: 2}
+  - {fileID: 11400000, guid: e68bbbd3a633a58478b79dea151c88a6, type: 2}
+  - {fileID: 11400000, guid: 4103500213e4e724ead1c2c193448039, type: 2}
+  - {fileID: 11400000, guid: 9d78ba11c53208144ac3ca6ac6f6682f, type: 2}
+  - {fileID: 11400000, guid: 5643f73ea8d0afd458e1b9f8a7fb4d1c, type: 2}
+  - {fileID: 11400000, guid: 4e8f51149e73473469297d8617ce6eac, type: 2}
+  - {fileID: 11400000, guid: 241eab3089394f0469dac2c7460a3458, type: 2}
+  - {fileID: 11400000, guid: 2039818f973684b4580afbe99329613b, type: 2}
+  - {fileID: 11400000, guid: da4329816e49b264cb7729c9040e73bf, type: 2}
