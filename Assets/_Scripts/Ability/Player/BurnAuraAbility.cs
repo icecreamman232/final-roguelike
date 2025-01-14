@@ -1,12 +1,14 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+using SGGames.Scripts.Modifiers;
+
 
 namespace SGGames.Scripts.Abilities
 {
-    public class BurnAuraAbility : Ability
+    public class BurnAuraAbility : Ability, ISelectableAbility
     {
-        
+        public void Initialize(PlayerModifierHandler modifierHandler)
+        {
+            
+        }
     }
 }
 

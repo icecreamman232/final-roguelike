@@ -598,6 +598,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls: []
+  m_abilityIcon: {fileID: 8116329574325354279}
+  m_abilityName: {fileID: 954561024237323957}
+  m_abilityDesc: {fileID: 6954119761691284622}
 --- !u!1 &4527123916665604044
 GameObject:
   m_ObjectHideFlags: 0

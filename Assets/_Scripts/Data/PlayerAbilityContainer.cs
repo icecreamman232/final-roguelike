@@ -10,6 +10,16 @@ namespace SGGames.Scripts.Data
     {
         [SerializeField] private AbilityData[] m_abilityContainer;
 
+        public AbilityData GetAbilityData(SelectableAbility abilityID)
+        {
+            var abilityData = m_abilityContainer.FirstOrDefault(x => x.AbilityID == abilityID);
+            if (abilityData == null)
+            {
+                throw new Exception($"Ability ID {abilityID.ToString()} not found");
+            }
+            return abilityData;
+        }
+        
         public GameObject GetAbility(SelectableAbility abilityID)
         {
             var abilityData = m_abilityContainer.FirstOrDefault(x => x.AbilityID == abilityID);

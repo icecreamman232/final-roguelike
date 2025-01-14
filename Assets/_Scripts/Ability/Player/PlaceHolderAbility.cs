@@ -1,9 +1,11 @@
-using System.Collections;
-using System.Collections.Generic;
 using SGGames.Scripts.Abilities;
-using UnityEngine;
+using SGGames.Scripts.Modifiers;
 
-public class PlaceHolderAbility : Ability
+
+public class PlaceHolderAbility : Ability, ISelectableAbility
 {
-    
+    public void Initialize(PlayerModifierHandler modifierHandler)
+    {
+        
+    }
 }
