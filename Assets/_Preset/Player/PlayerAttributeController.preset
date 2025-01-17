@@ -1,0 +1,71 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PlayerAttributeController
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: 5151d0a1cc68cfb44b61c3576ee51e82, type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_isAllow
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_heroData
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_strengthPoints
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_agilityPoints
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_intelligencePoints
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_addAttributeEvent
+    value: 
+    objectReference: {fileID: 11400000, guid: 0dbc4449929bc8d4aaac30d6cb0305f8, type: 2}
+  - target: {fileID: 0}
+    propertyPath: m_characterInforButtonPressedEvent
+    value: 
+    objectReference: {fileID: 11400000, guid: 5f5e5d4dfc822f74a9aac3a4e730e292, type: 2}
+  - target: {fileID: 0}
+    propertyPath: m_openCharacterInfoUIEvent
+    value: 
+    objectReference: {fileID: 11400000, guid: 9c8bcbc8359a26a4db6d550db47ae89d, type: 2}
+  - target: {fileID: 0}
+    propertyPath: m_freezePlayerEvent
+    value: 
+    objectReference: {fileID: 11400000, guid: 1338a4fa70285e7488b5acc1fb4c30fe, type: 2}
+  - target: {fileID: 0}
+    propertyPath: m_gameEvent
+    value: 
+    objectReference: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
+  - target: {fileID: 0}
+    propertyPath: m_constantData
+    value: 
+    objectReference: {fileID: 11400000, guid: 26336a57fc5df324abcfbac163a7a98c, type: 2}
+  m_ExcludedProperties: []

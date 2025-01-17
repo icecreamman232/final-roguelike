@@ -163,9 +163,6 @@ MonoBehaviour:
   m_strengthPoints: 0
   m_agilityPoints: 0
   m_intelligencePoints: 0
-  m_playerHealth: {fileID: 904574974438328195}
-  m_playerDamageComputer: {fileID: 6211949587856999711}
-  m_playerWeaponHandler: {fileID: 6210066009922297151}
   m_addAttributeEvent: {fileID: 11400000, guid: 0dbc4449929bc8d4aaac30d6cb0305f8, type: 2}
   m_characterInforButtonPressedEvent: {fileID: 11400000, guid: 5f5e5d4dfc822f74a9aac3a4e730e292, type: 2}
   m_openCharacterInfoUIEvent: {fileID: 11400000, guid: 9c8bcbc8359a26a4db6d550db47ae89d, type: 2}

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Core;
@@ -6,7 +5,6 @@ using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Healths;
 using SGGames.Scripts.Managers;
-using SGGames.Scripts.Modifiers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -44,20 +42,25 @@ namespace SGGames.Scripts.Player
         protected override void Start()
         {
             base.Start();
-            try
+
+            if (m_heroData == null)
             {
-                m_playerDamageComputer = GetComponent<PlayerDamageComputer>();
+                Debug.LogError($"HeroData not found on {this.gameObject}");
             }
-            catch (Exception e)
+
+            if (!TryGetComponent<PlayerDamageComputer>(out m_playerDamageComputer))
             {
-                throw new NullReferenceException($"Player Damage Computer not found on {this.gameObject}", e);
+                Debug.LogError($"PlayerDamageComputer not found on {this.gameObject}");
             }
-            
-            m_playerWeaponHandler = GetComponent<PlayerWeaponHandler>();
-            
+
+            if (!TryGetComponent<PlayerWeaponHandler>(out m_playerWeaponHandler))
+            {
+                Debug.LogError($"PlayerWeaponHandler not found on {this.gameObject}");
+            }
             
             m_playerHealth = ServiceLocator.GetService<PlayerHealth>();
             m_playerMana = ServiceLocator.GetService<PlayerMana>();
+            
             m_characterInforButtonPressedEvent.AddListener(OnCharacterInfoButtonPressed);
             m_addAttributeEvent.AddListener(OnChooseAttributeReward);
             StartCoroutine(InitializeAttributes());
