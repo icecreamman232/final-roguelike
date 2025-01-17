@@ -1,24 +1,12 @@
-using UnityEngine;
+using SGGames.Scripts.Core;
 
 namespace SGGames.Scripts.Enemies
 {
-    public class EnemyBehavior : MonoBehaviour
+    public class EnemyBehavior : EntityBehavior
     {
-        [SerializeField] protected bool m_isAllow;
-
-        public void ToggleAllow(bool value)
+        public override void ToggleAllow(bool value)
         {
             m_isAllow = value;
-        }
-
-        protected virtual void Start()
-        {
-            
-        }
-
-        protected virtual void Update()
-        {
-            if (!m_isAllow) return;
         }
     }
 }

@@ -1,29 +1,14 @@
-using UnityEngine;
+using SGGames.Scripts.Core;
 
 namespace SGGames.Scripts.Player
 {
-    public class PlayerBehavior : MonoBehaviour
+    public class PlayerBehavior : EntityBehavior
     {
-        [SerializeField] protected bool m_isAllow;
-
-        public void ToggleAllow(bool value)
+        public override void ToggleAllow(bool value)
         {
             m_isAllow = value;
         }
 
-        protected virtual void Start()
-        {
-            
-        }
-
-        protected virtual void Update()
-        {
-            if (!m_isAllow) return;
-        }
-
-        /// <summary>
-        /// Handle behavior when player got freeze
-        /// </summary>
         public virtual void OnPlayerFreeze(bool isFrozen)
         {
             

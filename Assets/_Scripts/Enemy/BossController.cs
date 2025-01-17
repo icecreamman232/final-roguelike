@@ -21,7 +21,7 @@ namespace SGGames.Scripts.Enemies
             m_genericBossEvent.RemoveListener(OnBossEvent);
         }
 
-        private void Start()
+        protected override void Start()
         {
             m_showBossNameEvent.Raise(m_bossName);
             m_genericBossEvent.Raise(GenericBossEventType.SHOW_HEALTH_BAR);
