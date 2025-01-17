@@ -1,3 +1,4 @@
+using SGGames.Scripts.Attribute;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Managers;
 using UnityEngine;
@@ -6,7 +7,7 @@ namespace SGGames.Scripts.Player
 {
     public class PlayerController : MonoBehaviour
     {
-        [SerializeField] private PlayerBehavior[] m_playersBehaviors;
+        [SerializeField][ReadOnly] private PlayerBehavior[] m_playersBehaviors;
         [SerializeField] private BoolEvent m_playerFreezeEvent;
         [SerializeField] private BoolEvent m_freezeInputEvent;
         [SerializeField] private GenericBossEvent m_genericBossEvent;
@@ -17,7 +18,11 @@ namespace SGGames.Scripts.Player
             m_genericBossEvent.AddListener(OnGenericBossEvent);
         }
 
-      
+        private void Start()
+        {
+            m_playersBehaviors = GetComponents<PlayerBehavior>();
+        }
+
         private void OnDestroy()
         {
             m_playerFreezeEvent.RemoveListener(OnPlayerFreeze);
@@ -30,9 +35,10 @@ namespace SGGames.Scripts.Player
             {
                 return;
             }
-            for (int i = 0; i < m_playersBehaviors.Length; i++)
+
+            foreach (var behaviorComponent in m_playersBehaviors)
             {
-                m_playersBehaviors[i].OnPlayerFreeze(isFrozen);
+                behaviorComponent.OnPlayerFreeze(isFrozen);
             }
         }
         

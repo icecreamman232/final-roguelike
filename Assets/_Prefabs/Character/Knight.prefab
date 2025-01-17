@@ -135,14 +135,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0825ad1699e53294da03a6f81a5c032e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_playersBehaviors:
-  - {fileID: 1224419374634297090}
-  - {fileID: 5311189830458795856}
-  - {fileID: 9095760099221184924}
-  - {fileID: 6210066009922297151}
-  - {fileID: 8170920390037149282}
-  - {fileID: -2195535169441576329}
-  - {fileID: 8985148339537040874}
+  m_playersBehaviors: []
   m_playerFreezeEvent: {fileID: 11400000, guid: 1338a4fa70285e7488b5acc1fb4c30fe, type: 2}
   m_freezeInputEvent: {fileID: 11400000, guid: 0010a76d4589bda4d90a358f77263b5f, type: 2}
   m_genericBossEvent: {fileID: 11400000, guid: c6fd525202b24034c8b016d91b54b4c4, type: 2}
