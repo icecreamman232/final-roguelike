@@ -39,7 +39,7 @@ namespace SGGames.Scripts.Common
                 var x = xScaled * radius;
                 var y = yScaled * radius;
          
-                var currentPos = new Vector3(x,y,0);
+                var currentPos = new Vector3(x,y,0) + transform.position;
                 m_lineRenderer.SetPosition(currentStep, currentPos);
                 m_lineRenderer.loop = true;
             }
