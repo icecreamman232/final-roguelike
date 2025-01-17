@@ -28,7 +28,7 @@ namespace SGGames.Scripts.Weapons
         
         protected float m_delayTimer;
         protected PlayerAim m_playerAim;
-        private bool m_isOnLeft;
+        protected bool m_isOnLeft;
         
         public float BaseDelayBetweenShots => m_baseDelayBetweenShots;
        
@@ -67,10 +67,7 @@ namespace SGGames.Scripts.Weapons
                 case WeaponState.READY:
                     break;
                 case WeaponState.SHOT:
-                    if (m_animator != null)
-                    {
-                        m_animator.SetTrigger(m_isOnLeft ? "SwingLeft" : "SwingRight");
-                    }
+                    PlayUseWeaponAnimation();
                     m_delayTimer = m_currentDelayBetweenShots;
                     m_currentState = WeaponState.DELAY_BETWEEN_SHOTS;
                     break;
@@ -104,6 +101,11 @@ namespace SGGames.Scripts.Weapons
             }
             m_model.rotation = Quaternion.AngleAxis(
                 Mathf.Atan2(m_playerAim.AimDirection.y, m_playerAim.AimDirection.x) * Mathf.Rad2Deg + m_offsetAngle + flipAngle, Vector3.forward);
+        }
+
+        protected virtual void PlayUseWeaponAnimation()
+        {
+            
         }
 
         protected virtual void OnDestroy()
