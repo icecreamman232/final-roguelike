@@ -17,7 +17,6 @@ namespace SGGames.Scripts.Player
         [SerializeField] private float m_strengthPoints;
         [SerializeField] private float m_agilityPoints;
         [SerializeField] private float m_intelligencePoints;
-        
         [Header("Events")]
         [SerializeField] private AddAttributeEvent m_addAttributeEvent;
         [SerializeField] private InputContextEvent m_characterInforButtonPressedEvent;
