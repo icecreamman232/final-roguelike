@@ -1,4 +1,3 @@
-using System;
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Core;
 using SGGames.Scripts.Data;
@@ -9,9 +8,21 @@ namespace SGGames.Scripts.Abilities
 {
     public class PlayerAbilityController : MonoBehaviour, IGameService
     {
-        [SerializeField] private PlayerModifierHandler m_modifierHandler;
         [SerializeField] private PlayerAbilityContainer m_abilityContainer;
-
+        private PlayerModifierHandler m_modifierHandler;
+        
+        private PlayerModifierHandler ModifierHandler
+        {
+            get
+            {
+                if (m_modifierHandler == null)
+                {
+                    m_modifierHandler = ServiceLocator.GetService<PlayerModifierHandler>();
+                }
+                return m_modifierHandler;
+            }
+        } 
+        
         private void Start()
         {
             ServiceLocator.RegisterService<PlayerAbilityController>(this);
@@ -28,7 +39,7 @@ namespace SGGames.Scripts.Abilities
             var abilityPrefab = m_abilityContainer.GetAbility(abilityID);
             var abilityGO = Instantiate(abilityPrefab,this.transform);
             var ability = abilityGO.GetComponent<ISelectableAbility>();
-            ability.Initialize(m_modifierHandler);
+            ability.Initialize(ModifierHandler);
         }
     }
 }

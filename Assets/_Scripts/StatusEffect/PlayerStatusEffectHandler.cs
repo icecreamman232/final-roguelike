@@ -7,9 +7,19 @@ namespace SGGames.Scripts.StatusEffects
 {
     public class PlayerStatusEffectHandler : StatusEffectHandler, IPlayerStatusEffectService
     {
-        [SerializeField] protected PlayerModifierHandler m_modifierHandler;
-        public PlayerModifierHandler ModifierHandler => m_modifierHandler;
-        
+        private PlayerModifierHandler m_modifierHandler;
+        public PlayerModifierHandler ModifierHandler
+        {
+            get
+            {
+                if (m_modifierHandler == null)
+                {
+                    m_modifierHandler = ServiceLocator.GetService<PlayerModifierHandler>();
+                }
+                return m_modifierHandler;
+            }
+        }
+
         protected override void Start()
         {
             m_forPlayer = true;
