@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_abilityID: 4
   m_abilityName: Poison Cloud
+  m_abilityDesc: 
   m_abilityPrefab: {fileID: 1000854102543471804, guid: 634c1ce170ee57f4ea6a40b6564236fe, type: 3}
+  m_abilityIcon: {fileID: 21300000, guid: f23ae2b05d484db4bbb2bf7fc53b1691, type: 3}

@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_abilityID: 1002
   m_abilityName: Place Holder 4
+  m_abilityDesc: 
   m_abilityPrefab: {fileID: 9008164407084527502, guid: a2d29203cdcc26f4e8a595c4ee2f374d, type: 3}
+  m_abilityIcon: {fileID: 21300000, guid: f23ae2b05d484db4bbb2bf7fc53b1691, type: 3}

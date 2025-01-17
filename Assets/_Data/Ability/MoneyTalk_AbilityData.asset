@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_abilityID: 0
   m_abilityName: Money Talk
+  m_abilityDesc: 
   m_abilityPrefab: {fileID: 4963451475481578229, guid: a40c5d965ab16c7408270ef5dea0e95b, type: 3}
+  m_abilityIcon: {fileID: 21300000, guid: 233a936d687746544af13f33ac8ad0df, type: 3}

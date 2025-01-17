@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_abilityID: 2
   m_abilityName: Burning Circle
+  m_abilityDesc: 
   m_abilityPrefab: {fileID: 6192294020820094411, guid: 06c5e7078d5a87e47926e5755bbcce92, type: 3}
+  m_abilityIcon: {fileID: 21300000, guid: f23ae2b05d484db4bbb2bf7fc53b1691, type: 3}
