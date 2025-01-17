@@ -1,0 +1,87 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!181963792 &2655988077585873504
+Preset:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PlayerInventory
+  m_TargetType:
+    m_NativeTypeID: 114
+    m_ManagedTypePPtr: {fileID: 11500000, guid: db123b3c115eb004690b60b6dd10feed, type: 3}
+    m_ManagedTypeFallback: 
+  m_Properties:
+  - target: {fileID: 0}
+    propertyPath: m_Enabled
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorHideFlags
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_EditorClassIdentifier
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_isAllow
+    value: 1
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_primaryWeaponSlot
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_helmetSlot
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_armorSlot
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_glovesSlot
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_bootsSlot
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_accessoriesSlot
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_charmSlot
+    value: 
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_inventorySlots.Array.size
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_gameEvent
+    value: 
+    objectReference: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
+  - target: {fileID: 0}
+    propertyPath: m_toggleFreezePlayerEvent
+    value: 
+    objectReference: {fileID: 11400000, guid: 1338a4fa70285e7488b5acc1fb4c30fe, type: 2}
+  - target: {fileID: 0}
+    propertyPath: m_openInventoryUI
+    value: 
+    objectReference: {fileID: 11400000, guid: a368cab554cb21840890473e363380e4, type: 2}
+  - target: {fileID: 0}
+    propertyPath: m_updateInventoryUI
+    value: 
+    objectReference: {fileID: 11400000, guid: d47cfc6a2bf7c2a4dbd73baee44f9449, type: 2}
+  - target: {fileID: 0}
+    propertyPath: m_itemPickedEvent
+    value: 
+    objectReference: {fileID: 11400000, guid: 9a7e64e4c361154488877a0458d5deaf, type: 2}
+  - target: {fileID: 0}
+    propertyPath: m_onInventoryButtonPressedEvent
+    value: 
+    objectReference: {fileID: 11400000, guid: 49c43882c97a1684bbb93fef2a29dfef, type: 2}
+  m_ExcludedProperties: []

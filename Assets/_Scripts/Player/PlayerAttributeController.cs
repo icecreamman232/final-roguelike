@@ -1,11 +1,12 @@
+using System;
 using System.Collections;
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Core;
-using SGGames.Scripts.Damages;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Healths;
 using SGGames.Scripts.Managers;
+using SGGames.Scripts.Modifiers;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -19,11 +20,6 @@ namespace SGGames.Scripts.Player
         [SerializeField] private float m_agilityPoints;
         [SerializeField] private float m_intelligencePoints;
         
-        [Header("Components")]
-        [SerializeField] private PlayerHealth m_playerHealth;
-        [SerializeField] private PlayerDamageComputer m_playerDamageComputer;
-        [SerializeField] private PlayerWeaponHandler m_playerWeaponHandler;
-        
         [Header("Events")]
         [SerializeField] private AddAttributeEvent m_addAttributeEvent;
         [SerializeField] private InputContextEvent m_characterInforButtonPressedEvent;
@@ -33,6 +29,9 @@ namespace SGGames.Scripts.Player
         [Header("Data")]
         [SerializeField] private ConstantData m_constantData;
 
+        private PlayerWeaponHandler m_playerWeaponHandler;
+        private PlayerDamageComputer m_playerDamageComputer;
+        private PlayerHealth m_playerHealth;
         private PlayerMana m_playerMana;
         private bool m_isCharacterInfoOpening;
         
@@ -45,6 +44,19 @@ namespace SGGames.Scripts.Player
         protected override void Start()
         {
             base.Start();
+            try
+            {
+                m_playerDamageComputer = GetComponent<PlayerDamageComputer>();
+            }
+            catch (Exception e)
+            {
+                throw new NullReferenceException($"Player Damage Computer not found on {this.gameObject}", e);
+            }
+            
+            m_playerWeaponHandler = GetComponent<PlayerWeaponHandler>();
+            
+            
+            m_playerHealth = ServiceLocator.GetService<PlayerHealth>();
             m_playerMana = ServiceLocator.GetService<PlayerMana>();
             m_characterInforButtonPressedEvent.AddListener(OnCharacterInfoButtonPressed);
             m_addAttributeEvent.AddListener(OnChooseAttributeReward);
