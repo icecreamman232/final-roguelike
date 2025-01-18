@@ -12,6 +12,7 @@ namespace SGGames.Scripts.Damages
         MULTIPLY_DAMAGE,
         CRITICAL_DAMAGE,
         CRITICAL_CHANCE,
+        STUNNING,
     }
     
     /// <summary>

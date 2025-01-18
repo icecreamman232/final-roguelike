@@ -61,6 +61,12 @@ namespace SGGames.Scripts.Modifiers
                         damageModifier.ChanceToCause,
                         damageModifier.ModifierValue));
                     break;
+                case DamageModifierType.ModifyStun:
+                    m_damageInfluencerID = m_damageComputer.AddNewDamageInfluencer(new DamageInfluencer(
+                        DamageInfluencerType.STUNNING, 
+                        damageModifier.ChanceToCause,
+                        damageModifier.ModifierValue));
+                    break;
             }
             
             Debug.Log($"<color=green>Start Modifier Category:{m_modifier.ModifierType} " +

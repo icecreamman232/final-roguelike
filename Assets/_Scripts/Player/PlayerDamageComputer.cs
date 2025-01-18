@@ -15,6 +15,7 @@ namespace SGGames.Scripts.Player
         public float AdditionMaxDamage;
         public float MultiplyDamage;
         public float CriticalDamage;
+        public float StunDuration;
     }
     
     /// <summary>
@@ -30,6 +31,7 @@ namespace SGGames.Scripts.Player
         [SerializeField] private float m_mutiplyDamage;
         [SerializeField] private float m_criticalChance;
         [SerializeField] private float m_criticalDamage;
+        [SerializeField] private float m_stunDuration;
 
         private PlayerWeaponHandler m_playerWeaponHandler;
         private DamageInfo m_damageInfo;
@@ -57,11 +59,13 @@ namespace SGGames.Scripts.Player
                 AdditionMaxDamage = m_additionMaxDamage,
                 MultiplyDamage = m_mutiplyDamage,
                 CriticalDamage = GetCriticalDamage(),
+                StunDuration = 0,
             };
         }
 
         public void Initialize(float criticalChance, float criticalDamage)
         {
+            m_stunDuration = 0;
             m_criticalChance = criticalChance;
             m_criticalDamage = criticalDamage;
             AddNewDamageInfluencer(new DamageInfluencer(DamageInfluencerType.CRITICAL_CHANCE,
@@ -116,7 +120,9 @@ namespace SGGames.Scripts.Player
                         break;
                     case DamageInfluencerType.CRITICAL_CHANCE:
                         m_criticalChance += damageInfluencer.Value.GetDamage();
-                        
+                        break;
+                    case DamageInfluencerType.STUNNING:
+                        m_stunDuration += damageInfluencer.Value.GetDamage();
                         break;
                 }
             }
@@ -140,7 +146,7 @@ namespace SGGames.Scripts.Player
             m_damageInfo.AdditionMaxDamage = m_additionMaxDamage;
             m_damageInfo.MultiplyDamage = m_mutiplyDamage;
             m_damageInfo.CriticalDamage = GetCriticalDamage();
-
+            m_damageInfo.StunDuration = m_stunDuration;
             return m_damageInfo;
         }
 

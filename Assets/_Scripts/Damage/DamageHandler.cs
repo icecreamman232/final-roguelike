@@ -19,6 +19,7 @@ namespace SGGames.Scripts.Damages
         [SerializeField] protected float m_damageableInvulnerableTime;
         [SerializeField] protected float m_knockBackForce;
         [SerializeField] protected float m_knockBackDuration;
+        [SerializeField] protected float m_stunDuration;
         [SerializeField] protected LayerMask m_damageableLayerMask;
         [Header("NonDamageable")]
         [SerializeField] protected LayerMask m_nonDamageableLayerMask;
@@ -44,6 +45,7 @@ namespace SGGames.Scripts.Damages
             m_additionMax = damageInfo.AdditionMaxDamage;
             m_multiplyDamage = damageInfo.MultiplyDamage;
             m_critDamage = damageInfo.CriticalDamage;
+            m_stunDuration = damageInfo.StunDuration;
         }
 
         protected virtual void OnTriggerEnter2D(Collider2D other)
@@ -81,6 +83,7 @@ namespace SGGames.Scripts.Damages
             {
                 var attackDir = (target.transform.position - transform.position).normalized;
                 enemyMovement.ApplyKnockBack(attackDir,m_knockBackForce,m_knockBackDuration);
+                enemyMovement.ApplyStun(m_stunDuration);
             }
 
         }
