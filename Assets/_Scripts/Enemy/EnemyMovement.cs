@@ -24,7 +24,6 @@ namespace SGGames.Scripts.Enemies
     {
         [SerializeField] protected EnemyMovementState m_movementState;
         [SerializeField] protected MOVEMENT_MODE m_movementMode = MOVEMENT_MODE.TOWARD_DIRECTION;
-        //[SerializeField] protected bool m_canMove;
         [SerializeField] protected float m_initialSpeed;
         [SerializeField] protected float m_currentSpeed;
         [SerializeField] protected Vector2 m_direction;
@@ -33,7 +32,12 @@ namespace SGGames.Scripts.Enemies
         
         private readonly float m_raycastDistance = 0.2f;
         protected BoxCollider2D m_boxCollider;
+        private EnemyController m_enemyController;
         private ObstacleChecker m_obstacleChecker;
+        private Coroutine m_knockBackCoroutine;
+        private Coroutine m_stunCoroutine;
+        private bool m_isStunned;
+        private float m_currentStunDuration;
 
         public Action OnHitObstacle;
         
@@ -43,6 +47,7 @@ namespace SGGames.Scripts.Enemies
             ResetSpeed();
             m_movementState = EnemyMovementState.STOP;
             m_boxCollider = GetComponent<BoxCollider2D>();
+            m_enemyController = GetComponent<EnemyController>();
             m_obstacleChecker = new ObstacleChecker();
         }
 
@@ -77,7 +82,28 @@ namespace SGGames.Scripts.Enemies
 
         public void ApplyKnockBack(Vector2 knockBackDirection,float knockBackForce, float duration)
         {
-            StartCoroutine(KnockBackRoutine(knockBackDirection,knockBackForce, duration));
+            //Not override knock back with new one
+            if (m_movementState == EnemyMovementState.KNOCK_BACK) return;
+            
+            m_knockBackCoroutine = StartCoroutine(KnockBackRoutine(knockBackDirection,knockBackForce, duration));
+        }
+
+        public void ApplyStun(float duration)
+        {
+            if (m_isStunned)
+            {
+                //Override current stun with "better" stun
+                if (duration > m_currentStunDuration)
+                {
+                    m_currentStunDuration = duration;
+                    StopCoroutine(m_stunCoroutine);
+                    m_stunCoroutine = StartCoroutine(StunningRoutine(m_currentStunDuration));
+                }
+                return;
+            }
+
+            m_currentStunDuration = duration;
+            m_stunCoroutine = StartCoroutine(StunningRoutine(duration));
         }
 
         public virtual void StartMoving()
@@ -113,6 +139,17 @@ namespace SGGames.Scripts.Enemies
         
         protected virtual void UpdateMovement()
         {
+            if (m_isStunned)
+            {
+                StunningState();
+                //While being stunned, enemy is still able to receive knock back
+                if (m_movementState == EnemyMovementState.KNOCK_BACK)
+                {
+                    KnockBackState();
+                }
+                return;
+            }
+            
             switch (m_movementState)
             {
                 case EnemyMovementState.STOP:
@@ -165,7 +202,7 @@ namespace SGGames.Scripts.Enemies
             {
                 knockBackSpd -= Time.deltaTime;
                 knockBackSpd = Mathf.Clamp(knockBackSpd,0,m_currentSpeed);
-                transform.Translate(knockBackDirection * (2 * knockBackSpd * Time.deltaTime));
+                transform.Translate(knockBackDirection * (knockBackSpd * Time.deltaTime));
                 if (knockBackSpd <= 0)
                 {
                     break;
@@ -174,6 +211,20 @@ namespace SGGames.Scripts.Enemies
             }
 
             m_movementState = prevState;
+        }
+        
+        protected virtual void StunningState()
+        {
+            
+        }
+
+        protected virtual IEnumerator StunningRoutine(float duration)
+        {
+            m_isStunned = true;
+            m_enemyController.CurrentBrain.BrainActive = false;
+            yield return new WaitForSeconds(duration);
+            m_isStunned = false;
+            m_enemyController.CurrentBrain.BrainActive = true;
         }
         
         #if UNITY_EDITOR
