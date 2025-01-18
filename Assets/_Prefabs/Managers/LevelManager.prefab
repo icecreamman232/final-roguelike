@@ -10,7 +10,6 @@ GameObject:
   m_Component:
   - component: {fileID: 6946004448931413741}
   - component: {fileID: 9101111211934806997}
-  - component: {fileID: 1836569492117602669}
   m_Layer: 0
   m_Name: LevelManager
   m_TagString: Untagged
@@ -30,7 +29,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 4720953327619039813}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &9101111211934806997
@@ -48,12 +48,11 @@ MonoBehaviour:
   m_heroData: {fileID: 11400000, guid: 50bdbb5ab25655341a0e4a7095a79f90, type: 2}
   m_playerRef: {fileID: 0}
   m_currentAreaIndex: 0
-  m_roomGenerator: {fileID: 1836569492117602669}
+  m_roomGenerator: {fileID: 2208443471756085808}
   m_leftSideRoomList: []
   m_rightSideRoomList: []
   m_leftRoomRewardList: 
   m_rightRoomRewardList: 
-  m_defaultRoom: {fileID: 11400000, guid: 30e9211f57ddf384c89e3186be1dfe01, type: 2}
   m_currentRoomData: {fileID: 0}
   m_currentRoom: {fileID: 0}
   m_roomIndex: 0
@@ -74,13 +73,46 @@ MonoBehaviour:
   m_freezePlayerEvent: {fileID: 11400000, guid: 1338a4fa70285e7488b5acc1fb4c30fe, type: 2}
   m_freezeInputEvent: {fileID: 11400000, guid: 0010a76d4589bda4d90a358f77263b5f, type: 2}
   m_fadeOutScreenEvent: {fileID: 11400000, guid: 4a94ee6c32caedd4f9429fc54dd6c908, type: 2}
---- !u!114 &1836569492117602669
+  m_testData: {fileID: 11400000, guid: 4c17071a9a5bb4b4586e9f7f8760a9e0, type: 2}
+--- !u!1 &2953068792020791503
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4720953327619039813}
+  - component: {fileID: 2208443471756085808}
+  m_Layer: 0
+  m_Name: RoomGenerator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4720953327619039813
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2953068792020791503}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 6946004448931413741}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2208443471756085808
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1930303554149378520}
+  m_GameObject: {fileID: 2953068792020791503}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 85b476fbdb580ee41a0077975b0f9769, type: 3}

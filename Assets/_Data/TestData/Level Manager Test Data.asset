@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 41c670849efdcba47bb3929b4411f3ff, type: 3}
+  m_Name: Level Manager Test Data
+  m_EditorClassIdentifier: 
+  UseTestData: 1
+  LeftSideRoomTestList:
+  - {fileID: 11400000, guid: 5418ab6951e426c47997f38f9fdb1447, type: 2}
+  - {fileID: 11400000, guid: 86ae9cfc33e933b4eb8e080ba0d33027, type: 2}
+  - {fileID: 11400000, guid: 6df79db8a4828c44c8c9c578cfee570e, type: 2}
+  - {fileID: 11400000, guid: fb526f868a302e840888e55571938ea6, type: 2}
+  - {fileID: 11400000, guid: dede26e0a1c7ddb4eb03fe2454b59d79, type: 2}
+  - {fileID: 11400000, guid: d3fac244338c95c45a77f2239d248b45, type: 2}
+  RightSideRoomTestList:
+  - {fileID: 11400000, guid: 5418ab6951e426c47997f38f9fdb1447, type: 2}
+  - {fileID: 11400000, guid: 86ae9cfc33e933b4eb8e080ba0d33027, type: 2}
+  - {fileID: 11400000, guid: 6df79db8a4828c44c8c9c578cfee570e, type: 2}
+  - {fileID: 11400000, guid: fb526f868a302e840888e55571938ea6, type: 2}
+  - {fileID: 11400000, guid: dede26e0a1c7ddb4eb03fe2454b59d79, type: 2}
+  - {fileID: 11400000, guid: d3fac244338c95c45a77f2239d248b45, type: 2}
+  LeftRoomRewardTestList: 040000000300000001000000040000000500000006000000
+  RightRoomRewardTestList: 040000000300000001000000040000000500000006000000

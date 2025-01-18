@@ -9,6 +9,7 @@ using SGGames.Scripts.Events;
 using SGGames.Scripts.Healths;
 using SGGames.Scripts.Manager;
 using SGGames.Scripts.Rooms;
+using SGGames.Scripts.Tests;
 using SGGames.Scripts.UI;
 using UnityEngine;
 
@@ -27,7 +28,6 @@ namespace SGGames.Scripts.Managers
         [SerializeField] private List<RoomData> m_rightSideRoomList;
         [SerializeField] private List<RoomRewardType> m_leftRoomRewardList;
         [SerializeField] private List<RoomRewardType> m_rightRoomRewardList;
-        [SerializeField] private RoomData m_defaultRoom;
         [SerializeField][ReadOnly] private RoomData m_currentRoomData;
         [SerializeField][ReadOnly] private Room m_currentRoom;
         [SerializeField] private int m_roomIndex;
@@ -52,8 +52,8 @@ namespace SGGames.Scripts.Managers
         [SerializeField] private BoolEvent m_freezePlayerEvent;
         [SerializeField] private BoolEvent m_freezeInputEvent;
         [SerializeField] private BoolEvent m_fadeOutScreenEvent;
-        [Header("Debug")]
-        [SerializeField] private bool m_isDebug;
+        [Header("Debug")] 
+        [SerializeField] private LevelManagerTestData m_testData;
 
         private readonly float m_delayBeforeEnemyAtk = 0.3f;
         private readonly int m_maxAreaCount = 7;
@@ -76,13 +76,28 @@ namespace SGGames.Scripts.Managers
             m_changeRoomEvent.Raise(m_currentAreaIndex,m_roomIndex);
             m_enterDoorEvent.AddListener(OnPlayerEnterDoor);
 
-            //Room Layout
-            m_leftSideRoomList = m_roomGenerator.GetRooms(m_currentAreaIndex);
-            m_rightSideRoomList = m_roomGenerator.GetRooms(m_currentAreaIndex);
+            if (m_testData.UseTestData)
+            {
+                m_roomIndex = m_testData.RoomIndex;
+                m_currentAreaIndex = m_testData.AreaIndex;
+                //Room Layout
+                m_leftSideRoomList = m_testData.LeftSideRoomTestList;
+                m_rightSideRoomList = m_testData.RightSideRoomTestList;
             
-            //Room rewards
-            m_leftRoomRewardList = m_roomGenerator.GetRoomRewards(m_currentAreaIndex);
-            m_rightRoomRewardList = m_roomGenerator.GetRoomRewards(m_currentAreaIndex);
+                //Room rewards
+                m_leftRoomRewardList = m_testData.LeftRoomRewardTestList;
+                m_rightRoomRewardList = m_testData.RightRoomRewardTestList;
+            }
+            else
+            {
+                //Room Layout
+                m_leftSideRoomList = m_roomGenerator.GetRooms(m_currentAreaIndex);
+                m_rightSideRoomList = m_roomGenerator.GetRooms(m_currentAreaIndex);
+            
+                //Room rewards
+                m_leftRoomRewardList = m_roomGenerator.GetRoomRewards(m_currentAreaIndex);
+                m_rightRoomRewardList = m_roomGenerator.GetRoomRewards(m_currentAreaIndex);
+            }
             
             StartCoroutine(OnLevelLoaded());
         }
@@ -213,11 +228,6 @@ namespace SGGames.Scripts.Managers
         {
             m_currentRoomData = doorIndex == 0 ? m_leftSideRoomList[m_roomIndex] : m_rightSideRoomList[m_roomIndex];
             
-            if (m_isDebug)
-            {
-                m_currentRoomData = m_defaultRoom;
-            }
-
             Debug.Log($"<color=yellow>Load Room {m_roomIndex}: {m_currentRoomData.name}</color>");
             var roomObj = Instantiate(m_currentRoomData.RoomPrefab);
             m_currentRoom = roomObj.GetComponent<Room>();

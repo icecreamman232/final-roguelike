@@ -49,7 +49,7 @@ namespace SGGames.Scripts.Tools
                 });
             }
             
-            var data = AssetDatabase.LoadAssetAtPath<AttributeTierProgressionData>("Assets/_Data/Progression/AttributeRarityProgression.asset");
+            var data = AssetDatabase.LoadAssetAtPath<AttributeTierProgressionData>("Assets/_Data/Progression/AttributeTierProgression.asset");
             data.SetData(progressions);
             EditorUtility.SetDirty(data);
             AssetDatabase.SaveAssets();
