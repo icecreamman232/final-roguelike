@@ -172,6 +172,8 @@ MonoBehaviour:
   m_multiplyDamage: 1
   m_critDamage: 0
   m_damageableInvulnerableTime: 0.3
+  m_knockBackForce: 5
+  m_knockBackDuration: 0.2
   m_damageableLayerMask:
     serializedVersion: 2
     m_Bits: 3200

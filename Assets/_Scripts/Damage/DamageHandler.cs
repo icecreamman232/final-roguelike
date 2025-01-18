@@ -1,5 +1,6 @@
 using System;
 using SGGames.Scripts.Core;
+using SGGames.Scripts.Enemies;
 using SGGames.Scripts.Healths;
 using SGGames.Scripts.Player;
 using UnityEngine;
@@ -16,6 +17,8 @@ namespace SGGames.Scripts.Damages
         [SerializeField] protected float m_critDamage;
         [Header("Damageable")]
         [SerializeField] protected float m_damageableInvulnerableTime;
+        [SerializeField] protected float m_knockBackForce;
+        [SerializeField] protected float m_knockBackDuration;
         [SerializeField] protected LayerMask m_damageableLayerMask;
         [Header("NonDamageable")]
         [SerializeField] protected LayerMask m_nonDamageableLayerMask;
@@ -71,6 +74,15 @@ namespace SGGames.Scripts.Damages
                         m_multiplyDamage,m_critDamage,out var isCritical)
                     ,this.gameObject,m_damageableInvulnerableTime,isCritical);
             }
+
+            //Only player applies knock back on enemies
+            var enemyMovement = target.GetComponent<EnemyMovement>();
+            if (enemyMovement != null)
+            {
+                var attackDir = (target.transform.position - transform.position).normalized;
+                enemyMovement.ApplyKnockBack(attackDir,m_knockBackForce,m_knockBackDuration);
+            }
+
         }
     }
 }

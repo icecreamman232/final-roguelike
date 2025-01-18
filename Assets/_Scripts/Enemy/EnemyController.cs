@@ -1,6 +1,8 @@
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Managers;
+using SGGames.Scripts.Modifiers;
+using SGGames.Scripts.StatusEffects;
 using UnityEngine;
 
 namespace SGGames.Scripts.Enemies
@@ -11,7 +13,11 @@ namespace SGGames.Scripts.Enemies
         [SerializeField] private int m_subEnemyNumber;
         [SerializeField] protected EnemyBrain m_currentBrain;
         [SerializeField] protected GameEvent m_gameEvent;
-        
+
+        private EnemyModifierHandler m_modifierHandler;
+        private EnemyStatusEffectHandler m_statusEffectHandler;
+        public EnemyModifierHandler ModifierHandler => m_modifierHandler;
+        public EnemyStatusEffectHandler StatusEffectHandler => m_statusEffectHandler;
         public EnemyBrain CurrentBrain => m_currentBrain;
 
         protected virtual void Start()
@@ -31,6 +37,19 @@ namespace SGGames.Scripts.Enemies
                 }
                 LevelManager.Instance.AddEnemyNumberInRoom(m_subEnemyNumber + 1); //Include this enemy self
             }
+
+            m_modifierHandler = GetComponentInChildren<EnemyModifierHandler>();
+            if (m_modifierHandler == null)
+            {
+                Debug.LogError($"EnemyModifierHandler not found on {this.gameObject.name}");
+            }
+
+            m_statusEffectHandler = GetComponentInChildren<EnemyStatusEffectHandler>();
+            if (m_statusEffectHandler == null)
+            {
+                Debug.LogError($"StatusEffectHandler not found on {this.gameObject.name}");
+            }
+            
             m_gameEvent.AddListener(OnGameEvent);
         }
 

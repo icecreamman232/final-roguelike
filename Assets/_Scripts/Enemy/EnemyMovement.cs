@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections;
 using SGGames.Scripts.Attribute;
 using SGGames.Scripts.Core;
 using UnityEngine;
@@ -11,11 +12,19 @@ namespace SGGames.Scripts.Enemies
         TOWARD_DIRECTION,
         FOLLOW_TARGET,
     }
+
+    public enum EnemyMovementState
+    {
+        STOP,
+        MOVING,
+        KNOCK_BACK,
+    }
     
     public class EnemyMovement : EnemyBehavior
     {
+        [SerializeField] protected EnemyMovementState m_movementState;
         [SerializeField] protected MOVEMENT_MODE m_movementMode = MOVEMENT_MODE.TOWARD_DIRECTION;
-        [SerializeField] protected bool m_canMove;
+        //[SerializeField] protected bool m_canMove;
         [SerializeField] protected float m_initialSpeed;
         [SerializeField] protected float m_currentSpeed;
         [SerializeField] protected Vector2 m_direction;
@@ -32,6 +41,7 @@ namespace SGGames.Scripts.Enemies
         {
             base.Start();
             ResetSpeed();
+            m_movementState = EnemyMovementState.STOP;
             m_boxCollider = GetComponent<BoxCollider2D>();
             m_obstacleChecker = new ObstacleChecker();
         }
@@ -65,18 +75,24 @@ namespace SGGames.Scripts.Enemies
             }
         }
 
+        public void ApplyKnockBack(Vector2 knockBackDirection,float knockBackForce, float duration)
+        {
+            StartCoroutine(KnockBackRoutine(knockBackDirection,knockBackForce, duration));
+        }
+
         public virtual void StartMoving()
         {
-            m_canMove = true;
+            m_movementState = EnemyMovementState.MOVING;
         }
 
         public virtual void StopMoving(bool shouldResetDirection = false)
         {
-            m_canMove = false;
             if (shouldResetDirection)
             {
                 m_direction = Vector2.zero;
             }
+
+            m_movementState = EnemyMovementState.STOP;
         }
 
         public virtual void ResetSpeed()
@@ -97,22 +113,67 @@ namespace SGGames.Scripts.Enemies
         
         protected virtual void UpdateMovement()
         {
-            if (!m_canMove) return;
+            switch (m_movementState)
+            {
+                case EnemyMovementState.STOP:
+                    StopState();
+                    break;
+                case EnemyMovementState.MOVING:
+                    MovingState();
+                    break;
+                case EnemyMovementState.KNOCK_BACK:
+                    KnockBackState();
+                    break;
+            }
+        }
+
+        protected virtual void StopState()
+        {
+            
+        }
+
+        protected virtual void MovingState()
+        {
             if (m_obstacleChecker.IsColliderObstacle(transform.position,m_boxCollider.size,m_direction,m_raycastDistance,m_obstacleLayerMask))
             {
                 m_direction = Vector2.zero;
                 OnHitObstacle?.Invoke();
             }
             
-
             if (m_movementMode == MOVEMENT_MODE.FOLLOW_TARGET)
             {
-               transform.position = Vector2.MoveTowards(transform.position, m_followingTarget.position, m_currentSpeed * Time.deltaTime);
+                transform.position = Vector2.MoveTowards(transform.position, m_followingTarget.position, m_currentSpeed * Time.deltaTime);
             }
             else
             {
                 transform.Translate(m_direction * (m_currentSpeed * Time.deltaTime));
             }
+        }
+
+        protected virtual void KnockBackState()
+        {
+            
+        }
+
+        protected virtual IEnumerator KnockBackRoutine(Vector2 knockBackDirection,float knockBackSpeed, float duration)
+        {
+            var prevState = m_movementState;
+            m_movementState = EnemyMovementState.KNOCK_BACK;
+            var knockBackSpd = knockBackSpeed;
+            var endTime = Time.time + duration;
+            while (Time.time < endTime)
+            {
+                knockBackSpd -= Time.deltaTime;
+                knockBackSpd = Mathf.Clamp(knockBackSpd,0,m_currentSpeed);
+                transform.Translate(knockBackDirection * (2 * knockBackSpd * Time.deltaTime));
+                if (knockBackSpd <= 0)
+                {
+                    break;
+                }
+                yield return null;
+            }
+
+            m_movementState = prevState;
         }
         
         #if UNITY_EDITOR
