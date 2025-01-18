@@ -1,3 +1,4 @@
+using SGGames.Scripts.Core;
 using SGGames.Scripts.Events;
 using UnityEngine;
 
@@ -14,6 +15,7 @@ namespace SGGames.Scripts.Player
         [SerializeField] private float m_currentSpeed;
         [SerializeField] private Vector2Event m_playerInputDirectionEvent;
 
+        private ObstacleChecker m_obstacleChecker;
         private readonly float m_raycastDistance = 0.2f;
         private bool m_canMove;
         
@@ -47,6 +49,7 @@ namespace SGGames.Scripts.Player
             base.Start();
             ResetSpeed();
             ToggleMovement(true);
+            m_obstacleChecker = new ObstacleChecker();
         }
         
         protected override void Update()
@@ -54,19 +57,11 @@ namespace SGGames.Scripts.Player
             base.Update();
             UpdateMovement();
         }
-        
-        private bool CheckObstacle()
-        {
-            var hit = Physics2D.BoxCast(
-                transform.position,
-                m_playerSize,0,m_direction,m_raycastDistance,m_obstacleLayerMask);
-            return hit.collider != null;
-        }
 
         private void UpdateMovement()
         {
             if (!m_canMove) return;
-            if (CheckObstacle())
+            if (m_obstacleChecker.IsColliderObstacle(transform.position,m_playerSize,m_direction,m_raycastDistance,m_obstacleLayerMask))
             {
                 m_direction = Vector2.zero;
             }

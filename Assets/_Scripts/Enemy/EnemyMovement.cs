@@ -1,6 +1,7 @@
 
 using System;
 using SGGames.Scripts.Attribute;
+using SGGames.Scripts.Core;
 using UnityEngine;
 
 namespace SGGames.Scripts.Enemies
@@ -23,6 +24,7 @@ namespace SGGames.Scripts.Enemies
         
         private readonly float m_raycastDistance = 0.2f;
         protected BoxCollider2D m_boxCollider;
+        private ObstacleChecker m_obstacleChecker;
 
         public Action OnHitObstacle;
         
@@ -31,6 +33,7 @@ namespace SGGames.Scripts.Enemies
             base.Start();
             ResetSpeed();
             m_boxCollider = GetComponent<BoxCollider2D>();
+            m_obstacleChecker = new ObstacleChecker();
         }
 
         public void SetToFollowingTarget(Transform target)
@@ -43,7 +46,7 @@ namespace SGGames.Scripts.Enemies
         {
             m_movementMode = MOVEMENT_MODE.TOWARD_DIRECTION;
             m_direction = dir;
-            if (CheckObstacle())
+            if (m_obstacleChecker.IsColliderObstacle(transform.position,m_boxCollider.size,m_direction,m_raycastDistance,m_obstacleLayerMask))
             {
                 var hitTop = Physics2D.Raycast(transform.position,Vector2.up,m_raycastDistance,m_obstacleLayerMask);
                 var hitBot = Physics2D.Raycast(transform.position,Vector2.down,m_raycastDistance,m_obstacleLayerMask);
@@ -92,18 +95,10 @@ namespace SGGames.Scripts.Enemies
             UpdateMovement();
         }
         
-        private bool CheckObstacle()
-        {
-            var hit = Physics2D.BoxCast(
-                transform.position,
-                m_boxCollider.size,0,m_direction,m_raycastDistance,m_obstacleLayerMask);
-            return hit.collider != null;
-        }
-
         protected virtual void UpdateMovement()
         {
             if (!m_canMove) return;
-            if (CheckObstacle())
+            if (m_obstacleChecker.IsColliderObstacle(transform.position,m_boxCollider.size,m_direction,m_raycastDistance,m_obstacleLayerMask))
             {
                 m_direction = Vector2.zero;
                 OnHitObstacle?.Invoke();
