@@ -1,4 +1,5 @@
 using SGGames.Scripts.Attribute;
+using SGGames.Scripts.Core;
 using SGGames.Scripts.Player;
 using SGGames.Scripts.Weapons;
 using UnityEngine;
@@ -12,13 +13,22 @@ namespace SGGames.Scripts.Enemies
         [SerializeField] protected Transform m_weaponAttachment;
         [SerializeField] protected float m_offsetFromCenter;
         [SerializeField] protected float m_offsetAngleWeapon;
-        
+
+        protected AimController m_aimController;
         protected EnemyController m_controller;
         private DamageInfo m_damageInfo;
         
         protected override void Start()
         {
             base.Start();
+            m_aimController = new AimController(this.transform);
+            m_aimController.RegisterRotationTransform(new AimTransform
+            {
+                Transform = m_weaponAttachment,
+                OffsetFromCenter = m_offsetFromCenter,
+                OffsetAngle = m_offsetAngleWeapon,
+            });
+            
             m_controller = GetComponent<EnemyController>();
             m_damageInfo = new DamageInfo()
             {
@@ -46,10 +56,9 @@ namespace SGGames.Scripts.Enemies
             if (m_controller.CurrentBrain.Target == null) return;
             
             var directionToTarget = (m_controller.CurrentBrain.Target.transform.position - m_weaponAttachment.position).normalized * m_offsetFromCenter;
+            
+            m_aimController.UpdateRotation(directionToTarget);
             m_weaponAttachment.position = transform.position + directionToTarget;
-            m_weaponAttachment.rotation = Quaternion.AngleAxis(
-                Mathf.Atan2(directionToTarget.y, directionToTarget.x) * Mathf.Rad2Deg + m_offsetAngleWeapon, Vector3.forward);
-
         }
 
         protected virtual void EquipWeapon(Weapon newWeapon)
