@@ -197,6 +197,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_isAllow: 1
   m_aimDirection: {x: 0, y: 0}
+  m_aimPositionTransforms:
+  - Transform: {fileID: 7132944079345427687}
+    OffsetFromCenter: 0.6
+    OffsetAngle: 0
+  m_aimRotationTransforms:
+  - Transform: {fileID: 7602392884783811271}
+    OffsetFromCenter: 0
+    OffsetAngle: -90
   m_aimArrowTransform: {fileID: 7132944079345427687}
   m_aimArrowVisualTransform: {fileID: 7602392884783811271}
   m_offsetFromCenter: 0.6
@@ -375,7 +383,7 @@ GameObject:
   - component: {fileID: 7602392884783811271}
   - component: {fileID: 2132577081071066231}
   m_Layer: 0
-  m_Name: Model
+  m_Name: AimModel
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
