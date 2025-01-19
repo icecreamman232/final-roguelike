@@ -55,6 +55,38 @@ namespace SGGames.Scripts.Tools
             AssetDatabase.SaveAssets();
             AssetDatabase.Refresh();
         }
+        
+        
+        [MenuItem("SGGames/Import/Equipment Rarity Progression")]
+        public static void ImportEquipmentRarityProgressionData()
+        {
+            var dataAsset = AssetDatabase.LoadAssetAtPath<TextAsset>("Assets/_Data/CSV-Data/EquipmentRarityProgression.csv");
+            var lines = dataAsset.text.Split("\n");
+            List<EquipmentTierProgression> progressions = new List<EquipmentTierProgression>();
+            
+            for (int i = 1; i < lines.Length; i++)
+            {
+                if(lines[i] == "") continue;
+                progressions.Add(new EquipmentTierProgression
+                {
+                    AreaIndex = i,
+                    TierChance = new float[]
+                    {
+                        float.Parse(lines[i].Split(',')[1]),
+                        float.Parse(lines[i].Split(',')[2]),
+                        float.Parse(lines[i].Split(',')[3]),
+                        float.Parse(lines[i].Split(',')[4]),
+                        float.Parse(lines[i].Split(',')[5]),
+                    }
+                });
+            }
+            
+            var data = AssetDatabase.LoadAssetAtPath<EquipmentTierProgressionData>("Assets/_Data/Progression/Equipment Tier Progression Data.asset");
+            data.SetData(progressions);
+            EditorUtility.SetDirty(data);
+            AssetDatabase.SaveAssets();
+            AssetDatabase.Refresh();
+        }
     }
 }
 

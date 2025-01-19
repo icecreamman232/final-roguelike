@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Data
 {
-    [CreateAssetMenu(fileName = "AttributeTierProgression", menuName = "SGGames/Progression/Attribute Tier Progression")]
+    [CreateAssetMenu(fileName = "AttributeTierProgression", menuName = "SGGames/Progression/Attribute Tier Progression", order = 0)]
     public class AttributeTierProgressionData : ScriptableObject
     {
         [SerializeField] private AttributeTierProgression[] m_progressions;

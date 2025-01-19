@@ -1,13 +1,13 @@
-using System;
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Manager;
+using SGGames.Scripts.Managers;
 using SGGames.Scripts.Pickables;
 using SGGames.Scripts.Player;
 using TMPro;
 using UnityEngine;
-using Random = UnityEngine.Random;
+
 
 namespace SGGames.Scripts.Rooms
 {
@@ -24,11 +24,7 @@ namespace SGGames.Scripts.Rooms
         [SerializeField] private GameEvent m_gameEvent;
 
         [Header("Drop Chance Item")] 
-        [SerializeField] private float m_commonChance;
-        [SerializeField] private float m_uncommonChance;
-        [SerializeField] private float m_rareChance;
-        [SerializeField] private float m_epicChance;
-        [SerializeField] private float m_legendaryChance;
+        [SerializeField] private EquipmentTierProgressionData m_equipmentTierProgressionData;
         
 
         private readonly int m_keyNumberToUnlockLegendary = 1;
@@ -85,126 +81,13 @@ namespace SGGames.Scripts.Rooms
             m_promptText.gameObject.SetActive(false);
         }
 
-        private Rarity GetItemRarity()
-        {
-            var chance = Random.Range(0f, 100f);
-            if (chance <= m_commonChance)
-            {
-                return Rarity.Common;
-            }
-            if (chance <= m_uncommonChance)
-            {
-                return Rarity.Uncommon;
-            }
-            
-            if (chance <= m_rareChance)
-            {
-                return Rarity.Rare;
-            }
-            
-            return chance <= m_epicChance ? Rarity.Epic : Rarity.Legendary;
-        }
-
-        [ContextMenu("Test")]
-        private void Test()
-        {
-            IncreasePercent(Rarity.Legendary, 5);
-        }
-
-        private void RecomputeChance(Rarity rarityAdd)
-        {
-            if (rarityAdd == Rarity.Common)
-            {
-                var newUncommonChance  = m_uncommonChance /(m_uncommonChance + m_rareChance + m_epicChance + m_legendaryChance) * (100 - m_commonChance);
-                var newRareChance  = m_rareChance /(m_uncommonChance + m_rareChance + m_epicChance + m_legendaryChance) * (100 - m_commonChance);
-                var newEpicChance  = m_epicChance /(m_uncommonChance + m_rareChance + m_epicChance + m_legendaryChance) * (100 - m_commonChance);
-                var newLegendaryChance  = m_legendaryChance /(m_uncommonChance + m_rareChance + m_epicChance + m_legendaryChance) * (100 - m_commonChance);
-
-                m_uncommonChance = newUncommonChance;
-                m_rareChance = newRareChance;
-                m_epicChance = newEpicChance;
-                m_legendaryChance = newLegendaryChance;
-            }
-            else if (rarityAdd == Rarity.Uncommon)
-            {
-                var newCommonChance  = m_commonChance /(m_commonChance + m_rareChance + m_epicChance + m_legendaryChance) * (100 - m_uncommonChance);
-                var newRareChance  = m_rareChance /(m_commonChance + m_rareChance + m_epicChance + m_legendaryChance) * (100 - m_uncommonChance);
-                var newEpicChance  = m_epicChance /(m_commonChance + m_rareChance + m_epicChance + m_legendaryChance) * (100 - m_uncommonChance);
-                var newLegendaryChance  = m_legendaryChance /(m_commonChance + m_rareChance + m_epicChance + m_legendaryChance) * (100 - m_uncommonChance);
-                
-                m_commonChance = newCommonChance;
-                m_rareChance = newRareChance;
-                m_epicChance = newEpicChance;
-                m_legendaryChance = newLegendaryChance;
-            }
-            else if(rarityAdd == Rarity.Rare)
-            {
-                var newCommonChance  = m_commonChance /(m_commonChance + m_uncommonChance + m_epicChance + m_legendaryChance) * (100 - m_rareChance);
-                var newUncommonChance  = m_uncommonChance /(m_commonChance + m_uncommonChance + m_epicChance + m_legendaryChance) * (100 - m_rareChance);
-                var newEpicChance  = m_epicChance /(m_commonChance + m_uncommonChance + m_epicChance + m_legendaryChance) * (100 - m_rareChance);
-                var newLegendaryChance  = m_legendaryChance /(m_commonChance + m_uncommonChance + m_epicChance + m_legendaryChance) * (100 - m_rareChance);
-                
-                m_commonChance = newCommonChance;
-                m_uncommonChance = newUncommonChance;
-                m_epicChance = newEpicChance;
-                m_legendaryChance = newLegendaryChance;
-            }
-            else if (rarityAdd == Rarity.Epic)
-            {
-                var newCommonChance  = m_commonChance /(m_commonChance + m_uncommonChance + m_rareChance + m_legendaryChance) * (100 - m_epicChance);
-                var newUncommonChance  = m_uncommonChance /(m_commonChance + m_uncommonChance + m_rareChance + m_legendaryChance) * (100 - m_epicChance);
-                var newRare  = m_rareChance /(m_commonChance + m_uncommonChance + m_rareChance + m_legendaryChance) * (100 - m_epicChance);
-                var newLegendaryChance  = m_legendaryChance /(m_commonChance + m_uncommonChance + m_rareChance + m_legendaryChance) * (100 - m_epicChance);
-                
-                m_commonChance = newCommonChance;
-                m_uncommonChance = newUncommonChance;
-                m_rareChance = newRare;
-                m_legendaryChance = newLegendaryChance;
-            }
-            else if (rarityAdd == Rarity.Legendary)
-            {
-                var newCommonChance  = m_commonChance /(m_commonChance + m_uncommonChance + m_rareChance + m_epicChance) * (100 - m_legendaryChance);
-                var newUncommonChance  = m_uncommonChance /(m_commonChance + m_uncommonChance + m_rareChance + m_epicChance) * (100 - m_legendaryChance);
-                var newRare  = m_rareChance /(m_commonChance + m_uncommonChance + m_rareChance + m_epicChance) * (100 - m_legendaryChance);
-                var newEpicChance  = m_epicChance /(m_commonChance + m_uncommonChance + m_rareChance + m_epicChance) * (100 - m_legendaryChance);
-                
-                m_commonChance = newCommonChance;
-                m_uncommonChance = newUncommonChance;
-                m_rareChance = newRare;
-                m_epicChance = newEpicChance;
-            }
-        }
-
         public void Interact()
         {
             HidePrompt();
             
-            m_loot.SpawnLoot(transform.parent,GetItemRarity());
+            m_loot.SpawnLoot(transform.parent,m_equipmentTierProgressionData.GetEquipmentRarity(LevelManager.Instance.CurrentAreaIndex));
             CurrencyManager.Instance.ConsumeKey(m_keyNumberToUnlockLegendary);
             this.gameObject.SetActive(false);
-        }
-
-        public void IncreasePercent(Rarity rarity, float increase)
-        {
-            switch (rarity)
-            {
-                case Rarity.Common:
-                    m_commonChance += increase;
-                    break;
-                case Rarity.Uncommon:
-                    m_uncommonChance += increase;
-                    break;
-                case Rarity.Rare:
-                    m_rareChance += increase;
-                    break;
-                case Rarity.Epic:
-                    m_epicChance += increase;
-                    break;
-                case Rarity.Legendary:
-                    m_legendaryChance += increase;
-                    break;
-            }
-            RecomputeChance(rarity);
         }
     }
 }

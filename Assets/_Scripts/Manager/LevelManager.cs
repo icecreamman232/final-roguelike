@@ -60,6 +60,7 @@ namespace SGGames.Scripts.Managers
         private BoxCollider2D m_roomCollider;
         
         public Room CurrentRoom => m_currentRoom;
+        public int CurrentAreaIndex => m_currentAreaIndex;
         public BoxCollider2D RoomCollider => m_roomCollider;
         
         public HeroData HeroData => m_heroData;
