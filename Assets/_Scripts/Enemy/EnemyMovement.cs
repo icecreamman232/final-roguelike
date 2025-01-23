@@ -200,6 +200,12 @@ namespace SGGames.Scripts.Enemies
             var endTime = Time.time + duration;
             while (Time.time < endTime)
             {
+                if (m_obstacleChecker.IsColliderObstacle(transform.position,m_boxCollider.size,m_direction,m_raycastDistance,m_obstacleLayerMask))
+                {
+                    m_direction = Vector2.zero;
+                    OnHitObstacle?.Invoke();
+                    break;
+                }
                 knockBackSpd -= Time.deltaTime;
                 knockBackSpd = Mathf.Clamp(knockBackSpd,0,m_currentSpeed);
                 transform.Translate(knockBackDirection * (knockBackSpd * Time.deltaTime));
