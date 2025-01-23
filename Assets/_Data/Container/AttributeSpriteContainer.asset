@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c518e242987b6944d89344ff8e4b3714, type: 3}
+  m_Name: AttributeSpriteContainer
+  m_EditorClassIdentifier: 
+  m_spriteContainer:
+  - {fileID: 1639450354, guid: de48b27f677bb07459e289d08c6eb045, type: 3}
+  - {fileID: 1934186042, guid: de48b27f677bb07459e289d08c6eb045, type: 3}
+  - {fileID: 1198435126, guid: de48b27f677bb07459e289d08c6eb045, type: 3}

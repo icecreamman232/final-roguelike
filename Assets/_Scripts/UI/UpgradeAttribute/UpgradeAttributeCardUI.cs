@@ -13,6 +13,8 @@ namespace SGGames.Scripts.UI
     {
         [SerializeField] private int m_index;
         [SerializeField] private Image m_bg;
+        [SerializeField] private Image m_attributeIcon;
+        [SerializeField] private SpriteContainer m_attributeIconContainer;
         [SerializeField] private Sprite m_commonBG;
         [SerializeField] private Sprite m_uncommonBG;
         [SerializeField] private Sprite m_rareBG;
@@ -64,6 +66,7 @@ namespace SGGames.Scripts.UI
                     break;
             }
 
+            m_attributeIcon.sprite = m_attributeIconContainer.GetSprite((int)attributeReward.type);
             m_titleText.text = GetTitleText(attributeReward.type) + " Upgrade";
             m_descText.text = GetDescText(attributeReward.type, attributeReward.tier);
         }
