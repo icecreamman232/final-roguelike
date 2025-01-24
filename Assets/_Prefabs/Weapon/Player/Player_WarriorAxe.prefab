@@ -149,6 +149,7 @@ GameObject:
   - component: {fileID: 7224854652047025071}
   - component: {fileID: 3328675937733969171}
   - component: {fileID: 7171730421557167894}
+  - component: {fileID: 9141358360959712203}
   m_Layer: 0
   m_Name: Player_WarriorAxe
   m_TagString: Untagged
@@ -212,3 +213,17 @@ MonoBehaviour:
   IsSharePool: 1
   ObjectToPool: {fileID: 1191944228990883478, guid: 8543356f9430ede49bd0a56b44038639, type: 3}
   PoolSize: 10
+--- !u!114 &9141358360959712203
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7653509115085970721}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 250944f244f7eb748b1548f7e3a1d427, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_modifiers:
+  - {fileID: 11400000, guid: 63cbe884f33d195449b4547aa738f76a, type: 2}

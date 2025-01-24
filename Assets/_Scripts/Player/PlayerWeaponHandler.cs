@@ -76,6 +76,13 @@ namespace SGGames.Scripts.Player
         {
             m_currentWeapon = Instantiate(newWeapon.WeaponPrefab.GetComponent<Weapon>(), m_weaponAttachment);
             m_currentWeapon.Initialize(m_playerAim);
+
+            //Apply modifier that weapon has if possible
+            if (m_currentWeapon.TryGetComponent<WeaponModifierHolder>(out var weaponModifierHolder))
+            {
+                weaponModifierHolder.ApplyModifiers();
+            }
+            
             ApplyAttackSpeedOnCurrentWeapon(m_playerAttributeController.ComputeDelayBetweenAttacks(BaseAtkTime));
 
             m_curWeaponData = newWeapon;
