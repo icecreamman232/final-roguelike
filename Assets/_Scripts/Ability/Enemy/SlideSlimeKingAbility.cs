@@ -20,6 +20,7 @@ namespace SGGames.Scripts.Abilities
         [SerializeField] private GameObject m_markSpriteObject;
         [SerializeField] private TwoPointLineRenderer m_warningLinePrefab;
         [SerializeField] private float m_warningDuration;
+        [SerializeField] private float m_waitTimeAfterWarning;
         [Header("Component Ref")]
         [SerializeField] private EnemyMovement m_enemyMovement;
         [SerializeField] private EnemyHealth m_enemyHealth;
@@ -68,9 +69,21 @@ namespace SGGames.Scripts.Abilities
             m_markSpriteObject.SetActive(true);
             var target = (Vector2)transform.position + m_slideDirection.normalized * m_range;
             m_warningLine.gameObject.SetActive(true);
+    
+            var timer = 0f;
+            var lerpPos = transform.position;
+            while (timer < m_warningDuration)
+            {
+                lerpPos = Vector2.Lerp(transform.position, target, timer / m_warningDuration);
+                m_warningLine.UpdateLine(transform.position, lerpPos);
+                timer += Time.deltaTime;
+                yield return null;
+            }
             m_warningLine.UpdateLine(transform.position, target);
             
-            yield return new WaitForSeconds(m_warningDuration);
+            //Wait a little bit after drawing warning line and before execute the ability
+            yield return new WaitForSeconds(m_waitTimeAfterWarning);
+            
             m_markSpriteObject.SetActive(false);
             m_warningLine.gameObject.SetActive(false);
             
