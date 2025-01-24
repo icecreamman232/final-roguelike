@@ -305,6 +305,53 @@ MonoBehaviour:
   Label: Swap to wandering brain
   m_brainToSwap: {fileID: 1895141799454186004}
   m_keepTarget: 1
+--- !u!1 &1529319860589562398
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 261334030420756416}
+  - component: {fileID: 6806285481288801727}
+  m_Layer: 0
+  m_Name: JumpAnticipateAnim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &261334030420756416
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529319860589562398}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5900588192251490871}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &6806285481288801727
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1529319860589562398}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5d8af37b4dd40a41a13bf8c09787295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_parameterName: JumpAnticipate
+  m_duration: 1
+  m_animator: {fileID: 3552861617210223431}
 --- !u!1 &2392472092658712520
 GameObject:
   m_ObjectHideFlags: 0
@@ -416,7 +463,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: Check hit obstacle
-  m_movement: {fileID: 4951872882075472409}
   m_isHitObstacle: 0
 --- !u!114 &5359761099436856936
 MonoBehaviour:
@@ -605,6 +651,8 @@ Transform:
   - {fileID: 6098639730626091724}
   - {fileID: 4125111018249801860}
   - {fileID: 4226292151665328503}
+  - {fileID: 261334030420756416}
+  - {fileID: 4654829950894681594}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!50 &7908987104850802864
@@ -691,7 +739,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 10079177310b6c3458285e268a281be5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  m_isSubEnemy: 0
+  m_subEnemyNumber: 0
   m_currentBrain: {fileID: 1895141799454186004}
+  m_gameEvent: {fileID: 0}
   m_bossName: Slime King
   m_genericBossEvent: {fileID: 11400000, guid: c6fd525202b24034c8b016d91b54b4c4, type: 2}
   m_showBossNameEvent: {fileID: 11400000, guid: fa7fd61933ccf2c46acad0350777483a, type: 2}
@@ -718,6 +769,7 @@ MonoBehaviour:
   m_healthBar: {fileID: 5821787480749354245}
   m_delayBeforeDeath: 0.5
   m_deathFeedback: {fileID: 7208381426581615128}
+  m_weaponGroup: {fileID: 0}
   m_BossHealthUpdateEvent: {fileID: 11400000, guid: 55f30ae81ffa56b4bbc3f03a2adf1120, type: 2}
   m_genericBossEvent: {fileID: 11400000, guid: c6fd525202b24034c8b016d91b54b4c4, type: 2}
 --- !u!114 &4951872882075472409
@@ -733,8 +785,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_isAllow: 0
+  m_movementState: 0
   m_movementMode: 0
-  m_canMove: 0
   m_initialSpeed: 5
   m_currentSpeed: 0
   m_direction: {x: 0, y: 0}
@@ -756,10 +808,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_minDamage: 80
   m_maxDamage: 100
-  m_additionalDamage: 0
+  m_additionMin: 0
+  m_additionMax: 0
   m_multiplyDamage: 1
   m_critDamage: 0
   m_damageableInvulnerableTime: 0.3
+  m_knockBackForce: 0
+  m_knockBackDuration: 0
+  m_stunDuration: 0
   m_damageableLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -810,9 +866,13 @@ MonoBehaviour:
   m_coolDown: 15
   m_enemyMovement: {fileID: 4951872882075472409}
   m_enemyController: {fileID: 6493568869872489566}
-  m_jumpUpHeight: 5
-  m_jumpUpSpeed: 8
-  m_jumpDownSpeed: 6
+  m_jumpAnticipateAnim: {fileID: 6806285481288801727}
+  m_jumpAnim: {fileID: 1634819412975071133}
+  m_range: 5
+  m_jumpUpHeight: 6
+  m_jumpUpSpeed: 3
+  m_jumpDuration: 3
+  m_showDebugRange: 1
 --- !u!1 &4238436385444664771
 GameObject:
   m_ObjectHideFlags: 0
@@ -877,7 +937,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: Choose random direction
-  m_movement: {fileID: 4951872882075472409}
 --- !u!114 &6316248368620391214
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -891,7 +950,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: Start moving
-  m_movement: {fileID: 4951872882075472409}
 --- !u!114 &4732035376633228215
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -905,7 +963,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: Stop moving
-  m_movement: {fileID: 4951872882075472409}
 --- !u!114 &6995133079492630606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -951,9 +1008,56 @@ MonoBehaviour:
   Label: Switch to random ability
   m_randomnessData: {fileID: 11400000, guid: 11eb2daa1795178438215ec9e71ff988, type: 2}
   m_stateNames:
-  - Swap to slide attack
+  - Swap to jump attack
   - Swap to jump attack
   m_lastChosenState: 
+--- !u!1 &4442642221793533111
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 4654829950894681594}
+  - component: {fileID: 1634819412975071133}
+  m_Layer: 0
+  m_Name: JumpAnim
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &4654829950894681594
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4442642221793533111}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 5900588192251490871}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1634819412975071133
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4442642221793533111}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b5d8af37b4dd40a41a13bf8c09787295, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_parameterName: Jump
+  m_duration: 0
+  m_animator: {fileID: 3552861617210223431}
 --- !u!1 &4931366175719933035
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,6 +1144,7 @@ GameObject:
   - component: {fileID: 2746951751883687977}
   - component: {fileID: 3308797159334771705}
   - component: {fileID: 912221041091802824}
+  - component: {fileID: 3502978602584315243}
   - component: {fileID: 5971042741376448941}
   - component: {fileID: 606249446658747611}
   m_Layer: 7
@@ -1092,6 +1197,21 @@ MonoBehaviour:
   Label: Check if ability is stop and cooldown
   m_ability: {fileID: 1519181141595845376}
   m_stateToCheck: 4
+--- !u!114 &3502978602584315243
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5742939123398596126}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f14438ba5f003f43a10267dcd28239d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Label: Check if ability is ready
+  m_ability: {fileID: 1519181141595845376}
+  m_stateToCheck: 0
 --- !u!114 &5971042741376448941
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1186,6 +1306,9 @@ MonoBehaviour:
     - BrainDecision: {fileID: 912221041091802824}
       TrueStateName: Rest after playing ability
       FalseStateName: 
+    - BrainDecision: {fileID: 3502978602584315243}
+      TrueStateName: Swap to wandering brain
+      FalseStateName: 
   - StateName: Rest after playing ability
     Actions:
     - {fileID: 8474777509989501606}
@@ -1218,6 +1341,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5987449618455366181}
   - component: {fileID: 4086606500684733396}
+  - component: {fileID: 3552861617210223431}
   m_Layer: 7
   m_Name: Model
   m_TagString: Untagged
@@ -1293,6 +1417,27 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!95 &3552861617210223431
+Animator:
+  serializedVersion: 5
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6403090121805512648}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 265d0289ddfcdfd47a9bde7703f23751, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &6577370874806627698
 GameObject:
   m_ObjectHideFlags: 0
@@ -6609,6 +6754,7 @@ MonoBehaviour:
   m_damageNumberPooler: {fileID: 1784304362984569699}
   m_normalColor: {r: 1, g: 1, b: 1, a: 1}
   m_criticalColor: {r: 1, g: 0, b: 0, a: 1}
+  m_showRadius: 0
 --- !u!1 &7538567721666504763
 GameObject:
   m_ObjectHideFlags: 0
@@ -6655,7 +6801,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb6402f121106bb44a1fbec0c2b361d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Label: Trigger Slide Attack
+  Label: Trigger Jump Attack
   m_triggerEvent:
     m_PersistentCalls:
       m_Calls:

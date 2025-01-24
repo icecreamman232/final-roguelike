@@ -72,8 +72,6 @@ namespace SGGames.Scripts.Managers
         private void Start()
         {
             RandomController.SetSeed();
-            m_roomIndex = 0;
-            m_currentAreaIndex = 0;
             m_changeRoomEvent.Raise(m_currentAreaIndex,m_roomIndex);
             m_enterDoorEvent.AddListener(OnPlayerEnterDoor);
 
@@ -111,7 +109,15 @@ namespace SGGames.Scripts.Managers
         #region Loading Room Methods
         private IEnumerator OnLevelLoaded()
         {
-            LoadRoom(0);
+            if (m_roomIndex >= RoomGenerator.C_MAX_ROOM_NUMBER)
+            {
+                LoadBossRoom(m_currentAreaIndex);
+            }
+            else
+            {
+                LoadRoom(0);
+            }
+            
         
             yield return new WaitForEndOfFrame();
 
@@ -120,7 +126,11 @@ namespace SGGames.Scripts.Managers
             yield return new WaitForEndOfFrame();
             m_freezePlayerEvent.Raise(true);
             m_freezeInputEvent.Raise(true);
-            LoadEnemy();
+
+            if (m_roomIndex < RoomGenerator.C_MAX_ROOM_NUMBER)
+            {
+                LoadEnemy();
+            }
   
             CameraController.Instance.SetTarget(m_playerRef.transform);
             CameraController.Instance.SetRoomCollider(m_currentRoom.RoomCollider);

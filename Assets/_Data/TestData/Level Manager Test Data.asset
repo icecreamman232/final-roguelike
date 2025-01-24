@@ -13,6 +13,8 @@ MonoBehaviour:
   m_Name: Level Manager Test Data
   m_EditorClassIdentifier: 
   UseTestData: 1
+  RoomIndex: 6
+  AreaIndex: 0
   LeftSideRoomTestList:
   - {fileID: 11400000, guid: 5418ab6951e426c47997f38f9fdb1447, type: 2}
   - {fileID: 11400000, guid: 86ae9cfc33e933b4eb8e080ba0d33027, type: 2}
