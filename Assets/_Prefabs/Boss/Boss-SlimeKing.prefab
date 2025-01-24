@@ -847,6 +847,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   m_markSpriteObject: {fileID: 353828556843416104}
+  m_warningLinePrefab: {fileID: 2302304958674281900, guid: 108417ea949d05744a92f989ded2bb76, type: 3}
   m_warningDuration: 1
   m_enemyMovement: {fileID: 4951872882075472409}
   m_enemyHealth: {fileID: 1582090278741741746}
@@ -1012,8 +1013,8 @@ MonoBehaviour:
   Label: Switch to random ability
   m_randomnessData: {fileID: 11400000, guid: 11eb2daa1795178438215ec9e71ff988, type: 2}
   m_stateNames:
-  - Swap to jump attack
-  - Swap to jump attack
+  - Swap to slide attack
+  - Swap to slide attack
   m_lastChosenState: 
 --- !u!1 &4442642221793533111
 GameObject:

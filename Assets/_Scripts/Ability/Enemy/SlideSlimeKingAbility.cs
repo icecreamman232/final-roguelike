@@ -1,5 +1,6 @@
 using System.Collections;
 using SGGames.Scripts.Attribute;
+using SGGames.Scripts.Common;
 using SGGames.Scripts.Enemies;
 using SGGames.Scripts.Healths;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace SGGames.Scripts.Abilities
         [SerializeField] private LayerMask m_obstacleMask;
         [Header("Warning")]
         [SerializeField] private GameObject m_markSpriteObject;
+        [SerializeField] private TwoPointLineRenderer m_warningLinePrefab;
         [SerializeField] private float m_warningDuration;
         [Header("Component Ref")]
         [SerializeField] private EnemyMovement m_enemyMovement;
@@ -24,7 +26,15 @@ namespace SGGames.Scripts.Abilities
         [SerializeField] private EnemyController m_enemyController;
 
         private Vector2 m_startSlidePos;
-        
+        private TwoPointLineRenderer m_warningLine;
+
+        protected override void Start()
+        {
+            m_warningLine = Instantiate(m_warningLinePrefab);
+            m_warningLine.gameObject.SetActive(false);
+            base.Start();
+        }
+
         public override void StartAbility()
         {
             m_enemyMovement.StopMoving(shouldResetDirection:true);
@@ -56,8 +66,14 @@ namespace SGGames.Scripts.Abilities
         private IEnumerator OnWarningPlayer()
         {
             m_markSpriteObject.SetActive(true);
+            var target = (Vector2)transform.position + m_slideDirection.normalized * m_range;
+            m_warningLine.gameObject.SetActive(true);
+            m_warningLine.UpdateLine(transform.position, target);
+            
             yield return new WaitForSeconds(m_warningDuration);
             m_markSpriteObject.SetActive(false);
+            m_warningLine.gameObject.SetActive(false);
+            
             base.PreTriggerState();
             m_abilityState = AbilityState.TRIGGERING;
         }
