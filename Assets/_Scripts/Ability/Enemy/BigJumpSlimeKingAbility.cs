@@ -50,11 +50,7 @@ namespace SGGames.Scripts.Abilities
                 return;
             }
 
-            if (m_jumpRoutine != null)
-            {
-                StopCoroutine(m_jumpRoutine);
-            }
-            m_jumpRoutine = StartCoroutine(OnJumpUp());
+            m_abilityState = AbilityState.TRIGGERING;
         }
 
         private Vector2 FindMiddlePoint(Vector2 start, Vector2 end, float height)
@@ -68,15 +64,8 @@ namespace SGGames.Scripts.Abilities
             return point;
         }
 
-        [ContextMenu("Test")]
-        private void Test()
-        {
-            StartCoroutine(OnJumpUp());
-        }
-
         private IEnumerator OnJumpUp()
         {
-            m_abilityState = AbilityState.TRIGGERING;
             m_targetPos = m_enemyController.CurrentBrain.Target.position;
             m_initialPos = transform.position;
             
@@ -107,19 +96,41 @@ namespace SGGames.Scripts.Abilities
             m_landingAnim.SetTrigger();
             yield return new WaitForSeconds(m_landingAnim.Duration);
             
-            base.PreTriggerState();
+            base.TriggeringState();
+            m_abilityState = AbilityState.POST_TRIGGER;
         }
 
         protected override void TriggeringState()
         {
-            m_abilityState = AbilityState.POST_TRIGGER;
+            if (m_jumpRoutine == null)
+            {
+                m_jumpRoutine = StartCoroutine(OnJumpUp());
+            }
         }
 
+        protected override void PostTriggerState()
+        {
+            if (m_jumpRoutine != null)
+            {
+                StopCoroutine(m_jumpRoutine);
+                m_jumpRoutine = null;
+            }
+            base.PostTriggerState();
+        }
+        
+#if UNITY_EDITOR
+        [ContextMenu("Test")]
+        private void Test()
+        {
+            StartCoroutine(OnJumpUp());
+        }
+        
         private void OnDrawGizmos()
         {
             Gizmos.color = Color.red;
             Gizmos.DrawWireSphere(transform.position, m_range);
         }
+#endif
     }
 }
 
