@@ -21,6 +21,8 @@ namespace SGGames.Scripts.Abilities
         [SerializeField] private TwoPointLineRenderer m_warningLinePrefab;
         [SerializeField] private float m_warningDuration;
         [SerializeField] private float m_waitTimeAfterWarning;
+        [SerializeField] private AnimationParameter m_anticipateAnim;
+        [SerializeField] private AnimationParameter m_anticipateTriggerAnim;
         [Header("Component Ref")]
         [SerializeField] private EnemyMovement m_enemyMovement;
         [SerializeField] private EnemyHealth m_enemyHealth;
@@ -66,6 +68,8 @@ namespace SGGames.Scripts.Abilities
 
         private IEnumerator OnWarningPlayer()
         {
+            m_anticipateTriggerAnim.SetTrigger();
+            m_anticipateAnim.SetBool(true);
             m_markSpriteObject.SetActive(true);
             var target = (Vector2)transform.position + m_slideDirection.normalized * m_range;
             m_warningLine.gameObject.SetActive(true);
@@ -86,7 +90,7 @@ namespace SGGames.Scripts.Abilities
             
             m_markSpriteObject.SetActive(false);
             m_warningLine.gameObject.SetActive(false);
-            
+            m_anticipateAnim.SetBool(false);
             base.PreTriggerState();
             m_abilityState = AbilityState.TRIGGERING;
         }
