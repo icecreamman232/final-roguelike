@@ -13,6 +13,8 @@ namespace SGGames.Scripts.Abilities
         [SerializeField] private EnemyController m_enemyController;
         [SerializeField] private AnimationParameter m_jumpAnticipateAnim;
         [SerializeField] private AnimationParameter m_jumpAnim;
+        [SerializeField] private AnimationParameter m_landingAnim;
+        [SerializeField] private GameObject m_warningSignPrefab;
 
         [SerializeField] private float m_range;
         [SerializeField] private float m_jumpUpHeight;
@@ -23,7 +25,15 @@ namespace SGGames.Scripts.Abilities
         private Vector2 m_initialPos;
         private Vector2 m_targetPos;
         private Coroutine m_jumpRoutine;
-        
+        private GameObject m_warningSign;
+
+        protected override void Start()
+        {
+            m_warningSign = Instantiate(m_warningSignPrefab);
+            m_warningSign.SetActive(false);
+            base.Start();
+        }
+
         public override void StartAbility()
         {
             m_enemyMovement.StopMoving(shouldResetDirection:true);
@@ -67,12 +77,17 @@ namespace SGGames.Scripts.Abilities
         private IEnumerator OnJumpUp()
         {
             m_abilityState = AbilityState.TRIGGERING;
-            m_jumpAnticipateAnim.SetTrigger();
-            m_jumpAnim.SetBool(true);
-            yield return new WaitForSeconds(m_jumpAnticipateAnim.Duration);
-            m_jumpAnim.SetBool(false);
             m_targetPos = m_enemyController.CurrentBrain.Target.position;
             m_initialPos = transform.position;
+            
+            m_jumpAnticipateAnim.SetTrigger();
+            m_jumpAnim.SetBool(true);
+            m_warningSign.transform.position = m_targetPos;
+            m_warningSign.SetActive(true);
+            
+            yield return new WaitForSeconds(m_jumpAnticipateAnim.Duration);
+            m_jumpAnim.SetBool(false);
+            
             var middlePoint = FindMiddlePoint(m_initialPos, m_targetPos, m_jumpUpHeight);
             var jumpTimer = 0f;
             var t = 0f;
@@ -88,6 +103,9 @@ namespace SGGames.Scripts.Abilities
                 yield return null;
             }
 
+            m_warningSign.SetActive(false);
+            m_landingAnim.SetTrigger();
+            yield return new WaitForSeconds(m_landingAnim.Duration);
             
             base.PreTriggerState();
         }

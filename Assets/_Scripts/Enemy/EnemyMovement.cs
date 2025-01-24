@@ -29,6 +29,7 @@ namespace SGGames.Scripts.Enemies
         [SerializeField] protected Vector2 m_direction;
         [SerializeField] protected LayerMask m_obstacleLayerMask;
         [SerializeField][ReadOnly] protected Transform m_followingTarget;
+        [SerializeField] protected float m_knockBackThreshold; //Threshold that allow knock back to be happened;
         
         private readonly float m_raycastDistance = 0.2f;
         protected BoxCollider2D m_boxCollider;
@@ -82,6 +83,8 @@ namespace SGGames.Scripts.Enemies
 
         public void ApplyKnockBack(Vector2 knockBackDirection,float knockBackForce, float duration)
         {
+            if (knockBackForce <= m_knockBackThreshold) return;
+            
             //Not override knock back with new one
             if (m_movementState == EnemyMovementState.KNOCK_BACK) return;
             
