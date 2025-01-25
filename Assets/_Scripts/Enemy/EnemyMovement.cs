@@ -1,8 +1,8 @@
 
 using System;
 using System.Collections;
-using SGGames.Scripts.Attribute;
 using SGGames.Scripts.Core;
+using SGGames.Scripts.EditorExtensions;
 using UnityEngine;
 
 namespace SGGames.Scripts.Enemies

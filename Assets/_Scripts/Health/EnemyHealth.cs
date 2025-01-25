@@ -9,6 +9,13 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Healths
 {
+    public struct EnemyHitInfo
+    {
+        public float DamageTaken;
+        public bool IsCritical;
+        public GameObject Source;
+    }
+    
     public class EnemyHealth : Health
     {
         [SerializeField] protected EnemyController m_controller;
@@ -20,8 +27,10 @@ namespace SGGames.Scripts.Healths
         protected BoxCollider2D m_bodyCollider;
         
         protected EnemyMovement m_enemyMovement;
-        public Action<float, bool> OnHit;
+        public Action<EnemyHitInfo> OnHit;
         public Action<EnemyHealth> OnEnemyDeath;
+        
+        protected EnemyHitInfo m_hitInfo;
 
         protected override void Start()
         {
@@ -40,7 +49,11 @@ namespace SGGames.Scripts.Healths
             if (!CanTakeDamage()) return;
 
             m_currentHealth -= damage;
-            OnHit?.Invoke(damage,isCritical);
+            m_hitInfo.DamageTaken = damage;
+            m_hitInfo.IsCritical = isCritical;
+            m_hitInfo.Source = source;
+            
+            OnHit?.Invoke(m_hitInfo);
 
             UpdateHealthBar();
 

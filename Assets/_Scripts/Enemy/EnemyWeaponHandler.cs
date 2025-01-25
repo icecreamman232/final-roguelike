@@ -1,5 +1,5 @@
-using SGGames.Scripts.Attribute;
 using SGGames.Scripts.Core;
+using SGGames.Scripts.EditorExtensions;
 using SGGames.Scripts.Player;
 using SGGames.Scripts.Weapons;
 using UnityEngine;

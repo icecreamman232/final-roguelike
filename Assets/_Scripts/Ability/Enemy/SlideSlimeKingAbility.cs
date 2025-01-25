@@ -1,6 +1,6 @@
 using System.Collections;
-using SGGames.Scripts.Attribute;
 using SGGames.Scripts.Common;
+using SGGames.Scripts.EditorExtensions;
 using SGGames.Scripts.Enemies;
 using SGGames.Scripts.Healths;
 using UnityEngine;

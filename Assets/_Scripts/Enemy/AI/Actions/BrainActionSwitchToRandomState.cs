@@ -1,6 +1,7 @@
-using SGGames.Scripts.Attribute;
+
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Data;
+using SGGames.Scripts.EditorExtensions;
 using UnityEngine;
 
 namespace SGGames.Scripts.Enemies

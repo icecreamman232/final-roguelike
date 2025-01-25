@@ -1,7 +1,7 @@
 using System.Collections;
-using SGGames.Scripts.Attribute;
 using SGGames.Scripts.Damages;
 using SGGames.Scripts.Data;
+using SGGames.Scripts.EditorExtensions;
 using SGGames.Scripts.Player;
 using UnityEngine;
 using UnityEngine.Events;

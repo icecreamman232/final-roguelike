@@ -1,10 +1,10 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using SGGames.Scripts.Attribute;
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Core;
 using SGGames.Scripts.Data;
+using SGGames.Scripts.EditorExtensions;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Healths;
 using SGGames.Scripts.Manager;

@@ -1,4 +1,4 @@
-using SGGames.Scripts.Attribute;
+using SGGames.Scripts.EditorExtensions;
 using UnityEngine;
 
 namespace SGGames.Scripts.Enemies

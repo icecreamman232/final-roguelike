@@ -26,14 +26,14 @@ namespace SGGames.Scripts.UI
             m_enemyHealth.OnHit -= Show;
         }
 
-        private void Show(float damage, bool isCritical)
+        private void Show(EnemyHitInfo hitInfo)
         {
             var dmgNumberObj = m_damageNumberPooler.GetPooledGameObject();
-            dmgNumberObj.transform.localScale = isCritical ? Vector3.one * m_criticalHitTextScale : Vector3.one;
+            dmgNumberObj.transform.localScale = hitInfo.IsCritical ? Vector3.one * m_criticalHitTextScale : Vector3.one;
             dmgNumberObj.transform.position = transform.position + (Vector3)Random.insideUnitCircle * m_showRadius;
             var damageText = dmgNumberObj.GetComponentInChildren<TextMeshPro>();
-            damageText.color = isCritical ? m_criticalColor : m_normalColor;
-            damageText.text = isCritical ? $"{damage:F0} !" : $"{damage:F0}";
+            damageText.color = hitInfo.IsCritical ? m_criticalColor : m_normalColor;
+            damageText.text = hitInfo.IsCritical ? $"{hitInfo.DamageTaken:F0} !" : $"{hitInfo.DamageTaken:F0}";
         }
     }
 }

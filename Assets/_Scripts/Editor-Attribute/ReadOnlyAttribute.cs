@@ -1,6 +1,6 @@
 using UnityEngine;
 
-namespace SGGames.Scripts.Attribute
+namespace SGGames.Scripts.EditorExtensions
 {
     public class ReadOnlyAttribute : PropertyAttribute
     {
