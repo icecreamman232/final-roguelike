@@ -65,6 +65,11 @@ namespace SGGames.Scripts.Weapons
             CheckRange();
         }
         
+        protected virtual void OnUpdateSpeed(float newSpeed)
+        {
+            m_currentSpeed = newSpeed;
+        }
+        
         protected virtual void OnHitDamageable(GameObject obj)
         {
             m_piercingCounter--;
@@ -90,7 +95,17 @@ namespace SGGames.Scripts.Weapons
 
         protected virtual void UpdateMovement()
         {
-            transform.Translate(m_direction * (m_currentSpeed * Time.deltaTime));
+            if (m_projectileSettings.MovementBehavior != null)
+            {
+                foreach (var movementBehavior in m_projectileSettings.MovementBehavior)
+                {
+                    movementBehavior.UpdateMovement(m_projectileSettings, this.transform, m_direction, m_currentSpeed,OnUpdateSpeed);
+                }
+            }
+            else
+            {
+                transform.Translate(m_direction * (m_currentSpeed * Time.deltaTime));
+            }
         }
 
         protected virtual void DestroyProjectile()

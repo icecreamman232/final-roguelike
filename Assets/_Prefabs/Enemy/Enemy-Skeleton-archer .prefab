@@ -375,7 +375,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Label: Check target in shoot range
-  m_radius: 6
+  m_radius: 10
   m_targetLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -668,8 +668,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_isAllow: 1
+  m_movementState: 0
   m_movementMode: 0
-  m_canMove: 0
   m_initialSpeed: 3
   m_currentSpeed: 0
   m_direction: {x: 0, y: 0}
@@ -677,6 +677,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   m_followingTarget: {fileID: 0}
+  m_knockBackThreshold: 0
 --- !u!114 &8422114692093414321
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -696,6 +697,9 @@ MonoBehaviour:
   m_multiplyDamage: 1
   m_critDamage: 0
   m_damageableInvulnerableTime: 0.3
+  m_knockBackForce: 0
+  m_knockBackDuration: 0
+  m_stunDuration: 0
   m_damageableLayerMask:
     serializedVersion: 2
     m_Bits: 64
