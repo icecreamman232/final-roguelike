@@ -6,14 +6,15 @@ namespace SGGames.Scripts.EditorExtensions
     [CustomPropertyDrawer(typeof(ShowIfAttribute))]
     public class ShowIfPropertyDrawer : PropertyDrawer
     {
+        private bool m_shouldDisplay = false;
+        
         public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
         {
             ShowIfAttribute showIfAttribute = attribute as ShowIfAttribute;
-            bool shouldDisplay = GetConditionAttributeValue(showIfAttribute, property);
-            if (shouldDisplay)
-            {
-                EditorGUI.PropertyField(position, property, label, true);
-            }
+            var shouldDisplay = GetConditionAttributeValue(showIfAttribute, property);
+            GUI.enabled = shouldDisplay;
+            EditorGUI.PropertyField(position, property, label, true);
+            GUI.enabled = true;
         }
 
         private bool GetConditionAttributeValue(ShowIfAttribute conditionAttribute, SerializedProperty property)
