@@ -95,7 +95,7 @@ namespace SGGames.Scripts.Weapons
 
         protected virtual void UpdateMovement()
         {
-            if (m_projectileSettings.MovementBehavior != null)
+            if (m_projectileSettings.MovementBehavior != null && m_projectileSettings.MovementBehavior.Length > 0)
             {
                 foreach (var movementBehavior in m_projectileSettings.MovementBehavior)
                 {
