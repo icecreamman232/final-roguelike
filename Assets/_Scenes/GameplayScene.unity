@@ -429,63 +429,6 @@ MonoBehaviour:
   m_cameraBounds:
     TopLeft: {x: 0, y: 0}
     BotRight: {x: 0, y: 0}
---- !u!1001 &536337825
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 635971134738314958, guid: 19024bc0b4bf838468cc344025f6d322, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 635971134738314958, guid: 19024bc0b4bf838468cc344025f6d322, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 635971134738314958, guid: 19024bc0b4bf838468cc344025f6d322, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 635971134738314958, guid: 19024bc0b4bf838468cc344025f6d322, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 635971134738314958, guid: 19024bc0b4bf838468cc344025f6d322, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 635971134738314958, guid: 19024bc0b4bf838468cc344025f6d322, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 635971134738314958, guid: 19024bc0b4bf838468cc344025f6d322, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 635971134738314958, guid: 19024bc0b4bf838468cc344025f6d322, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 635971134738314958, guid: 19024bc0b4bf838468cc344025f6d322, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 635971134738314958, guid: 19024bc0b4bf838468cc344025f6d322, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7078730350003177115, guid: 19024bc0b4bf838468cc344025f6d322, type: 3}
-      propertyPath: m_Name
-      value: 'Enemy-Skeleton-archer '
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 19024bc0b4bf838468cc344025f6d322, type: 3}
 --- !u!1 &619394800
 GameObject:
   m_ObjectHideFlags: 0
@@ -2699,4 +2642,3 @@ SceneRoots:
   - {fileID: 1592871648}
   - {fileID: 1929787960}
   - {fileID: 32224193}
-  - {fileID: 536337825}

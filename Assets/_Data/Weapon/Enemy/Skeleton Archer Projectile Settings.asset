@@ -9,8 +9,12 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1e8f3bace79c2104da8deb37cf63515b, type: 3}
-  m_Name: Skeleton - Acceleration Projectile Behavior
+  m_Script: {fileID: 11500000, guid: 02d4e9b53170f9044a0cf7c762741cab, type: 3}
+  m_Name: Skeleton Archer Projectile Settings
   m_EditorClassIdentifier: 
-  m_acceleration: 20
-  m_maxSpeed: 10
+  m_type: 1
+  m_speed: 3
+  m_range: 10
+  m_piercingNumber: 0
+  m_delayBeforeDestruction: 0
+  m_offsetRotationAngle: -90
