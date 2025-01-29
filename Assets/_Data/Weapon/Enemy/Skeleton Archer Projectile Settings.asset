@@ -12,9 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d4e9b53170f9044a0cf7c762741cab, type: 3}
   m_Name: Skeleton Archer Projectile Settings
   m_EditorClassIdentifier: 
+  m_behaviorType: 1
   m_type: 1
-  m_speed: 3
+  m_speed: 1
   m_range: 10
   m_piercingNumber: 0
   m_delayBeforeDestruction: 0
   m_offsetRotationAngle: -90
+  m_acceleration: 20
+  m_maxSpeed: 15

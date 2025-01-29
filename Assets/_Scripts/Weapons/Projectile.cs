@@ -26,14 +26,22 @@ namespace SGGames.Scripts.Weapons
         [Header("Events")]
         [SerializeField] protected UnityEvent m_onEnable;
         [SerializeField] protected UnityEvent m_onDestroy;
+        
         protected Vector2 m_wakeupPosition;
         protected YieldInstruction DelayBeforeDestructionCoroutine;
+        protected ProjectileRuntimeParameter m_projectileRuntimeParameter;
+        protected BaseProjectileBehavior m_projectileBehavior;
         
-        protected virtual void Start()
+        protected virtual void Awake()
         {
             m_damageHandler.OnHitDamageable += OnHitDamageable;
             m_damageHandler.OnHitNonDamageable += OnHitNonDamageable;
             DelayBeforeDestructionCoroutine = new WaitForSeconds(m_projectileSettings.DelayBeforeDestruction);
+            
+            m_projectileRuntimeParameter = new ProjectileRuntimeParameter(m_projectileSettings, this.transform, m_model);
+
+            m_projectileBehavior = ProjectileBehaviorFactory.CreateProjectileBehavior(m_projectileSettings.BehaviorType,
+                m_projectileRuntimeParameter);
         }
 
         private void OnEnable()
@@ -45,10 +53,12 @@ namespace SGGames.Scripts.Weapons
         public virtual void Spawn(Vector2 position, Quaternion rotation, Vector2 direction, DamageInfo damageInfo)
         {
             ResetSpeed();
+            m_projectileRuntimeParameter.ResetParameter();
             m_wakeupPosition = position;
             transform.position = position;
             m_model.rotation = rotation * Quaternion.AngleAxis(m_projectileSettings.OffsetRotationAngle, Vector3.forward);
-            m_direction = direction;
+            //m_direction = direction;
+            m_projectileRuntimeParameter.Direction = direction;
             m_damageHandler.SetDamageInfo(damageInfo);
             m_isAlive = true;
         }
@@ -90,7 +100,14 @@ namespace SGGames.Scripts.Weapons
 
         protected virtual void UpdateMovement()
         {
-            transform.Translate(m_direction * (m_currentSpeed * Time.deltaTime));
+            if (m_projectileBehavior != null)
+            {
+                m_projectileBehavior.UpdateProjectile();
+            }
+            else
+            {
+                transform.Translate(m_direction * (m_currentSpeed * Time.deltaTime));
+            }
         }
 
         protected virtual void DestroyProjectile()

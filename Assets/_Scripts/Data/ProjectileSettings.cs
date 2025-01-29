@@ -7,7 +7,8 @@ namespace SGGames.Scripts.Data
     [CreateAssetMenu(fileName = "Projectile Settings", menuName = "SGGames/Data/Weapon/Projectile Settings")]
     public class ProjectileSettings : ScriptableObject
     {
-        [Header("Common Settings")]
+        [Header("Common Settings")] 
+        [SerializeField] private ProjectileBehaviorType m_behaviorType;
         [SerializeField] private ProjectileType m_type;
         [SerializeField] private float m_speed;
         [SerializeField] private float m_range;
@@ -19,12 +20,19 @@ namespace SGGames.Scripts.Data
         /// </summary>
         [SerializeField] private float m_offsetRotationAngle;
         
+        [SerializeField] private float m_acceleration;
+        [SerializeField] private float m_maxSpeed;
+        
+        public ProjectileBehaviorType BehaviorType => m_behaviorType;
         public ProjectileType ProjectileType => m_type;
         public float Speed => m_speed;
         public float Range => m_range;
         public int PiercingNumber => m_piercingNumber;
         public float DelayBeforeDestruction => m_delayBeforeDestruction;
         public float OffsetRotationAngle => m_offsetRotationAngle;
+        
+        public float Acceleration => m_acceleration;
+        public float MaxSpeed => m_maxSpeed;
     }
 }
 
