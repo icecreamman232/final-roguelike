@@ -1,8 +1,8 @@
-
-using SGGames.Scripts.Data;
-
 namespace SGGames.Scripts.Weapons
 {
+    /// <summary>
+    /// Factory class to create projectile behavior based on input type
+    /// </summary>
     public static class ProjectileBehaviorFactory
     {
         public static BaseProjectileBehavior CreateProjectileBehavior(ProjectileBehaviorType behaviorType, ProjectileRuntimeParameter parameter)
@@ -15,7 +15,7 @@ namespace SGGames.Scripts.Weapons
                 case ProjectileBehaviorType.Acceleration:
                     return new AcceleratedProjectileBehavior(parameter);
                 case ProjectileBehaviorType.Homing:
-                    break;
+                    return new HomingProjectileBehavior(parameter);
                 case ProjectileBehaviorType.Ricochet:
                     break;
                 case ProjectileBehaviorType.Split:

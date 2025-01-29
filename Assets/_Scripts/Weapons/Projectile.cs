@@ -18,8 +18,6 @@ namespace SGGames.Scripts.Weapons
         [Header("Base Settings")] 
         [SerializeField] protected ProjectileSettings m_projectileSettings;
         [SerializeField] protected bool m_isAlive;
-        [SerializeField] protected float m_currentSpeed;
-        [SerializeField] protected Vector2 m_direction;
         [SerializeField] protected Transform m_model;
         [SerializeField] protected DamageHandler m_damageHandler;
         [SerializeField][ReadOnly] protected int m_piercingCounter;
@@ -38,7 +36,7 @@ namespace SGGames.Scripts.Weapons
             m_damageHandler.OnHitNonDamageable += OnHitNonDamageable;
             DelayBeforeDestructionCoroutine = new WaitForSeconds(m_projectileSettings.DelayBeforeDestruction);
             
-            m_projectileRuntimeParameter = new ProjectileRuntimeParameter(m_projectileSettings, this.transform, m_model);
+            m_projectileRuntimeParameter = new ProjectileRuntimeParameter(m_projectileSettings, this, m_model);
 
             m_projectileBehavior = ProjectileBehaviorFactory.CreateProjectileBehavior(m_projectileSettings.BehaviorType,
                 m_projectileRuntimeParameter);
@@ -50,24 +48,22 @@ namespace SGGames.Scripts.Weapons
             m_piercingCounter = m_projectileSettings.PiercingNumber;
         }
 
+        public void SetTarget(Transform target)
+        {
+            m_projectileRuntimeParameter.Target = target;
+        }
+
         public virtual void Spawn(Vector2 position, Quaternion rotation, Vector2 direction, DamageInfo damageInfo)
         {
-            ResetSpeed();
             m_projectileRuntimeParameter.ResetParameter();
             m_wakeupPosition = position;
             transform.position = position;
             m_model.rotation = rotation * Quaternion.AngleAxis(m_projectileSettings.OffsetRotationAngle, Vector3.forward);
-            //m_direction = direction;
             m_projectileRuntimeParameter.Direction = direction;
             m_damageHandler.SetDamageInfo(damageInfo);
             m_isAlive = true;
         }
-
-        protected virtual void ResetSpeed()
-        {
-            m_currentSpeed = m_projectileSettings.Speed;
-        }
-
+        
         protected virtual void Update()
         {
             if (!m_isAlive) return;
@@ -106,11 +102,11 @@ namespace SGGames.Scripts.Weapons
             }
             else
             {
-                transform.Translate(m_direction * (m_currentSpeed * Time.deltaTime));
+                transform.Translate(m_projectileRuntimeParameter.Direction * (m_projectileRuntimeParameter.CurrentSpeed * Time.deltaTime));
             }
         }
 
-        protected virtual void DestroyProjectile()
+        public virtual void DestroyProjectile()
         {
             if (!m_isAlive) return;
             StartCoroutine(OnDestroyingProjectile());

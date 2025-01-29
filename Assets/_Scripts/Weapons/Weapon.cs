@@ -54,6 +54,17 @@ namespace SGGames.Scripts.Weapons
             m_currentState = WeaponState.SHOT;
         }
 
+        public virtual void Shoot(Transform target, DamageInfo damageInfo)
+        {
+            var direction = (target.position - transform.position).normalized;
+            var projectileObj = m_projectilePooler.GetPooledGameObject();
+            var projectile = projectileObj.GetComponent<Projectile>();
+            var rotation = Quaternion.AngleAxis(Mathf.Atan2(direction.y, direction.x) * Mathf.Rad2Deg, Vector3.forward);
+            projectile.SetTarget(target);
+            projectile.Spawn(transform.position, rotation,direction,damageInfo);
+            m_currentState = WeaponState.SHOT;
+        }
+
         public virtual void StopShooting()
         {
             m_currentState = WeaponState.READY;

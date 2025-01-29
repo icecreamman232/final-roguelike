@@ -22,6 +22,7 @@ namespace SGGames.Scripts.Data
         
         [SerializeField] private float m_acceleration;
         [SerializeField] private float m_maxSpeed;
+        [SerializeField] private float m_maxHomingDuration;
         
         public ProjectileBehaviorType BehaviorType => m_behaviorType;
         public ProjectileType ProjectileType => m_type;
@@ -30,9 +31,9 @@ namespace SGGames.Scripts.Data
         public int PiercingNumber => m_piercingNumber;
         public float DelayBeforeDestruction => m_delayBeforeDestruction;
         public float OffsetRotationAngle => m_offsetRotationAngle;
-        
         public float Acceleration => m_acceleration;
         public float MaxSpeed => m_maxSpeed;
+        public float MaxHomingDuration => m_maxHomingDuration;
     }
 }
 

@@ -78,7 +78,7 @@ namespace SGGames.Scripts.Enemies
         public virtual void UseWeaponAtTarget(Transform target)
         {
             if (!CanUseWeapon()) return;
-            m_currentWeapon.Shoot((target.position-transform.position).normalized, m_damageInfo);
+            m_currentWeapon.Shoot(target, m_damageInfo);
         }
 
         public virtual void UseWeaponAtDirection(Vector2 direction)

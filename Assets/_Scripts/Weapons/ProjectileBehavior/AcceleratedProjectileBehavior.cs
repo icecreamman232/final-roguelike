@@ -17,7 +17,7 @@ namespace SGGames.Scripts.Weapons
                 m_parameter.CurrentSpeed = m_parameter.MaxSpeed;
             }
             
-            m_parameter.ProjectileTransform.Translate(m_parameter.Direction * (m_parameter.CurrentSpeed * Time.deltaTime));
+            m_parameter.Projectile.transform.Translate(m_parameter.Direction * (m_parameter.CurrentSpeed * Time.deltaTime));
         }
     }
 }
