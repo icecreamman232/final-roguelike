@@ -94,8 +94,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_projectileSettings: {fileID: 11400000, guid: 6df650b3f228a014caac1fefc4f550c8, type: 2}
   m_isAlive: 0
-  m_currentSpeed: 0
-  m_direction: {x: 0, y: 0}
   m_model: {fileID: 5440525501658905303}
   m_damageHandler: {fileID: 3005782795450352120}
   m_piercingCounter: 0
@@ -105,6 +103,7 @@ MonoBehaviour:
   m_onDestroy:
     m_PersistentCalls:
       m_Calls: []
+  m_gameEvent: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
 --- !u!114 &3005782795450352120
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -124,6 +123,9 @@ MonoBehaviour:
   m_multiplyDamage: 1
   m_critDamage: 1
   m_damageableInvulnerableTime: 0.3
+  m_knockBackForce: 0
+  m_knockBackDuration: 0
+  m_stunDuration: 0
   m_damageableLayerMask:
     serializedVersion: 2
     m_Bits: 64

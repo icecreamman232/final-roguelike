@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using SGGames.Scripts.Common;
 using SGGames.Scripts.Damages;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.EditorExtensions;
+using SGGames.Scripts.Events;
 using SGGames.Scripts.Player;
 using UnityEngine;
 using UnityEngine.Events;
@@ -25,6 +27,7 @@ namespace SGGames.Scripts.Weapons
         [Header("Events")]
         [SerializeField] protected UnityEvent m_onEnable;
         [SerializeField] protected UnityEvent m_onDestroy;
+        [SerializeField] private GameEvent m_gameEvent;
         
         protected Vector2 m_wakeupPosition;
         protected YieldInstruction DelayBeforeDestructionCoroutine;
@@ -45,8 +48,10 @@ namespace SGGames.Scripts.Weapons
                 var newBehavior = ProjectileBehaviorFactory.CreateProjectileBehavior(behavior, m_projectileRuntimeParameter);
                 m_projectileBehavior.Add(newBehavior);
             }
+            
+            m_gameEvent.AddListener(OnGameEvent);
         }
-
+        
         private void OnEnable()
         {
             m_onEnable?.Invoke();
@@ -127,9 +132,19 @@ namespace SGGames.Scripts.Weapons
             yield return DelayBeforeDestructionCoroutine;
             this.gameObject.SetActive(false);
         }
+        
+        private void OnGameEvent(GameEventType gameEventType)
+        {
+            if (gameEventType == GameEventType.ROOM_CLEARED)
+            {
+                DestroyProjectile();
+            }
+        }
+
 
         protected virtual void Destroy()
         {
+            m_gameEvent.RemoveListener(OnGameEvent);
             m_damageHandler.OnHitDamageable -= OnHitDamageable;
             m_damageHandler.OnHitNonDamageable -= OnHitNonDamageable;
         }
