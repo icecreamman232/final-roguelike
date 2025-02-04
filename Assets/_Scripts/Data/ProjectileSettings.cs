@@ -8,7 +8,7 @@ namespace SGGames.Scripts.Data
     public class ProjectileSettings : ScriptableObject
     {
         [Header("Common Settings")] 
-        [SerializeField] private ProjectileBehaviorType m_behaviorType;
+        [SerializeField] private ProjectileBehaviorType[] m_behaviorType;
         [SerializeField] private ProjectileType m_type;
         [SerializeField] private float m_speed;
         [SerializeField] private float m_range;
@@ -24,7 +24,7 @@ namespace SGGames.Scripts.Data
         [SerializeField] private float m_maxSpeed;
         [SerializeField] private float m_maxHomingDuration;
         
-        public ProjectileBehaviorType BehaviorType => m_behaviorType;
+        public ProjectileBehaviorType[] BehaviorType => m_behaviorType;
         public ProjectileType ProjectileType => m_type;
         public float Speed => m_speed;
         public float Range => m_range;

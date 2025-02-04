@@ -1,4 +1,5 @@
 using System.Collections;
+using System.Collections.Generic;
 using SGGames.Scripts.Damages;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.EditorExtensions;
@@ -28,7 +29,7 @@ namespace SGGames.Scripts.Weapons
         protected Vector2 m_wakeupPosition;
         protected YieldInstruction DelayBeforeDestructionCoroutine;
         protected ProjectileRuntimeParameter m_projectileRuntimeParameter;
-        protected BaseProjectileBehavior m_projectileBehavior;
+        protected List<BaseProjectileBehavior> m_projectileBehavior;
         
         protected virtual void Awake()
         {
@@ -38,8 +39,12 @@ namespace SGGames.Scripts.Weapons
             
             m_projectileRuntimeParameter = new ProjectileRuntimeParameter(m_projectileSettings, this, m_model);
 
-            m_projectileBehavior = ProjectileBehaviorFactory.CreateProjectileBehavior(m_projectileSettings.BehaviorType,
-                m_projectileRuntimeParameter);
+            m_projectileBehavior = new List<BaseProjectileBehavior>();
+            foreach (var behavior in m_projectileSettings.BehaviorType)
+            {
+                var newBehavior = ProjectileBehaviorFactory.CreateProjectileBehavior(behavior, m_projectileRuntimeParameter);
+                m_projectileBehavior.Add(newBehavior);
+            }
         }
 
         private void OnEnable()
@@ -98,7 +103,10 @@ namespace SGGames.Scripts.Weapons
         {
             if (m_projectileBehavior != null)
             {
-                m_projectileBehavior.UpdateProjectile();
+                foreach (var behavior in m_projectileBehavior)
+                {
+                    behavior.UpdateProjectile();
+                }
             }
             else
             {
