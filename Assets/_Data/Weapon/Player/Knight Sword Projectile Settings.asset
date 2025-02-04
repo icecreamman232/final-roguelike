@@ -12,9 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d4e9b53170f9044a0cf7c762741cab, type: 3}
   m_Name: Knight Sword Projectile Settings
   m_EditorClassIdentifier: 
+  m_behaviorType: 
   m_type: 0
   m_speed: 15
   m_range: 3
   m_piercingNumber: 0
   m_delayBeforeDestruction: 0.3
   m_offsetRotationAngle: -90
+  m_acceleration: 0
+  m_maxSpeed: 15
+  m_maxHomingDuration: 0
