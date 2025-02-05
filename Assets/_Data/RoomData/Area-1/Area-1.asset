@@ -19,6 +19,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 86ae9cfc33e933b4eb8e080ba0d33027, type: 2}
   - {fileID: 11400000, guid: 883fc813d77caa74896dba7837378147, type: 2}
   - {fileID: 11400000, guid: eb48dec3bcd5aaf4884e91a7d2baa489, type: 2}
+  - {fileID: 11400000, guid: 7f03433a177cf624fa7824caa0a9d28a, type: 2}
+  - {fileID: 11400000, guid: 3317e085d81a3944ebb0ba49eddbe9e0, type: 2}
   m_hardRooms:
   - {fileID: 11400000, guid: 6df79db8a4828c44c8c9c578cfee570e, type: 2}
   - {fileID: 11400000, guid: fb526f868a302e840888e55571938ea6, type: 2}
@@ -28,14 +30,11 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 42fb50143f732a641942448f626823fb, type: 2}
   - {fileID: 11400000, guid: 429931a75abe24845bec05ed656e1dc0, type: 2}
   - {fileID: 11400000, guid: 882bdce3dee462d40a083301db529dd5, type: 2}
-  - {fileID: 11400000, guid: 520b9de74be9e8e4fa9ede2cb8224fff, type: 2}
-  - {fileID: 11400000, guid: c68154e10ddf6034c9a719c56f77d985, type: 2}
-  - {fileID: 11400000, guid: ae999273a1ea4204581e8208a8148ea6, type: 2}
-  - {fileID: 11400000, guid: 6891d0fc4ee92224ea70ac376ecdc91f, type: 2}
-  - {fileID: 11400000, guid: 2014f1c01575b7040af21bd0b558a02d, type: 2}
-  - {fileID: 11400000, guid: d3e5bd909419f4e4aa749272bb3b2bb9, type: 2}
-  - {fileID: 11400000, guid: d3fac244338c95c45a77f2239d248b45, type: 2}
   m_challengeRooms:
-  - {fileID: 11400000, guid: d3fac244338c95c45a77f2239d248b45, type: 2}
+  - {fileID: 11400000, guid: 9fede8acf5ae6d14390b5fe618a9d428, type: 2}
+  - {fileID: 11400000, guid: 75a6542eae7da344db4d72c1b60f0fff, type: 2}
+  - {fileID: 11400000, guid: 336e0b1f9018fc1419916d2b5a1d4ccf, type: 2}
+  - {fileID: 11400000, guid: 54c0873897b3c1a4f893921efa27fe6f, type: 2}
+  - {fileID: 11400000, guid: 46354be40b4491e429b0e8029f45c3c0, type: 2}
   m_bossRooms:
   - {fileID: 8558735862257174374, guid: 47515a39c32a1704fa8460cc8649819d, type: 3}

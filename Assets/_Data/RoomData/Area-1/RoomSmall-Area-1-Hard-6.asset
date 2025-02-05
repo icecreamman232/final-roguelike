@@ -14,19 +14,15 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_roomPrefab: {fileID: 1619650375611626117, guid: 96bc498b429a3b24ba39280205d319cb, type: 3}
   m_enemyList:
-  - EnemyPrefab: {fileID: 7078730350003177115, guid: 19024bc0b4bf838468cc344025f6d322, type: 3}
-    SpawnPosition: {x: 3, y: 4}
-  - EnemyPrefab: {fileID: 7078730350003177115, guid: 19024bc0b4bf838468cc344025f6d322, type: 3}
-    SpawnPosition: {x: -3, y: 4}
-  - EnemyPrefab: {fileID: 1728101952827096078, guid: dfd8c29e3e927c04eb30835434fc00c4, type: 3}
-    SpawnPosition: {x: 7, y: 1}
-  - EnemyPrefab: {fileID: 1728101952827096078, guid: dfd8c29e3e927c04eb30835434fc00c4, type: 3}
-    SpawnPosition: {x: -7, y: 1}
-  - EnemyPrefab: {fileID: 1728101952827096078, guid: dfd8c29e3e927c04eb30835434fc00c4, type: 3}
-    SpawnPosition: {x: 7, y: -3}
-  - EnemyPrefab: {fileID: 1728101952827096078, guid: dfd8c29e3e927c04eb30835434fc00c4, type: 3}
-    SpawnPosition: {x: -7, y: -3}
-  - EnemyPrefab: {fileID: 1728101952827096078, guid: dfd8c29e3e927c04eb30835434fc00c4, type: 3}
+  - EnemyPrefab: {fileID: 7357953295604114694, guid: 1a124d556a0c7fa41b735186c1234388, type: 3}
+    SpawnPosition: {x: 2, y: 4}
+  - EnemyPrefab: {fileID: 7357953295604114694, guid: 1a124d556a0c7fa41b735186c1234388, type: 3}
+    SpawnPosition: {x: 4, y: 4}
+  - EnemyPrefab: {fileID: 7357953295604114694, guid: 1a124d556a0c7fa41b735186c1234388, type: 3}
     SpawnPosition: {x: 6, y: 4}
-  - EnemyPrefab: {fileID: 1728101952827096078, guid: dfd8c29e3e927c04eb30835434fc00c4, type: 3}
+  - EnemyPrefab: {fileID: 7357953295604114694, guid: 1a124d556a0c7fa41b735186c1234388, type: 3}
+    SpawnPosition: {x: -2, y: 4}
+  - EnemyPrefab: {fileID: 7357953295604114694, guid: 1a124d556a0c7fa41b735186c1234388, type: 3}
+    SpawnPosition: {x: -4, y: 4}
+  - EnemyPrefab: {fileID: 7357953295604114694, guid: 1a124d556a0c7fa41b735186c1234388, type: 3}
     SpawnPosition: {x: -6, y: 4}

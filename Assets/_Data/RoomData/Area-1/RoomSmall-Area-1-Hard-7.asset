@@ -14,15 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_roomPrefab: {fileID: 1619650375611626117, guid: 96bc498b429a3b24ba39280205d319cb, type: 3}
   m_enemyList:
-  - EnemyPrefab: {fileID: 7357953295604114694, guid: 1a124d556a0c7fa41b735186c1234388, type: 3}
-    SpawnPosition: {x: -6, y: -3}
-  - EnemyPrefab: {fileID: 7357953295604114694, guid: 1a124d556a0c7fa41b735186c1234388, type: 3}
-    SpawnPosition: {x: 6, y: -3}
-  - EnemyPrefab: {fileID: 7357953295604114694, guid: 1a124d556a0c7fa41b735186c1234388, type: 3}
-    SpawnPosition: {x: 3, y: 2}
-  - EnemyPrefab: {fileID: 7357953295604114694, guid: 1a124d556a0c7fa41b735186c1234388, type: 3}
-    SpawnPosition: {x: -4, y: 2}
-  - EnemyPrefab: {fileID: 3342014246319723016, guid: 9c2aacf4ef8ca344a8af264fff3c6034, type: 3}
+  - EnemyPrefab: {fileID: 8094128730875580441, guid: ce3c5c3bbb4dc9545b043080623375bc, type: 3}
+    SpawnPosition: {x: 4, y: 4}
+  - EnemyPrefab: {fileID: 8094128730875580441, guid: ce3c5c3bbb4dc9545b043080623375bc, type: 3}
+    SpawnPosition: {x: -4, y: 4}
+  - EnemyPrefab: {fileID: 8094128730875580441, guid: ce3c5c3bbb4dc9545b043080623375bc, type: 3}
     SpawnPosition: {x: 6, y: 4}
-  - EnemyPrefab: {fileID: 3342014246319723016, guid: 9c2aacf4ef8ca344a8af264fff3c6034, type: 3}
+  - EnemyPrefab: {fileID: 8094128730875580441, guid: ce3c5c3bbb4dc9545b043080623375bc, type: 3}
     SpawnPosition: {x: -6, y: 4}

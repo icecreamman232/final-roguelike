@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 41c670849efdcba47bb3929b4411f3ff, type: 3}
   m_Name: Level Manager Test Data
   m_EditorClassIdentifier: 
-  UseTestData: 1
+  UseTestData: 0
   RoomIndex: 6
   AreaIndex: 0
   LeftSideRoomTestList:

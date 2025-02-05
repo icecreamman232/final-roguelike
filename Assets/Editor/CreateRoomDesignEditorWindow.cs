@@ -36,6 +36,7 @@ namespace SGGames.Scripts.EditorExtension
             if (GUILayout.Button("Create Room Data"))
             {
                 SaveRoomDesign();
+                m_postFixIndex++;
             }
         }
 

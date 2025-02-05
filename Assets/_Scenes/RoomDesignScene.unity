@@ -122,6 +122,291 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &16360446
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3525120331538969626, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_Name
+      value: Enemy-Red-Slime (5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+--- !u!1001 &317010507
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3525120331538969626, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_Name
+      value: Enemy-Red-Slime (1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+--- !u!1001 &483223157
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3525120331538969626, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_Name
+      value: Enemy-Red-Slime
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+--- !u!1001 &497180818
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3525120331538969626, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_Name
+      value: Enemy-Red-Slime (4)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+--- !u!1001 &661308524
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3525120331538969626, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_Name
+      value: Enemy-Red-Slime (3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
 --- !u!1001 &840428312
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -183,6 +468,120 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6b9509e4da0d2224eaa2aa98e1735dc6, type: 3}
+--- !u!1001 &1071181982
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3525120331538969626, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_Name
+      value: Enemy-Red-Slime (6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+--- !u!1001 &1607375903
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3525120331538969626, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_Name
+      value: Enemy-Red-Slime (2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3768803389622990118, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7fa51d3f0c8bad44bb987194d0f0153e, type: 3}
 --- !u!1001 &2061623087
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -413,3 +812,10 @@ SceneRoots:
   - {fileID: 2131534229}
   - {fileID: 840428312}
   - {fileID: 2061623087}
+  - {fileID: 483223157}
+  - {fileID: 317010507}
+  - {fileID: 1607375903}
+  - {fileID: 661308524}
+  - {fileID: 497180818}
+  - {fileID: 16360446}
+  - {fileID: 1071181982}
