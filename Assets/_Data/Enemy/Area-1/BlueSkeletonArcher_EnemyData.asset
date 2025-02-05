@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 103a9c0fa3847264fa4e55d761711826, type: 3}
   m_Name: BlueSkeletonArcher_EnemyData
   m_EditorClassIdentifier: 
+  m_enemyFaction: 2
   m_enemyName: Blue Skeleton Archer
   m_maxHealth: 100
   m_moveSpeed: 3

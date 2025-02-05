@@ -1,3 +1,4 @@
+using SGGames.Scripts.Common;
 using SGGames.Scripts.Damages;
 using SGGames.Scripts.Enemies;
 using SGGames.Scripts.Healths;
@@ -11,9 +12,10 @@ namespace SGGames.Scripts.Data
     public class EnemyData : ScriptableObject
     {
         [Header("Base Data")] 
+        [SerializeField] private EnemyFaction m_enemyFaction;
         [SerializeField] private string m_enemyName;
-        [SerializeField] private float m_maxHealth;
-        [SerializeField] private float m_moveSpeed;
+        [SerializeField][Min(0)] private float m_maxHealth;
+        [SerializeField][Min(3)] private float m_moveSpeed;
         [SerializeField] private Sprite m_enemySprite;
         [SerializeField] private GameObject m_enemyPrefab;
         [Header("Weapon")] 
@@ -27,6 +29,7 @@ namespace SGGames.Scripts.Data
         [SerializeField] private float m_minProjectileDamage;
         [SerializeField] private float m_maxProjectileDamage;
 
+        public EnemyFaction EnemyFaction => m_enemyFaction;
         public string EnemyName => m_enemyName;
         public float MaxHealth => m_maxHealth;
         public float MoveSpeed => m_moveSpeed;
