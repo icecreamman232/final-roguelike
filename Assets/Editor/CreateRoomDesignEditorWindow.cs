@@ -61,6 +61,7 @@ namespace SGGames.Scripts.EditorExtension
             }
             AssetDatabase.CreateAsset(roomDataAsset, $"Assets/_Data/RoomData/Area-{m_areaIndex}/{m_roomPrefab.name}-{m_difficultType}-{m_postFixIndex}.asset");
             AssetDatabase.SaveAssets();
+            EditorGUIUtility.PingObject(roomDataAsset);
         }
     }
 }
