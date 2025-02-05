@@ -8,7 +8,7 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Data
 {
-    [CreateAssetMenu(menuName = "SGGames/Data/Enemy Data")]
+    [CreateAssetMenu(menuName = "SGGames/Enemy/Enemy Data",fileName = "New_EnemyData",order = 0)]
     public class EnemyData : ScriptableObject
     {
         [Header("Base Data")] 

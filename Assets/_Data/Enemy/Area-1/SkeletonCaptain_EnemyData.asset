@@ -1,0 +1,28 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 103a9c0fa3847264fa4e55d761711826, type: 3}
+  m_Name: SkeletonCaptain_EnemyData
+  m_EditorClassIdentifier: 
+  m_enemyFaction: 2
+  m_enemyName: Skeleton Captain
+  m_maxHealth: 200
+  m_moveSpeed: 3
+  m_enemySprite: {fileID: 2009096268, guid: b59d3fb5e70650742ac0555928da4461, type: 3}
+  m_enemyPrefab: {fileID: 7457484795540998461, guid: 1918a08687b0a8744ac93df58b44f022, type: 3}
+  m_minBodyDamage: 30
+  m_maxBodyDamage: 45
+  m_delayBetweenShot: 1
+  m_projectileSettings: {fileID: 0}
+  m_weaponPrefab: {fileID: 0}
+  m_projectilePrefab: {fileID: 0}
+  m_minProjectileDamage: 0
+  m_maxProjectileDamage: 0
