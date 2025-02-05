@@ -888,7 +888,7 @@ MonoBehaviour:
   m_healthBar: {fileID: 5585174708763566463}
   m_delayBeforeDeath: 0.5
   m_deathFeedback: {fileID: 3465574241106370592}
-  m_weaponGroup: {fileID: 0}
+  m_weaponGroup: {fileID: 791204869080321033}
 --- !u!114 &6127656584147702698
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -911,7 +911,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   m_followingTarget: {fileID: 0}
-  m_knockBackThreshold: 0
+  m_knockBackThreshold: 999
 --- !u!114 &264028596276524688
 MonoBehaviour:
   m_ObjectHideFlags: 0
