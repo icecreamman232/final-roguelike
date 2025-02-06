@@ -1,3 +1,4 @@
+using SGGames.Scripts.Common;
 using SGGames.Scripts.Core;
 using SGGames.Scripts.Data;
 using SGGames.Scripts.Events;
@@ -15,6 +16,7 @@ namespace SGGames.Scripts.Manager
         [SerializeField] private IntEvent m_playerLevelUpEvent;
         [SerializeField] private UpdateExpBarEvent m_updateExpBarEvent;
         [SerializeField] private ActionEvent m_playerLevelUpVFXEvent;
+        [SerializeField] private GameEvent m_gameEvent;
 
         public int CurrentLevel => m_currentLevel;
         
@@ -41,6 +43,7 @@ namespace SGGames.Scripts.Manager
                 m_currentExp = 0;
                 m_currentLevel++;
                 m_maxExp = m_expData.GetMaxExpForLevel(m_currentLevel);
+                m_gameEvent.Raise(GameEventType.PAUSED);
                 m_playerLevelUpVFXEvent?.Raise();
                 //m_playerLevelUpEvent?.Raise(m_currentLevel);
             }
@@ -54,8 +57,17 @@ namespace SGGames.Scripts.Manager
             m_currentExp = 0;
             m_currentLevel++;
             m_maxExp = m_expData.GetMaxExpForLevel(m_currentLevel);
-            m_playerLevelUpEvent?.Raise(m_currentLevel);
+            m_gameEvent.Raise(GameEventType.PAUSED);
+            m_playerLevelUpVFXEvent?.Raise();
         }
-        #endif
+
+        private void Update()
+        {
+            if (Input.GetKeyDown(KeyCode.I))
+            {
+                LevelUpTest();
+            }
+        }
+#endif
     }
 }

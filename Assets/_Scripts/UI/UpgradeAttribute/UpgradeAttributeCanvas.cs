@@ -44,7 +44,7 @@ namespace SGGames.Scripts.UI
         
         private IEnumerator OnDelayBeforeShow()
         {
-            m_gameEvent.Raise(GameEventType.PAUSED_WITH_DELAY);
+            m_gameEvent.Raise(GameEventType.PAUSED);
             yield return new WaitUntil(()=>GameManager.Instance.IsGamePaused);
             m_canvasGroup.alpha = 1;
             m_canvasGroup.interactable = true;
