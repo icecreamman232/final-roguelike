@@ -51,3 +51,4 @@ MonoBehaviour:
   m_expPickedEvent: {fileID: 11400000, guid: c3ec2318164b2cc43808923927514ab6, type: 2}
   m_playerLevelUpEvent: {fileID: 11400000, guid: 230552ac7674ab146959ff8bfefc1053, type: 2}
   m_updateExpBarEvent: {fileID: 11400000, guid: 81eb142399943bd408366e3f865a35a9, type: 2}
+  m_playerLevelUpVFXEvent: {fileID: 11400000, guid: 80aa76eedcfcf5845aa640d4cf9628da, type: 2}

@@ -14,6 +14,7 @@ namespace SGGames.Scripts.Manager
         [SerializeField] private IntEvent m_expPickedEvent;
         [SerializeField] private IntEvent m_playerLevelUpEvent;
         [SerializeField] private UpdateExpBarEvent m_updateExpBarEvent;
+        [SerializeField] private ActionEvent m_playerLevelUpVFXEvent;
 
         public int CurrentLevel => m_currentLevel;
         
@@ -40,7 +41,8 @@ namespace SGGames.Scripts.Manager
                 m_currentExp = 0;
                 m_currentLevel++;
                 m_maxExp = m_expData.GetMaxExpForLevel(m_currentLevel);
-                m_playerLevelUpEvent?.Raise(m_currentLevel);
+                m_playerLevelUpVFXEvent?.Raise();
+                //m_playerLevelUpEvent?.Raise(m_currentLevel);
             }
             m_updateExpBarEvent?.Raise(m_currentExp,m_maxExp,m_currentLevel);
         }

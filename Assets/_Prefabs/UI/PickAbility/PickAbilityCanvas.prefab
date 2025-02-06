@@ -345,6 +345,7 @@ MonoBehaviour:
   m_openingAbilitySelectUIEvent: {fileID: 11400000, guid: fd77bca6bd38e6e4b943cebaa028ed9e, type: 2}
   m_freezePlayerEvent: {fileID: 11400000, guid: 1338a4fa70285e7488b5acc1fb4c30fe, type: 2}
   m_gameEvent: {fileID: 11400000, guid: 38febcd3cbcc08d448dbacc0c49f33ea, type: 2}
+  m_stopLevelUpVFXEvent: {fileID: 11400000, guid: 32cd55c95be59514083ecae8789e275d, type: 2}
   m_abilityContainer: {fileID: 11400000, guid: 59c2a75d51b00374ea2be55a618044b5, type: 2}
   m_abilityCard:
   - {fileID: 2162351678285549755}

@@ -15,6 +15,7 @@ namespace SGGames.Scripts.UI
         [SerializeField] private BoolEvent m_openingAbilitySelectUIEvent;
         [SerializeField] private BoolEvent m_freezePlayerEvent;
         [SerializeField] private GameEvent m_gameEvent;
+        [SerializeField] private ActionEvent m_stopLevelUpVFXEvent;
         [SerializeField] private PlayerAbilityContainer m_abilityContainer;
         [SerializeField] private AbilityCardUI[] m_abilityCard;
 
@@ -66,6 +67,7 @@ namespace SGGames.Scripts.UI
         private void OnClickCard(SelectableAbility abilityID)
         {
             if (m_aboutToClose) return;
+            m_stopLevelUpVFXEvent?.Raise();
             ServiceLocator.GetService<PlayerAbilityController>().AddAbility(abilityID);
             m_aboutToClose = true;
             Hide();

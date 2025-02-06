@@ -205,9 +205,6 @@ MonoBehaviour:
   - Transform: {fileID: 7602392884783811271}
     OffsetFromCenter: 0
     OffsetAngle: -90
-  m_aimArrowTransform: {fileID: 7132944079345427687}
-  m_aimArrowVisualTransform: {fileID: 7602392884783811271}
-  m_offsetFromCenter: 0.6
 --- !u!114 &904574974438328195
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,6 +284,7 @@ MonoBehaviour:
   m_mutiplyDamage: 1
   m_criticalChance: 0
   m_criticalDamage: 0
+  m_stunDuration: 0
 --- !u!114 &8170920390037149282
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -539,7 +537,7 @@ SpriteRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  - {fileID: 10754, guid: 0000000000000000f000000000000000, type: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -887,6 +885,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: HeroSharedObject
       objectReference: {fileID: 0}
+    - target: {fileID: 5641720671459463368, guid: 77d2f071367a0eb498d76816e25a0d24, type: 3}
+      propertyPath: managedReferences[5616162596777099268].TargetRenderer
+      value: 
+      objectReference: {fileID: 8048074491649769888}
+    - target: {fileID: 5641720671459463368, guid: 77d2f071367a0eb498d76816e25a0d24, type: 3}
+      propertyPath: managedReferences[5616162596777099267].AnimateScaleTarget
+      value: 
+      objectReference: {fileID: 3448551190871362478}
+    - target: {fileID: 7159369531430786441, guid: 77d2f071367a0eb498d76816e25a0d24, type: 3}
+      propertyPath: managedReferences[5616162596777099268].TargetRenderer
+      value: 
+      objectReference: {fileID: 8048074491649769888}
+    - target: {fileID: 7159369531430786441, guid: 77d2f071367a0eb498d76816e25a0d24, type: 3}
+      propertyPath: managedReferences[5616162596777099267].AnimateScaleTarget
+      value: 
+      objectReference: {fileID: 3448551190871362478}
     - target: {fileID: 8660065605323060267, guid: 77d2f071367a0eb498d76816e25a0d24, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
