@@ -14,6 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_containerCategory: 0
   m_commonItemList:
+  - {fileID: 11400000, guid: a3a9258639ab10c41bcce32b88430b09, type: 2}
   - {fileID: 11400000, guid: 5d7a5bbf14469d94f8ae8e9a5038159e, type: 2}
   m_uncommonItemList:
   - {fileID: 11400000, guid: 7bd43917bc17af24581d15b031431307, type: 2}
