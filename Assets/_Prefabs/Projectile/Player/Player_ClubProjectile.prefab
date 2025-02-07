@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 3477878582423107125}
   - component: {fileID: 3540083496240122500}
   m_Layer: 8
-  m_Name: Player_KnightSwordProjectile
+  m_Name: Player_ClubProjectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -92,7 +92,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 660be50d9a1c2d1488ed415f79d82d1d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_projectileSettings: {fileID: 11400000, guid: c77ee20d41c27a54e9eedaa371ce47a1, type: 2}
+  m_projectileSettings: {fileID: 11400000, guid: f3fc528977ef0304f9222981e12f03db, type: 2}
   m_isAlive: 0
   m_model: {fileID: 6713236909789502957}
   m_damageHandler: {fileID: 3540083496240122500}
@@ -171,8 +171,8 @@ MonoBehaviour:
   m_multiplyDamage: 1
   m_critDamage: 0
   m_damageableInvulnerableTime: 0.3
-  m_knockBackForce: 0
-  m_knockBackDuration: 0
+  m_knockBackForce: 5
+  m_knockBackDuration: 0.2
   m_stunDuration: 0
   m_damageableLayerMask:
     serializedVersion: 2
@@ -254,7 +254,7 @@ SpriteRenderer:
   m_SortingLayerID: -707288653
   m_SortingLayer: 4
   m_SortingOrder: 0
-  m_Sprite: {fileID: 1317031645, guid: 7219ff5ad7099274d81fa32fdad0d632, type: 3}
+  m_Sprite: {fileID: 1255103126, guid: 7219ff5ad7099274d81fa32fdad0d632, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

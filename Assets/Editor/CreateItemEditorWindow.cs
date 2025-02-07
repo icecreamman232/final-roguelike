@@ -77,7 +77,6 @@ public class CreateItemEditorWindow : EditorWindow
         switch (m_itemCategory)
         {
             case ItemCategory.Weapon:
-                
                 break;
             case ItemCategory.Helmet:
                 asset = ScriptableObject.CreateInstance<HelmetData>();

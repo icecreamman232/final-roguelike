@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd05f7ea6016f7c439bc0fd6a879965a, type: 3}
+  m_Name: Club_WeaponData
+  m_EditorClassIdentifier: 
+  m_itemID: club
+  m_translatedName: Club
+  m_rarity: 0
+  m_itemCategory: 0
+  m_icon: {fileID: 1048198666, guid: 2a57bc0de8ba8674ebe524d88c906410, type: 3}
+  m_pickerPrefab: {fileID: 7668308471651813810, guid: 1f135c193a554f844889bb9182983c7e, type: 3}
+  m_modifierList: []
+  m_weaponCategory: 0
+  m_minDamage: 30
+  m_maxDamage: 60
+  m_baseDelayBetweenShots: 0.8
+  m_attackRange: 2
+  m_projectileSpeed: 15
+  m_weaponPrefab: {fileID: 7653509115085970721, guid: 484c3b853233c5e40a060e1dc89971f2, type: 3}
+  m_projectilePrefab: {fileID: 1191944228990883478, guid: c19fb9aff4299f742af6a36423151d1b, type: 3}
