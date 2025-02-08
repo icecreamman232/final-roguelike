@@ -27,6 +27,7 @@ namespace SGGames.Scripts.Modifiers
             
             var uniqueID = RandomController.GetUniqueID();
             var processor = EnemyModifierProcessorFactory.Create(uniqueID,this, modifier);
+            if (processor == null) return;
             m_processorContainer.Add(uniqueID,processor);
             
         }

@@ -22,5 +22,4 @@ MonoBehaviour:
   MaxStack: 5
   Duration: 3
   TickTime: 1.5
-  Modifiers:
-  - {fileID: 11400000, guid: 896f48634f6946c4a88919c5f6d47bb9, type: 2}
+  Modifiers: []

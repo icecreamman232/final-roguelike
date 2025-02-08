@@ -12,13 +12,19 @@ namespace SGGames.Scripts.Modifiers
                 case ModifierType.MOVEMENT:
                     processor = handler.gameObject.AddComponent<EnemyMovementModifierProcessor>();
                     break;
+                case ModifierType.ARMOR:
+                    break;
                 default:
                     throw new ArgumentException("Unknown modifier type");
             }
-            processor.Initialize(id,handler,modifier);
-            if (modifier.InstantTrigger)
+
+            if (processor != null)
             {
-                processor.StartModifier();
+                processor.Initialize(id,handler,modifier);
+                if (modifier.InstantTrigger)
+                {
+                    processor.StartModifier();
+                }
             }
             return processor;
         }
