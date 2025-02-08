@@ -18,4 +18,5 @@ MonoBehaviour:
   m_itemCategory: 2
   m_icon: {fileID: -695934930, guid: 56581fc79b1d40246a47416775ee280d, type: 3}
   m_pickerPrefab: {fileID: 0}
-  m_modifierList: []
+  m_modifierList:
+  - {fileID: 11400000, guid: 592d7c09c9efd7845890be1d7d90d130, type: 2}

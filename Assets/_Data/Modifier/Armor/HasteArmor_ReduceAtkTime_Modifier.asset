@@ -18,4 +18,4 @@ MonoBehaviour:
   InstantTrigger: 1
   PostTriggerBehavior: 0
   IsRunning: 0
-  ModifierValue: -0.25
+  ModifierValue: -0.3
