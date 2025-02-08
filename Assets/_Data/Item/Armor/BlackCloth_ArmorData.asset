@@ -17,5 +17,6 @@ MonoBehaviour:
   m_rarity: 0
   m_itemCategory: 2
   m_icon: {fileID: 1272948400, guid: 56581fc79b1d40246a47416775ee280d, type: 3}
-  m_pickerPrefab: {fileID: 0}
-  m_modifierList: []
+  m_pickerPrefab: {fileID: 6713174294437368463, guid: 7debe510352628444b881d05e252a26a, type: 3}
+  m_modifierList:
+  - {fileID: 11400000, guid: 09715f88e10e1e34b960c65092723b20, type: 2}
