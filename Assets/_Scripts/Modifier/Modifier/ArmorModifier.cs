@@ -8,7 +8,7 @@ namespace SGGames.Scripts.Modifiers
         ModifyArmorForDuration,
     }
     
-    [CreateAssetMenu(fileName = "ArmorModifier", menuName = "SGGames/Modifiers/Armor Modifier")]
+    [CreateAssetMenu(fileName = "ArmorModifier", menuName = "SGGames/Modifiers/Armor")]
     public class ArmorModifier : Modifier
     {
         public ArmorModifierType ArmorModifierType;

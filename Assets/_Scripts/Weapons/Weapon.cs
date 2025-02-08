@@ -31,7 +31,7 @@ namespace SGGames.Scripts.Weapons
         protected bool m_isOnLeft;
         
         public float BaseDelayBetweenShots => m_baseDelayBetweenShots;
-       
+        public float CurrentDelayBetweenShots => m_currentDelayBetweenShots;
         
         public WeaponState CurrentState => m_currentState;
         

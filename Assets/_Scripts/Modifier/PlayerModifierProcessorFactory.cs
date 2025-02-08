@@ -48,6 +48,9 @@ namespace SGGames.Scripts.Modifiers
                 case ModifierType.WEAPON_TYPE_BASED:
                     processor = handler.gameObject.AddComponent<PlayerWeaponTypeModifierProcessor>();
                     break;
+                case ModifierType.ATTACK_TIME:
+                    processor = handler.gameObject.AddComponent<PlayerAttackTimeModifierProcessor>();
+                    break;
                 default:
                     throw new ArgumentException("Unknown modifier type");
             }

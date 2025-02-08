@@ -30,6 +30,7 @@ namespace SGGames.Scripts.Player
 
         public Action<WeaponData> OnEquipWeapon;
         public WeaponData CurrentWeaponData => m_curWeaponData;
+        public Weapon CurrentWeapon => m_currentWeapon;
         
         protected override void Start()
         {
