@@ -1,11 +1,10 @@
-using System;
 using System.Collections.Generic;
 using SGGames.Scripts.Common;
 using UnityEngine;
 
 namespace SGGames.Scripts.Data
 {
-    [CreateAssetMenu(menuName = "SGGames/Data/Item Container")]
+    [CreateAssetMenu(menuName = "SGGames/Container/Item Container",order = 2)]
     public class ItemContainer : ScriptableObject
     {
         [SerializeField] private ItemCategory m_containerCategory;

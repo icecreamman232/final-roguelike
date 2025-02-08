@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Data
 {
-    [CreateAssetMenu(menuName = "SGGames/Data/Player Ability Container")]
+    [CreateAssetMenu(menuName = "SGGames/Container/Player Ability Container",order = 1)]
     public class PlayerAbilityContainer : ScriptableObject
     {
         [SerializeField] private AbilityData[] m_abilityContainer;

@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Data
 {
-    [CreateAssetMenu(menuName = "SGGames/Data/Player Exp")]
+    [CreateAssetMenu(menuName = "SGGames/Progression/Player Exp")]
     public class PlayerExpData : ScriptableObject
     {
         [SerializeField] private LevelData[] m_level;

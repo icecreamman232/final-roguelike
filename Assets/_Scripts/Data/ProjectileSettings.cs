@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Data
 {
-    [CreateAssetMenu(fileName = "Projectile Settings", menuName = "SGGames/Data/Weapon/Projectile Settings")]
+    [CreateAssetMenu(fileName = "Projectile Settings", menuName = "SGGames/Weapon/Projectile Settings", order = 0)]
     public class ProjectileSettings : ScriptableObject
     {
         [Header("Common Settings")] 

@@ -4,7 +4,7 @@ using Random = UnityEngine.Random;
 
 namespace SGGames.Scripts.Data
 {
-    [CreateAssetMenu(menuName = "SGGames/Data/Shoot Pattern")]
+    [CreateAssetMenu(menuName = "SGGames/Weapon/Shoot Pattern")]
     public class ShootPatternData : ScriptableObject
     {
         public ProjectilePattern[] ShootPattern;
