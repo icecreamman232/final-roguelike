@@ -1,3 +1,4 @@
+using SGGames.Scripts.Common;
 using UnityEngine;
 
 namespace SGGames.Scripts.Modifiers
@@ -8,7 +9,7 @@ namespace SGGames.Scripts.Modifiers
         ModifyArmorForDuration,
     }
     
-    [CreateAssetMenu(fileName = "ArmorModifier", menuName = "SGGames/Modifiers/Armor")]
+    [CreateAssetMenu(fileName = "ArmorModifier", menuName = "SGGames/Modifiers/Armor",order = 0)]
     public class ArmorModifier : Modifier
     {
         public ArmorModifierType ArmorModifierType;

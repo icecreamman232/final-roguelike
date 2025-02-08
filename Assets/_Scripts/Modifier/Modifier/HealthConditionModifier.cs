@@ -7,7 +7,7 @@ namespace SGGames.Scripts.Modifiers
         CurrentHealthCondition,
     }
     
-    [CreateAssetMenu(fileName = "HealthConditionModifier", menuName = "SGGames/Modifiers/Health Condition")]
+    [CreateAssetMenu(fileName = "HealthConditionModifier", menuName = "SGGames/Modifiers/Health Condition",order = 8)]
     public class HealthConditionModifier : Modifier
     {
         public ComparisonType ComparisonType;

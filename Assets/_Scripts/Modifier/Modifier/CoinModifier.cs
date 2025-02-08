@@ -13,7 +13,7 @@ namespace SGGames.Scripts.Modifiers
         ADD_COIN_MULTIPLIER_FOR_ALL,
     }
     
-    [CreateAssetMenu(fileName = "CoinModifier", menuName = "SGGames/Modifiers/Coin Modifier")]
+    [CreateAssetMenu(fileName = "CoinModifier", menuName = "SGGames/Modifiers/Coin",order = 3)]
     public class CoinModifier : Modifier
     {
         public CoinModifierType CoinModifierType;

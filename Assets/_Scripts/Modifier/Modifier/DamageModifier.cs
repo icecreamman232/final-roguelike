@@ -16,7 +16,7 @@ namespace SGGames.Scripts.Modifiers
         ModifyStun,
     }
     
-    [CreateAssetMenu(fileName = "DamageModifier", menuName = "SGGames/Modifiers/Damage Modifier")]
+    [CreateAssetMenu(fileName = "DamageModifier", menuName = "SGGames/Modifiers/Damage",order = 5)]
     public class DamageModifier : Modifier
     {
         public DamageModifierType DamageModifierType;

@@ -14,7 +14,7 @@ namespace SGGames.Scripts.Modifiers
         Modify_Mana_Regenerate_For_Duration,
     }
     
-    [CreateAssetMenu(fileName = "Mana Modifier", menuName = "SGGames/Modifiers/Mana Modifier")]
+    [CreateAssetMenu(fileName = "Mana Modifier", menuName = "SGGames/Modifiers/Mana",order = 10)]
     public class ManaModifier : Modifier
     {
         public ManaModifierType ManaModifierType;

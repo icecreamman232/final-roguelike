@@ -9,7 +9,7 @@ namespace SGGames.Scripts.Modifiers
     }
     
     
-    [CreateAssetMenu(fileName = "HealingModifier", menuName = "SGGames/Modifiers/Healing Modifier")]
+    [CreateAssetMenu(fileName = "HealingModifier", menuName = "SGGames/Modifiers/Healing",order = 7)]
     public class HealingModifier : Modifier
     {
         public HealingModifierType HealingModifierType;

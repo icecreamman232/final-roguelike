@@ -8,7 +8,7 @@ namespace SGGames.Scripts.Modifiers
         ModifyMovespeed,
     }
     
-    [CreateAssetMenu(fileName = "MovementModifier", menuName = "SGGames/Modifiers/Movement Modifier")]
+    [CreateAssetMenu(fileName = "MovementModifier", menuName = "SGGames/Modifiers/Movement",order = 11)]
     public class MovementModifier : Modifier
     {
         public MovementModifierType MovementModifierType;

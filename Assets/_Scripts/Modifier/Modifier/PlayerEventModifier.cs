@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace SGGames.Scripts.Modifiers
 {
-    [CreateAssetMenu(fileName = "Player Event Modifier", menuName = "SGGames/Modifiers/Player Event Modifier")]
+    [CreateAssetMenu(fileName = "Player Event Modifier", menuName = "SGGames/Modifiers/Player Event",order = 12)]
     public class PlayerEventModifier : Modifier
     {
         public PlayerEventType EventTypeToTrigger;

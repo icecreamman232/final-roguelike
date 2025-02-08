@@ -16,7 +16,7 @@ namespace SGGames.Scripts.Modifiers
     }
     
     
-    [CreateAssetMenu(fileName = "HealthModifier", menuName = "SGGames/Modifiers/Health Modifier")]
+    [CreateAssetMenu(fileName = "HealthModifier", menuName = "SGGames/Modifiers/Health",order = 9)]
     public class HealthModifier : Modifier
     {
         public HealthModifierType HealthModifierType;
