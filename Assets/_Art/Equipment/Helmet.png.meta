@@ -110,7 +110,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Common-soldier-helmet
+      name: Iron-Helmet
       rect:
         serializedVersion: 2
         x: 0
@@ -278,7 +278,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Evil-helmet
+      name: Red-Head
       rect:
         serializedVersion: 2
         x: 0
@@ -509,7 +509,7 @@ TextureImporter:
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Hunter-cap
+      name: Cap
       rect:
         serializedVersion: 2
         x: 96
@@ -564,19 +564,19 @@ TextureImporter:
       Angel-crown: 129118453
       Barbarian-helmet: 125617312
       Black-shadow-mask: -683217886
+      Cap: 870946648
       Captain-helmet: 1679268514
-      Common-soldier-helmet: -1715481063
       Conqueror-Helmet: -1782871475
       Deadeye-mask: -2012977387
-      Evil-helmet: 2081394859
       Guardian-helmet: -89403075
       Head-Band: 1002600149
-      Hunter-cap: 870946648
+      Iron-Helmet: -1715481063
       Leather-hood: -934698402
       Lucky-hat: 222037094
       Mage-Hat: 1539394391
       Midas-crown: 1577370035
       Ranged-Cap: -710671636
+      Red-Head: 2081394859
       Shinobi-Mask: 1740651586
       Thorn-helmet: -795683323
       Witch-Hat: 1250357084

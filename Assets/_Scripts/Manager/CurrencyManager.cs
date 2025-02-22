@@ -62,14 +62,14 @@ namespace SGGames.Scripts.Manager
             m_keyPicked -= amount;
         }
 
-        public void AddExtraCoinForEnemy(int amount)
+        public void AddExtraCoinForEnemy(float amount)
         {
-            m_extraCoinForEnemy += amount;
+            m_extraCoinForEnemy += (int)amount;
         }
 
-        public void AddExtraCoinForChest(int amount)
+        public void AddExtraCoinForChest(float amount)
         {
-            m_extraCoinForChest += amount;
+            m_extraCoinForChest += (int)amount;
         }
 
         public void AddExtraCoinChestMultiplier(float add)

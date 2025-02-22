@@ -9,15 +9,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948bff92dc711f747b30c405722d0cfb, type: 3}
-  m_Name: HunterCap_IncreaseMulDamage_ForMelee_Modifier
+  m_Script: {fileID: 11500000, guid: 4534c7fbb6b840144a2a773a2ac65a5e, type: 3}
+  m_Name: LuckyHat Increase Coin Multiplier From Enemy Mod
   m_EditorClassIdentifier: 
-  Description: 
-  ModifierType: 2
+  Description: <color=yellow>+1.5%</color> coin drops from enemy
+  ModifierType: 0
   Duration: 0
   InstantTrigger: 1
-  PostTriggerBehavior: 0
+  AfterStopBehavior: 0
   IsRunning: 0
-  DamageModifierType: 5
-  ChanceToCause: 100
-  ModifierValue: 0.15
+  CoinModifierType: 3
+  ModifierValue: 1.5

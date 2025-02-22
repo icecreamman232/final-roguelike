@@ -17,7 +17,7 @@ namespace SGGames.Scripts.Modifiers
     public class CoinModifier : Modifier
     {
         public CoinModifierType CoinModifierType;
-        public int ModifierValue;
+        public float ModifierValue;
     }
 }
 
