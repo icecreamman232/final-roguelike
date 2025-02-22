@@ -9,13 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4534c7fbb6b840144a2a773a2ac65a5e, type: 3}
-  m_Name: ThiefBand_AddCoinAll_Modifier
+  m_Script: {fileID: 11500000, guid: feaec82dd1152d94085ba416f86ed592, type: 3}
+  m_Name: HeadBand Increase Dodge Mod
   m_EditorClassIdentifier: 
-  Description: Earn extra <color=yellow>3</color> coins.
-  ModifierType: 5
+  Description: Increase <color=yellow>5%</color> dodge
+  ModifierType: 0
   Duration: 0
   InstantTrigger: 1
+  AfterStopBehavior: 0
   IsRunning: 0
-  CoinModifierType: 2
-  ModifierValue: 3
+  HealthModifierType: 6
+  ModifierValue: 5
+  IsPercentValue: 0

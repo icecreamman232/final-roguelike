@@ -19,6 +19,7 @@ namespace SGGames.Scripts.Modifiers
     [CreateAssetMenu(fileName = "HealthModifier", menuName = "SGGames/Modifiers/Health",order = 9)]
     public class HealthModifier : Modifier
     {
+        [Header("Health")]
         public HealthModifierType HealthModifierType;
         public float ModifierValue;
         public bool IsPercentValue;

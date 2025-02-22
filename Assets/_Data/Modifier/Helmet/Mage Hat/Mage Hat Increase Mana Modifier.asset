@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: fc78613e77ad2f6488a88a215f5214de, type: 3}
-  m_Name: Apprentice Mage Increase Mana Modifier
+  m_Name: Mage Hat Increase Mana Modifier
   m_EditorClassIdentifier: 
-  Description: Increase <color=yellow>50</color> mana.
+  Description: Increase <color=yellow>30</color> mana.
   ModifierType: 9
   Duration: 0
   InstantTrigger: 1
-  PostTriggerBehavior: 0
+  AfterStopBehavior: 0
   IsRunning: 0
   ManaModifierType: 0
-  ModifierValue: 50
+  ModifierValue: 30
+  IsPercentValue: 0

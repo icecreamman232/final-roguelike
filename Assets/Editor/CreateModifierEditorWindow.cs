@@ -133,7 +133,7 @@ namespace SGGames.Scripts.EditorExtension
             modifier.Description = m_modifierDesc;
             modifier.Duration = m_duration;
             modifier.InstantTrigger = m_isInstantTrigger;
-            modifier.PostTriggerBehavior = m_postTriggerBehavior;
+            modifier.AfterStopBehavior = m_postTriggerBehavior;
         }
 
         private void AddModifier()

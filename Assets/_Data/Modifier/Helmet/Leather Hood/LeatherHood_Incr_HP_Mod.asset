@@ -9,15 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 948bff92dc711f747b30c405722d0cfb, type: 3}
-  m_Name: RangedCap_IncreaseCritChance_Modifier
+  m_Script: {fileID: 11500000, guid: feaec82dd1152d94085ba416f86ed592, type: 3}
+  m_Name: LeatherHood_Incr_HP_Mod
   m_EditorClassIdentifier: 
-  Description: Increase <color=yellow>5%</color> critical chance.
-  ModifierType: 2
+  Description: Increase <color=yellow>50</color> HP
+  ModifierType: 1
   Duration: 0
   InstantTrigger: 1
-  PostTriggerBehavior: 0
+  AfterStopBehavior: 0
   IsRunning: 0
-  DamageModifierType: 3
-  ChanceToCause: 100
-  ModifierValue: 5
+  HealthModifierType: 3
+  ModifierValue: 50
+  IsPercentValue: 0

@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace SGGames.Scripts.Modifiers
 {
@@ -6,11 +7,11 @@ namespace SGGames.Scripts.Modifiers
     {
         [TextArea]
         public string Description;
-        [Header("Data")]
+        [Header("Base")]
         public ModifierType ModifierType;
         public float Duration;
-        public bool InstantTrigger;
-        public PostTriggerModifierBehavior PostTriggerBehavior;
+        public bool InstantTrigger = true;
+        public PostTriggerModifierBehavior AfterStopBehavior;
         [Header("Runtime Data")] 
         public bool IsRunning;
     }

@@ -37,7 +37,7 @@ namespace SGGames.Scripts.Modifiers
             m_isProcessing = false;
             m_modifier.IsRunning = false;
             
-            if (m_modifier.PostTriggerBehavior == PostTriggerModifierBehavior.SELF_REMOVED)
+            if (m_modifier.AfterStopBehavior == PostTriggerModifierBehavior.SELF_REMOVED)
             {
                 m_handler.RemoveProcessor(this);
             }

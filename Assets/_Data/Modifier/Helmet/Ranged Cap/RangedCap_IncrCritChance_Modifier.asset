@@ -9,13 +9,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 63f9bc18ec3407647bd8829d7a9c08b8, type: 3}
-  m_Name: LeatherHood_AddArmor_Modifier
+  m_Script: {fileID: 11500000, guid: 948bff92dc711f747b30c405722d0cfb, type: 3}
+  m_Name: RangedCap_IncrCritChance_Modifier
   m_EditorClassIdentifier: 
-  Description: <color=yellow>+2</color> armor.
-  ModifierType: 4
+  Description: Increase <color=yellow>10%</color> crit chance
+  ModifierType: 2
   Duration: 0
   InstantTrigger: 1
+  AfterStopBehavior: 0
   IsRunning: 0
-  ArmorModifierType: 0
-  ModifierValue: 2
+  DamageModifierType: 3
+  ChanceToCause: 100
+  ModifierValue: 10
