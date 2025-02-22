@@ -10,7 +10,7 @@ namespace SGGames.Scripts.Modifiers
         ModifyMaxHPForDuration,
         ModifyMaxHP,
         ModifyCurrentHP,
-        SetImmortal_ForDuration,
+        SetImmortalForDuration,
         ModifyDodgeRate,
         ChanceToNotTakingDamage,
     }

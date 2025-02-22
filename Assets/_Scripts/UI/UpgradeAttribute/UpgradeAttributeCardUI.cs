@@ -66,7 +66,7 @@ namespace SGGames.Scripts.UI
                     break;
             }
 
-            m_attributeIcon.sprite = m_attributeIconContainer.GetSprite((int)attributeReward.type);
+            m_attributeIcon.sprite = m_attributeIconContainer.GetItemAtIndex((int)attributeReward.type);
             m_titleText.text = GetTitleText(attributeReward.type) + " Upgrade";
             m_descText.text = GetDescText(attributeReward.type, attributeReward.tier);
         }

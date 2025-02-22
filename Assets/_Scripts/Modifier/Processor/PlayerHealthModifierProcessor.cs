@@ -24,7 +24,7 @@ namespace SGGames.Scripts.Modifiers
                     m_handler.PlayerHealth.ModifyMaxHealth(healthModifier.ModifierValue,healthModifier.IsPercentValue);
                     m_isProcessing = true;
                     break;
-                case HealthModifierType.SetImmortal_ForDuration:
+                case HealthModifierType.SetImmortalForDuration:
                     m_handler.PlayerHealth.SetImmortal(true);
                     m_isProcessing = true;
                     break;
@@ -67,7 +67,7 @@ namespace SGGames.Scripts.Modifiers
                 case HealthModifierType.ModifyCurrentHPForDuration:
                     m_handler.PlayerHealth.ModifyCurrentHealth(-healthModifier.ModifierValue);
                     break;
-                case HealthModifierType.SetImmortal_ForDuration:
+                case HealthModifierType.SetImmortalForDuration:
                     m_handler.PlayerHealth.SetImmortal(false);
                     break;
                 case HealthModifierType.ModifyMaxHP:
