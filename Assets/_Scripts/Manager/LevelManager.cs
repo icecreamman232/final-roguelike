@@ -72,6 +72,7 @@ namespace SGGames.Scripts.Managers
         
         private void Start()
         {
+            RandomController.SetupRandomness();
             RandomController.SetSeed();
             m_changeRoomEvent.Raise(m_currentAreaIndex,m_roomIndex);
             m_enterDoorEvent.AddListener(OnPlayerEnterDoor);

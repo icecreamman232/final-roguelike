@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 3960686048255672345}
   - component: {fileID: 1314724850447962399}
   - component: {fileID: 2835915410142318128}
-  - component: {fileID: 3384134836282244316}
   m_Layer: 0
   m_Name: Visual
   m_TagString: Untagged
@@ -172,27 +171,6 @@ MonoBehaviour:
   m_hasFontAssetChanged: 0
   m_renderer: {fileID: 1314724850447962399}
   m_maskType: 0
---- !u!95 &3384134836282244316
-Animator:
-  serializedVersion: 5
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 108037873188928709}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 3f42e2b46de30a844bd70c4da0c4840f, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &5484872034667696735
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,7 +180,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 502047676811768858}
-  - component: {fileID: 8680246070984501701}
+  - component: {fileID: -2746724515185403011}
+  - component: {fileID: -1967023576825715937}
   m_Layer: 0
   m_Name: DamageNumber
   m_TagString: Untagged
@@ -226,7 +205,7 @@ Transform:
   - {fileID: 3960686048255672345}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &8680246070984501701
+--- !u!114 &-2746724515185403011
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -235,8 +214,31 @@ MonoBehaviour:
   m_GameObject: {fileID: 5484872034667696735}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dd17b22a5c8301b49ae0a77d325055b6, type: 3}
+  m_Script: {fileID: 11500000, guid: 2192c456bb84f804aa4b04b6c64a7acb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_target: {fileID: 5484872034667696735}
-  m_durationBeforeDisable: 0.59
+  MovingPart: {fileID: 502047676811768858}
+  Billboard: {fileID: 0}
+  TargetTextMesh: {fileID: 0}
+  Direction: {x: 0, y: 1, z: 0}
+  TargetTextMeshPro: {fileID: 2835915410142318128}
+--- !u!114 &-1967023576825715937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5484872034667696735}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 72de0b0360096ea41a18d17864ecb963, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BoundsBasedOn: 3
+  ExecuteOnEnable:
+    m_PersistentCalls:
+      m_Calls: []
+  ExecuteOnDisable:
+    m_PersistentCalls:
+      m_Calls: []
+  LifeTime: 0

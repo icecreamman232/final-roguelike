@@ -490,7 +490,6 @@ namespace MoreMountains.Feedbacks
 			{
 				return;
 			}
-
 			UseUnscaledTime = useUnscaledTime;
 			Spawn(value, spawnPosition, direction, intensity, forceLifetime, lifetime, forceColor, animateColorGradient);
 		}

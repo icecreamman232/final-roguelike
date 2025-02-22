@@ -31,6 +31,9 @@ namespace SGGames.Scripts.Healths
         public Action<EnemyHealth> OnEnemyDeath;
         
         protected EnemyHitInfo m_hitInfo;
+        
+        private MMChannelData m_normalHitDmgNumberChannelData;
+        private MMChannelData m_critHitDmgNumberChannelData;
 
         protected override void Start()
         {
@@ -39,6 +42,8 @@ namespace SGGames.Scripts.Healths
             ResetHealth();
             m_bodyCollider = GetComponent<BoxCollider2D>();
             m_enemyMovement = GetComponent<EnemyMovement>();
+            m_normalHitDmgNumberChannelData = new MMChannelData(MMChannelModes.Int, 0, null);
+            m_critHitDmgNumberChannelData = new MMChannelData(MMChannelModes.Int, 1, null);
         }
 
         public override void TakeDamage(float damage, GameObject source, float invincibilityDuration, bool isCritical = false)
@@ -55,6 +60,13 @@ namespace SGGames.Scripts.Healths
             
             OnHit?.Invoke(m_hitInfo);
 
+            MMFloatingTextSpawnEvent.Trigger(
+                channelData:isCritical ? m_critHitDmgNumberChannelData : m_normalHitDmgNumberChannelData,
+                spawnPosition:transform.position,
+                value:isCritical ? $"{damage.ToString()}!" : $"{damage.ToString()}",
+                direction:Vector3.up,
+                intensity:1);
+            
             UpdateHealthBar();
 
             if (m_currentHealth <= 0)

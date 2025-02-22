@@ -1,5 +1,6 @@
 
 using System;
+using System.Collections.Generic;
 using System.Text;
 using MoreMountains.Tools;
 using UnityEngine;
@@ -7,13 +8,36 @@ using Random = System.Random;
 
 namespace SGGames.Scripts.Common
 {
+    public enum RandomCategory
+    {
+        Seed,
+        DamageNumberID,
+        COUNT,
+    }
+    
     public static class RandomController
     {
         private static Random m_random;
+        private static Dictionary<RandomCategory, Random> m_randomCategories;
 
         private static byte[] m_rawSeedArray = new byte[5];
         private static string m_seed;
 
+        /// <summary>
+        ///Setup different randomness for each random category
+        /// </summary>
+        public static void SetupRandomness()
+        {
+            m_randomCategories = new Dictionary<RandomCategory, Random>();
+            
+            //Exclude seed category since we will have separate for it
+            for (int i = 1; i < (int)RandomCategory.COUNT; i++)
+            {
+                m_randomCategories.Add((RandomCategory)i, new Random());
+            }
+        }
+        
+        
         public static string GetSeed()
         {
             return m_seed;
@@ -59,9 +83,16 @@ namespace SGGames.Scripts.Common
             return m_random.Next(Int32.MaxValue).ToString();
         }
 
-        public static int GetRandomIntInRange(int min, int max)
+        public static int GetRandomIntInRange(int min, int max, RandomCategory category = RandomCategory.Seed)
         {
-            return m_random.Next(min, max);
+            return category == RandomCategory.Seed
+                ? m_random.Next(min, max)
+                : m_randomCategories[category].Next(min, max);
+        }
+
+        public static int GetRandomInt(RandomCategory category = RandomCategory.Seed)
+        {
+            return category == RandomCategory.Seed ? m_random.Next() : m_randomCategories[category].Next();
         }
     }
 }
