@@ -438,8 +438,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_isAllow: 1
+  m_movementState: 0
   m_movementMode: 0
-  m_canMove: 0
   m_initialSpeed: 4
   m_currentSpeed: 0
   m_direction: {x: 0, y: 0}
@@ -447,6 +447,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 1024
   m_followingTarget: {fileID: 0}
+  m_knockBackThreshold: 0
 --- !u!114 &6263220240942011351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -466,6 +467,9 @@ MonoBehaviour:
   m_multiplyDamage: 1
   m_critDamage: 0
   m_damageableInvulnerableTime: 0.3
+  m_knockBackForce: 0
+  m_knockBackDuration: 0
+  m_stunDuration: 0
   m_damageableLayerMask:
     serializedVersion: 2
     m_Bits: 64
@@ -766,6 +770,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 516
       objectReference: {fileID: 0}
+    - target: {fileID: 6494723164975990838, guid: 09ada9810c99a4a40a26bcf4425c5fd2, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -776,6 +784,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 2978341369451746414, guid: 09ada9810c99a4a40a26bcf4425c5fd2, type: 3}
   m_PrefabInstance: {fileID: 1505690365899660288}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &4599001714190806969 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 3114141115317236665, guid: 09ada9810c99a4a40a26bcf4425c5fd2, type: 3}
+  m_PrefabInstance: {fileID: 1505690365899660288}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6da4ee2d6c09fae4da2af62243e04581, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &5340289107883239652 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 6843727398788789476, guid: 09ada9810c99a4a40a26bcf4425c5fd2, type: 3}
@@ -839,6 +858,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1779511518084553507, guid: a7f830a26b4d07649b06717ba0c3be3f, type: 3}
+      propertyPath: m_statusBar
+      value: 
+      objectReference: {fileID: 4599001714190806969}
     - target: {fileID: 1779511518084553507, guid: a7f830a26b4d07649b06717ba0c3be3f, type: 3}
       propertyPath: m_modifierHandler
       value: 

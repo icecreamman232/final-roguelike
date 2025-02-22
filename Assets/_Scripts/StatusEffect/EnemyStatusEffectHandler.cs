@@ -14,6 +14,12 @@ namespace SGGames.Scripts.StatusEffects
         {
             m_forPlayer = false;
             base.Start();
+#if UNITY_EDITOR
+            if (m_statusBar == null)
+            {
+                Debug.LogError($"Enemy status bar not found on {this.gameObject}");
+            }
+#endif
         }
 
         public override void UpdateStatusUI(StatusEffectType effectType, int stackAmount)
