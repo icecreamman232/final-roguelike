@@ -59,7 +59,7 @@ namespace SGGames.Scripts.Player
             if (m_abilityState != AbilityState.READY) return;
             if (m_playerMana.CurrentMana < m_manaCost) return;
             
-            m_playerEvent.Raise(PlayerEventType.USE_DEFENSE_ABILITY);
+            m_playerEvent.Raise(PlayerEventType.ON_USING_SKILL);
             m_playerMana.SpentMana(m_manaCost);
             
             StartCoroutine(OnTriggerShield());

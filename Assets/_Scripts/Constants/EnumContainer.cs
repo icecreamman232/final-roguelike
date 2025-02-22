@@ -12,14 +12,16 @@ namespace SGGames.Scripts.Common
 
     public enum PlayerEventType
     {
-        TAKE_DAMAGE,
-        HEALING,
-        DODGE,
-        
-        USE_WEAPON,
-        EQUIP_WEAPON,
-        
-        USE_DEFENSE_ABILITY,
+        ON_ATTACK,
+        ON_BEING_HIT,
+        ON_DODGE_ATTACK,
+        ON_ENTER_ROOM,
+        ON_KILL_ENEMY,
+        ON_KILL_BOSS,
+        ON_CRITICAL_HIT,
+        ON_USING_POTION,
+        ON_USING_SKILL,
+        ON_DASHING,
     }
     
     public enum InteractType

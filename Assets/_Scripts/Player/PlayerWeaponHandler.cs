@@ -88,7 +88,6 @@ namespace SGGames.Scripts.Player
 
             m_curWeaponData = newWeapon;
             OnEquipWeapon?.Invoke(newWeapon);
-            m_playerEvent.Raise(PlayerEventType.EQUIP_WEAPON);
         }
 
         public virtual void UnEquipWeapon()
@@ -112,7 +111,7 @@ namespace SGGames.Scripts.Player
             
             if (Input.GetMouseButton(0) && CanUseWeapon())
             {
-                m_playerEvent.Raise(PlayerEventType.USE_WEAPON);
+                m_playerEvent.Raise(PlayerEventType.ON_ATTACK);
                 UseWeapon();
             }
         }

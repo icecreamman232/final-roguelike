@@ -179,3 +179,4 @@ MonoBehaviour:
   m_isMovingTowardPlayer: 0
   m_potionType: 0
   m_healingAmount: 50
+  m_playerEvent: {fileID: 11400000, guid: b065f74e84bb99e4a9f98567722831a3, type: 2}

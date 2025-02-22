@@ -20,6 +20,7 @@ namespace SGGames.Scripts.Managers
         [Header("Player")] 
         [SerializeField] private HeroData m_heroData;
         [SerializeField][ReadOnly] private GameObject m_playerRef;
+        [SerializeField]private PlayerEvent m_playerEvent;
         [Header("Area")]
         [SerializeField] private int m_currentAreaIndex;
         [Header("Room")]
@@ -143,6 +144,7 @@ namespace SGGames.Scripts.Managers
             yield return new WaitForSeconds(m_delayBeforeEnemyAtk);
     
             m_gameEvent.Raise(GameEventType.ENTER_THE_ROOM);
+            m_playerEvent.Raise(PlayerEventType.ON_ENTER_ROOM);
             m_freezePlayerEvent.Raise(false);
             m_freezeInputEvent.Raise(false);
         }
@@ -190,6 +192,7 @@ namespace SGGames.Scripts.Managers
             yield return new WaitForSeconds(ScreenFader.FadeDuration);
             yield return new WaitForSeconds(m_delayBeforeEnemyAtk);
             m_gameEvent.Raise(GameEventType.ENTER_THE_ROOM);
+            m_playerEvent.Raise(PlayerEventType.ON_ENTER_ROOM);
             if (!isBossRoom)
             {
                 m_freezePlayerEvent.Raise(false);
@@ -208,6 +211,10 @@ namespace SGGames.Scripts.Managers
             {
                 m_currentRoom.OpenDoors();
                 m_gameEvent?.Raise(GameEventType.ROOM_CLEARED);
+            }
+            else
+            {
+                m_playerEvent?.Raise(PlayerEventType.ON_KILL_ENEMY);
             }
         }
         

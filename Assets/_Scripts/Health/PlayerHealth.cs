@@ -111,7 +111,7 @@ namespace SGGames.Scripts.Healths
                 m_onHitInfo.IsImmortal = false;
                 m_onHitInfo.DamageTaken = 0;
                 OnHit?.Invoke(m_onHitInfo);
-                m_PlayerEvent.Raise(PlayerEventType.DODGE);
+                m_PlayerEvent.Raise(PlayerEventType.ON_DODGE_ATTACK);
                 return;
             }
             var finalDamage = damage * (1- m_armor/100);;
@@ -125,7 +125,7 @@ namespace SGGames.Scripts.Healths
             
             OnChangeCurrentHealth?.Invoke(m_currentHealth);
             
-            m_PlayerEvent.Raise(PlayerEventType.TAKE_DAMAGE);
+            m_PlayerEvent.Raise(PlayerEventType.ON_BEING_HIT);
             
             m_spriteFlicker.FlickerSprite(m_spriteRenderer,invincibilityDuration,m_flickerFrequency);
             UpdateHealthBar();
@@ -200,7 +200,6 @@ namespace SGGames.Scripts.Healths
 
         public void HealingFlatAmount(float amount)
         {
-            m_PlayerEvent.Raise(PlayerEventType.HEALING);
             m_currentHealth += amount;
             if (m_currentHealth > m_maxHealth)
             {
@@ -212,7 +211,6 @@ namespace SGGames.Scripts.Healths
 
         public void HealingPercentMaxHealth(float percent)
         {
-            m_PlayerEvent.Raise(PlayerEventType.HEALING);
             var healingAmount = (percent / 100f) * m_maxHealth;
             m_currentHealth += healingAmount;
             if (m_currentHealth > m_maxHealth)

@@ -47,6 +47,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_heroData: {fileID: 11400000, guid: 50bdbb5ab25655341a0e4a7095a79f90, type: 2}
   m_playerRef: {fileID: 0}
+  m_playerEvent: {fileID: 11400000, guid: b065f74e84bb99e4a9f98567722831a3, type: 2}
   m_currentAreaIndex: 0
   m_roomGenerator: {fileID: 2208443471756085808}
   m_leftSideRoomList: []
