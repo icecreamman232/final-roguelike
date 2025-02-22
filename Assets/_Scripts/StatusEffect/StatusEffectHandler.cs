@@ -44,9 +44,13 @@ namespace SGGames.Scripts.StatusEffects
             }
         }
 
-        public void UpdateStatusUI(StatusEffectType effectType,int stackAmount)
+        public virtual void UpdateStatusUI(StatusEffectType effectType,int stackAmount)
         {
-            m_statusEffectEvent.Raise(effectType,stackAmount);
+            if (m_statusEffectEvent != null)
+            {
+                m_statusEffectEvent.Raise(effectType,stackAmount);
+            }
+            
         }
 
         protected virtual void Update()

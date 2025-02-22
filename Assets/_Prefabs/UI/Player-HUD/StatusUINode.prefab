@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 987010702611981496}
   - component: {fileID: 3079827232720200354}
   m_Layer: 5
-  m_Name: StatusUINocde
+  m_Name: StatusUINode
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

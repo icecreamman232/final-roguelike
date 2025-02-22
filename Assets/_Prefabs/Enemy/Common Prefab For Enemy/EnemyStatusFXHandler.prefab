@@ -45,5 +45,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_forPlayer: 0
-  m_statusEffectEvent: {fileID: 11400000, guid: ead2b868da335e448a9b1e3b79847266, type: 2}
+  m_statusEffectEvent: {fileID: 0}
   m_modifierHandler: {fileID: 0}
+  m_statusBar: {fileID: 0}
