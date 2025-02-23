@@ -12,6 +12,8 @@ namespace MoreMountains.Tools
 	{
 		/// the name of the animation parameter to hash
 		public string ParameterName;
+
+		public float Duration;
 		/// the animator to update
 		public Animator TargetAnimator;
 

@@ -1,4 +1,6 @@
 using System;
+using System.Collections;
+using MoreMountains.Tools;
 using SGGames.Scripts.Common;
 using SGGames.Scripts.Core;
 using SGGames.Scripts.Events;
@@ -23,15 +25,21 @@ namespace SGGames.Scripts.Healths
         [SerializeField] private float m_armor;
         [SerializeField] private float m_dodgeRate;
         [SerializeField] private float m_flickerFrequency;
-        [SerializeField] private PlayerHealthUpdateEvent m_PlayerHealthUpdateEvent;
         [SerializeField] private float m_regenerationRate;
+        [SerializeField] private int m_reviveTime;
+        [Header("Events")]
+        [SerializeField] private PlayerHealthUpdateEvent m_PlayerHealthUpdateEvent;
         [SerializeField] private PlayerEvent m_PlayerEvent;
         [SerializeField] private BoolEvent m_playerGainImmortalEvent;
+        [Header("Animation")]
+        [SerializeField] private MMAnimationParameter m_deadAnim;
         
         private SpriteFlicker m_spriteFlicker;
         private readonly float m_regenerationInterval = 0.1f;
         private float m_regenerateTimer;
         private OnHitInfo m_onHitInfo;
+
+        private bool CanRevive => m_reviveTime > 0;
         
         public Action<OnHitInfo> OnHit; //Boolean pass is for dodge chance
         
@@ -63,11 +71,6 @@ namespace SGGames.Scripts.Healths
             {
                 Debug.LogError($"SpriteFlicker is null on {this.gameObject.name}");
             }
-        }
-
-        public void SetImmortalFromDash(bool isImmortal)
-        {
-            m_isImmortalFromDash = isImmortal;
         }
 
         private void Update()
@@ -105,6 +108,13 @@ namespace SGGames.Scripts.Healths
 
             return true;
         }
+        
+        private bool CanDodgeThisAttack()
+        {
+            var chance = Random.Range(0f, 100f);
+            return chance <= m_dodgeRate;
+        }
+        
         public override void TakeDamage(float damage, GameObject source, float invincibilityDuration, bool isCritical = false)
         {
             damage = m_percentDamageTaken * damage;
@@ -149,6 +159,11 @@ namespace SGGames.Scripts.Healths
 
             if (m_currentHealth <= 0)
             {
+                if (CanRevive)
+                {
+                    Revive();
+                    return;
+                }
                 Kill();
             }
             else
@@ -163,18 +178,40 @@ namespace SGGames.Scripts.Healths
             m_PlayerHealthUpdateEvent?.Raise(m_currentHealth,m_maxHealth,m_lastSourceCauseDamage);
         }
 
+        #region Kill
+        
         protected override void Kill()
+        {
+            if(m_isDead) return;
+            StartCoroutine(OnKillRoutine());
+        }
+
+        private IEnumerator OnKillRoutine()
         {
             ServiceLocator.UnregisterService<IPlayerHealthService>();
             base.Kill();
+            m_deadAnim.SetTrigger();
+            yield return new WaitForSeconds(m_deadAnim.Duration);
             this.gameObject.SetActive(false);
         }
+        
+        #endregion
 
-        private bool CanDodgeThisAttack()
+        #region Revive
+        private void Revive()
         {
-            var chance = Random.Range(0f, 100f);
-            return chance <= m_dodgeRate;
+            Debug.Log("Player has been revived");
+            StartCoroutine(OnReviveRoutine());
         }
+
+        private IEnumerator OnReviveRoutine()
+        {
+            yield return null;
+        }
+        
+        #endregion
+        
+        #region For modifier methods
 
         public void ModifyChanceToNotTakeDamage(float chance)
         {
@@ -243,5 +280,14 @@ namespace SGGames.Scripts.Healths
             base.SetImmortal(immortal);
             m_playerGainImmortalEvent.Raise(immortal);
         }
+        
+        #endregion
+        
+        #region For Dash
+        public void SetImmortalFromDash(bool isImmortal)
+        {
+            m_isImmortalFromDash = isImmortal;
+        }
+        #endregion
     }
 }
