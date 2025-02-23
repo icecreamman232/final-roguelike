@@ -89,6 +89,15 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Dash"",
+                    ""type"": ""Button"",
+                    ""id"": ""dcd2fc7f-353d-4454-9b11-1360bde6d2ea"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -183,7 +192,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                 {
                     ""name"": """",
                     ""id"": ""f2d9084c-5399-4fd0-a7cf-16d74cc4987c"",
-                    ""path"": ""<Keyboard>/space"",
+                    ""path"": ""<Keyboard>/f"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -212,6 +221,17 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
                     ""action"": ""PauseMenu"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""38c57c34-6536-4ec1-b237-97b360dd1166"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Dash"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -227,6 +247,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         m_Player_DefenseAbility = m_Player.FindAction("DefenseAbility", throwIfNotFound: true);
         m_Player_OffenseAbility = m_Player.FindAction("OffenseAbility", throwIfNotFound: true);
         m_Player_PauseMenu = m_Player.FindAction("PauseMenu", throwIfNotFound: true);
+        m_Player_Dash = m_Player.FindAction("Dash", throwIfNotFound: true);
     }
 
     ~@PlayerInputAction()
@@ -300,6 +321,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
     private readonly InputAction m_Player_DefenseAbility;
     private readonly InputAction m_Player_OffenseAbility;
     private readonly InputAction m_Player_PauseMenu;
+    private readonly InputAction m_Player_Dash;
     public struct PlayerActions
     {
         private @PlayerInputAction m_Wrapper;
@@ -311,6 +333,7 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         public InputAction @DefenseAbility => m_Wrapper.m_Player_DefenseAbility;
         public InputAction @OffenseAbility => m_Wrapper.m_Player_OffenseAbility;
         public InputAction @PauseMenu => m_Wrapper.m_Player_PauseMenu;
+        public InputAction @Dash => m_Wrapper.m_Player_Dash;
         public InputActionMap Get() { return m_Wrapper.m_Player; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -341,6 +364,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @PauseMenu.started += instance.OnPauseMenu;
             @PauseMenu.performed += instance.OnPauseMenu;
             @PauseMenu.canceled += instance.OnPauseMenu;
+            @Dash.started += instance.OnDash;
+            @Dash.performed += instance.OnDash;
+            @Dash.canceled += instance.OnDash;
         }
 
         private void UnregisterCallbacks(IPlayerActions instance)
@@ -366,6 +392,9 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
             @PauseMenu.started -= instance.OnPauseMenu;
             @PauseMenu.performed -= instance.OnPauseMenu;
             @PauseMenu.canceled -= instance.OnPauseMenu;
+            @Dash.started -= instance.OnDash;
+            @Dash.performed -= instance.OnDash;
+            @Dash.canceled -= instance.OnDash;
         }
 
         public void RemoveCallbacks(IPlayerActions instance)
@@ -392,5 +421,6 @@ public partial class @PlayerInputAction: IInputActionCollection2, IDisposable
         void OnDefenseAbility(InputAction.CallbackContext context);
         void OnOffenseAbility(InputAction.CallbackContext context);
         void OnPauseMenu(InputAction.CallbackContext context);
+        void OnDash(InputAction.CallbackContext context);
     }
 }

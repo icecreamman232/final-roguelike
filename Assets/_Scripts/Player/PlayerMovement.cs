@@ -1,10 +1,11 @@
+using System;
 using SGGames.Scripts.Core;
 using SGGames.Scripts.Events;
 using UnityEngine;
 
 namespace SGGames.Scripts.Player
 {
-    public class PlayerMovement : PlayerBehavior
+    public class PlayerMovement : PlayerBehavior,IGameService
     {
         [Header("Obstacle Test")]
         [SerializeField] private LayerMask m_obstacleLayerMask; 
@@ -18,10 +19,14 @@ namespace SGGames.Scripts.Player
         private ObstacleChecker m_obstacleChecker;
         private readonly float m_raycastDistance = 0.2f;
         private bool m_canMove;
-        
+        private Vector2 m_lastDirection;
+
+        public Vector2 LastDirection => m_lastDirection;
         public Vector2 Direction => m_direction;
         public float Speed => m_currentSpeed;
         public float InitialSpeed => m_initialSpeed;
+
+        public Action<bool> OnHitObstacle;
 
         public void ToggleMovement(bool canMove)
         {
@@ -41,7 +46,13 @@ namespace SGGames.Scripts.Player
         public void ResetSpeed()
         {
             m_currentSpeed = m_initialSpeed;
-        }        
+        }
+
+
+        private void Awake()
+        {
+            ServiceLocator.RegisterService<PlayerMovement>(this);
+        }
 
         protected override void Start()
         {
@@ -63,9 +74,14 @@ namespace SGGames.Scripts.Player
             if (!m_canMove) return;
             if (m_obstacleChecker.IsColliderObstacle(transform.position,m_playerSize,m_direction,m_raycastDistance,m_obstacleLayerMask))
             {
+                OnHitObstacle?.Invoke(true);
                 m_direction = Vector2.zero;
             }
-            
+
+            if (m_direction != Vector2.zero)
+            {
+                m_lastDirection = m_direction;
+            }
             transform.Translate(m_direction * (m_currentSpeed * Time.deltaTime));
         }
 

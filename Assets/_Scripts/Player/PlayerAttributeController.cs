@@ -30,6 +30,7 @@ namespace SGGames.Scripts.Player
         private PlayerDamageComputer m_playerDamageComputer;
         private PlayerHealth m_playerHealth;
         private PlayerMana m_playerMana;
+        private PlayerStamina m_playerStamina;
         private bool m_isCharacterInfoOpening;
         
         public float StrengthPoints => m_strengthPoints;
@@ -59,6 +60,7 @@ namespace SGGames.Scripts.Player
             
             m_playerHealth = ServiceLocator.GetService<PlayerHealth>();
             m_playerMana = ServiceLocator.GetService<PlayerMana>();
+            m_playerStamina = ServiceLocator.GetService<PlayerStamina>();
             
             m_characterInforButtonPressedEvent.AddListener(OnCharacterInfoButtonPressed);
             m_addAttributeEvent.AddListener(OnChooseAttributeReward);
@@ -93,6 +95,8 @@ namespace SGGames.Scripts.Player
             
             m_playerMana.Initialize(ComputeMaxMana());
             m_playerMana.AddManaRegeneration(ComputeManaRegenerationRate());
+            
+            m_playerStamina.Initialize(m_heroData.BaseStamina);
 
             yield return new WaitUntil(() =>
                 m_playerWeaponHandler != null && m_playerWeaponHandler.IsWeaponInitialized);

@@ -17,6 +17,7 @@ namespace SGGames.Scripts.Healths
     [SelectionBase]
     public class PlayerHealth : Health, IPlayerHealthService
     {
+        [SerializeField] private bool m_isImmortalFromDash;
         [SerializeField] private float m_chanceToNotTakeDamage;
         [SerializeField] private float m_percentDamageTaken;
         [SerializeField] private float m_armor;
@@ -26,6 +27,7 @@ namespace SGGames.Scripts.Healths
         [SerializeField] private float m_regenerationRate;
         [SerializeField] private PlayerEvent m_PlayerEvent;
         [SerializeField] private BoolEvent m_playerGainImmortalEvent;
+        
         private SpriteFlicker m_spriteFlicker;
         private readonly float m_regenerationInterval = 0.1f;
         private float m_regenerateTimer;
@@ -63,6 +65,11 @@ namespace SGGames.Scripts.Healths
             }
         }
 
+        public void SetImmortalFromDash(bool isImmortal)
+        {
+            m_isImmortalFromDash = isImmortal;
+        }
+
         private void Update()
         {
             if (m_isDead) return;
@@ -86,7 +93,17 @@ namespace SGGames.Scripts.Healths
                 return false;
             }
             
-            return base.CanTakeDamage();
+            if (m_isImmortal) return false;
+
+            if (m_isImmortalFromDash) return false;
+
+            if (m_isDead) return false;
+            
+            if (m_isInvulnerable) return false;
+            
+            if(m_currentHealth <= 0) return false;
+
+            return true;
         }
         public override void TakeDamage(float damage, GameObject source, float invincibilityDuration, bool isCritical = false)
         {

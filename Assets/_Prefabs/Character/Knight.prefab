@@ -17,11 +17,13 @@ GameObject:
   - component: {fileID: 9095760099221184924}
   - component: {fileID: 904574974438328195}
   - component: {fileID: 3632583597495443813}
+  - component: {fileID: 4067455095835807788}
   - component: {fileID: 6210066009922297151}
   - component: {fileID: 6211949587856999711}
   - component: {fileID: 8170920390037149282}
   - component: {fileID: -2195535169441576329}
   - component: {fileID: 8985148339537040874}
+  - component: {fileID: 7147905849588743287}
   - component: {fileID: 653109541880552111}
   m_Layer: 6
   m_Name: Knight
@@ -223,6 +225,7 @@ MonoBehaviour:
   m_isImmortal: 0
   m_isDead: 0
   m_spriteRenderer: {fileID: 8048074491649769888}
+  m_isImmortalFromDash: 0
   m_chanceToNotTakeDamage: 0
   m_percentDamageTaken: 0
   m_armor: 0
@@ -248,6 +251,21 @@ MonoBehaviour:
   m_currentMana: 0
   m_manaRegenRate: 0
   m_playerUpdateManaEvent: {fileID: 11400000, guid: 30f065676dd1e06419300e4e9c67bcf7, type: 2}
+--- !u!114 &4067455095835807788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633775464036924199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9dcaf6bc98d6079408ae17a312daa497, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isAllow: 1
+  m_currentStamina: 0
+  m_maxStamina: 0
 --- !u!114 &6210066009922297151
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -344,6 +362,45 @@ MonoBehaviour:
   m_updateInventoryUI: {fileID: 11400000, guid: d47cfc6a2bf7c2a4dbd73baee44f9449, type: 2}
   m_itemPickedEvent: {fileID: 11400000, guid: 9a7e64e4c361154488877a0458d5deaf, type: 2}
   m_onInventoryButtonPressedEvent: {fileID: 11400000, guid: 49c43882c97a1684bbb93fef2a29dfef, type: 2}
+--- !u!114 &7147905849588743287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 633775464036924199}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4a016941490a1864f8fb96e92d4fa1be, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_isAllow: 1
+  m_dashState: 0
+  m_dashButtonPressedEvent: {fileID: 11400000, guid: a28bbf79aca8aeb4fbe5ef268c64fcd1, type: 2}
+  m_dashSpeedCurve:
+    serializedVersion: 2
+    m_Curve:
+    - serializedVersion: 3
+      time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    - serializedVersion: 3
+      time: 1
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
 --- !u!114 &653109541880552111
 MonoBehaviour:
   m_ObjectHideFlags: 0

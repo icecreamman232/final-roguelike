@@ -20,6 +20,8 @@ namespace SGGames.Scripts.Data
         [SerializeField] private float m_baseStrength;
         [SerializeField] private float m_baseAgility;
         [SerializeField] private float m_baseIntelligence;
+        [Header("Stamina")]
+        [SerializeField] private int m_baseStamina;
 
         [Header("Offensive Attributes")]
         [SerializeField] private float m_criticalChance;
@@ -36,6 +38,8 @@ namespace SGGames.Scripts.Data
         public float BaseStrength => m_baseStrength;
         public float BaseAgility => m_baseAgility;
         public float BaseIntelligence => m_baseIntelligence;
+        
+        public int BaseStamina => m_baseStamina;
 
         public float CriticalChance => m_criticalChance;
         public float CriticalDamage => m_criticalDamage;

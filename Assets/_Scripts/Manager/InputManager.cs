@@ -13,6 +13,7 @@ namespace SGGames.Scripts.Managers
         [SerializeField] private InputContextEvent m_interactButtonPressedEvent;
         [SerializeField] private InputContextEvent m_defenseButtonPressedEvent;
         [SerializeField] private InputContextEvent m_pauseMenuButtonPressedEvent;
+        [SerializeField] private InputContextEvent m_dashButtonPressedEvent;
         private PlayerInputAction m_playerInputAction;
 
         private void Awake()
@@ -26,8 +27,9 @@ namespace SGGames.Scripts.Managers
             m_playerInputAction.Player.Interact.performed += OnInteractButtonPressed;
             m_playerInputAction.Player.DefenseAbility.performed += OnDefenseButtonPressed;
             m_playerInputAction.Player.PauseMenu.performed += OnPauseMenuButtonPressed;
+            m_playerInputAction.Player.Dash.performed += OnDashButtonPressed;
         }
-        
+
         private void Update()
         {
             if (!m_playerInputAction.Player.enabled) return;
@@ -72,6 +74,11 @@ namespace SGGames.Scripts.Managers
             m_pauseMenuButtonPressedEvent.Raise(context);
         }
         
+        private void OnDashButtonPressed(InputAction.CallbackContext context)
+        {
+            m_dashButtonPressedEvent.Raise(context);
+        }
+        
         private void OnDestroy()
         {
             m_playerInputAction.Player.Interact.performed -= OnInventoryButtonPressed;
@@ -79,6 +86,7 @@ namespace SGGames.Scripts.Managers
             m_playerInputAction.Player.Interact.performed -= OnInteractButtonPressed;
             m_playerInputAction.Player.DefenseAbility.performed -= OnDefenseButtonPressed;
             m_playerInputAction.Player.PauseMenu.performed -= OnPauseMenuButtonPressed;
+            m_playerInputAction.Player.Dash.performed -= OnDashButtonPressed;
             m_freezeInputEvent.RemoveListener(OnFreezeInput);
         }
     }
