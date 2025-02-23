@@ -266,6 +266,7 @@ MonoBehaviour:
   m_isAllow: 1
   m_currentStamina: 0
   m_maxStamina: 0
+  m_staminaUpdateEvent: {fileID: 11400000, guid: 08195711c937bcc419e209a5d2c7475d, type: 2}
 --- !u!114 &6210066009922297151
 MonoBehaviour:
   m_ObjectHideFlags: 0

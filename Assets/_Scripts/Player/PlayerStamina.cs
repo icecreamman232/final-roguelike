@@ -1,5 +1,6 @@
 using System;
 using SGGames.Scripts.Core;
+using SGGames.Scripts.Events;
 using UnityEngine;
 
 namespace SGGames.Scripts.Player
@@ -8,8 +9,9 @@ namespace SGGames.Scripts.Player
     {
         [SerializeField] private int m_currentStamina;
         [SerializeField] private int m_maxStamina;
+        [SerializeField] private StaminaUpdateEvent m_staminaUpdateEvent;
 
-        private readonly float m_staminaRegenDuration = 3f;
+        private readonly float m_staminaRegenDuration = 5f;
         private float m_regenTimer;
         
         private void Awake()
@@ -21,6 +23,7 @@ namespace SGGames.Scripts.Player
         {
             m_maxStamina = maxStamina;
             m_currentStamina = m_maxStamina;
+            m_staminaUpdateEvent.Raise(m_currentStamina, m_maxStamina);
         }
 
         protected override void Update()
@@ -33,6 +36,7 @@ namespace SGGames.Scripts.Player
                 m_regenTimer = 0;
                 m_currentStamina++;
                 m_currentStamina = Mathf.Clamp(m_currentStamina,0,m_maxStamina);
+                m_staminaUpdateEvent.Raise(m_currentStamina, m_maxStamina);
             }
             
             base.Update();
@@ -45,6 +49,7 @@ namespace SGGames.Scripts.Player
             if (m_currentStamina <= 0) return;
             m_currentStamina -= amount;
             m_currentStamina = Mathf.Clamp(m_currentStamina,0,m_maxStamina);
+            m_staminaUpdateEvent.Raise(m_currentStamina, m_maxStamina);
         }
     }
 }
