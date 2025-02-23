@@ -8,8 +8,8 @@ namespace SGGames.Scripts.Player
     {
         [SerializeField] private int m_currentStamina;
         [SerializeField] private int m_maxStamina;
-        
-        private readonly float m_staminaRegenDuration;
+
+        private readonly float m_staminaRegenDuration = 3f;
         private float m_regenTimer;
         
         private void Awake()
@@ -38,7 +38,7 @@ namespace SGGames.Scripts.Player
             base.Update();
         }
         
-        public bool HasStamina => m_currentStamina >= m_maxStamina;
+        public bool HasStamina => m_currentStamina > 0;
         
         public void ConsumeStamina(int amount)
         {

@@ -33,6 +33,8 @@ namespace SGGames.Scripts.Player
         private PlayerHealth m_playerHealth;
         private PlayerStamina m_playerStamina;
         private PlayerMovement m_playerMovement;
+        
+        public PlayerDashState DashState => m_dashState;
 
         protected override void Start()
         {
@@ -58,7 +60,6 @@ namespace SGGames.Scripts.Player
         {
             if (!m_playerStamina.HasStamina) return;
             m_dashState = PlayerDashState.Prepare;
-            m_playerStamina.ConsumeStamina(m_staminaCost);
         }
 
         protected override void Update()
@@ -90,6 +91,7 @@ namespace SGGames.Scripts.Player
         
         private void PrepareState()
         {
+            if (m_dashState != PlayerDashState.Prepare) return;
             m_playerHealth.SetImmortalFromDash(true);
             m_playerStamina.ConsumeStamina(m_staminaCost);
             m_destination = m_playerMovement.LastDirection * m_dashDistance + (Vector2)transform.position;
