@@ -34,6 +34,9 @@ namespace SGGames.Scripts.Data
         [SerializeField] private ItemCategory m_itemCategory;
         [SerializeField] private Sprite m_icon;
         [SerializeField] private GameObject m_pickerPrefab;
+        [Header("Item Set")] 
+        [SerializeField] private bool m_isInSet;
+        [SerializeField] private ItemData[] m_itemSets;
         [Header("Modifier")] 
         [SerializeField] private Modifier[] m_modifierList;
         
@@ -77,6 +80,10 @@ namespace SGGames.Scripts.Data
             get => m_pickerPrefab;
             set => m_pickerPrefab = value;
         }
+        
+        public bool IsInSet => m_isInSet;
+        
+        public ItemData[] ItemSets => m_itemSets;
     }
 }
 
