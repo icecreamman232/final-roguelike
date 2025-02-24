@@ -25,6 +25,10 @@ Preset:
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: m_initialHealth
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: m_maxHealth
     value: 150
     objectReference: {fileID: 0}
@@ -49,6 +53,10 @@ Preset:
     value: 
     objectReference: {fileID: 0}
   - target: {fileID: 0}
+    propertyPath: m_isImmortalFromDash
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
     propertyPath: m_chanceToNotTakeDamage
     value: 0
     objectReference: {fileID: 0}
@@ -69,13 +77,17 @@ Preset:
     value: 0.1
     objectReference: {fileID: 0}
   - target: {fileID: 0}
-    propertyPath: m_PlayerHealthUpdateEvent
-    value: 
-    objectReference: {fileID: 11400000, guid: 522553b978f7d444282f81b913f8d024, type: 2}
-  - target: {fileID: 0}
     propertyPath: m_regenerationRate
     value: 0
     objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_reviveTime
+    value: 0
+    objectReference: {fileID: 0}
+  - target: {fileID: 0}
+    propertyPath: m_PlayerHealthUpdateEvent
+    value: 
+    objectReference: {fileID: 11400000, guid: 522553b978f7d444282f81b913f8d024, type: 2}
   - target: {fileID: 0}
     propertyPath: m_PlayerEvent
     value: 
@@ -84,4 +96,12 @@ Preset:
     propertyPath: m_playerGainImmortalEvent
     value: 
     objectReference: {fileID: 11400000, guid: 0a4f665936e4b4a43876b26e1a6683ad, type: 2}
+  - target: {fileID: 0}
+    propertyPath: m_updateReviveEvent
+    value: 
+    objectReference: {fileID: 11400000, guid: 200261ec702238c44a1c88f58f51b1be, type: 2}
+  - target: {fileID: 0}
+    propertyPath: m_deadAnim
+    value: 
+    objectReference: {fileID: 0}
   m_ExcludedProperties: []

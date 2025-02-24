@@ -89,7 +89,7 @@ namespace SGGames.Scripts.Player
             m_intelligencePoints = m_heroData.BaseIntelligence;
             m_playerDamageComputer.Initialize(m_heroData.CriticalChance, m_heroData.CriticalDamage);
             
-            m_playerHealth.Initialize(ComputeMaxHealth());
+            m_playerHealth.Initialize(ComputeMaxHealth(),m_heroData.BaseReviveTime);
             m_playerHealth.AddRegenerationRate(ComputeRegenerationRate());
             m_playerHealth.SetArmor(ComputeArmorFromAgi(m_agilityPoints));
             

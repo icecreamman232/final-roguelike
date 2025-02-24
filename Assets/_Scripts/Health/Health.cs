@@ -9,6 +9,7 @@ namespace SGGames.Scripts.Healths
     /// </summary>
     public class Health : MonoBehaviour
     {
+        [SerializeField][Min(0)] protected float m_initialHealth;
         [SerializeField][Min(0)] protected float m_maxHealth;
         [SerializeField][Min(0)] protected float m_currentHealth;
         /// <summary>
@@ -34,7 +35,8 @@ namespace SGGames.Scripts.Healths
         
         public void ResetHealth()
         {
-            m_currentHealth = m_maxHealth;
+            m_maxHealth = m_initialHealth;
+            m_currentHealth = m_initialHealth;
         }
 
         public virtual void ModifyCurrentHealth(float amount)

@@ -31,11 +31,14 @@ namespace SGGames.Scripts.Healths
         [SerializeField] private PlayerHealthUpdateEvent m_PlayerHealthUpdateEvent;
         [SerializeField] private PlayerEvent m_PlayerEvent;
         [SerializeField] private BoolEvent m_playerGainImmortalEvent;
+        [SerializeField] private UpdateReviveEvent m_updateReviveEvent;
         [Header("Animation")]
         [SerializeField] private MMAnimationParameter m_deadAnim;
         
         private SpriteFlicker m_spriteFlicker;
         private readonly float m_regenerationInterval = 0.1f;
+        private readonly string m_reviveVFXEventName = "PlayReviveVFX";
+        private readonly float m_invulnerableDurationAfterRevive = 0.5f;
         private float m_regenerateTimer;
         private OnHitInfo m_onHitInfo;
 
@@ -59,13 +62,16 @@ namespace SGGames.Scripts.Healths
             ServiceLocator.RegisterService<PlayerHealth>(this);
         }
 
-        public void Initialize(float maxHealth)
+        public void Initialize(float initialHealth, int reviveTime)
         {
             m_onHitInfo = new OnHitInfo();
             m_percentDamageTaken = 1;
-            m_currentHealth = maxHealth;
-            m_maxHealth = maxHealth;
+            m_reviveTime = reviveTime;
+            m_initialHealth = initialHealth;
+            m_currentHealth = initialHealth;
+            m_maxHealth = initialHealth;
             UpdateHealthBar();
+            m_updateReviveEvent.Raise(m_reviveTime);
             m_spriteFlicker = GetComponentInChildren<SpriteFlicker>();
             if (m_spriteFlicker == null)
             {
@@ -206,7 +212,19 @@ namespace SGGames.Scripts.Healths
 
         private IEnumerator OnReviveRoutine()
         {
-            yield return null;
+            m_reviveTime--;
+            m_updateReviveEvent.Raise(m_reviveTime);
+            m_maxHealth = m_initialHealth;
+            m_currentHealth = m_maxHealth;
+            m_lastSourceCauseDamage = null;
+            UpdateHealthBar();
+            MMGameEvent.Trigger(m_reviveVFXEventName);
+            
+            //Set invulnerable after reviving
+            m_isInvulnerable = true;
+            yield return new WaitForSeconds(m_invulnerableDurationAfterRevive);
+            m_isInvulnerable = false;
+
         }
         
         #endregion
