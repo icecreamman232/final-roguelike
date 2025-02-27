@@ -117,11 +117,9 @@ namespace SGGames.Scripts.Player
             //Cancel dash if player want to move to other directions
             if (m_dashDirection != m_playerMovement.LastDirection)
             {
-                m_ghostSpawnTimer = 0;
                 CancelDash();
                 return;
             }
-
             
             m_dashTime = Time.time - m_startDashTime;
             var accelTime = m_dashSpeedCurve.Evaluate(m_dashTime);
@@ -151,7 +149,9 @@ namespace SGGames.Scripts.Player
 
         private void CancelDash()
         {
+            m_ghostSpawnTimer = 0;
             m_dashState = PlayerDashState.Finished;
+            transform.position = m_playerMovement.LastPosition;
         }
     }
 }

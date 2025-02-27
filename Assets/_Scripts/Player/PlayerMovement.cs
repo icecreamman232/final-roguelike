@@ -20,6 +20,7 @@ namespace SGGames.Scripts.Player
         private readonly float m_raycastDistance = 0.2f;
         private bool m_canMove;
         private Vector2 m_lastDirection;
+        private Vector2 m_lastPosition;
 
         public Vector2 LastDirection => m_lastDirection;
         public Vector2 Direction => m_direction;
@@ -27,6 +28,8 @@ namespace SGGames.Scripts.Player
         public float InitialSpeed => m_initialSpeed;
 
         public Action<bool> OnHitObstacle;
+
+        public Vector2 LastPosition => m_lastPosition;
 
         public void ToggleMovement(bool canMove)
         {
@@ -83,6 +86,7 @@ namespace SGGames.Scripts.Player
                 m_lastDirection = m_direction;
             }
             transform.Translate(m_direction * (m_currentSpeed * Time.deltaTime));
+            m_lastPosition = transform.position;
         }
 
         public override void OnPlayerFreeze(bool isFrozen)
