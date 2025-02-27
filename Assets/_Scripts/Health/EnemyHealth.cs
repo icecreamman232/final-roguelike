@@ -120,7 +120,7 @@ namespace SGGames.Scripts.Healths
         #if UNITY_EDITOR
         public void ApplyDataForHealth(float maxHealth)
         {
-            m_maxHealth = maxHealth;
+            m_initialHealth = maxHealth;
         }
         #endif
     }
