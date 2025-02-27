@@ -380,6 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_isAllow: 1
+  m_dashGhostPooler: {fileID: 96319069633463376}
   m_dashState: 0
   m_dashButtonPressedEvent: {fileID: 11400000, guid: a28bbf79aca8aeb4fbe5ef268c64fcd1, type: 2}
   m_dashSpeedCurve:
@@ -1043,6 +1044,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 5451e999c8f9dfb41aa3b2894ffc3d60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &96319069633463376 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 8563068296344120032, guid: 77d2f071367a0eb498d76816e25a0d24, type: 3}
+  m_PrefabInstance: {fileID: 8610900706474946224}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0b7277539b95c0d45895792ecc99ce66, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!4 &1130028955613698715 stripped

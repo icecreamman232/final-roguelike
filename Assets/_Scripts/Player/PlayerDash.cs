@@ -1,4 +1,5 @@
 
+using MoreMountains.Tools;
 using SGGames.Scripts.Core;
 using SGGames.Scripts.Events;
 using SGGames.Scripts.Healths;
@@ -17,6 +18,7 @@ namespace SGGames.Scripts.Player
     
     public class PlayerDash : PlayerBehavior
     {
+        [SerializeField] private MMSimpleObjectPooler m_dashGhostPooler;
         [SerializeField] private PlayerDashState m_dashState;
         [SerializeField] private InputContextEvent m_dashButtonPressedEvent;
         [SerializeField] private AnimationCurve m_dashSpeedCurve;
@@ -25,7 +27,9 @@ namespace SGGames.Scripts.Player
         private readonly float m_dashSpeed = 10f;
         private readonly float m_acceleration = 4;
         private readonly int m_staminaCost = 1;
+        private readonly float m_ghostSpawnFrequency = 0.018f;
 
+        private float m_ghostSpawnTimer;
         private float m_startDashTime;
         private float m_dashTime;
         private Vector2 m_dashDirection;
@@ -38,6 +42,14 @@ namespace SGGames.Scripts.Player
 
         protected override void Start()
         {
+            #if UNITY_EDITOR
+            if (m_dashGhostPooler == null)
+            {
+                Debug.LogError($"Missing {nameof(m_dashGhostPooler)} on {gameObject.name}");
+            }
+            
+            #endif
+            
             m_playerStamina = ServiceLocator.GetService<PlayerStamina>();
             m_playerHealth = ServiceLocator.GetService<PlayerHealth>();
             m_playerMovement = ServiceLocator.GetService<PlayerMovement>();
@@ -93,7 +105,7 @@ namespace SGGames.Scripts.Player
         {
             if (m_dashState != PlayerDashState.Prepare) return;
             m_playerHealth.SetImmortalFromDash(true);
-            m_playerStamina.ConsumeStamina(m_staminaCost);
+            //m_playerStamina.ConsumeStamina(m_staminaCost);
             m_destination = m_playerMovement.LastDirection * m_dashDistance + (Vector2)transform.position;
             m_dashDirection = m_playerMovement.LastDirection;
 
@@ -105,15 +117,28 @@ namespace SGGames.Scripts.Player
             //Cancel dash if player want to move to other directions
             if (m_dashDirection != m_playerMovement.LastDirection)
             {
+                m_ghostSpawnTimer = 0;
                 CancelDash();
                 return;
             }
 
+            
             m_dashTime = Time.time - m_startDashTime;
             var accelTime = m_dashSpeedCurve.Evaluate(m_dashTime);
             transform.position = Vector2.MoveTowards(transform.position,m_destination,(m_dashSpeed + accelTime * m_acceleration) * Time.deltaTime);
+            
+            m_ghostSpawnTimer += Time.deltaTime;
+            if (m_ghostSpawnTimer >= m_ghostSpawnFrequency)
+            {
+                m_ghostSpawnTimer = 0;
+                var ghost = m_dashGhostPooler.GetPooledGameObject();
+                ghost.transform.position = transform.position;
+                ghost.SetActive(true);
+            }
+            
             if ((Vector2)transform.position == m_destination)
             {
+                m_ghostSpawnTimer = 0;
                 m_dashState = PlayerDashState.Finished;
             }
         }
